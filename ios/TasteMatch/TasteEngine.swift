@@ -94,9 +94,9 @@ struct TasteEngine {
             scored[1].score >= 0.4 ? scored[1] : nil
 
         // 3. Build TasteTag array.
-        var tags = [TasteTag(label: primary.tag.rawValue, confidence: rounded(primary.score))]
+        var tags = [TasteTag(key: String(describing: primary.tag), label: primary.tag.rawValue, confidence: rounded(primary.score))]
         if let sec = secondary {
-            tags.append(TasteTag(label: sec.tag.rawValue, confidence: rounded(sec.score)))
+            tags.append(TasteTag(key: String(describing: sec.tag), label: sec.tag.rawValue, confidence: rounded(sec.score)))
         }
 
         // 4. Build Signal list from the raw visual signals.

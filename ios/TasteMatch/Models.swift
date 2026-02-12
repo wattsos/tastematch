@@ -2,11 +2,13 @@ import Foundation
 
 struct TasteTag: Identifiable, Codable {
     let id: UUID
+    let key: String
     let label: String
     let confidence: Double
 
-    init(id: UUID = UUID(), label: String, confidence: Double) {
+    init(id: UUID = UUID(), key: String, label: String, confidence: Double) {
         self.id = id
+        self.key = key
         self.label = label
         self.confidence = confidence
     }

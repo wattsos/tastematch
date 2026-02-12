@@ -26,9 +26,17 @@ final class APIClient {
             goal: goal
         )
 
+        let recommendations = RecommendationEngine.recommend(
+            profile: profile,
+            catalog: MockCatalog.items,
+            context: roomContext,
+            goal: goal,
+            limit: 6
+        )
+
         return AnalyzeResponse(
             tasteProfile: profile,
-            recommendations: RecommendationItem.mocks
+            recommendations: recommendations
         )
     }
 
@@ -55,29 +63,3 @@ final class APIClient {
     }
 }
 
-// MARK: - Mock recommendations (engine doesn't produce these yet)
-
-extension RecommendationItem {
-    static let mocks: [RecommendationItem] = [
-        RecommendationItem(
-            title: "Walnut Credenza",
-            subtitle: "Article — $899",
-            reason: "Anchors your mid-century aesthetic while adding hidden storage."
-        ),
-        RecommendationItem(
-            title: "Linen Throw Pillows (set of 2)",
-            subtitle: "Parachute — $120",
-            reason: "Softens seating with the natural texture you're drawn to."
-        ),
-        RecommendationItem(
-            title: "Ceramic Table Lamp",
-            subtitle: "West Elm — $149",
-            reason: "Earthy glaze echoes your warm-neutral palette."
-        ),
-        RecommendationItem(
-            title: "Olive Accent Chair",
-            subtitle: "CB2 — $649",
-            reason: "Introduces your secondary color in a statement piece."
-        ),
-    ]
-}

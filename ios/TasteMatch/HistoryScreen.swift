@@ -43,6 +43,17 @@ struct HistoryScreen: View {
                             }
                         }
                         .foregroundStyle(.primary)
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                path.append(Route.reanalyze(
+                                    saved.roomContext ?? .livingRoom,
+                                    saved.designGoal ?? .refresh
+                                ))
+                            } label: {
+                                Label("Re-analyze", systemImage: "arrow.clockwise")
+                            }
+                            .tint(.blue)
+                        }
                     }
                     .onDelete { offsets in
                         deleteItems(at: offsets)

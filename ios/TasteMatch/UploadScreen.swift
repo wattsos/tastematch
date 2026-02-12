@@ -3,6 +3,9 @@ import SwiftUI
 
 struct UploadScreen: View {
     @Binding var path: NavigationPath
+    var prefillRoom: RoomContext = .livingRoom
+    var prefillGoal: DesignGoal = .refresh
+
     @State private var selectedItems: [PhotosPickerItem] = []
     @State private var images: [UIImage] = []
     @State private var isLoading = false
@@ -20,7 +23,7 @@ struct UploadScreen: View {
 
             Button {
                 EventLogger.shared.logEvent("photos_confirmed", metadata: ["count": "\(images.count)"])
-                path.append(Route.context(images))
+                path.append(Route.context(images, prefillRoom, prefillGoal))
             } label: {
                 Text("Next")
                     .frame(maxWidth: .infinity)

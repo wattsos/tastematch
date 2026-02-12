@@ -4,8 +4,15 @@ struct ContextScreen: View {
     @Binding var path: NavigationPath
     let images: [UIImage]
 
-    @State private var selectedRoom: RoomContext = .livingRoom
-    @State private var selectedGoal: DesignGoal = .refresh
+    @State private var selectedRoom: RoomContext
+    @State private var selectedGoal: DesignGoal
+
+    init(path: Binding<NavigationPath>, images: [UIImage], initialRoom: RoomContext = .livingRoom, initialGoal: DesignGoal = .refresh) {
+        _path = path
+        self.images = images
+        _selectedRoom = State(initialValue: initialRoom)
+        _selectedGoal = State(initialValue: initialGoal)
+    }
     @State private var isAnalyzing = false
     @State private var errorMessage: String?
 
@@ -59,6 +66,7 @@ struct ContextScreen: View {
         isAnalyzing = true
         defer { isAnalyzing = false }
 
+        Haptics.impact()
         EventLogger.shared.logEvent(
             "analyze_started",
             metadata: ["room": selectedRoom.rawValue, "goal": selectedGoal.rawValue]
@@ -77,7 +85,8 @@ struct ContextScreen: View {
                 roomContext: selectedRoom,
                 goal: selectedGoal
             )
-            ProfileStore.save(profile: response.tasteProfile, recommendations: response.recommendations)
+            ProfileStore.save(profile: response.tasteProfile, recommendations: response.recommendations, roomContext: selectedRoom, designGoal: selectedGoal)
+            Haptics.success()
             path.append(Route.result(response.tasteProfile, response.recommendations))
         } catch {
             errorMessage = error.localizedDescription

@@ -40,7 +40,7 @@ struct TasteProfile: Identifiable, Codable {
     }
 }
 
-struct RecommendationItem: Identifiable, Codable {
+struct RecommendationItem: Identifiable, Codable, Hashable {
     let id: UUID
     let title: String
     let subtitle: String

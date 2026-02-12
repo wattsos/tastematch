@@ -91,38 +91,43 @@ struct ResultScreen: View {
                         .foregroundStyle(.secondary)
                 }
                 ForEach(filteredRecommendations) { item in
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(item.title)
-                                .font(.headline)
-                            Spacer()
-                            Text(confidenceLabel(item.attributionConfidence))
-                                .font(.caption2.weight(.medium))
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(confidenceColor(item.attributionConfidence).opacity(0.15))
-                                .foregroundStyle(confidenceColor(item.attributionConfidence))
-                                .clipShape(Capsule())
-                        }
-                        Text(item.subtitle)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        HStack {
-                            Text(item.reason)
-                                .font(.callout)
-                                .italic()
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                            Button {
-                                toggleFavorite(item)
-                            } label: {
-                                Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
-                                    .foregroundStyle(isFavorited(item) ? .red : .secondary)
+                    Button {
+                        path.append(Route.recommendationDetail(item))
+                    } label: {
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(alignment: .firstTextBaseline) {
+                                Text(item.title)
+                                    .font(.headline)
+                                Spacer()
+                                Text(confidenceLabel(item.attributionConfidence))
+                                    .font(.caption2.weight(.medium))
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 2)
+                                    .background(confidenceColor(item.attributionConfidence).opacity(0.15))
+                                    .foregroundStyle(confidenceColor(item.attributionConfidence))
+                                    .clipShape(Capsule())
                             }
-                            .buttonStyle(.plain)
+                            Text(item.subtitle)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            HStack {
+                                Text(item.reason)
+                                    .font(.callout)
+                                    .italic()
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Button {
+                                    toggleFavorite(item)
+                                } label: {
+                                    Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
+                                        .foregroundStyle(isFavorited(item) ? .red : .secondary)
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
+                        .padding(.vertical, 4)
                     }
-                    .padding(.vertical, 4)
+                    .foregroundStyle(.primary)
                 }
             }
         }
@@ -137,6 +142,7 @@ struct ResultScreen: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Start Over") {
+                    Haptics.warning()
                     ProfileStore.clear()
                     path = NavigationPath()
                 }
@@ -162,6 +168,7 @@ struct ResultScreen: View {
     }
 
     private func toggleFavorite(_ item: RecommendationItem) {
+        Haptics.tap()
         let key = favoriteKey(item)
         if favoritedIds.contains(key) {
             favoritedIds.remove(key)

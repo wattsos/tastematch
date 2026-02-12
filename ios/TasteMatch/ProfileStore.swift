@@ -5,6 +5,8 @@ struct SavedProfile: Codable, Identifiable {
     let tasteProfile: TasteProfile
     let recommendations: [RecommendationItem]
     let savedAt: Date
+    let roomContext: RoomContext?
+    let designGoal: DesignGoal?
 }
 
 enum ProfileStore {
@@ -19,12 +21,19 @@ enum ProfileStore {
 
     // MARK: - Save
 
-    static func save(profile: TasteProfile, recommendations: [RecommendationItem]) {
+    static func save(
+        profile: TasteProfile,
+        recommendations: [RecommendationItem],
+        roomContext: RoomContext? = nil,
+        designGoal: DesignGoal? = nil
+    ) {
         var history = loadAll()
         let saved = SavedProfile(
             tasteProfile: profile,
             recommendations: recommendations,
-            savedAt: Date()
+            savedAt: Date(),
+            roomContext: roomContext,
+            designGoal: designGoal
         )
         history.append(saved)
         write(history)

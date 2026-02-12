@@ -13,44 +13,55 @@ struct ContextScreen: View {
         _selectedRoom = State(initialValue: initialRoom)
         _selectedGoal = State(initialValue: initialGoal)
     }
+
     @State private var isAnalyzing = false
     @State private var errorMessage: String?
 
     var body: some View {
-        Form {
-            Section("Room") {
-                Picker("Room type", selection: $selectedRoom) {
-                    ForEach(RoomContext.allCases) { room in
-                        Text(room.rawValue).tag(room)
+        ZStack {
+            Form {
+                Section("Room") {
+                    Picker("Room type", selection: $selectedRoom) {
+                        ForEach(RoomContext.allCases) { room in
+                            Text(room.rawValue).tag(room)
+                        }
                     }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.menu)
-            }
 
-            Section("Goal") {
-                Picker("Design goal", selection: $selectedGoal) {
-                    ForEach(DesignGoal.allCases) { goal in
-                        Text(goal.rawValue).tag(goal)
+                Section("Goal") {
+                    Picker("Design goal", selection: $selectedGoal) {
+                        ForEach(DesignGoal.allCases) { goal in
+                            Text(goal.rawValue).tag(goal)
+                        }
                     }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.menu)
-            }
 
-            Section {
-                Button {
-                    Task { await analyze() }
-                } label: {
-                    if isAnalyzing {
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                    } else {
+                Section {
+                    Button {
+                        Task { await analyze() }
+                    } label: {
                         Text("Analyze My Taste")
+                            .font(.headline)
+                            .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(isAnalyzing ? Theme.blush : Theme.accent)
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
+                    .disabled(isAnalyzing)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
                 }
-                .disabled(isAnalyzing)
+            }
+
+            if isAnalyzing {
+                AnalyzingView()
+                    .transition(.opacity)
             }
         }
+        .animation(.easeInOut(duration: 0.3), value: isAnalyzing)
         .navigationTitle("Context")
         .tint(Theme.accent)
         .alert("Analysis Failed", isPresented: Binding(

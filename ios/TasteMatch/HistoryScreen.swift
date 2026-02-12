@@ -7,11 +7,20 @@ struct HistoryScreen: View {
     var body: some View {
         Group {
             if history.isEmpty {
-                ContentUnavailableView(
-                    "No History Yet",
-                    systemImage: "clock",
-                    description: Text("Your past analyses will appear here.")
-                )
+                VStack(spacing: 16) {
+                    Spacer()
+                    Image(systemName: "clock")
+                        .font(.system(size: 48))
+                        .foregroundStyle(Theme.blush)
+                    Text("No analyses yet")
+                        .font(Theme.headlineFont)
+                        .foregroundStyle(Theme.espresso)
+                    Text("Every room you analyze will\nshow up here over time.")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.clay)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                }
             } else {
                 List {
                     ForEach(history.reversed()) { saved in
@@ -22,24 +31,25 @@ struct HistoryScreen: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(saved.tasteProfile.tags.first?.label ?? "Unknown Style")
                                         .font(.headline)
+                                        .foregroundStyle(Theme.espresso)
                                     if let secondary = saved.tasteProfile.tags.dropFirst().first {
                                         Text(secondary.label)
                                             .font(.subheadline)
-                                            .foregroundStyle(.secondary)
+                                            .foregroundStyle(Theme.clay)
                                     }
                                     Text(formatted(saved.savedAt))
                                         .font(.caption)
-                                        .foregroundStyle(.tertiary)
+                                        .foregroundStyle(Theme.clay.opacity(0.7))
                                 }
                                 Spacer()
                                 if let confidence = saved.tasteProfile.tags.first?.confidence {
                                     Text("\(Int(confidence * 100))%")
                                         .font(.caption.monospacedDigit())
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(Theme.clay)
                                 }
                                 Image(systemName: "chevron.right")
                                     .font(.caption)
-                                    .foregroundStyle(.tertiary)
+                                    .foregroundStyle(Theme.blush)
                             }
                         }
                         .foregroundStyle(.primary)

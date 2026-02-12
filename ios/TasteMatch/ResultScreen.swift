@@ -39,6 +39,21 @@ struct ResultScreen: View {
 
     var body: some View {
         List {
+            // Featured badge for primary style
+            if let primaryTag = profile.tags.first {
+                Section {
+                    VStack(spacing: 12) {
+                        TasteBadge(tagKey: primaryTag.key, size: .featured)
+                        if let secondary = profile.tags.dropFirst().first {
+                            TasteBadge(tagKey: secondary.key, size: .compact)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .listRowBackground(Color.clear)
+                }
+            }
+
             Section {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Your Taste")

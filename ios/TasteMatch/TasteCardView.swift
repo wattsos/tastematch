@@ -14,15 +14,17 @@ struct TasteCardView: View {
                     .foregroundStyle(Theme.clay)
                     .tracking(2)
 
-                Text(primaryLabel)
-                    .font(.system(.title, design: .serif, weight: .bold))
-                    .foregroundStyle(Theme.espresso)
-                    .multilineTextAlignment(.center)
+                if let primary = profile.tags.first {
+                    TasteBadge(tagKey: primary.key, size: .featured)
+                } else {
+                    Text(primaryLabel)
+                        .font(.system(.title, design: .serif, weight: .bold))
+                        .foregroundStyle(Theme.espresso)
+                        .multilineTextAlignment(.center)
+                }
 
                 if let secondary = profile.tags.dropFirst().first {
-                    Text("with a touch of \(secondary.label)")
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.clay)
+                    TasteBadge(tagKey: secondary.key, size: .compact)
                 }
             }
             .padding(.top, 28)

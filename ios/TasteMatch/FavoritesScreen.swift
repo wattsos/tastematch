@@ -6,11 +6,20 @@ struct FavoritesScreen: View {
     var body: some View {
         Group {
             if favorites.isEmpty {
-                ContentUnavailableView(
-                    "No Favorites Yet",
-                    systemImage: "heart",
-                    description: Text("Tap the heart on any pick to save it here.")
-                )
+                VStack(spacing: 16) {
+                    Spacer()
+                    Image(systemName: "heart")
+                        .font(.system(size: 48))
+                        .foregroundStyle(Theme.blush)
+                    Text("Nothing saved yet")
+                        .font(Theme.headlineFont)
+                        .foregroundStyle(Theme.espresso)
+                    Text("When you find a piece you love,\ntap the heart to keep it here.")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.clay)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                }
             } else {
                 List {
                     ForEach(favorites) { item in

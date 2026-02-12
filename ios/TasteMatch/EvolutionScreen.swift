@@ -6,11 +6,20 @@ struct EvolutionScreen: View {
     var body: some View {
         Group {
             if history.count < 2 {
-                ContentUnavailableView(
-                    "Not Enough Data",
-                    systemImage: "chart.line.uptrend.xyaxis",
-                    description: Text("Analyze at least two rooms to see how your taste evolves.")
-                )
+                VStack(spacing: 16) {
+                    Spacer()
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                        .font(.system(size: 48))
+                        .foregroundStyle(Theme.blush)
+                    Text("Your taste is evolving")
+                        .font(Theme.headlineFont)
+                        .foregroundStyle(Theme.espresso)
+                    Text("Analyze at least two rooms and\nwe'll map how your style shifts.")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.clay)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                }
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {

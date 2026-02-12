@@ -5,6 +5,8 @@ struct ResultScreen: View {
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
     @State private var showShareSheet = false
+    @State private var showCardShareSheet = false
+    @State private var cardImage: UIImage?
     @State private var favoritedIds: Set<String> = []
     @State private var maxBudget: Double = 0
     @State private var sortMode: SortMode = .match
@@ -180,8 +182,20 @@ struct ResultScreen: View {
         .navigationTitle("Results")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    showShareSheet = true
+                Menu {
+                    Button {
+                        showShareSheet = true
+                    } label: {
+                        Label("Share as Text", systemImage: "doc.plaintext")
+                    }
+                    Button {
+                        cardImage = TasteCardView(profile: profile).renderImage()
+                        if cardImage != nil {
+                            showCardShareSheet = true
+                        }
+                    } label: {
+                        Label("Share Taste Card", systemImage: "photo")
+                    }
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
@@ -201,6 +215,11 @@ struct ResultScreen: View {
         .tint(Theme.accent)
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(text: shareSummary)
+        }
+        .sheet(isPresented: $showCardShareSheet) {
+            if let image = cardImage {
+                ImageShareSheet(image: image)
+            }
         }
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
@@ -293,6 +312,18 @@ struct ShareSheet: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIActivityViewController {
         UIActivityViewController(activityItems: [text], applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
+// MARK: - Image Share Sheet
+
+struct ImageShareSheet: UIViewControllerRepresentable {
+    let image: UIImage
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [image], applicationActivities: nil)
     }
 
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}

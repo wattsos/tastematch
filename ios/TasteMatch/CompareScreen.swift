@@ -34,6 +34,7 @@ struct CompareScreen: View {
             }
         }
         .navigationTitle("Compare")
+        .tint(Theme.accent)
         .onAppear {
             history = ProfileStore.loadAll()
         }
@@ -69,22 +70,23 @@ struct CompareScreen: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(label)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.clay)
                     if let profile {
                         Text(profile.tasteProfile.tags.first?.label ?? "Unknown")
                             .font(.body.weight(.medium))
+                            .foregroundStyle(Theme.espresso)
                         Text(formatted(profile.savedAt))
                             .font(.caption2)
-                            .foregroundStyle(.tertiary)
+                            .foregroundStyle(Theme.clay)
                     } else {
                         Text("Tap to select")
                             .font(.body)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Theme.clay)
                     }
                 }
                 Spacer()
                 Image(systemName: profile == nil ? "plus.circle" : "checkmark.circle.fill")
-                    .foregroundStyle(profile == nil ? .secondary : .green)
+                    .foregroundStyle(profile == nil ? Theme.clay : Theme.sage)
             }
         }
         .foregroundStyle(.primary)
@@ -104,6 +106,7 @@ struct CompareScreen: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(label)
                     .font(.subheadline.weight(.medium))
+                    .foregroundStyle(Theme.espresso)
                 HStack(spacing: 12) {
                     confidenceBar(value: tagA?.confidence, label: "A")
                     confidenceBar(value: tagB?.confidence, label: "B")
@@ -125,6 +128,7 @@ struct CompareScreen: View {
                 .frame(width: 14)
             if let value {
                 ProgressView(value: value)
+                    .tint(Theme.accent)
                     .frame(width: 60)
                 Text("\(Int(value * 100))%")
                     .font(.caption2.monospacedDigit())
@@ -147,7 +151,7 @@ struct CompareScreen: View {
                 .foregroundStyle(.secondary)
         } else {
             let arrow = delta > 0 ? "arrow.up.right" : "arrow.down.right"
-            let color: Color = delta > 0 ? .green : .red
+            let color: Color = delta > 0 ? Theme.sage : Theme.rose
             HStack(spacing: 2) {
                 Image(systemName: arrow)
                     .font(.caption2)
@@ -171,7 +175,7 @@ struct CompareScreen: View {
             HStack {
                 Text(key.replacingOccurrences(of: "_", with: " ").capitalized)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Theme.clay)
                     .frame(width: 90, alignment: .leading)
                 Spacer()
                 Text(sigA?.value.capitalized ?? "—")
@@ -179,7 +183,7 @@ struct CompareScreen: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 Image(systemName: sigA?.value == sigB?.value ? "equal" : "arrow.right")
                     .font(.caption2)
-                    .foregroundStyle(sigA?.value == sigB?.value ? .secondary : .orange)
+                    .foregroundStyle(sigA?.value == sigB?.value ? Theme.clay : Theme.amber)
                 Text(sigB?.value.capitalized ?? "—")
                     .font(.subheadline)
                     .frame(maxWidth: .infinity, alignment: .center)

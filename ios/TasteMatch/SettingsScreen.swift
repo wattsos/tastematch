@@ -17,6 +17,7 @@ struct SettingsScreen: View {
                 }
                 .confirmationDialog("Clear all profile history?", isPresented: $showClearConfirmation, titleVisibility: .visible) {
                     Button("Clear All", role: .destructive) {
+                        Haptics.warning()
                         ProfileStore.clear()
                     }
                     Button("Cancel", role: .cancel) {}
@@ -31,6 +32,7 @@ struct SettingsScreen: View {
                 }
                 .confirmationDialog("Clear all favorites?", isPresented: $showClearFavoritesConfirmation, titleVisibility: .visible) {
                     Button("Clear All", role: .destructive) {
+                        Haptics.warning()
                         FavoritesStore.clear()
                     }
                     Button("Cancel", role: .cancel) {}
@@ -43,35 +45,45 @@ struct SettingsScreen: View {
                 Button {
                     showResetOnboardingConfirmation = true
                 } label: {
-                    Label("Show Onboarding Again", systemImage: "arrow.counterclockwise")
+                    Label("Show Welcome Again", systemImage: "arrow.counterclockwise")
+                        .foregroundStyle(Theme.espresso)
                 }
-                .foregroundStyle(.primary)
-                .confirmationDialog("Reset onboarding?", isPresented: $showResetOnboardingConfirmation, titleVisibility: .visible) {
+                .confirmationDialog("Reset welcome screen?", isPresented: $showResetOnboardingConfirmation, titleVisibility: .visible) {
                     Button("Reset") {
                         hasCompletedOnboarding = false
                     }
                     Button("Cancel", role: .cancel) {}
                 } message: {
-                    Text("The welcome screen will appear next time you open the app.")
+                    Text("The welcome screen will appear next time you open ItMe.")
                 }
             }
 
             Section("About") {
                 HStack {
                     Text("Version")
+                        .foregroundStyle(Theme.espresso)
                     Spacer()
                     Text(appVersion)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.clay)
                 }
                 HStack {
                     Text("Build")
+                        .foregroundStyle(Theme.espresso)
                     Spacer()
                     Text(buildNumber)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.clay)
+                }
+                HStack {
+                    Text("Website")
+                        .foregroundStyle(Theme.espresso)
+                    Spacer()
+                    Text("itme2.com")
+                        .foregroundStyle(Theme.accent)
                 }
             }
         }
         .navigationTitle("Settings")
+        .tint(Theme.accent)
     }
 
     private var appVersion: String {

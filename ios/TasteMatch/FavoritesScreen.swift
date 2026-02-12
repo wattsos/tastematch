@@ -9,21 +9,28 @@ struct FavoritesScreen: View {
                 ContentUnavailableView(
                     "No Favorites Yet",
                     systemImage: "heart",
-                    description: Text("Tap the heart on any recommendation to save it here.")
+                    description: Text("Tap the heart on any pick to save it here.")
                 )
             } else {
                 List {
                     ForEach(favorites) { item in
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(item.title)
-                                .font(.headline)
+                            HStack(alignment: .firstTextBaseline) {
+                                Text(item.title)
+                                    .font(.headline)
+                                    .foregroundStyle(Theme.espresso)
+                                Spacer()
+                                Text("$\(Int(item.price))")
+                                    .font(.subheadline.monospacedDigit().weight(.medium))
+                                    .foregroundStyle(Theme.accent)
+                            }
                             Text(item.subtitle)
                                 .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Theme.clay)
                             Text(item.reason)
                                 .font(.callout)
                                 .italic()
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Theme.clay)
                         }
                         .padding(.vertical, 4)
                     }
@@ -33,7 +40,8 @@ struct FavoritesScreen: View {
                 }
             }
         }
-        .navigationTitle("Favorites")
+        .navigationTitle("Saved")
+        .tint(Theme.accent)
         .onAppear {
             favorites = FavoritesStore.loadAll()
         }

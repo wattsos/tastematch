@@ -55,11 +55,13 @@ struct RecommendationEngine {
             )
 
             let subtitle = "\(entry.item.merchant) — $\(Int(entry.item.price))"
+            let attribution = min(1, max(0, entry.score))
 
             return RecommendationItem(
                 title: entry.item.title,
                 subtitle: subtitle,
-                reason: whyThisFits
+                reason: whyThisFits,
+                attributionConfidence: attribution
             )
         }
     }

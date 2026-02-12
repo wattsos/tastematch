@@ -12,6 +12,7 @@ enum Route: Hashable {
     case compare
     case recommendationDetail(RecommendationItem)
     case reanalyze(RoomContext, DesignGoal)
+    case evolution
 
     // Hashable conformance (identity-based for payloads)
     func hash(into hasher: inout Hasher) {
@@ -38,6 +39,8 @@ enum Route: Hashable {
             hasher.combine("reanalyze")
             hasher.combine(room.rawValue)
             hasher.combine(goal.rawValue)
+        case .evolution:
+            hasher.combine("evolution")
         }
     }
 
@@ -61,6 +64,8 @@ enum Route: Hashable {
             return a.id == b.id
         case (.reanalyze(let r1, let g1), .reanalyze(let r2, let g2)):
             return r1 == r2 && g1 == g2
+        case (.evolution, .evolution):
+            return true
         default:
             return false
         }
@@ -98,6 +103,8 @@ struct TasteMatchApp: App {
                             RecommendationDetailScreen(item: item)
                         case .reanalyze(let room, let goal):
                             UploadScreen(path: $path, prefillRoom: room, prefillGoal: goal)
+                        case .evolution:
+                            EvolutionScreen()
                         }
                     }
                     .onAppear {
@@ -105,6 +112,7 @@ struct TasteMatchApp: App {
                             path.append(Route.result(saved.tasteProfile, saved.recommendations))
                         }
                     }
+            .tint(Theme.accent)
             }
             .fullScreenCover(isPresented: Binding(
                 get: { !hasCompletedOnboarding },

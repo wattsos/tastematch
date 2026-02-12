@@ -5,7 +5,7 @@ final class APIClient {
     static let shared = APIClient()
 
     // Would point at real backend; unused for now.
-    private let baseURL = URL(string: "https://api.tastematch.dev/v1")!
+    private let baseURL = URL(string: "https://api.itme2.com/v1")!
     private let catalog: CatalogProvider
 
     private init(catalog: CatalogProvider = MockCatalogProvider()) {

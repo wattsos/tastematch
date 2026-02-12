@@ -9,10 +9,11 @@ struct RecommendationDetailScreen: View {
             Section {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(item.title)
-                        .font(.title2.weight(.bold))
+                        .font(Theme.headlineFont)
+                        .foregroundStyle(Theme.espresso)
                     Text(item.subtitle)
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Theme.clay)
                 }
                 .padding(.vertical, 4)
             }
@@ -21,6 +22,7 @@ struct RecommendationDetailScreen: View {
                 HStack {
                     Text("$\(Int(item.price))")
                         .font(.title.weight(.semibold))
+                        .foregroundStyle(Theme.espresso)
                     Spacer()
                     Button {
                         toggleFavorite()
@@ -30,16 +32,19 @@ struct RecommendationDetailScreen: View {
                             systemImage: isFavorited ? "heart.fill" : "heart"
                         )
                         .font(.subheadline.weight(.medium))
-                        .foregroundStyle(isFavorited ? .red : .accentColor)
+                        .foregroundStyle(isFavorited ? Theme.favorite : Theme.accent)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(isFavorited ? "Remove from saved" : "Save to favorites")
                 }
             }
 
             Section("Why This Fits") {
                 Text(item.reason)
                     .font(.body)
-                    .lineSpacing(3)
+                    .foregroundStyle(Theme.espresso)
+                    .lineSpacing(4)
+                    .italic()
             }
 
             Section("Match Strength") {
@@ -51,11 +56,13 @@ struct RecommendationDetailScreen: View {
                         Spacer()
                         Text("\(Int(item.attributionConfidence * 100))%")
                             .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Theme.clay)
                     }
                     ProgressView(value: item.attributionConfidence)
                         .tint(confidenceColor)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("\(confidenceLabel), \(Int(item.attributionConfidence * 100)) percent")
             }
 
             Section {
@@ -67,9 +74,10 @@ struct RecommendationDetailScreen: View {
                         VStack(spacing: 2) {
                             Text("View Product")
                                 .font(.body.weight(.semibold))
+                                .foregroundStyle(Theme.accent)
                             Text("Coming soon")
                                 .font(.caption2)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(Theme.clay)
                         }
                         Spacer()
                     }
@@ -80,6 +88,7 @@ struct RecommendationDetailScreen: View {
         }
         .navigationTitle("Details")
         .navigationBarTitleDisplayMode(.inline)
+        .tint(Theme.accent)
         .onAppear {
             isFavorited = FavoritesStore.isFavorited(item)
         }
@@ -112,9 +121,9 @@ struct RecommendationDetailScreen: View {
 
     private var confidenceColor: Color {
         switch item.attributionConfidence {
-        case 0.8...: return .green
-        case 0.5...: return .orange
-        default:     return .secondary
+        case 0.8...: return Theme.strongMatch
+        case 0.5...: return Theme.goodMatch
+        default:     return Theme.partialMatch
         }
     }
 }

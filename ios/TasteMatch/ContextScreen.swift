@@ -52,6 +52,7 @@ struct ContextScreen: View {
             }
         }
         .navigationTitle("Context")
+        .tint(Theme.accent)
         .alert("Analysis Failed", isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }

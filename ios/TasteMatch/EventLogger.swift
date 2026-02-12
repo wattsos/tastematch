@@ -4,8 +4,8 @@ import os
 final class EventLogger {
     static let shared = EventLogger()
 
-    private let logger = Logger(subsystem: "dev.tastematch", category: "events")
-    private let queue = DispatchQueue(label: "dev.tastematch.eventlogger")
+    private let logger = Logger(subsystem: "com.itme2", category: "events")
+    private let queue = DispatchQueue(label: "com.itme2.eventlogger")
 
     private static let fileName = "event_queue.json"
     private static var fileURL: URL {

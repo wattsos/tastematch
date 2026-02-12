@@ -29,7 +29,9 @@ struct UploadScreen: View {
                     .frame(maxWidth: .infinity)
                     .padding()
             }
-            .buttonStyle(.borderedProminent)
+            .foregroundStyle(.white)
+            .background(images.isEmpty || isLoading ? Theme.blush : Theme.accent)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
             .disabled(images.isEmpty || isLoading)
         }
         .padding()
@@ -41,6 +43,7 @@ struct UploadScreen: View {
                 } label: {
                     Image(systemName: "gearshape")
                 }
+                .accessibilityLabel("Settings")
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 16) {
@@ -49,11 +52,13 @@ struct UploadScreen: View {
                     } label: {
                         Image(systemName: "heart")
                     }
+                    .accessibilityLabel("Saved favorites")
                     Button {
                         path.append(Route.history)
                     } label: {
                         Image(systemName: "clock.arrow.circlepath")
                     }
+                    .accessibilityLabel("Analysis history")
                 }
             }
         }
@@ -72,14 +77,15 @@ struct UploadScreen: View {
 
             Image(systemName: "camera.viewfinder")
                 .font(.system(size: 56))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Theme.blush)
 
             Text("Show us your space")
-                .font(.title2.weight(.semibold))
+                .font(Theme.headlineFont)
+                .foregroundStyle(Theme.espresso)
 
-            Text("Select up to 5 photos of your room. We'll analyze your style and recommend pieces that fit.")
+            Text("Upload a few photos of your room.\nWe'll read the vibe and find pieces that feel like you.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Theme.clay)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
 
@@ -111,6 +117,7 @@ struct UploadScreen: View {
                                     .foregroundStyle(.white)
                                     .shadow(radius: 2)
                             }
+                            .accessibilityLabel("Remove photo \(index + 1)")
                             .offset(x: 6, y: -6)
                         }
                     }
@@ -145,7 +152,7 @@ struct UploadScreen: View {
                 .font(.subheadline.weight(.medium))
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
-                .background(.thinMaterial)
+                .background(Theme.blush.opacity(0.3))
                 .cornerRadius(10)
         }
         .onChange(of: selectedItems) {

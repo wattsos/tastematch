@@ -62,13 +62,21 @@ struct HistoryScreen: View {
             }
         }
         .navigationTitle("History")
+        .tint(Theme.accent)
         .toolbar {
             if history.count >= 2 {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        path.append(Route.compare)
-                    } label: {
-                        Label("Compare", systemImage: "arrow.left.arrow.right")
+                    HStack(spacing: 16) {
+                        Button {
+                            path.append(Route.evolution)
+                        } label: {
+                            Label("Evolution", systemImage: "chart.line.uptrend.xyaxis")
+                        }
+                        Button {
+                            path.append(Route.compare)
+                        } label: {
+                            Label("Compare", systemImage: "arrow.left.arrow.right")
+                        }
                     }
                 }
             }

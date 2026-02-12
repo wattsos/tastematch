@@ -6,6 +6,7 @@ enum Route: Hashable {
     case upload
     case context([UIImage])
     case result(TasteProfile, [RecommendationItem])
+    case history
 
     // Hashable conformance (identity-based for payloads)
     func hash(into hasher: inout Hasher) {
@@ -17,6 +18,8 @@ enum Route: Hashable {
         case .result(let profile, _):
             hasher.combine("result")
             hasher.combine(profile.id)
+        case .history:
+            hasher.combine("history")
         }
     }
 
@@ -28,6 +31,8 @@ enum Route: Hashable {
             return a.count == b.count
         case (.result(let p1, _), .result(let p2, _)):
             return p1.id == p2.id
+        case (.history, .history):
+            return true
         default:
             return false
         }
@@ -39,6 +44,7 @@ enum Route: Hashable {
 @main
 struct TasteMatchApp: App {
     @State private var path = NavigationPath()
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     var body: some Scene {
         WindowGroup {
@@ -52,6 +58,8 @@ struct TasteMatchApp: App {
                             ContextScreen(path: $path, images: images)
                         case .result(let profile, let recs):
                             ResultScreen(path: $path, profile: profile, recommendations: recs)
+                        case .history:
+                            HistoryScreen(path: $path)
                         }
                     }
                     .onAppear {
@@ -59,6 +67,12 @@ struct TasteMatchApp: App {
                             path.append(Route.result(saved.tasteProfile, saved.recommendations))
                         }
                     }
+            }
+            .fullScreenCover(isPresented: Binding(
+                get: { !hasCompletedOnboarding },
+                set: { if $0 { hasCompletedOnboarding = false } }
+            )) {
+                OnboardingScreen(hasCompletedOnboarding: $hasCompletedOnboarding)
             }
         }
     }

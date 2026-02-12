@@ -4,6 +4,7 @@ struct ResultScreen: View {
     @Binding var path: NavigationPath
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
+    @State private var showShareSheet = false
 
     var body: some View {
         List {
@@ -72,6 +73,13 @@ struct ResultScreen: View {
         }
         .navigationTitle("Results")
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    showShareSheet = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Start Over") {
                     ProfileStore.clear()
@@ -79,6 +87,9 @@ struct ResultScreen: View {
                 }
                 .font(.subheadline)
             }
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ShareSheet(text: shareSummary)
         }
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
@@ -102,4 +113,45 @@ struct ResultScreen: View {
         default:     return .secondary
         }
     }
+
+    // MARK: - Share Summary
+
+    private var shareSummary: String {
+        var lines: [String] = []
+
+        lines.append("My TasteMatch Results")
+        lines.append("")
+
+        // Tags
+        let tagLine = profile.tags.map { "\($0.label) (\(Int($0.confidence * 100))%)" }.joined(separator: ", ")
+        lines.append("Style: \(tagLine)")
+        lines.append("")
+
+        // Story
+        lines.append(profile.story)
+        lines.append("")
+
+        // Recommendations
+        lines.append("Top Picks:")
+        for item in recommendations {
+            lines.append("- \(item.title) — \(item.subtitle)")
+        }
+
+        lines.append("")
+        lines.append("Analyzed with TasteMatch")
+
+        return lines.joined(separator: "\n")
+    }
+}
+
+// MARK: - Share Sheet
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let text: String
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [text], applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

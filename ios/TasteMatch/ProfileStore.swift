@@ -1,6 +1,7 @@
 import Foundation
 
-struct SavedProfile: Codable {
+struct SavedProfile: Codable, Identifiable {
+    var id: UUID { tasteProfile.id }
     let tasteProfile: TasteProfile
     let recommendations: [RecommendationItem]
     let savedAt: Date
@@ -8,7 +9,7 @@ struct SavedProfile: Codable {
 
 enum ProfileStore {
 
-    private static let fileName = "saved_profile.json"
+    private static let fileName = "profile_history.json"
 
     private static var fileURL: URL {
         FileManager.default
@@ -19,29 +20,49 @@ enum ProfileStore {
     // MARK: - Save
 
     static func save(profile: TasteProfile, recommendations: [RecommendationItem]) {
+        var history = loadAll()
         let saved = SavedProfile(
             tasteProfile: profile,
             recommendations: recommendations,
             savedAt: Date()
         )
-        do {
-            let data = try JSONEncoder().encode(saved)
-            try data.write(to: fileURL, options: .atomic)
-        } catch {
-            // Fail silently — persistence is best-effort for MVP.
-        }
+        history.append(saved)
+        write(history)
     }
 
     // MARK: - Load
 
     static func loadLatest() -> SavedProfile? {
-        guard let data = try? Data(contentsOf: fileURL) else { return nil }
-        return try? JSONDecoder().decode(SavedProfile.self, from: data)
+        loadAll().last
+    }
+
+    static func loadAll() -> [SavedProfile] {
+        guard let data = try? Data(contentsOf: fileURL) else { return [] }
+        return (try? JSONDecoder().decode([SavedProfile].self, from: data)) ?? []
+    }
+
+    // MARK: - Delete
+
+    static func delete(id: UUID) {
+        var history = loadAll()
+        history.removeAll { $0.id == id }
+        write(history)
     }
 
     // MARK: - Clear
 
     static func clear() {
         try? FileManager.default.removeItem(at: fileURL)
+    }
+
+    // MARK: - Private
+
+    private static func write(_ history: [SavedProfile]) {
+        do {
+            let data = try JSONEncoder().encode(history)
+            try data.write(to: fileURL, options: .atomic)
+        } catch {
+            // Fail silently — persistence is best-effort for MVP.
+        }
     }
 }

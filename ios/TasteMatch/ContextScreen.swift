@@ -60,12 +60,11 @@ struct ContextScreen: View {
         do {
             let response = try await APIClient.shared.analyze(
                 imageData: imageData,
-                roomContext: selectedRoom.rawValue,
-                goal: selectedGoal.rawValue
+                roomContext: selectedRoom,
+                goal: selectedGoal
             )
             path.append(Route.result(response.tasteProfile, response.recommendations))
         } catch {
-            // In a real app we'd surface this; for now just log.
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])
         }
     }

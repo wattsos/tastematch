@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 final class APIClient {
     static let shared = APIClient()
@@ -10,11 +11,23 @@ final class APIClient {
 
     // MARK: - POST /analyze
 
-    func analyze(imageData: [Data], roomContext: String, goal: String) async throws -> AnalyzeResponse {
-        // Stub: simulate network delay then return mock data.
-        try await Task.sleep(for: .seconds(1.2))
+    func analyze(
+        imageData: [Data],
+        roomContext: RoomContext,
+        goal: DesignGoal
+    ) async throws -> AnalyzeResponse {
+        // Stub: simulate network latency.
+        try await Task.sleep(for: .seconds(0.3))
+
+        let signals = Self.mockSignals(from: imageData)
+        let profile = TasteEngine.analyze(
+            signals: signals,
+            context: roomContext,
+            goal: goal
+        )
+
         return AnalyzeResponse(
-            tasteProfile: .mock,
+            tasteProfile: profile,
             recommendations: RecommendationItem.mocks
         )
     }
@@ -25,29 +38,24 @@ final class APIClient {
         // Stub: would POST to /events endpoint.
         try await Task.sleep(for: .seconds(0.1))
     }
+
+    // MARK: - Signal extraction placeholder
+
+    /// Placeholder that returns fixed signals regardless of image content.
+    /// Replace with real CV extraction when the vision pipeline lands.
+    static func mockSignals(from imageData: [Data]) -> VisualSignals {
+        VisualSignals(
+            paletteTemperature: .warm,
+            brightness: .medium,
+            contrast: .medium,
+            saturation: .neutral,
+            edgeDensity: .medium,
+            material: .wood
+        )
+    }
 }
 
-// MARK: - Mock data
-
-extension TasteProfile {
-    static let mock = TasteProfile(
-        tags: [
-            TasteTag(label: "Mid-Century Modern", confidence: 0.92),
-            TasteTag(label: "Warm Minimalism", confidence: 0.85),
-            TasteTag(label: "Earthy Tones", confidence: 0.78),
-            TasteTag(label: "Natural Textures", confidence: 0.71),
-        ],
-        story: "You gravitate toward clean lines softened by warm woods and organic materials. "
-            + "Your space tells a story of intentional simplicity — every piece earns its place, "
-            + "yet the overall feel is inviting rather than stark.",
-        signals: [
-            Signal(key: "dominant_palette", value: "Warm neutrals with olive accents"),
-            Signal(key: "material_preference", value: "Walnut, linen, ceramic"),
-            Signal(key: "pattern_tolerance", value: "Low — solid & subtle grain"),
-            Signal(key: "layout_density", value: "Moderate — curated, not sparse"),
-        ]
-    )
-}
+// MARK: - Mock recommendations (engine doesn't produce these yet)
 
 extension RecommendationItem {
     static let mocks: [RecommendationItem] = [

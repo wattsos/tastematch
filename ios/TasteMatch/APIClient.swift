@@ -19,7 +19,7 @@ final class APIClient {
         // Stub: simulate network latency.
         try await Task.sleep(for: .seconds(0.3))
 
-        let signals = Self.mockSignals(from: imageData)
+        let signals = SignalExtractor.extract(from: imageData)
         let profile = TasteEngine.analyze(
             signals: signals,
             context: roomContext,
@@ -47,19 +47,5 @@ final class APIClient {
         try await Task.sleep(for: .seconds(0.1))
     }
 
-    // MARK: - Signal extraction placeholder
-
-    /// Placeholder that returns fixed signals regardless of image content.
-    /// Replace with real CV extraction when the vision pipeline lands.
-    static func mockSignals(from imageData: [Data]) -> VisualSignals {
-        VisualSignals(
-            paletteTemperature: .warm,
-            brightness: .medium,
-            contrast: .medium,
-            saturation: .neutral,
-            edgeDensity: .medium,
-            material: .wood
-        )
-    }
 }
 

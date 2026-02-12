@@ -7,6 +7,7 @@ struct ContextScreen: View {
     @State private var selectedRoom: RoomContext = .livingRoom
     @State private var selectedGoal: DesignGoal = .refresh
     @State private var isAnalyzing = false
+    @State private var errorMessage: String?
 
     var body: some View {
         Form {
@@ -44,6 +45,14 @@ struct ContextScreen: View {
             }
         }
         .navigationTitle("Context")
+        .alert("Analysis Failed", isPresented: Binding(
+            get: { errorMessage != nil },
+            set: { if !$0 { errorMessage = nil } }
+        )) {
+            Button("OK") { errorMessage = nil }
+        } message: {
+            Text(errorMessage ?? "An unexpected error occurred.")
+        }
     }
 
     private func analyze() async {
@@ -66,6 +75,7 @@ struct ContextScreen: View {
             ProfileStore.save(profile: response.tasteProfile, recommendations: response.recommendations)
             path.append(Route.result(response.tasteProfile, response.recommendations))
         } catch {
+            errorMessage = error.localizedDescription
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])
         }
     }

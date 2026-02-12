@@ -51,7 +51,7 @@ struct TasteMatchApp: App {
                         case .context(let images):
                             ContextScreen(path: $path, images: images)
                         case .result(let profile, let recs):
-                            ResultScreen(profile: profile, recommendations: recs)
+                            ResultScreen(path: $path, profile: profile, recommendations: recs)
                         }
                     }
                     .onAppear {

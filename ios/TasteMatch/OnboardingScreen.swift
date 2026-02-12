@@ -2,40 +2,69 @@ import SwiftUI
 
 struct OnboardingScreen: View {
     @Binding var hasCompletedOnboarding: Bool
+    @State private var currentPage = 0
+
+    private let pages: [OnboardingPage] = [
+        OnboardingPage(
+            icon: "camera.viewfinder",
+            headline: "Your space\ntells a story",
+            body: "Upload a few photos of any room — we'll read the colors, textures, and layout that make it yours."
+        ),
+        OnboardingPage(
+            icon: "wand.and.stars",
+            headline: "We decode\nyour taste",
+            body: "Our engine picks up on visual signals most people can't name — then maps them to a style profile unique to you."
+        ),
+        OnboardingPage(
+            icon: "tag.fill",
+            headline: "Find pieces\nthat feel like you",
+            body: "Get recommendations that actually match your vibe. No generic \"trending\" lists — just things that belong in your world."
+        ),
+    ]
 
     var body: some View {
-        VStack(spacing: 32) {
-            Spacer()
+        VStack(spacing: 0) {
+            // Logo
+            Text("ItMe")
+                .font(Theme.displayFont)
+                .foregroundStyle(Theme.espresso)
+                .padding(.top, 56)
 
-            Image(systemName: "sparkles.rectangle.stack")
-                .font(.system(size: 64))
-                .foregroundStyle(Theme.accent)
+            Text("Discover your taste")
+                .font(.system(.subheadline, design: .serif))
+                .foregroundStyle(Theme.clay)
+                .padding(.top, 4)
 
-            VStack(spacing: 12) {
-                Text("ItMe")
-                    .font(Theme.displayFont)
-                    .foregroundStyle(Theme.espresso)
-
-                Text("Your space says something about you.\nLet's find out what.")
-                    .font(.body)
-                    .foregroundStyle(Theme.clay)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 24)
+            // Pages
+            TabView(selection: $currentPage) {
+                ForEach(Array(pages.enumerated()), id: \.offset) { index, page in
+                    pageView(page)
+                        .tag(index)
+                }
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .animation(.easeInOut(duration: 0.3), value: currentPage)
 
-            VStack(alignment: .leading, spacing: 16) {
-                featureRow(icon: "camera.fill", title: "Upload Photos", description: "Share up to 5 photos of your space")
-                featureRow(icon: "wand.and.stars", title: "Get Your Profile", description: "We read color, texture, and vibe")
-                featureRow(icon: "tag.fill", title: "See Picks", description: "Pieces that actually feel like you")
+            // Page dots
+            HStack(spacing: 10) {
+                ForEach(0..<pages.count, id: \.self) { index in
+                    Circle()
+                        .fill(index == currentPage ? Theme.accent : Theme.blush)
+                        .frame(width: index == currentPage ? 10 : 7, height: index == currentPage ? 10 : 7)
+                        .animation(.easeInOut(duration: 0.2), value: currentPage)
+                }
             }
-            .padding(.horizontal, 32)
+            .padding(.bottom, 32)
 
-            Spacer()
-
+            // Button
             Button {
-                hasCompletedOnboarding = true
+                if currentPage < pages.count - 1 {
+                    withAnimation { currentPage += 1 }
+                } else {
+                    hasCompletedOnboarding = true
+                }
             } label: {
-                Text("Get Started")
+                Text(currentPage < pages.count - 1 ? "Next" : "Get Started")
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
@@ -44,25 +73,57 @@ struct OnboardingScreen: View {
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
             .padding(.horizontal, 24)
-            .padding(.bottom, 16)
+
+            if currentPage < pages.count - 1 {
+                Button {
+                    hasCompletedOnboarding = true
+                } label: {
+                    Text("Skip")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.clay)
+                }
+                .padding(.top, 12)
+                .padding(.bottom, 16)
+            } else {
+                Spacer().frame(height: 44)
+            }
         }
         .background(Theme.cream.ignoresSafeArea())
     }
 
-    private func featureRow(icon: String, title: String, description: String) -> some View {
-        HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(Theme.accent)
-                .frame(width: 32)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Theme.espresso)
-                Text(description)
-                    .font(.caption)
-                    .foregroundStyle(Theme.clay)
+    private func pageView(_ page: OnboardingPage) -> some View {
+        VStack(spacing: 24) {
+            Spacer()
+
+            ZStack {
+                Circle()
+                    .fill(Theme.blush.opacity(0.3))
+                    .frame(width: 120, height: 120)
+                Image(systemName: page.icon)
+                    .font(.system(size: 44))
+                    .foregroundStyle(Theme.accent)
             }
+
+            Text(page.headline)
+                .font(.system(.title2, design: .serif, weight: .bold))
+                .foregroundStyle(Theme.espresso)
+                .multilineTextAlignment(.center)
+                .lineSpacing(4)
+
+            Text(page.body)
+                .font(.subheadline)
+                .foregroundStyle(Theme.clay)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+                .padding(.horizontal, 36)
+
+            Spacer()
         }
     }
+}
+
+private struct OnboardingPage {
+    let icon: String
+    let headline: String
+    let body: String
 }

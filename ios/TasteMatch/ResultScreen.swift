@@ -10,6 +10,11 @@ struct ResultScreen: View {
     @State private var favoritedIds: Set<String> = []
     @State private var maxBudget: Double = 0
     @State private var sortMode: SortMode = .match
+    @State private var revealBadge = false
+    @State private var revealTags = false
+    @State private var revealStory = false
+    @State private var revealPicks = false
+    @State private var isGridMode = false
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -51,6 +56,8 @@ struct ResultScreen: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .listRowBackground(Color.clear)
+                    .opacity(revealBadge ? 1 : 0)
+                    .offset(y: revealBadge ? 0 : 20)
                 }
             }
 
@@ -77,6 +84,8 @@ struct ResultScreen: View {
                         .accessibilityLabel("\(tag.label), \(Int(tag.confidence * 100)) percent confidence")
                     }
                 }
+                .opacity(revealTags ? 1 : 0)
+                .offset(y: revealTags ? 0 : 16)
             }
 
             Section {
@@ -85,6 +94,8 @@ struct ResultScreen: View {
                     .foregroundStyle(Theme.espresso)
                     .lineSpacing(4)
                     .italic()
+                    .opacity(revealStory ? 1 : 0)
+                    .offset(y: revealStory ? 0 : 12)
             } header: {
                 Text("Your Story")
             }
@@ -139,51 +150,81 @@ struct ResultScreen: View {
                         .font(.subheadline)
                         .foregroundStyle(Theme.clay)
                 }
-                ForEach(filteredRecommendations) { item in
-                    Button {
-                        path.append(Route.recommendationDetail(item))
-                    } label: {
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack(alignment: .firstTextBaseline) {
-                                Text(item.title)
-                                    .font(.headline)
-                                    .foregroundStyle(Theme.espresso)
-                                Spacer()
-                                Text(confidenceLabel(item.attributionConfidence))
-                                    .font(.caption2.weight(.medium))
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 2)
-                                    .background(confidenceColor(item.attributionConfidence).opacity(0.15))
-                                    .foregroundStyle(confidenceColor(item.attributionConfidence))
-                                    .clipShape(Capsule())
+
+                if isGridMode {
+                    // Moodboard grid
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
+                        ForEach(filteredRecommendations) { item in
+                            Button {
+                                path.append(Route.recommendationDetail(item))
+                            } label: {
+                                moodboardCard(item)
                             }
-                            Text(item.subtitle)
-                                .font(.subheadline)
-                                .foregroundStyle(Theme.clay)
-                            HStack {
-                                Text(item.reason)
-                                    .font(.callout)
-                                    .italic()
-                                    .foregroundStyle(Theme.clay)
-                                Spacer()
-                                Button {
-                                    toggleFavorite(item)
-                                } label: {
-                                    Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
-                                        .foregroundStyle(isFavorited(item) ? Theme.favorite : Theme.clay)
-                                }
-                                .buttonStyle(.plain)
-                                .accessibilityLabel(isFavorited(item) ? "Remove from favorites" : "Add to favorites")
-                            }
+                            .buttonStyle(.plain)
                         }
-                        .padding(.vertical, 4)
                     }
-                    .foregroundStyle(.primary)
+                    .padding(.vertical, 4)
+                    .opacity(revealPicks ? 1 : 0)
+                    .offset(y: revealPicks ? 0 : 10)
+                } else {
+                    // List view
+                    ForEach(filteredRecommendations) { item in
+                        Button {
+                            path.append(Route.recommendationDetail(item))
+                        } label: {
+                            VStack(alignment: .leading, spacing: 6) {
+                                HStack(alignment: .firstTextBaseline) {
+                                    Text(item.title)
+                                        .font(.headline)
+                                        .foregroundStyle(Theme.espresso)
+                                    Spacer()
+                                    Text(confidenceLabel(item.attributionConfidence))
+                                        .font(.caption2.weight(.medium))
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(confidenceColor(item.attributionConfidence).opacity(0.15))
+                                        .foregroundStyle(confidenceColor(item.attributionConfidence))
+                                        .clipShape(Capsule())
+                                }
+                                Text(item.subtitle)
+                                    .font(.subheadline)
+                                    .foregroundStyle(Theme.clay)
+                                HStack {
+                                    Text(item.reason)
+                                        .font(.callout)
+                                        .italic()
+                                        .foregroundStyle(Theme.clay)
+                                    Spacer()
+                                    Button {
+                                        toggleFavorite(item)
+                                    } label: {
+                                        Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
+                                            .foregroundStyle(isFavorited(item) ? Theme.favorite : Theme.clay)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .accessibilityLabel(isFavorited(item) ? "Remove from favorites" : "Add to favorites")
+                                }
+                            }
+                            .padding(.vertical, 4)
+                        }
+                        .foregroundStyle(.primary)
+                    }
+                    .opacity(revealPicks ? 1 : 0)
+                    .offset(y: revealPicks ? 0 : 10)
                 }
             } header: {
                 HStack {
                     Text("Picks for You")
                     Spacer()
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.25)) { isGridMode.toggle() }
+                    } label: {
+                        Image(systemName: isGridMode ? "list.bullet" : "square.grid.2x2")
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.accent)
+                    }
+                    .textCase(nil)
+                    .accessibilityLabel(isGridMode ? "Switch to list" : "Switch to grid")
                     Picker("Sort", selection: $sortMode) {
                         ForEach(SortMode.allCases, id: \.self) { mode in
                             Text(mode.rawValue).tag(mode)
@@ -242,7 +283,68 @@ struct ResultScreen: View {
             if maxBudget == 0 {
                 maxBudget = priceRange.upperBound
             }
+            // Staggered reveal
+            withAnimation(.easeOut(duration: 0.5).delay(0.1)) { revealBadge = true }
+            withAnimation(.easeOut(duration: 0.5).delay(0.35)) { revealTags = true }
+            withAnimation(.easeOut(duration: 0.5).delay(0.6)) { revealStory = true }
+            withAnimation(.easeOut(duration: 0.5).delay(0.85)) { revealPicks = true }
         }
+    }
+
+    // MARK: - Moodboard Card
+
+    private func moodboardCard(_ item: RecommendationItem) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // Color swatch placeholder based on match strength
+            RoundedRectangle(cornerRadius: 8)
+                .fill(
+                    LinearGradient(
+                        colors: [confidenceColor(item.attributionConfidence).opacity(0.25), Theme.blush.opacity(0.15)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(height: 80)
+                .overlay(
+                    Image(systemName: "sparkles")
+                        .font(.title2)
+                        .foregroundStyle(confidenceColor(item.attributionConfidence).opacity(0.5))
+                )
+
+            Text(item.title)
+                .font(.system(.caption, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.espresso)
+                .lineLimit(2)
+
+            HStack {
+                Text("$\(Int(item.price))")
+                    .font(.caption2.monospacedDigit().weight(.medium))
+                    .foregroundStyle(Theme.accent)
+                Spacer()
+                Text(confidenceLabel(item.attributionConfidence))
+                    .font(.system(size: 9, weight: .medium))
+                    .foregroundStyle(confidenceColor(item.attributionConfidence))
+            }
+
+            HStack(spacing: 4) {
+                Button {
+                    toggleFavorite(item)
+                } label: {
+                    Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
+                        .font(.caption2)
+                        .foregroundStyle(isFavorited(item) ? Theme.favorite : Theme.clay)
+                }
+                .buttonStyle(.plain)
+                Spacer()
+            }
+        }
+        .padding(10)
+        .background(Theme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Theme.blush.opacity(0.4), lineWidth: 1)
+        )
     }
 
     // MARK: - Favorites

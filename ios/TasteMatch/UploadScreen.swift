@@ -13,6 +13,11 @@ struct UploadScreen: View {
 
     var body: some View {
         VStack(spacing: 24) {
+            // Show last result if user has a previous analysis
+            if images.isEmpty, let latest = ProfileStore.loadLatest() {
+                lastResultCard(latest)
+            }
+
             if images.isEmpty {
                 emptyState
             } else {
@@ -158,6 +163,41 @@ struct UploadScreen: View {
         .onChange(of: selectedItems) {
             Task { await loadImages() }
         }
+    }
+
+    // MARK: - Last Result Card
+
+    private func lastResultCard(_ saved: SavedProfile) -> some View {
+        Button {
+            path.append(Route.result(saved.tasteProfile, saved.recommendations))
+        } label: {
+            HStack(spacing: 14) {
+                if let primaryTag = saved.tasteProfile.tags.first {
+                    TasteBadge(tagKey: primaryTag.key, size: .compact)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Your latest vibe")
+                        .font(.system(.caption, design: .serif, weight: .semibold))
+                        .foregroundStyle(Theme.clay)
+                    Text(saved.tasteProfile.tags.first?.label ?? "Your Style")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(Theme.espresso)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(Theme.blush)
+            }
+            .padding(14)
+            .background(Theme.surface)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Theme.blush.opacity(0.5), lineWidth: 1)
+            )
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("View your latest taste profile")
     }
 
     // MARK: - Actions

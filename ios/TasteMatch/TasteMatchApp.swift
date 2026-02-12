@@ -7,6 +7,8 @@ enum Route: Hashable {
     case context([UIImage])
     case result(TasteProfile, [RecommendationItem])
     case history
+    case settings
+    case favorites
 
     // Hashable conformance (identity-based for payloads)
     func hash(into hasher: inout Hasher) {
@@ -20,6 +22,10 @@ enum Route: Hashable {
             hasher.combine(profile.id)
         case .history:
             hasher.combine("history")
+        case .settings:
+            hasher.combine("settings")
+        case .favorites:
+            hasher.combine("favorites")
         }
     }
 
@@ -32,6 +38,10 @@ enum Route: Hashable {
         case (.result(let p1, _), .result(let p2, _)):
             return p1.id == p2.id
         case (.history, .history):
+            return true
+        case (.settings, .settings):
+            return true
+        case (.favorites, .favorites):
             return true
         default:
             return false
@@ -60,6 +70,10 @@ struct TasteMatchApp: App {
                             ResultScreen(path: $path, profile: profile, recommendations: recs)
                         case .history:
                             HistoryScreen(path: $path)
+                        case .settings:
+                            SettingsScreen(path: $path)
+                        case .favorites:
+                            FavoritesScreen()
                         }
                     }
                     .onAppear {

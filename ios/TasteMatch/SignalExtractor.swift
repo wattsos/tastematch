@@ -8,22 +8,29 @@ enum SignalExtractor {
 
     // MARK: - Public
 
-    /// Analyze the first decodable image in `imageData` and return visual signals.
+    /// Analyze all decodable images in `imageData` and return aggregated visual signals.
+    /// Pixels from every image are pooled for color/brightness metrics.
+    /// Edge density is computed per-image (grid-dependent) then averaged.
     static func extract(from imageData: [Data]) -> VisualSignals {
-        guard let data = imageData.first(where: { UIImage(data: $0) != nil }),
-              let image = UIImage(data: data),
-              let cgImage = image.cgImage else {
-            return defaults
+        var allPixels: [RGB] = []
+        var perImageEdge: [EdgeDensity] = []
+
+        for data in imageData {
+            guard let image = UIImage(data: data),
+                  let cgImage = image.cgImage else { continue }
+            let pixels = samplePixels(from: cgImage, gridSize: 8)
+            guard !pixels.isEmpty else { continue }
+            allPixels.append(contentsOf: pixels)
+            perImageEdge.append(edgeDensityLevel(pixels, gridSize: 8))
         }
 
-        let pixels = samplePixels(from: cgImage, gridSize: 8)
-        guard !pixels.isEmpty else { return defaults }
+        guard !allPixels.isEmpty else { return defaults }
 
-        let brightness = averageBrightness(pixels)
-        let temperature = paletteTemperature(pixels)
-        let contrast = contrastLevel(pixels, averageBrightness: brightness)
-        let saturation = saturationLevel(pixels)
-        let edgeDensity = edgeDensityLevel(pixels, gridSize: 8)
+        let brightness = averageBrightness(allPixels)
+        let temperature = paletteTemperature(allPixels)
+        let contrast = contrastLevel(allPixels, averageBrightness: brightness)
+        let saturation = saturationLevel(allPixels)
+        let edgeDensity = averageEdgeDensity(perImageEdge)
         let material = estimateMaterial(temperature: temperature, saturation: saturation, brightness: brightness)
 
         return VisualSignals(
@@ -206,6 +213,26 @@ private extension SignalExtractor {
         switch avgDelta {
         case ..<0.06:  return .low
         case 0.06..<0.14: return .medium
+        default:       return .high
+        }
+    }
+
+    // -- Edge Density Aggregation --
+    // Average per-image edge density values. Maps to ordinal: low=0, medium=1, high=2.
+
+    static func averageEdgeDensity(_ values: [EdgeDensity]) -> EdgeDensity {
+        guard !values.isEmpty else { return .medium }
+        let sum = values.reduce(0.0) { acc, v in
+            switch v {
+            case .low: return acc + 0.0
+            case .medium: return acc + 1.0
+            case .high: return acc + 2.0
+            }
+        }
+        let avg = sum / Double(values.count)
+        switch avg {
+        case ..<0.67:  return .low
+        case 0.67..<1.33: return .medium
         default:       return .high
         }
     }

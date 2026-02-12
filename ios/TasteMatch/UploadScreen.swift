@@ -31,11 +31,25 @@ struct UploadScreen: View {
         .padding()
         .navigationTitle("Upload")
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    path.append(Route.history)
+                    path.append(Route.settings)
                 } label: {
-                    Image(systemName: "clock.arrow.circlepath")
+                    Image(systemName: "gearshape")
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack(spacing: 16) {
+                    Button {
+                        path.append(Route.favorites)
+                    } label: {
+                        Image(systemName: "heart")
+                    }
+                    Button {
+                        path.append(Route.history)
+                    } label: {
+                        Image(systemName: "clock.arrow.circlepath")
+                    }
                 }
             }
         }

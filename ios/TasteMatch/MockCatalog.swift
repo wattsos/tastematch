@@ -10,6 +10,14 @@ struct CatalogItem {
     let tags: [TasteEngine.CanonicalTag]
 }
 
+protocol CatalogProvider {
+    var items: [CatalogItem] { get }
+}
+
+struct MockCatalogProvider: CatalogProvider {
+    let items: [CatalogItem] = MockCatalog.items
+}
+
 enum MockCatalog {
 
     static let items: [CatalogItem] = [

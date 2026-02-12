@@ -5,6 +5,7 @@ struct ResultScreen: View {
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
     @State private var showShareSheet = false
+    @State private var favoritedIds: Set<String> = []
 
     var body: some View {
         List {
@@ -62,10 +63,20 @@ struct ResultScreen: View {
                         Text(item.subtitle)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
-                        Text(item.reason)
-                            .font(.callout)
-                            .italic()
-                            .foregroundStyle(.secondary)
+                        HStack {
+                            Text(item.reason)
+                                .font(.callout)
+                                .italic()
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Button {
+                                toggleFavorite(item)
+                            } label: {
+                                Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
+                                    .foregroundStyle(isFavorited(item) ? .red : .secondary)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                     .padding(.vertical, 4)
                 }
@@ -93,7 +104,38 @@ struct ResultScreen: View {
         }
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
+            refreshFavorites()
         }
+    }
+
+    // MARK: - Favorites
+
+    private func isFavorited(_ item: RecommendationItem) -> Bool {
+        favoritedIds.contains(favoriteKey(item))
+    }
+
+    private func toggleFavorite(_ item: RecommendationItem) {
+        let key = favoriteKey(item)
+        if favoritedIds.contains(key) {
+            favoritedIds.remove(key)
+            // Find the stored favorite by matching title+subtitle and remove it
+            let stored = FavoritesStore.loadAll()
+            if let match = stored.first(where: { $0.title == item.title && $0.subtitle == item.subtitle }) {
+                FavoritesStore.remove(id: match.id)
+            }
+        } else {
+            favoritedIds.insert(key)
+            FavoritesStore.add(item)
+        }
+    }
+
+    private func refreshFavorites() {
+        let stored = FavoritesStore.loadAll()
+        favoritedIds = Set(stored.map { "\($0.title)|\($0.subtitle)" })
+    }
+
+    private func favoriteKey(_ item: RecommendationItem) -> String {
+        "\(item.title)|\(item.subtitle)"
     }
 
     // MARK: - Attribution Helpers

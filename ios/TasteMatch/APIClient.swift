@@ -6,8 +6,11 @@ final class APIClient {
 
     // Would point at real backend; unused for now.
     private let baseURL = URL(string: "https://api.tastematch.dev/v1")!
+    private let catalog: CatalogProvider
 
-    private init() {}
+    private init(catalog: CatalogProvider = MockCatalogProvider()) {
+        self.catalog = catalog
+    }
 
     // MARK: - POST /analyze
 
@@ -28,7 +31,7 @@ final class APIClient {
 
         let recommendations = RecommendationEngine.recommend(
             profile: profile,
-            catalog: MockCatalog.items,
+            catalog: catalog.items,
             context: roomContext,
             goal: goal,
             limit: 6

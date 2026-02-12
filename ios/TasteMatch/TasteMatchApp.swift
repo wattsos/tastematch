@@ -54,6 +54,11 @@ struct TasteMatchApp: App {
                             ResultScreen(profile: profile, recommendations: recs)
                         }
                     }
+                    .onAppear {
+                        if let saved = ProfileStore.loadLatest() {
+                            path.append(Route.result(saved.tasteProfile, saved.recommendations))
+                        }
+                    }
             }
         }
     }

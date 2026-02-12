@@ -48,10 +48,11 @@ struct RecommendationEngine {
         }
         let top = sorted.prefix(limit)
 
-        return top.map { entry in
+        return top.enumerated().map { index, entry in
             let whyThisFits = buildWhyThisFits(
                 primaryTag: primaryTag,
-                profile: profile
+                profile: profile,
+                index: index
             )
 
             let subtitle = "\(entry.item.merchant) — $\(Int(entry.item.price))"
@@ -73,14 +74,73 @@ private extension RecommendationEngine {
 
     static func buildWhyThisFits(
         primaryTag: TasteEngine.CanonicalTag?,
-        profile: TasteProfile
+        profile: TasteProfile,
+        index: Int
     ) -> String {
-        let tagLabel = primaryTag?.rawValue ?? "personal"
-        if let firstSignal = profile.signals.first {
-            return "Matches your \(tagLabel) style — complements your \(firstSignal.key): \(firstSignal.value)."
+        let signal = profile.signals.first
+        let signalPhrase = signal.map { "\($0.key): \($0.value)" } ?? "your selections"
+
+        guard let tag = primaryTag, let templates = tagReasonTemplates[tag] else {
+            return "Fits your personal style — based on \(signalPhrase)."
         }
-        return "Matches your \(tagLabel) style."
+
+        let template = templates[index % templates.count]
+        return template
+            .replacingOccurrences(of: "{signal}", with: signalPhrase)
     }
+
+    static let tagReasonTemplates: [TasteEngine.CanonicalTag: [String]] = [
+        .midCenturyModern: [
+            "Echoes the clean mid-century lines in your space — driven by {signal}.",
+            "Pairs with your mid-century palette for a cohesive retro feel.",
+            "Complements the organic curves your taste profile highlights.",
+        ],
+        .scandinavian: [
+            "Matches the light, functional Scandinavian mood — grounded in {signal}.",
+            "Reinforces the airy simplicity your photos reflect.",
+            "Adds quiet warmth in line with your Scandinavian leanings.",
+        ],
+        .industrial: [
+            "Brings raw industrial character that fits your {signal}.",
+            "Pairs with the exposed-material edge your taste reveals.",
+            "Anchors the urban texture running through your space.",
+        ],
+        .bohemian: [
+            "Layers in bohemian richness — connects to your {signal}.",
+            "Adds the collected, personal feel your taste calls for.",
+            "Deepens the eclectic warmth your photos suggest.",
+        ],
+        .minimalist: [
+            "Keeps things intentional — aligned with your {signal}.",
+            "Supports the clean, pared-back look your profile favors.",
+            "Lets negative space do the work, matching your minimalist eye.",
+        ],
+        .traditional: [
+            "Brings time-tested elegance that resonates with your {signal}.",
+            "Adds the craftsmanship and symmetry your taste gravitates toward.",
+            "Reinforces the classic warmth woven through your space.",
+        ],
+        .coastal: [
+            "Channels breezy coastal ease — rooted in your {signal}.",
+            "Lightens the room with the relaxed vibe your photos suggest.",
+            "Complements the natural, airy quality in your palette.",
+        ],
+        .rustic: [
+            "Grounds the room with rustic warmth — tied to your {signal}.",
+            "Adds the weathered, hearty texture your taste profile highlights.",
+            "Brings honest materiality that echoes your rustic leanings.",
+        ],
+        .artDeco: [
+            "Delivers bold Art Deco drama — driven by your {signal}.",
+            "Adds geometric impact that matches your taste for contrast.",
+            "Pairs luxe materials with the statement style your profile reveals.",
+        ],
+        .japandi: [
+            "Balances serenity and function — connected to your {signal}.",
+            "Reinforces the wabi-sabi calm your taste profile reflects.",
+            "Blends Japanese restraint with the warmth your space carries.",
+        ],
+    ]
 
     static func goalMultiplier(for goal: DesignGoal) -> Double {
         switch goal {

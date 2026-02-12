@@ -63,6 +63,7 @@ struct ContextScreen: View {
                 roomContext: selectedRoom,
                 goal: selectedGoal
             )
+            ProfileStore.save(profile: response.tasteProfile, recommendations: response.recommendations)
             path.append(Route.result(response.tasteProfile, response.recommendations))
         } catch {
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])

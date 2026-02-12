@@ -6,6 +6,19 @@ struct ResultScreen: View {
     let recommendations: [RecommendationItem]
     @State private var showShareSheet = false
     @State private var favoritedIds: Set<String> = []
+    @State private var maxBudget: Double = 0
+
+    private var priceRange: ClosedRange<Double> {
+        let prices = recommendations.map(\.price)
+        let lo = prices.min() ?? 0
+        let hi = prices.max() ?? 1
+        return lo == hi ? lo...(hi + 1) : lo...hi
+    }
+
+    private var filteredRecommendations: [RecommendationItem] {
+        guard maxBudget > 0 else { return recommendations }
+        return recommendations.filter { $0.price <= maxBudget }
+    }
 
     var body: some View {
         List {
@@ -45,8 +58,39 @@ struct ResultScreen: View {
                 }
             }
 
+            if recommendations.count > 1 {
+                Section("Budget") {
+                    VStack(spacing: 4) {
+                        HStack {
+                            Text("Max price")
+                                .font(.subheadline)
+                            Spacer()
+                            Text(maxBudget >= priceRange.upperBound ? "Any" : "$\(Int(maxBudget))")
+                                .font(.subheadline.monospacedDigit().weight(.medium))
+                        }
+                        Slider(value: $maxBudget, in: priceRange, step: 25)
+                        HStack {
+                            Text("$\(Int(priceRange.lowerBound))")
+                                .font(.caption2)
+                                .foregroundStyle(.tertiary)
+                            Spacer()
+                            Text("$\(Int(priceRange.upperBound))")
+                                .font(.caption2)
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+                }
+            }
+
             Section("Recommendations") {
-                ForEach(recommendations) { item in
+                if filteredRecommendations.isEmpty {
+                    Text(recommendations.isEmpty
+                        ? "No recommendations matched your profile. Try a different room or goal."
+                        : "No recommendations within this budget. Try raising your max price.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(filteredRecommendations) { item in
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(alignment: .firstTextBaseline) {
                             Text(item.title)
@@ -105,6 +149,9 @@ struct ResultScreen: View {
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
             refreshFavorites()
+            if maxBudget == 0 {
+                maxBudget = priceRange.upperBound
+            }
         }
     }
 
@@ -175,7 +222,7 @@ struct ResultScreen: View {
 
         // Recommendations
         lines.append("Top Picks:")
-        for item in recommendations {
+        for item in filteredRecommendations {
             lines.append("- \(item.title) — \(item.subtitle)")
         }
 

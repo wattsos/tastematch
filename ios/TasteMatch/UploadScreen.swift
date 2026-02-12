@@ -6,6 +6,7 @@ struct UploadScreen: View {
     @State private var selectedItems: [PhotosPickerItem] = []
     @State private var images: [UIImage] = []
     @State private var isLoading = false
+    @State private var loadError = false
 
     var body: some View {
         VStack(spacing: 24) {
@@ -52,6 +53,11 @@ struct UploadScreen: View {
                     }
                 }
             }
+        }
+        .alert("Unable to Load Photos", isPresented: $loadError) {
+            Button("OK") {}
+        } message: {
+            Text("The selected photos couldn't be loaded. Please try again with different images.")
         }
     }
 
@@ -158,6 +164,7 @@ struct UploadScreen: View {
     private func loadImages() async {
         isLoading = true
         defer { isLoading = false }
+        loadError = false
         var loaded: [UIImage] = []
         for item in selectedItems {
             if let data = try? await item.loadTransferable(type: Data.self),
@@ -166,5 +173,9 @@ struct UploadScreen: View {
             }
         }
         images = loaded
+        if loaded.isEmpty && !selectedItems.isEmpty {
+            loadError = true
+            selectedItems = []
+        }
     }
 }

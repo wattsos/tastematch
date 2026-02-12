@@ -62,7 +62,8 @@ struct RecommendationEngine {
                 title: entry.item.title,
                 subtitle: subtitle,
                 reason: whyThisFits,
-                attributionConfidence: attribution
+                attributionConfidence: attribution,
+                price: entry.item.price
             )
         }
     }

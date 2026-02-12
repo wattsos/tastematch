@@ -46,13 +46,15 @@ struct RecommendationItem: Identifiable, Codable {
     let subtitle: String
     let reason: String
     let attributionConfidence: Double
+    let price: Double
 
-    init(id: UUID = UUID(), title: String, subtitle: String, reason: String, attributionConfidence: Double) {
+    init(id: UUID = UUID(), title: String, subtitle: String, reason: String, attributionConfidence: Double, price: Double = 0) {
         self.id = id
         self.title = title
         self.subtitle = subtitle
         self.reason = reason
         self.attributionConfidence = min(1, max(0, attributionConfidence))
+        self.price = price
     }
 }
 

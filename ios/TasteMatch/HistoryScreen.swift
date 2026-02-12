@@ -51,6 +51,17 @@ struct HistoryScreen: View {
             }
         }
         .navigationTitle("History")
+        .toolbar {
+            if history.count >= 2 {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        path.append(Route.compare)
+                    } label: {
+                        Label("Compare", systemImage: "arrow.left.arrow.right")
+                    }
+                }
+            }
+        }
         .onAppear {
             history = ProfileStore.loadAll()
         }

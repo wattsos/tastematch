@@ -9,6 +9,7 @@ enum Route: Hashable {
     case history
     case settings
     case favorites
+    case compare
 
     // Hashable conformance (identity-based for payloads)
     func hash(into hasher: inout Hasher) {
@@ -26,6 +27,8 @@ enum Route: Hashable {
             hasher.combine("settings")
         case .favorites:
             hasher.combine("favorites")
+        case .compare:
+            hasher.combine("compare")
         }
     }
 
@@ -42,6 +45,8 @@ enum Route: Hashable {
         case (.settings, .settings):
             return true
         case (.favorites, .favorites):
+            return true
+        case (.compare, .compare):
             return true
         default:
             return false
@@ -74,6 +79,8 @@ struct TasteMatchApp: App {
                             SettingsScreen(path: $path)
                         case .favorites:
                             FavoritesScreen()
+                        case .compare:
+                            CompareScreen(path: $path)
                         }
                     }
                     .onAppear {

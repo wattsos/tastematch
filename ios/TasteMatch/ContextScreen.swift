@@ -66,6 +66,11 @@ struct ContextScreen: View {
 
         let imageData = images.compactMap { $0.jpegData(compressionQuality: 0.8) }
 
+        guard !imageData.isEmpty else {
+            errorMessage = "None of the selected photos could be processed. Please try different images."
+            return
+        }
+
         do {
             let response = try await APIClient.shared.analyze(
                 imageData: imageData,

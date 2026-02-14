@@ -102,22 +102,26 @@ struct CachedImage: View {
     }
 
     var body: some View {
-        Group {
-            switch loader.state {
-            case .loading:
-                shimmerPlaceholder
-            case .loaded(let uiImage):
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            case .failed:
-                failurePlaceholder
+        content
+            .frame(width: width, height: height)
+            .clipped()
+            .task(id: url) {
+                loader.load()
             }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        switch loader.state {
+        case .loading:
+            shimmerPlaceholder
+        case .loaded(let uiImage):
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        case .failed:
+            failurePlaceholder
         }
-        .frame(width: width, height: height)
-        .clipped()
-        .onAppear { loader.load() }
-        .onDisappear { loader.cancel() }
     }
 
     // MARK: - Shimmer

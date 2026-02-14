@@ -73,6 +73,13 @@
 		L11004000000000000000004 /* commerce_seed.json in Resources */ = {isa = PBXBuildFile; fileRef = L21001000000000000000001 /* commerce_seed.json */; };
 		M11001000000000000000001 /* ShopScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21001000000000000000001 /* ShopScreen.swift */; };
 		M11002000000000000000002 /* ShopScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21002000000000000000002 /* ShopScreenTests.swift */; };
+		N11001000000000000000001 /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21001000000000000000001 /* CachedImage.swift */; };
+		N11002000000000000000002 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21002000000000000000002 /* FeatureFlags.swift */; };
+		N11003000000000000000003 /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21003000000000000000003 /* NetworkModels.swift */; };
+		N11004000000000000000004 /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21004000000000000000004 /* BackendClient.swift */; };
+		N11005000000000000000005 /* CachedImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21005000000000000000005 /* CachedImageTests.swift */; };
+		N11006000000000000000006 /* NetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21006000000000000000006 /* NetworkModelTests.swift */; };
+		N11007000000000000000007 /* BackendClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21007000000000000000007 /* BackendClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +161,13 @@
 		L21003000000000000000003 /* CommerceRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceRankingTests.swift; sourceTree = "<group>"; };
 		M21001000000000000000001 /* ShopScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreen.swift; sourceTree = "<group>"; };
 		M21002000000000000000002 /* ShopScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreenTests.swift; sourceTree = "<group>"; };
+		N21001000000000000000001 /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
+		N21002000000000000000002 /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
+		N21003000000000000000003 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
+		N21004000000000000000004 /* BackendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
+		N21005000000000000000005 /* CachedImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageTests.swift; sourceTree = "<group>"; };
+		N21006000000000000000006 /* NetworkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelTests.swift; sourceTree = "<group>"; };
+		N21007000000000000000007 /* BackendClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +206,9 @@
 				J21001000000000000000001 /* AxisPresentation.swift */,
 				E21001000000000000000001 /* BoardScreen.swift */,
 				A20003000000000000000003 /* APIClient.swift */,
+				N21004000000000000000004 /* BackendClient.swift */,
 				345E6421A33BBF48B4B8E5CB /* Brand.swift */,
+				N21001000000000000000001 /* CachedImage.swift */,
 				D21002000000000000000002 /* CalibrationStore.swift */,
 				C21002000000000000000002 /* catalog.json */,
 				C21001000000000000000001 /* CatalogLoader.swift */,
@@ -210,6 +226,7 @@
 				B21001000000000000000001 /* DesignTipsEngine.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
+				N21002000000000000000002 /* FeatureFlags.swift */,
 				A20008000000000000000008 /* FavoritesScreen.swift */,
 				A20009000000000000000009 /* FavoritesStore.swift */,
 				A2000A00000000000000000A /* Haptics.swift */,
@@ -217,6 +234,7 @@
 				K21001000000000000000001 /* MaterialShopSheet.swift */,
 				A2000C00000000000000000C /* MockCatalog.swift */,
 				A2000D00000000000000000D /* Models.swift */,
+				N21003000000000000000003 /* NetworkModels.swift */,
 				A2000E00000000000000000E /* OnboardingScreen.swift */,
 				F21001000000000000000001 /* ProfileNaming.swift */,
 				A2000F00000000000000000F /* ProfileStore.swift */,
@@ -246,12 +264,15 @@
 			children = (
 				K21002000000000000000002 /* AxisMappingTests.swift */,
 				J21002000000000000000002 /* AxisPresentationTests.swift */,
+				N21007000000000000000007 /* BackendClientTests.swift */,
+				N21005000000000000000005 /* CachedImageTests.swift */,
 				D21005000000000000000005 /* CalibrationTests.swift */,
 				L21002000000000000000002 /* CommerceProviderTests.swift */,
 				L21003000000000000000003 /* CommerceRankingTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
 				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
 				I21006000000000000000006 /* DiscoverySignalStoreTests.swift */,
+				N21006000000000000000006 /* NetworkModelTests.swift */,
 				F21002000000000000000002 /* ProfileNamingTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
@@ -380,8 +401,10 @@
 				A10002000000000000000002 /* AnalyzingView.swift in Sources */,
 				J11001000000000000000001 /* AxisPresentation.swift in Sources */,
 				A10003000000000000000003 /* APIClient.swift in Sources */,
+				N11004000000000000000004 /* BackendClient.swift in Sources */,
 				E11001000000000000000001 /* BoardScreen.swift in Sources */,
 				859BEC168102C01A5993CD82 /* Brand.swift in Sources */,
+				N11001000000000000000001 /* CachedImage.swift in Sources */,
 				D11002000000000000000002 /* CalibrationStore.swift in Sources */,
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,
 				A10004000000000000000004 /* CompareScreen.swift in Sources */,
@@ -395,6 +418,7 @@
 				B11001000000000000000001 /* DesignTipsEngine.swift in Sources */,
 				A10006000000000000000006 /* EventLogger.swift in Sources */,
 				A10007000000000000000007 /* EvolutionScreen.swift in Sources */,
+				N11002000000000000000002 /* FeatureFlags.swift in Sources */,
 				A10008000000000000000008 /* FavoritesScreen.swift in Sources */,
 				A10009000000000000000009 /* FavoritesStore.swift in Sources */,
 				A1000A00000000000000000A /* Haptics.swift in Sources */,
@@ -402,6 +426,7 @@
 				K11001000000000000000001 /* MaterialShopSheet.swift in Sources */,
 				A1000C00000000000000000C /* MockCatalog.swift in Sources */,
 				A1000D00000000000000000D /* Models.swift in Sources */,
+				N11003000000000000000003 /* NetworkModels.swift in Sources */,
 				A1000E00000000000000000E /* OnboardingScreen.swift in Sources */,
 				F11001000000000000000001 /* ProfileNaming.swift in Sources */,
 				A1000F00000000000000000F /* ProfileStore.swift in Sources */,
@@ -429,12 +454,15 @@
 			files = (
 				K11002000000000000000002 /* AxisMappingTests.swift in Sources */,
 				J11002000000000000000002 /* AxisPresentationTests.swift in Sources */,
+				N11007000000000000000007 /* BackendClientTests.swift in Sources */,
+				N11005000000000000000005 /* CachedImageTests.swift in Sources */,
 				D11005000000000000000005 /* CalibrationTests.swift in Sources */,
 				L11002000000000000000002 /* CommerceProviderTests.swift in Sources */,
 				L11003000000000000000003 /* CommerceRankingTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
 				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
 				I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */,
+				N11006000000000000000006 /* NetworkModelTests.swift in Sources */,
 				F11002000000000000000002 /* ProfileNamingTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,

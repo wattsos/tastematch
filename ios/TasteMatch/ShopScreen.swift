@@ -241,23 +241,7 @@ struct ShopScreen: View {
     private func shopCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    default:
-                        Color(white: 0.94)
-                            .overlay(
-                                Image(systemName: "cube")
-                                    .font(.title3)
-                                    .foregroundStyle(Theme.muted.opacity(0.25))
-                            )
-                    }
-                }
-                .frame(height: 150)
-                .clipped()
+                CachedImage(url: item.imageURL, height: 150)
 
                 Button {
                     toggleFavorite(item)

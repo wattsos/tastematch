@@ -8,6 +8,13 @@ final class APIClient {
     private let baseURL = URL(string: "https://api.burgundy.app/v1")!
     private let catalog: CatalogProvider
 
+    var backend: BackendClient {
+        switch FeatureFlags.backendMode {
+        case .local:  return LocalBackendClient()
+        case .remote: return RemoteBackendClient()
+        }
+    }
+
     private init(catalog: CatalogProvider = BundleCatalogProvider()) {
         self.catalog = catalog
     }
@@ -46,8 +53,8 @@ final class APIClient {
     // MARK: - POST /events
 
     func sendEvent(name: String, tasteProfileId: UUID?, metadata: [String: String]) async throws {
-        // Stub: would POST to /events endpoint.
-        try await Task.sleep(for: .seconds(0.1))
+        let event = LoggedEvent(name: name, tasteProfileId: tasteProfileId, metadata: metadata)
+        try await backend.sendEvents([event])
     }
 
 }

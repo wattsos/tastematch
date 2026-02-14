@@ -39,31 +39,7 @@ struct RecommendationDetailScreen: View {
 
     private var heroImage: some View {
         ZStack(alignment: .bottomTrailing) {
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                default:
-                    LinearGradient(
-                        colors: [
-                            Theme.muted.opacity(0.12),
-                            Theme.hairline.opacity(0.18)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                    .overlay(
-                        Image(systemName: "sparkles")
-                            .font(.system(size: 36))
-                            .foregroundStyle(Theme.muted.opacity(0.25))
-                    )
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 300)
-            .clipped()
+            CachedImage(url: item.imageURL, height: 300)
 
             // Bookmark overlay
             Button {

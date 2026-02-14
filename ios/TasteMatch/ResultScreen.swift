@@ -86,6 +86,17 @@ struct ResultScreen: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    Haptics.tap()
+                    EventLogger.shared.logEvent("share_profile_tapped", tasteProfileId: profile.id)
+                    showShareSheet = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.callout)
+                        .foregroundStyle(Theme.ink)
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New") {
                     Haptics.tap()
@@ -373,18 +384,7 @@ struct ResultScreen: View {
 
     private func compactCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                default:
-                    Color(white: 0.94)
-                }
-            }
-            .frame(width: 140, height: 110)
-            .clipped()
+            CachedImage(url: item.imageURL, height: 110, width: 140)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
@@ -689,23 +689,7 @@ struct ResultScreen: View {
     private func pickCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    default:
-                        Color(white: 0.94)
-                            .overlay(
-                                Image(systemName: "sparkles")
-                                    .font(.title3)
-                                    .foregroundStyle(Theme.muted.opacity(0.25))
-                            )
-                    }
-                }
-                .frame(height: 150)
-                .clipped()
+                CachedImage(url: item.imageURL, height: 150)
 
                 Button {
                     toggleFavorite(item)

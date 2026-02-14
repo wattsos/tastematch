@@ -57,7 +57,7 @@ struct TasteBadge: View {
 
 // MARK: - Badge Data
 
-private struct BadgeInfo {
+struct BadgeInfo {
     let title: String
     let icon: String
     let color: Color

@@ -41,20 +41,28 @@ struct TasteProfile: Identifiable, Codable {
 }
 
 struct RecommendationItem: Identifiable, Codable, Hashable {
-    let id: UUID
+    let skuId: String
     let title: String
     let subtitle: String
     let reason: String
     let attributionConfidence: Double
     let price: Double
+    let imageURL: String?
+    let merchant: String
+    let productURL: String
 
-    init(id: UUID = UUID(), title: String, subtitle: String, reason: String, attributionConfidence: Double, price: Double = 0) {
-        self.id = id
+    var id: String { skuId }
+
+    init(skuId: String, title: String, subtitle: String, reason: String, attributionConfidence: Double, price: Double = 0, imageURL: String? = nil, merchant: String, productURL: String) {
+        self.skuId = skuId
         self.title = title
         self.subtitle = subtitle
         self.reason = reason
         self.attributionConfidence = min(1, max(0, attributionConfidence))
         self.price = price
+        self.imageURL = imageURL
+        self.merchant = merchant
+        self.productURL = productURL
     }
 }
 
@@ -69,7 +77,7 @@ struct AnalyzeResponse: Codable {
     let recommendations: [RecommendationItem]
 }
 
-enum RoomContext: String, CaseIterable, Identifiable {
+enum RoomContext: String, CaseIterable, Identifiable, Codable {
     case livingRoom = "Living Room"
     case bedroom = "Bedroom"
     case kitchen = "Kitchen"
@@ -80,7 +88,7 @@ enum RoomContext: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-enum DesignGoal: String, CaseIterable, Identifiable {
+enum DesignGoal: String, CaseIterable, Identifiable, Codable {
     case refresh = "Quick Refresh"
     case overhaul = "Full Overhaul"
     case accent = "Add Accents"

@@ -86,8 +86,11 @@ struct TasteEngine {
             return (tag, clamp01(confidence))
         }
 
-        // 2. Stable sort: highest score first, CaseIterable order breaks ties.
-        scored.sort { $0.score > $1.score }
+        // 2. Stable sort: highest score first, tag name ascending breaks ties.
+        scored.sort {
+            if $0.score != $1.score { return $0.score > $1.score }
+            return String(describing: $0.tag) < String(describing: $1.tag)
+        }
 
         let primary = scored[0]
         let secondary: (tag: CanonicalTag, score: Double)? =

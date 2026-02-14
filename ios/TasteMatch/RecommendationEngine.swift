@@ -59,11 +59,15 @@ struct RecommendationEngine {
             let attribution = min(1, max(0, entry.score))
 
             return RecommendationItem(
+                skuId: entry.item.skuId,
                 title: entry.item.title,
                 subtitle: subtitle,
                 reason: whyThisFits,
                 attributionConfidence: attribution,
-                price: entry.item.price
+                price: entry.item.price,
+                imageURL: entry.item.imageURL,
+                merchant: entry.item.merchant,
+                productURL: entry.item.productURL
             )
         }
     }

@@ -26,47 +26,23 @@ struct UploadScreen: View {
 
             Spacer()
 
+            // Primary action button
             Button {
                 EventLogger.shared.logEvent("photos_confirmed", metadata: ["count": "\(images.count)"])
                 path.append(Route.context(images, prefillRoom, prefillGoal))
             } label: {
                 Text("Next")
+                    .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
             }
             .foregroundStyle(.white)
             .background(images.isEmpty || isLoading ? Theme.blush : Theme.accent)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
             .disabled(images.isEmpty || isLoading)
         }
         .padding()
         .navigationTitle("Upload")
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    path.append(Route.settings)
-                } label: {
-                    Image(systemName: "gearshape")
-                }
-                .accessibilityLabel("Settings")
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 16) {
-                    Button {
-                        path.append(Route.favorites)
-                    } label: {
-                        Image(systemName: "heart")
-                    }
-                    .accessibilityLabel("Saved favorites")
-                    Button {
-                        path.append(Route.history)
-                    } label: {
-                        Image(systemName: "clock.arrow.circlepath")
-                    }
-                    .accessibilityLabel("Analysis history")
-                }
-            }
-        }
         .alert("Unable to Load Photos", isPresented: $loadError) {
             Button("OK") {}
         } message: {
@@ -96,6 +72,22 @@ struct UploadScreen: View {
 
             photoPicker
 
+            // Demo button — lets users try the full flow without photos
+            Button {
+                runDemo()
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "wand.and.stars")
+                    Text("Try a Demo")
+                }
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Theme.accent)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(Theme.accent.opacity(0.1))
+                .clipShape(Capsule())
+            }
+
             Spacer()
         }
     }
@@ -120,7 +112,7 @@ struct UploadScreen: View {
                                 Image(systemName: "xmark.circle.fill")
                                     .font(.title3)
                                     .foregroundStyle(.white)
-                                    .shadow(radius: 2)
+                                    .shadow(color: .clear, radius: 0)
                             }
                             .accessibilityLabel("Remove photo \(index + 1)")
                             .offset(x: 6, y: -6)
@@ -158,7 +150,7 @@ struct UploadScreen: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(Theme.blush.opacity(0.3))
-                .cornerRadius(10)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
         }
         .onChange(of: selectedItems) {
             Task { await loadImages() }
@@ -190,14 +182,55 @@ struct UploadScreen: View {
             }
             .padding(14)
             .background(Theme.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Theme.blush.opacity(0.5), lineWidth: 1)
+                RoundedRectangle(cornerRadius: Theme.radius)
+                    .stroke(Theme.hairline, lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
         .accessibilityLabel("View your latest taste profile")
+    }
+
+    // MARK: - Demo Mode
+
+    private func runDemo() {
+        Haptics.impact()
+        EventLogger.shared.logEvent("demo_started")
+
+        // Use preset signals that produce a nice Scandinavian + Japandi result
+        let signals = VisualSignals(
+            paletteTemperature: .cool,
+            brightness: .high,
+            contrast: .low,
+            saturation: .muted,
+            edgeDensity: .low,
+            material: .wood
+        )
+
+        let profile = TasteEngine.analyze(
+            signals: signals,
+            context: .livingRoom,
+            goal: .refresh
+        )
+
+        let recommendations = RecommendationEngine.recommend(
+            profile: profile,
+            catalog: MockCatalog.items,
+            context: .livingRoom,
+            goal: .refresh,
+            limit: 6
+        )
+
+        ProfileStore.save(
+            profile: profile,
+            recommendations: recommendations,
+            roomContext: .livingRoom,
+            designGoal: .refresh
+        )
+
+        Haptics.success()
+        path.append(Route.result(profile, recommendations))
     }
 
     // MARK: - Actions
@@ -205,7 +238,6 @@ struct UploadScreen: View {
     private func removePhoto(at index: Int) {
         guard images.indices.contains(index) else { return }
         images.remove(at: index)
-        // Keep selectedItems in sync — remove corresponding picker item
         if selectedItems.indices.contains(index) {
             selectedItems.remove(at: index)
         }

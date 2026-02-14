@@ -43,9 +43,9 @@ struct HistoryScreen: View {
                                 }
                                 Spacer()
                                 if let confidence = saved.tasteProfile.tags.first?.confidence {
-                                    Text("\(Int(confidence * 100))%")
-                                        .font(.caption.monospacedDigit())
-                                        .foregroundStyle(Theme.clay)
+                                    Text(alignmentWord(confidence))
+                                        .font(.caption2)
+                                        .foregroundStyle(Theme.muted)
                                 }
                                 Image(systemName: "chevron.right")
                                     .font(.caption)
@@ -104,6 +104,14 @@ struct HistoryScreen: View {
             ProfileStore.delete(id: item.id)
         }
         history = ProfileStore.loadAll()
+    }
+
+    private func alignmentWord(_ confidence: Double) -> String {
+        switch confidence {
+        case 0.8...: return "High"
+        case 0.5...: return "Moderate"
+        default:     return "Low"
+        }
     }
 
     private func formatted(_ date: Date) -> String {

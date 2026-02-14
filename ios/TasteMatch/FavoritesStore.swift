@@ -28,7 +28,7 @@ enum FavoritesStore {
 
     // MARK: - Remove
 
-    static func remove(id: UUID) {
+    static func remove(id: String) {
         var favorites = loadAll()
         favorites.removeAll { $0.id == id }
         write(favorites)

@@ -2,6 +2,17 @@ import SwiftUI
 
 struct FavoritesScreen: View {
     @State private var favorites: [RecommendationItem] = []
+    @State private var searchText = ""
+
+    private var filtered: [RecommendationItem] {
+        guard !searchText.isEmpty else { return favorites }
+        let query = searchText.lowercased()
+        return favorites.filter {
+            $0.title.lowercased().contains(query) ||
+            $0.subtitle.lowercased().contains(query) ||
+            $0.reason.lowercased().contains(query)
+        }
+    }
 
     var body: some View {
         Group {
@@ -22,7 +33,24 @@ struct FavoritesScreen: View {
                 }
             } else {
                 List {
-                    ForEach(favorites) { item in
+                    if filtered.isEmpty {
+                        HStack {
+                            Spacer()
+                            VStack(spacing: 8) {
+                                Image(systemName: "magnifyingglass")
+                                    .font(.title2)
+                                    .foregroundStyle(Theme.blush)
+                                Text("No matches for \"\(searchText)\"")
+                                    .font(.subheadline)
+                                    .foregroundStyle(Theme.clay)
+                            }
+                            .padding(.vertical, 24)
+                            Spacer()
+                        }
+                        .listRowBackground(Color.clear)
+                    }
+
+                    ForEach(filtered) { item in
                         VStack(alignment: .leading, spacing: 6) {
                             HStack(alignment: .firstTextBaseline) {
                                 Text(item.title)
@@ -47,6 +75,7 @@ struct FavoritesScreen: View {
                         deleteItems(at: offsets)
                     }
                 }
+                .searchable(text: $searchText, prompt: "Search saved picks")
             }
         }
         .navigationTitle("Saved")
@@ -57,8 +86,9 @@ struct FavoritesScreen: View {
     }
 
     private func deleteItems(at offsets: IndexSet) {
-        for index in offsets {
-            FavoritesStore.remove(id: favorites[index].id)
+        let toDelete = offsets.map { filtered[$0] }
+        for item in toDelete {
+            FavoritesStore.remove(id: item.id)
         }
         favorites = FavoritesStore.loadAll()
     }

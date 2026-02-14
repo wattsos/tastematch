@@ -48,7 +48,7 @@ struct ContextScreen: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(isAnalyzing ? Theme.blush : Theme.accent)
-                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                            .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
                     }
                     .disabled(isAnalyzing)
                     .listRowBackground(Color.clear)

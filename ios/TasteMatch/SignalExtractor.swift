@@ -26,16 +26,17 @@ enum SignalExtractor {
 
         guard !allPixels.isEmpty else { return defaults }
 
-        let brightness = averageBrightness(allPixels)
+        let brightnessValue = averageBrightness(allPixels)
         let temperature = paletteTemperature(allPixels)
-        let contrast = contrastLevel(allPixels, averageBrightness: brightness)
+        let contrast = contrastLevel(allPixels, averageBrightness: brightnessValue)
         let saturation = saturationLevel(allPixels)
         let edgeDensity = averageEdgeDensity(perImageEdge)
+        let brightness = toBrightness(brightnessValue)
         let material = estimateMaterial(temperature: temperature, saturation: saturation, brightness: brightness)
 
         return VisualSignals(
             paletteTemperature: temperature,
-            brightness: toBrightness(brightness),
+            brightness: brightness,
             contrast: contrast,
             saturation: saturation,
             edgeDensity: edgeDensity,

@@ -132,6 +132,7 @@ struct CompareScreen: View {
                     .frame(width: 60)
                 Text("\(Int(value * 100))%")
                     .font(.caption2.monospacedDigit())
+                    .foregroundStyle(Theme.muted)
                     .frame(width: 32, alignment: .trailing)
             } else {
                 Text("—")
@@ -152,13 +153,9 @@ struct CompareScreen: View {
         } else {
             let arrow = delta > 0 ? "arrow.up.right" : "arrow.down.right"
             let color: Color = delta > 0 ? Theme.sage : Theme.rose
-            HStack(spacing: 2) {
-                Image(systemName: arrow)
-                    .font(.caption2)
-                Text("\(Int(abs(delta) * 100))%")
-                    .font(.caption2.monospacedDigit())
-            }
-            .foregroundStyle(color)
+            Image(systemName: arrow)
+                .font(.caption2)
+                .foregroundStyle(color)
         }
     }
 

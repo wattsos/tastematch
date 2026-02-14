@@ -18,10 +18,13 @@ final class ProfileStoreTests: XCTestCase {
         )
         let recs = [
             RecommendationItem(
+                skuId: "sku-test",
                 title: "Test Item",
                 subtitle: "Test — $100",
                 reason: "Test reason",
-                attributionConfidence: 0.8
+                attributionConfidence: 0.8,
+                merchant: "Test Merchant",
+                productURL: "https://example.com"
             )
         ]
 

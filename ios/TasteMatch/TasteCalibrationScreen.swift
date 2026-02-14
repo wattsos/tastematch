@@ -52,11 +52,8 @@ struct TasteCalibrationScreen: View {
                 headerSection
                 progressSection
 
-                Spacer()
-
                 cardSection
-
-                Spacer()
+                    .padding(.top, 12)
 
                 hintSection
             }
@@ -184,13 +181,13 @@ struct TasteCalibrationScreen: View {
                 completionView
             }
         }
-        .frame(height: 320)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func cardContent(for item: CatalogItem) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Gradient placeholder for item image
-            RoundedRectangle(cornerRadius: Theme.radius)
+        VStack(alignment: .leading, spacing: 0) {
+            // Gradient placeholder for item image — fills available space
+            RoundedRectangle(cornerRadius: 0)
                 .fill(
                     LinearGradient(
                         colors: [Theme.surface, Theme.hairline],
@@ -198,31 +195,33 @@ struct TasteCalibrationScreen: View {
                         endPoint: .bottomTrailing
                     )
                 )
-                .frame(height: 180)
+                .frame(maxHeight: .infinity)
                 .overlay(
                     Image(systemName: "sparkles")
-                        .font(.title)
+                        .font(.largeTitle)
                         .foregroundStyle(Theme.muted.opacity(0.3))
                 )
 
-            Text(item.title)
-                .font(.headline)
-                .foregroundStyle(Theme.ink)
-                .lineLimit(2)
+            VStack(alignment: .leading, spacing: 8) {
+                Text(item.title)
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(Theme.ink)
+                    .lineLimit(2)
 
-            if let tag = item.tags.first {
-                Text(tag.rawValue.uppercased())
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(Theme.muted)
-                    .tracking(0.8)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(Theme.bg)
-                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                if let tag = item.tags.first {
+                    Text(tag.rawValue.uppercased())
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(0.8)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Theme.bg)
+                        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                }
             }
+            .padding(16)
         }
-        .padding(16)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Theme.surface)
         .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
         .overlay(

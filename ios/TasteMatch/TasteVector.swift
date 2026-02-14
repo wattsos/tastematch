@@ -61,6 +61,51 @@ struct TasteVector: Codable, Equatable {
         return TasteVector(weights: blended)
     }
 
+    /// Generate 3 deterministic taste variants from this vector.
+    func generateVariants() -> [TasteVariant] {
+        let sorted = weights.sorted { $0.value > $1.value }
+        guard let top = sorted.first else { return [] }
+        let second = sorted.dropFirst().first
+
+        var variants: [TasteVariant] = []
+
+        // Variant A: boost top tag by +20%
+        var aWeights = weights
+        aWeights[top.key] = min(1.0, top.value * 1.2)
+        let aLabel = "More \(TasteEngine.displayLabel(for: top.key))"
+        variants.append(TasteVariant(
+            label: aLabel,
+            subtitle: "Leaning further into your strongest signal",
+            vector: TasteVector(weights: aWeights)
+        ))
+
+        // Variant B: shift emphasis — top × 0.85, second × 1.15
+        if let sec = second {
+            var bWeights = weights
+            bWeights[top.key] = top.value * 0.85
+            bWeights[sec.key] = min(1.0, sec.value * 1.15)
+            let bLabel = "\(TasteEngine.displayLabel(for: sec.key)) Shift"
+            variants.append(TasteVariant(
+                label: bLabel,
+                subtitle: "Rebalancing toward your secondary thread",
+                vector: TasteVector(weights: bWeights)
+            ))
+        }
+
+        // Variant C: flip avoids — tags < -0.2 get value * -0.5
+        var cWeights = weights
+        for (key, value) in cWeights where value < -0.2 {
+            cWeights[key] = value * -0.5
+        }
+        variants.append(TasteVariant(
+            label: "Contrast Mix",
+            subtitle: "Inverting what you usually avoid",
+            vector: TasteVector(weights: cWeights)
+        ))
+
+        return variants
+    }
+
     /// Tags with weight > 0.3, sorted descending by weight
     var influences: [String] {
         weights
@@ -103,4 +148,12 @@ struct TasteVector: Codable, Equatable {
             return "Low"
         }
     }
+}
+
+// MARK: - Taste Variant
+
+struct TasteVariant {
+    let label: String
+    let subtitle: String
+    let vector: TasteVector
 }

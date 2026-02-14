@@ -124,6 +124,11 @@ struct TasteEngine {
         return TasteProfile(tags: tags, story: story, signals: signalList)
     }
 
+    /// Convert a canonical tag key (e.g. "scandinavian") to its display label (e.g. "Scandinavian").
+    static func displayLabel(for tagKey: String) -> String {
+        CanonicalTag.allCases.first { String(describing: $0) == tagKey }?.rawValue ?? tagKey
+    }
+
     /// Convert a TasteProfile's tags into a TasteVector (tag key → confidence as weight).
     static func vectorFromProfile(_ profile: TasteProfile) -> TasteVector {
         var weights: [String: Double] = [:]

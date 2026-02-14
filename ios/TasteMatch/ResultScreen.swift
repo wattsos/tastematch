@@ -15,6 +15,9 @@ struct ResultScreen: View {
     @State private var revealPicks = false
     @State private var showDetails = false
     @State private var calibrationRecord: CalibrationRecord?
+    @State private var activeMode: ActiveMode = .base
+    @State private var variants: [TasteVariant] = []
+    @State private var gridOpacity: Double = 1
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -22,8 +25,40 @@ struct ResultScreen: View {
         case priceHigh = "Price ↓"
     }
 
+    private enum ActiveMode: Equatable {
+        case base
+        case variant(Int)
+
+        var label: String {
+            switch self {
+            case .base: return "BASE"
+            case .variant(let i): return "VARIANT \(["A", "B", "C"][i])"
+            }
+        }
+
+        func next(variantCount: Int) -> ActiveMode {
+            switch self {
+            case .base:
+                return variantCount > 0 ? .variant(0) : .base
+            case .variant(let i):
+                return i + 1 < variantCount ? .variant(i + 1) : .base
+            }
+        }
+    }
+
     private var sortedRecommendations: [RecommendationItem] {
-        var items = recommendations
+        var items: [RecommendationItem]
+        if case .variant(let i) = activeMode, i < variants.count {
+            items = RecommendationEngine.rankWithVector(
+                recommendations,
+                vector: variants[i].vector,
+                catalog: MockCatalog.items,
+                context: nil,
+                goal: nil
+            )
+        } else {
+            items = recommendations
+        }
         switch sortMode {
         case .match: break
         case .priceLow: items.sort { $0.price < $1.price }
@@ -40,6 +75,8 @@ struct ResultScreen: View {
                 heroSection
                 readingSection
                 calibrationInfoSection
+                commandSection
+                activeModeLabel
                 selectionHeader
                 selectionGrid
                 detailsSection
@@ -71,6 +108,7 @@ struct ResultScreen: View {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
             refreshFavorites()
             calibrationRecord = CalibrationStore.load(for: profile.id)
+            computeVariants()
             withAnimation(.easeOut(duration: 0.6).delay(0.1)) { revealHero = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.45)) { revealStory = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.75)) { revealPicks = true }
@@ -145,24 +183,14 @@ struct ResultScreen: View {
                         .foregroundStyle(Theme.muted)
                         .tracking(1.2)
                     Spacer()
-                    HStack(spacing: 12) {
-                        Button {
-                            Haptics.tap()
-                            CalibrationStore.delete(for: profile.id)
-                            calibrationRecord = nil
-                        } label: {
-                            Text("Reset")
-                                .font(.caption.weight(.medium))
-                                .foregroundStyle(Theme.muted)
-                        }
-                        Button {
-                            Haptics.tap()
-                            path.append(Route.calibration(profile, recommendations))
-                        } label: {
-                            Text("Refine")
-                                .font(.caption.weight(.medium))
-                                .foregroundStyle(Theme.accent)
-                        }
+                    Button {
+                        Haptics.tap()
+                        CalibrationStore.delete(for: profile.id)
+                        calibrationRecord = nil
+                    } label: {
+                        Text("Reset")
+                            .font(.caption.weight(.medium))
+                            .foregroundStyle(Theme.muted)
                     }
                 }
 
@@ -223,9 +251,88 @@ struct ResultScreen: View {
     }
 
     private func tagLabel(_ key: String) -> String {
-        TasteEngine.CanonicalTag.allCases
-            .first { String(describing: $0) == key }?
-            .rawValue ?? key
+        TasteEngine.displayLabel(for: key)
+    }
+
+    // MARK: - Command
+
+    private var commandSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("COMMAND")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.2)
+
+            HStack(spacing: 14) {
+                commandButton("Refine") {
+                    Haptics.tap()
+                    path.append(Route.calibration(profile, recommendations))
+                }
+
+                commandButton("Vary") {
+                    Haptics.tap()
+                    cycleVariant()
+                }
+
+                commandButton("Build", disabled: true) {}
+
+                Spacer()
+            }
+        }
+    }
+
+    private func commandButton(_ label: String, disabled: Bool = false, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text("[ \(label) ]")
+                .font(.caption.weight(.medium).monospaced())
+                .foregroundStyle(disabled ? Theme.muted.opacity(0.4) : Theme.ink)
+        }
+        .buttonStyle(.plain)
+        .disabled(disabled)
+    }
+
+    private var activeModeLabel: some View {
+        HStack(spacing: 6) {
+            Text("ACTIVE MODE")
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.0)
+            Text(activeMode.label)
+                .font(.caption2.weight(.semibold).monospaced())
+                .foregroundStyle(activeMode == .base ? Theme.ink : Theme.accent)
+                .tracking(1.0)
+        }
+    }
+
+    private func cycleVariant() {
+        let next = activeMode.next(variantCount: variants.count)
+        withAnimation(.easeOut(duration: 0.15)) {
+            gridOpacity = 0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            activeMode = next
+            withAnimation(.easeIn(duration: 0.2)) {
+                gridOpacity = 1
+            }
+        }
+    }
+
+    private func computeVariants() {
+        let baseVector = resolveBaseVector()
+        variants = baseVector.generateVariants()
+    }
+
+    private func resolveBaseVector() -> TasteVector {
+        if let record = CalibrationStore.load(for: profile.id) {
+            let imageVector = TasteEngine.vectorFromProfile(profile)
+            return TasteVector.blend(
+                image: imageVector,
+                swipe: record.vector.normalized(),
+                mode: .wantMore
+            )
+        } else {
+            return TasteEngine.vectorFromProfile(profile)
+        }
     }
 
     // MARK: - Selection Header
@@ -278,7 +385,7 @@ struct ResultScreen: View {
                 }
             }
         }
-        .opacity(revealPicks ? 1 : 0)
+        .opacity(revealPicks ? gridOpacity : 0)
         .offset(y: revealPicks ? 0 : 12)
     }
 

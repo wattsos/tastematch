@@ -238,6 +238,55 @@ final class CalibrationTests: XCTestCase {
         XCTAssertTrue(industrialInTop.isEmpty, "Avoided industrial items should not rank in top 5")
     }
 
+    // MARK: - Variant Generation
+
+    func testGenerateVariants_returnsThreeVariants() {
+        var vector = TasteVector.zero
+        vector.weights["scandinavian"] = 0.9
+        vector.weights["industrial"] = 0.5
+        vector.weights["bohemian"] = -0.4
+
+        let variants = vector.generateVariants()
+        XCTAssertEqual(variants.count, 3)
+
+        // Variant A label should contain the top tag display name
+        XCTAssertTrue(variants[0].label.contains("Scandinavian"), "Variant A label should reference top tag")
+        // Variant B label should contain the second tag display name
+        XCTAssertTrue(variants[1].label.contains("Industrial"), "Variant B label should reference second tag")
+        // Variant C is always "Contrast Mix"
+        XCTAssertEqual(variants[2].label, "Contrast Mix")
+    }
+
+    func testVariantA_boostsTopWeight() {
+        var vector = TasteVector.zero
+        vector.weights["scandinavian"] = 0.8
+        vector.weights["industrial"] = 0.4
+
+        let variants = vector.generateVariants()
+        let variantA = variants[0]
+
+        // Top tag should be boosted by 20%
+        XCTAssertEqual(variantA.vector.weights["scandinavian"]!, 0.8 * 1.2, accuracy: 0.001)
+        // Other tags unchanged
+        XCTAssertEqual(variantA.vector.weights["industrial"]!, 0.4, accuracy: 0.001)
+    }
+
+    func testVariantC_invertsAvoidedTags() {
+        var vector = TasteVector.zero
+        vector.weights["scandinavian"] = 0.8
+        vector.weights["bohemian"] = -0.5
+        vector.weights["artDeco"] = -0.3
+
+        let variants = vector.generateVariants()
+        let variantC = variants[2]
+
+        // Avoided tags (< -0.2) should be flipped: value * -0.5
+        XCTAssertEqual(variantC.vector.weights["bohemian"]!, 0.25, accuracy: 0.001)
+        XCTAssertEqual(variantC.vector.weights["artDeco"]!, 0.15, accuracy: 0.001)
+        // Non-avoided tags unchanged
+        XCTAssertEqual(variantC.vector.weights["scandinavian"]!, 0.8, accuracy: 0.001)
+    }
+
     // MARK: - Helpers
 
     private func makeProfile(primaryKey: String, primaryLabel: String) -> TasteProfile {

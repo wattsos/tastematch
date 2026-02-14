@@ -24,8 +24,8 @@ struct CompareScreen: View {
             }
 
             if let a = selectedA, let b = selectedB {
-                Section("Tag Comparison") {
-                    tagComparison(a: a.tasteProfile, b: b.tasteProfile)
+                Section("Axis Profile") {
+                    axisComparison(a: a.tasteProfile, b: b.tasteProfile)
                 }
 
                 Section("Signal Comparison") {
@@ -92,28 +92,27 @@ struct CompareScreen: View {
         .foregroundStyle(.primary)
     }
 
-    // MARK: - Tag Comparison
+    // MARK: - Axis Comparison
 
     @ViewBuilder
-    private func tagComparison(a: TasteProfile, b: TasteProfile) -> some View {
-        let allKeys = orderedTagKeys(a: a, b: b)
+    private func axisComparison(a: TasteProfile, b: TasteProfile) -> some View {
+        let vectorA = TasteEngine.vectorFromProfile(a)
+        let vectorB = TasteEngine.vectorFromProfile(b)
+        let scoresA = AxisMapping.computeAxisScores(from: vectorA)
+        let scoresB = AxisMapping.computeAxisScores(from: vectorB)
 
-        ForEach(allKeys, id: \.self) { key in
-            let tagA = a.tags.first(where: { $0.key == key })
-            let tagB = b.tags.first(where: { $0.key == key })
-            let label = tagA?.label ?? tagB?.label ?? key
+        ForEach(Axis.allCases, id: \.self) { axis in
+            let valA = scoresA.value(for: axis)
+            let valB = scoresB.value(for: axis)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(label)
+                Text(AxisPresentation.axisDisplayLabel(axis))
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.espresso)
                 HStack(spacing: 12) {
-                    confidenceBar(value: tagA?.confidence, label: "A")
-                    confidenceBar(value: tagB?.confidence, label: "B")
-                    shiftIndicator(
-                        from: tagA?.confidence ?? 0,
-                        to: tagB?.confidence ?? 0
-                    )
+                    axisBar(value: valA, label: "A")
+                    axisBar(value: valB, label: "B")
+                    axisShiftIndicator(from: valA, to: valB)
                 }
             }
             .padding(.vertical, 2)
@@ -121,32 +120,27 @@ struct CompareScreen: View {
     }
 
     @ViewBuilder
-    private func confidenceBar(value: Double?, label: String) -> some View {
+    private func axisBar(value: Double, label: String) -> some View {
         HStack(spacing: 4) {
             Text(label)
                 .font(.caption2.weight(.semibold))
                 .frame(width: 14)
-            if let value {
-                ProgressView(value: value)
-                    .tint(Theme.accent)
-                    .frame(width: 60)
-                Text("\(Int(value * 100))%")
-                    .font(.caption2.monospacedDigit())
-                    .foregroundStyle(Theme.muted)
-                    .frame(width: 32, alignment: .trailing)
-            } else {
-                Text("—")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-                    .frame(width: 92)
-            }
+            // Map -1..+1 to 0..1 for display
+            let normalized = (value + 1) / 2
+            ProgressView(value: normalized)
+                .tint(Theme.accent)
+                .frame(width: 60)
+            Text(String(format: "%+.1f", value))
+                .font(.caption2.monospacedDigit())
+                .foregroundStyle(Theme.muted)
+                .frame(width: 32, alignment: .trailing)
         }
     }
 
     @ViewBuilder
-    private func shiftIndicator(from: Double, to: Double) -> some View {
+    private func axisShiftIndicator(from: Double, to: Double) -> some View {
         let delta = to - from
-        if abs(delta) < 0.01 {
+        if abs(delta) < 0.05 {
             Text("=")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -190,17 +184,6 @@ struct CompareScreen: View {
 
     // MARK: - Helpers
 
-    private func orderedTagKeys(a: TasteProfile, b: TasteProfile) -> [String] {
-        var seen = Set<String>()
-        var keys: [String] = []
-        for tag in a.tags + b.tags {
-            if seen.insert(tag.key).inserted {
-                keys.append(tag.key)
-            }
-        }
-        return keys
-    }
-
     private func orderedSignalKeys(a: TasteProfile, b: TasteProfile) -> [String] {
         var seen = Set<String>()
         var keys: [String] = []
@@ -235,15 +218,8 @@ private struct ProfilePickerList: View {
                         onSelect(saved)
                     } label: {
                         HStack {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(saved.tasteProfile.displayName)
-                                    .font(.body.weight(.medium))
-                                if let secondary = saved.tasteProfile.tags.dropFirst().first {
-                                    Text(secondary.label)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
+                            Text(saved.tasteProfile.displayName)
+                                .font(.body.weight(.medium))
                             Spacer()
                             Text(formatted(saved.savedAt))
                                 .font(.caption)

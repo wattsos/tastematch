@@ -32,11 +32,6 @@ struct HistoryScreen: View {
                                     Text(saved.tasteProfile.displayName)
                                         .font(.headline)
                                         .foregroundStyle(Theme.espresso)
-                                    if let secondary = saved.tasteProfile.tags.dropFirst().first {
-                                        Text(secondary.label)
-                                            .font(.subheadline)
-                                            .foregroundStyle(Theme.clay)
-                                    }
                                     Text(formatted(saved.savedAt))
                                         .font(.caption)
                                         .foregroundStyle(Theme.clay.opacity(0.7))

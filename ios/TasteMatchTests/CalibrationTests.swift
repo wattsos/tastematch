@@ -249,12 +249,22 @@ final class CalibrationTests: XCTestCase {
         let variants = vector.generateVariants()
         XCTAssertEqual(variants.count, 3)
 
-        // Variant A label should contain the top tag display name
-        XCTAssertTrue(variants[0].label.contains("Scandinavian"), "Variant A label should reference top tag")
-        // Variant B label should contain the second tag display name
-        XCTAssertTrue(variants[1].label.contains("Industrial"), "Variant B label should reference second tag")
+        // Variant A label should start with "More " and use axis word (not canonical label)
+        XCTAssertTrue(variants[0].label.hasPrefix("More "), "Variant A label should start with 'More'")
+        // Variant B label should end with " Shift" and use axis word
+        XCTAssertTrue(variants[1].label.hasSuffix(" Shift"), "Variant B label should end with 'Shift'")
         // Variant C is always "Contrast Mix"
         XCTAssertEqual(variants[2].label, "Contrast Mix")
+
+        // No canonical labels in any variant label
+        let canonicalLabels = ["Scandinavian", "Industrial", "Bohemian", "Art Deco", "Mid-Century Modern",
+                               "Minimalist", "Traditional", "Coastal", "Rustic", "Japandi"]
+        for variant in variants {
+            for label in canonicalLabels {
+                XCTAssertFalse(variant.label.contains(label),
+                               "Variant label '\(variant.label)' should not contain canonical label '\(label)'")
+            }
+        }
     }
 
     func testVariantA_boostsTopWeight() {

@@ -251,19 +251,6 @@ private extension TasteEngine {
         .mixed:   "an eclectic mix of materials",
     ]
 
-    static let tagNarratives: [CanonicalTag: String] = [
-        .midCenturyModern: "You have an eye for timeless mid-century design — clean silhouettes, organic curves, and functional beauty.",
-        .scandinavian:     "Your taste leans Scandinavian — light, functional, and uncluttered with a quiet warmth.",
-        .industrial:       "You're drawn to industrial character — raw materials, exposed structure, and urban edge.",
-        .bohemian:         "Your style is bohemian at heart — layered, colorful, and richly personal.",
-        .minimalist:       "You embrace minimalism — every object is intentional, and negative space does the talking.",
-        .traditional:      "You appreciate traditional craftsmanship — symmetry, rich woods, and time-tested elegance.",
-        .coastal:          "Your taste channels coastal living — breezy, light, and effortlessly relaxed.",
-        .rustic:           "You gravitate toward rustic warmth — weathered textures, hearty materials, and grounded comfort.",
-        .artDeco:          "You have an Art Deco sensibility — bold geometry, luxe materials, and dramatic contrast.",
-        .japandi:          "Your aesthetic is Japandi — the serene intersection of Japanese wabi-sabi and Scandinavian function.",
-    ]
-
     static let goalPhrases: [DesignGoal: String] = [
         .refresh:  "A few targeted swaps",
         .overhaul: "A full reimagining of the space",
@@ -278,21 +265,31 @@ private extension TasteEngine {
         context: RoomContext,
         goal: DesignGoal
     ) -> String {
-        let narrative   = tagNarratives[primary]!
+        // Build a lightweight vector from primary/secondary to compute axis scores
+        var weights: [String: Double] = [:]
+        for tag in CanonicalTag.allCases {
+            weights[String(describing: tag)] = 0.0
+        }
+        weights[String(describing: primary)] = 1.0
+        if let sec = secondary {
+            weights[String(describing: sec)] = 0.6
+        }
+        let vector = TasteVector(weights: weights)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+
         let palette     = paletteDescriptions[signals.paletteTemperature]!
         let brightness  = brightnessDescriptions[signals.brightness]!
         let material    = materialDescriptions[signals.material]!
         let goalPhrase  = goalPhrases[goal]!
         let room        = context.rawValue.lowercased()
 
-        var story = narrative
-        story += " Your \(room) features \(palette), \(brightness), and \(material)."
-
-        if let sec = secondary {
-            story += " There's also a \(sec.rawValue.lowercased()) thread running through your choices."
-        }
-
-        story += " \(goalPhrase) could bring this vision into sharper focus."
-        return story
+        return AxisPresentation.storyText(
+            axisScores: axisScores,
+            palette: palette,
+            brightness: brightness,
+            material: material,
+            room: room,
+            goal: goalPhrase
+        )
     }
 }

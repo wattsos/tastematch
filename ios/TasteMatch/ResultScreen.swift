@@ -23,6 +23,7 @@ struct ResultScreen: View {
     @State private var discoveryHasMore = false
     @State private var discoverySignals: DiscoverySignals?
     @State private var namingResult: ProfileNamingResult?
+    @State private var readingText: String = ""
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -167,7 +168,7 @@ struct ResultScreen: View {
                 .foregroundStyle(Theme.muted)
                 .tracking(1.2)
 
-            Text(profile.story)
+            Text(readingText.isEmpty ? profile.story : readingText)
                 .foregroundStyle(Theme.ink)
                 .font(.system(size: 18, weight: .regular))
                 .lineSpacing(3)
@@ -184,7 +185,6 @@ struct ResultScreen: View {
     @ViewBuilder
     private var calibrationInfoSection: some View {
         if let record = calibrationRecord {
-            let normalized = record.vector.normalized()
             let level = record.vector.confidenceLevel(swipeCount: record.swipeCount)
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
@@ -204,7 +204,9 @@ struct ResultScreen: View {
                     }
                 }
 
-                if !normalized.influences.isEmpty {
+                let axisScores = AxisMapping.computeAxisScores(from: record.vector)
+                let influencePhrases = AxisPresentation.influencePhrases(axisScores: axisScores)
+                if !influencePhrases.isEmpty {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("INFLUENCES")
                             .font(.caption2.weight(.semibold))
@@ -212,8 +214,8 @@ struct ResultScreen: View {
                             .tracking(1.0)
 
                         FlowLayout(spacing: 6) {
-                            ForEach(normalized.influences, id: \.self) { tag in
-                                Text(tagLabel(tag))
+                            ForEach(influencePhrases, id: \.self) { phrase in
+                                Text(phrase)
                                     .font(.caption2.weight(.medium))
                                     .foregroundStyle(Theme.ink)
                                     .padding(.horizontal, 8)
@@ -225,7 +227,8 @@ struct ResultScreen: View {
                     }
                 }
 
-                if !normalized.avoids.isEmpty {
+                let avoidPhrases = AxisPresentation.avoidPhrases(axisScores: axisScores)
+                if !avoidPhrases.isEmpty {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("AVOIDS")
                             .font(.caption2.weight(.semibold))
@@ -233,8 +236,8 @@ struct ResultScreen: View {
                             .tracking(1.0)
 
                         FlowLayout(spacing: 6) {
-                            ForEach(normalized.avoids, id: \.self) { tag in
-                                Text(tagLabel(tag))
+                            ForEach(avoidPhrases, id: \.self) { phrase in
+                                Text(phrase)
                                     .font(.caption2.weight(.medium))
                                     .foregroundStyle(Theme.muted)
                                     .padding(.horizontal, 8)
@@ -258,10 +261,6 @@ struct ResultScreen: View {
             }
             .labSurface(padded: true, bordered: true)
         }
-    }
-
-    private func tagLabel(_ key: String) -> String {
-        TasteEngine.displayLabel(for: key)
     }
 
     // MARK: - In Your World
@@ -732,6 +731,14 @@ struct ResultScreen: View {
         if result.didUpdate {
             ProfileStore.updateNaming(profileId: profile.id, result: result)
         }
+
+        // Compute axis-based reading text
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let name = result.name.isEmpty ? profile.displayName : result.name
+        readingText = AxisPresentation.oneLineReading(
+            profileName: name,
+            axisScores: axisScores
+        )
     }
 
     // MARK: - Favorites

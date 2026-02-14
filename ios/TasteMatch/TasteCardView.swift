@@ -18,10 +18,6 @@ struct TasteCardView: View {
                     .font(.system(.title, design: .serif, weight: .bold))
                     .foregroundStyle(Theme.espresso)
                     .multilineTextAlignment(.center)
-
-                if let secondary = profile.tags.dropFirst().first {
-                    TasteBadge(tagKey: secondary.key, size: .compact)
-                }
             }
             .padding(.top, 28)
             .padding(.bottom, 20)
@@ -32,40 +28,30 @@ struct TasteCardView: View {
                 .frame(width: 40, height: 2)
                 .padding(.bottom, 16)
 
-            // Tags
-            VStack(spacing: 10) {
-                ForEach(profile.tags.prefix(3)) { tag in
-                    HStack(spacing: 10) {
-                        Text(tag.label)
+            // Axis Influences
+            VStack(alignment: .leading, spacing: 8) {
+                let vector = TasteEngine.vectorFromProfile(profile)
+                let axisScores = AxisMapping.computeAxisScores(from: vector)
+                let phrases = AxisPresentation.influencePhrases(axisScores: axisScores)
+
+                ForEach(phrases, id: \.self) { phrase in
+                    HStack(spacing: 8) {
+                        Circle()
+                            .fill(Theme.muted.opacity(0.3))
+                            .frame(width: 4, height: 4)
+                        Text(phrase)
                             .font(.subheadline.weight(.medium))
                             .foregroundStyle(Theme.espresso)
-                            .frame(width: 120, alignment: .trailing)
-
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(Theme.blush.opacity(0.4))
-                                    .frame(height: 6)
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(Theme.accent)
-                                    .frame(width: geo.size.width * tag.confidence, height: 6)
-                            }
-                        }
-                        .frame(height: 6)
-
-                        Text(alignmentWord(tag.confidence))
-                            .font(.caption2)
-                            .foregroundStyle(Theme.muted)
-                            .frame(width: 36, alignment: .leading)
                     }
                 }
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 20)
 
-            // Story excerpt
-            if !profile.story.isEmpty {
-                Text("\"" + storyExcerpt + "\"")
+            // Reading excerpt
+            let reading = computeReading()
+            if !reading.isEmpty {
+                Text("\"" + readingExcerpt(reading) + "\"")
                     .font(.system(.footnote, design: .serif))
                     .foregroundStyle(Theme.clay)
                     .italic()
@@ -101,18 +87,18 @@ struct TasteCardView: View {
         .frame(width: 320)
     }
 
-    private func alignmentWord(_ confidence: Double) -> String {
-        switch confidence {
-        case 0.8...: return "High"
-        case 0.5...: return "Moderate"
-        default:     return "Low"
-        }
+    private func computeReading() -> String {
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        return AxisPresentation.oneLineReading(
+            profileName: profile.displayName,
+            axisScores: axisScores
+        )
     }
 
-    private var storyExcerpt: String {
-        let story = profile.story
-        if story.count <= 120 { return story }
-        let trimmed = String(story.prefix(117))
+    private func readingExcerpt(_ text: String) -> String {
+        if text.count <= 120 { return text }
+        let trimmed = String(text.prefix(117))
         if let lastSpace = trimmed.lastIndex(of: " ") {
             return String(trimmed[...lastSpace]) + "..."
         }

@@ -72,7 +72,10 @@ struct TasteVector: Codable, Equatable {
         // Variant A: boost top tag by +20%
         var aWeights = weights
         aWeights[top.key] = min(1.0, top.value * 1.2)
-        let aLabel = "More \(TasteEngine.displayLabel(for: top.key))"
+        let topScores = AxisMapping.computeAxisScores(from: TasteVector(weights: aWeights))
+        let topAxis = topScores.dominantAxis
+        let topWord = AxisPresentation.influenceWord(axis: topAxis, positive: topScores.value(for: topAxis) >= 0)
+        let aLabel = "More \(topWord)"
         variants.append(TasteVariant(
             label: aLabel,
             subtitle: "Leaning further into your strongest signal",
@@ -84,7 +87,10 @@ struct TasteVector: Codable, Equatable {
             var bWeights = weights
             bWeights[top.key] = top.value * 0.85
             bWeights[sec.key] = min(1.0, sec.value * 1.15)
-            let bLabel = "\(TasteEngine.displayLabel(for: sec.key)) Shift"
+            let secScores = AxisMapping.computeAxisScores(from: TasteVector(weights: bWeights))
+            let secAxis = secScores.dominantAxis
+            let secWord = AxisPresentation.influenceWord(axis: secAxis, positive: secScores.value(for: secAxis) >= 0)
+            let bLabel = "\(secWord) Shift"
             variants.append(TasteVariant(
                 label: bLabel,
                 subtitle: "Rebalancing toward your secondary thread",

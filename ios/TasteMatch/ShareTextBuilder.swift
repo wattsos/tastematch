@@ -11,11 +11,16 @@ enum ShareTextBuilder {
         lines.append("My \(Brand.name) Profile")
         lines.append("")
 
-        let tagLine = profile.tags.map { $0.label }.joined(separator: ", ")
-        lines.append("Style: \(tagLine)")
+        lines.append("Profile: \(profile.displayName)")
         lines.append("")
 
-        lines.append(profile.story)
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let reading = AxisPresentation.oneLineReading(
+            profileName: profile.displayName,
+            axisScores: axisScores
+        )
+        lines.append(reading)
         lines.append("")
 
         if !recommendations.isEmpty {

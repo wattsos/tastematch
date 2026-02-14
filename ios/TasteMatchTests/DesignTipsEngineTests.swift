@@ -51,14 +51,15 @@ final class DesignTipsEngineTests: XCTestCase {
     func testTips_includesPrimaryStyleTip() {
         let profile = makeProfile(primaryKey: "industrial", primaryLabel: "Industrial")
         let tips = DesignTipsEngine.tips(for: profile)
+        // Industrial maps to organicIndustrial positive — tip should mention "raw" or "expose"
         XCTAssertTrue(tips.contains(where: { $0.headline.lowercased().contains("raw") || $0.headline.lowercased().contains("expose") }),
-                       "Should include industrial-specific tip")
+                       "Should include raw/expose tip for industrial axis")
     }
 
     // MARK: - All 10 tags produce a tip
 
     func testTips_everyCanonicalTagHasATip() {
-        let tagKeys = TasteBadge.badgeMap.keys
+        let tagKeys = TasteEngine.CanonicalTag.allCases.map { String(describing: $0) }
         for key in tagKeys {
             let profile = makeProfile(primaryKey: key, primaryLabel: key)
             let tips = DesignTipsEngine.tips(for: profile)

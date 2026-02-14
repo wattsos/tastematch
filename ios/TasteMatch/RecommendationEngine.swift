@@ -12,6 +12,8 @@ struct RecommendationEngine {
         let primaryTag = profile.tags.first.flatMap { tagByKey[$0.key] }
         let secondaryTag = profile.tags.dropFirst().first.flatMap { tagByKey[$0.key] }
 
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
         let goalMult = goalMultiplier(for: goal)
         let roomTags = roomFavoredTags[context] ?? []
 
@@ -50,8 +52,10 @@ struct RecommendationEngine {
 
         return top.enumerated().map { index, entry in
             let whyThisFits = buildWhyThisFits(
-                primaryTag: primaryTag,
+                axisScores: axisScores,
                 profile: profile,
+                itemTitle: entry.item.title,
+                merchant: entry.item.merchant,
                 index: index
             )
 
@@ -132,73 +136,106 @@ struct RecommendationEngine {
 
 private extension RecommendationEngine {
 
-    static func buildWhyThisFits(
-        primaryTag: TasteEngine.CanonicalTag?,
+    struct AxisReasonKey: Hashable {
+        let axis: Axis
+        let positive: Bool
+    }
+
+    private static func buildWhyThisFits(
+        axisScores: AxisScores,
         profile: TasteProfile,
+        itemTitle: String,
+        merchant: String,
         index: Int
     ) -> String {
         let signal = profile.signals.first
         let signalPhrase = signal.map { "\($0.key): \($0.value)" } ?? "your selections"
 
-        guard let tag = primaryTag, let templates = tagReasonTemplates[tag] else {
+        let dominant = axisScores.dominantAxis
+        let dominantPositive = axisScores.value(for: dominant) >= 0
+        let key = AxisReasonKey(axis: dominant, positive: dominantPositive)
+
+        guard let templates = axisReasonTemplates[key] else {
             return "Fits your personal style — based on \(signalPhrase)."
         }
 
         let template = templates[index % templates.count]
         return template
             .replacingOccurrences(of: "{signal}", with: signalPhrase)
+            .replacingOccurrences(of: "{item}", with: itemTitle)
+            .replacingOccurrences(of: "{merchant}", with: merchant)
     }
 
-    static let tagReasonTemplates: [TasteEngine.CanonicalTag: [String]] = [
-        .midCenturyModern: [
-            "Echoes the clean mid-century lines in your space — driven by {signal}.",
-            "Pairs with your mid-century palette for a cohesive retro feel.",
-            "Complements the organic curves your taste profile highlights.",
+    static let axisReasonTemplates: [AxisReasonKey: [String]] = [
+        AxisReasonKey(axis: .minimalOrnate, positive: false): [
+            "{item} keeps things intentional — aligned with your {signal}.",
+            "A piece like {item} supports the pared-back direction your profile reads.",
+            "{item} from {merchant} lets negative space do the work here.",
         ],
-        .scandinavian: [
-            "Matches the light, functional Scandinavian mood — grounded in {signal}.",
-            "Reinforces the airy simplicity your photos reflect.",
-            "Adds quiet warmth in line with your Scandinavian leanings.",
+        AxisReasonKey(axis: .minimalOrnate, positive: true): [
+            "{item} adds decorative weight that matches your ornate instinct.",
+            "The layered detail in {item} echoes what your profile gravitates toward.",
+            "{item} from {merchant} pairs rich texture with the density your taste reveals.",
         ],
-        .industrial: [
-            "Brings raw industrial character that fits your {signal}.",
-            "Pairs with the exposed-material edge your taste reveals.",
-            "Anchors the urban texture running through your space.",
+        AxisReasonKey(axis: .warmCool, positive: true): [
+            "{item} grounds the room with warmth — tied to your {signal}.",
+            "A piece like {item} brings the earthen texture your taste highlights.",
+            "{item} from {merchant} carries honest materiality that echoes your warm register.",
         ],
-        .bohemian: [
-            "Layers in bohemian richness — connects to your {signal}.",
-            "Adds the collected, personal feel your taste calls for.",
-            "Deepens the eclectic warmth your photos suggest.",
+        AxisReasonKey(axis: .warmCool, positive: false): [
+            "{item} channels cool clarity — rooted in your {signal}.",
+            "The restrained tone of {item} lightens the room the way your profile suggests.",
+            "{item} from {merchant} complements the crisp, airy quality in your palette.",
         ],
-        .minimalist: [
-            "Keeps things intentional — aligned with your {signal}.",
-            "Supports the clean, pared-back look your profile favors.",
-            "Lets negative space do the work, matching your minimalist eye.",
+        AxisReasonKey(axis: .softStructured, positive: true): [
+            "{item} echoes the structured lines your space calls for — driven by {signal}.",
+            "The defined edges of {item} match your taste for precision.",
+            "{item} from {merchant} reinforces the deliberate geometry your profile reveals.",
         ],
-        .traditional: [
-            "Brings time-tested elegance that resonates with your {signal}.",
-            "Adds the craftsmanship and symmetry your taste gravitates toward.",
-            "Reinforces the classic warmth woven through your space.",
+        AxisReasonKey(axis: .softStructured, positive: false): [
+            "{item} softens the room with the ease your profile favors — grounded in {signal}.",
+            "The gentle contours of {item} complement your yielding instinct.",
+            "{item} from {merchant} brings the fluid comfort your taste calls for.",
         ],
-        .coastal: [
-            "Channels breezy coastal ease — rooted in your {signal}.",
-            "Lightens the room with the relaxed vibe your photos suggest.",
-            "Complements the natural, airy quality in your palette.",
+        AxisReasonKey(axis: .organicIndustrial, positive: true): [
+            "{item} brings raw character that fits your {signal}.",
+            "The exposed-material edge of {item} pairs with your taste for the unfinished.",
+            "{item} from {merchant} anchors the forged texture running through your space.",
         ],
-        .rustic: [
-            "Grounds the room with rustic warmth — tied to your {signal}.",
-            "Adds the weathered, hearty texture your taste profile highlights.",
-            "Brings honest materiality that echoes your rustic leanings.",
+        AxisReasonKey(axis: .organicIndustrial, positive: false): [
+            "{item} layers in organic richness — connects to your {signal}.",
+            "The handcrafted feel of {item} deepens what your profile suggests.",
+            "{item} from {merchant} adds the rooted, botanical quality your taste calls for.",
         ],
-        .artDeco: [
-            "Delivers bold Art Deco drama — driven by your {signal}.",
-            "Adds geometric impact that matches your taste for contrast.",
-            "Pairs luxe materials with the statement style your profile reveals.",
+        AxisReasonKey(axis: .lightDark, positive: false): [
+            "{item} opens the room with airy brightness — based on your {signal}.",
+            "The luminous quality of {item} reinforces the light composition your taste reflects.",
+            "{item} from {merchant} adds the translucent clarity your profile favors.",
         ],
-        .japandi: [
-            "Balances serenity and function — connected to your {signal}.",
-            "Reinforces the wabi-sabi calm your taste profile reflects.",
-            "Blends Japanese restraint with the warmth your space carries.",
+        AxisReasonKey(axis: .lightDark, positive: true): [
+            "{item} brings moody depth that resonates with your {signal}.",
+            "The shadow-rich presence of {item} matches your taste for the nocturnal.",
+            "{item} from {merchant} reinforces the dark, intimate register of your profile.",
+        ],
+        AxisReasonKey(axis: .neutralSaturated, positive: false): [
+            "{item} keeps the palette tonal and restrained — aligned with your {signal}.",
+            "The undyed quality of {item} supports the desaturated register your profile favors.",
+            "{item} from {merchant} lets form lead over color, matching your neutral instinct.",
+        ],
+        AxisReasonKey(axis: .neutralSaturated, positive: true): [
+            "{item} delivers chromatic energy that matches your {signal}.",
+            "The saturated presence of {item} speaks to your vivid instinct.",
+            "{item} from {merchant} pairs bold hue with the expressive palette your profile reveals.",
+        ],
+        AxisReasonKey(axis: .sparseLayered, positive: false): [
+            "{item} keeps things spare and open — connected to your {signal}.",
+            "The edited quality of {item} reinforces the restraint your taste reflects.",
+            "{item} from {merchant} lets negative space define the room here.",
+        ],
+        AxisReasonKey(axis: .sparseLayered, positive: true): [
+            "{item} adds layered density — driven by your {signal}.",
+            "The accumulated texture of {item} matches what your taste gravitates toward.",
+            "{item} from {merchant} deepens the visual narrative through deliberate stacking.",
         ],
     ]
 

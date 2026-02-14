@@ -15,13 +15,15 @@ enum DesignTipsEngine {
         context: RoomContext? = nil,
         goal: DesignGoal? = nil
     ) -> [Tip] {
-        let primaryKey = profile.tags.first?.key
-        let secondaryKey = profile.tags.dropFirst().first?.key
-
         var result: [Tip] = []
 
-        // 1. Primary style tip
-        if let key = primaryKey, let tip = styleTips[key] {
+        // 1. Axis-based primary tip (from dominant axis)
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let dominant = axisScores.dominantAxis
+        let dominantPositive = axisScores.value(for: dominant) >= 0
+        let axisKey = AxisTipKey(axis: dominant, positive: dominantPositive)
+        if let tip = axisTips[axisKey] {
             result.append(tip)
         }
 
@@ -42,69 +44,94 @@ enum DesignTipsEngine {
             result.append(tip)
         }
 
-        // 5. Blend tip if two styles detected
-        if result.count < 3, let sec = secondaryKey, let primary = primaryKey {
-            result.append(blendTip(primary: primary, secondary: sec))
+        // 5. Blend tip if multiple axis influences
+        if result.count < 3 {
+            result.append(blendTip(profile: profile))
         }
 
         return Array(result.prefix(3))
     }
 }
 
-// MARK: - Style Tips
+// MARK: - Axis Tips
 
 private extension DesignTipsEngine {
 
-    static let styleTips: [String: Tip] = [
-        "midCenturyModern": Tip(
-            icon: "chair.lounge",
-            headline: "Anchor with a statement piece",
-            body: "Your mid-century eye loves clean silhouettes. Try a single iconic chair or credenza as the room's focal point — let everything else orbit it."
-        ),
-        "scandinavian": Tip(
-            icon: "sun.max",
-            headline: "Chase the light",
-            body: "Your Scandinavian taste pairs naturally with daylight. Swap heavy drapes for sheer linen curtains and watch the room transform."
-        ),
-        "industrial": Tip(
-            icon: "lightbulb",
-            headline: "Expose one raw element",
-            body: "Your industrial instinct thrives on honesty. If you can't expose brick or ductwork, try an open-frame bookshelf or wire-cage pendant."
-        ),
-        "bohemian": Tip(
-            icon: "paintpalette",
-            headline: "Layer patterns fearlessly",
-            body: "Your boho spirit lives in texture. Mix a kilim rug with a printed throw and embroidered cushions — the more personal, the better."
-        ),
-        "minimalist": Tip(
+    struct AxisTipKey: Hashable {
+        let axis: Axis
+        let positive: Bool
+    }
+
+    static let axisTips: [AxisTipKey: Tip] = [
+        AxisTipKey(axis: .minimalOrnate, positive: false): Tip(
             icon: "square.dashed",
             headline: "Edit one thing out",
-            body: "Your minimalist eye values restraint. Walk through the room and remove one object — the breathing space you create is the design."
+            body: "Your minimal instinct values restraint. Walk through the room and remove one object — the breathing space you create is the design."
         ),
-        "traditional": Tip(
-            icon: "books.vertical",
-            headline: "Invest in symmetry",
-            body: "Your classic taste loves balance. Try matching table lamps flanking a sofa or identical frames on either side of a mantle."
-        ),
-        "coastal": Tip(
-            icon: "water.waves",
-            headline: "Bring in natural fiber",
-            body: "Your coastal soul craves texture from the shore. A jute rug or rattan accent chair instantly grounds the breezy palette."
-        ),
-        "rustic": Tip(
-            icon: "tree",
-            headline: "Let wood tell a story",
-            body: "Your rustic warmth deepens with character. Look for reclaimed or live-edge pieces — imperfections are features, not flaws."
-        ),
-        "artDeco": Tip(
+        AxisTipKey(axis: .minimalOrnate, positive: true): Tip(
             icon: "diamond",
             headline: "Go bold on one surface",
-            body: "Your Art Deco sensibility loves drama. Try a geometric-patterned wallpaper or a gold-framed mirror on a single accent wall."
+            body: "Your ornate sensibility loves density. Try a patterned wallpaper or a richly framed mirror on a single accent wall."
         ),
-        "japandi": Tip(
+        AxisTipKey(axis: .warmCool, positive: true): Tip(
+            icon: "flame",
+            headline: "Anchor with warm material",
+            body: "Your warm instinct deepens with character. Look for reclaimed or live-edge pieces — imperfections are features, not flaws."
+        ),
+        AxisTipKey(axis: .warmCool, positive: false): Tip(
+            icon: "sun.max",
+            headline: "Chase the light",
+            body: "Your cool register pairs naturally with daylight. Swap heavy drapes for sheer linen curtains and watch the room transform."
+        ),
+        AxisTipKey(axis: .softStructured, positive: true): Tip(
+            icon: "books.vertical",
+            headline: "Invest in symmetry",
+            body: "Your structured instinct loves balance. Try matching table lamps flanking a sofa or identical frames on either side of a mantle."
+        ),
+        AxisTipKey(axis: .softStructured, positive: false): Tip(
+            icon: "bed.double",
+            headline: "Double down on softness",
+            body: "Your soft instinct thrives on ease. Add a chunky knit throw or a linen bedspread to deepen that relaxed feel."
+        ),
+        AxisTipKey(axis: .organicIndustrial, positive: true): Tip(
+            icon: "lightbulb",
+            headline: "Expose one raw element",
+            body: "Your raw instinct thrives on honesty. If you can't expose brick or ductwork, try an open-frame bookshelf or wire-cage pendant."
+        ),
+        AxisTipKey(axis: .organicIndustrial, positive: false): Tip(
             icon: "leaf",
-            headline: "Embrace wabi-sabi",
-            body: "Your Japandi aesthetic values imperfect beauty. A hand-thrown ceramic vase or an unfinished wood bowl adds quiet soul."
+            headline: "Bring nature inside",
+            body: "Your organic instinct values imperfect beauty. A hand-thrown ceramic vase or a living plant wall adds quiet soul."
+        ),
+        AxisTipKey(axis: .lightDark, positive: false): Tip(
+            icon: "sun.horizon",
+            headline: "Maximize natural light",
+            body: "Your light register opens up with airy surfaces. Consider lighter wood tones and reflective materials to amplify the brightness."
+        ),
+        AxisTipKey(axis: .lightDark, positive: true): Tip(
+            icon: "moon.stars",
+            headline: "Lean into shadow",
+            body: "Your dark register gains depth with intimate lighting. Layer warm-toned spots to create pools of atmosphere."
+        ),
+        AxisTipKey(axis: .neutralSaturated, positive: false): Tip(
+            icon: "circle.lefthalf.filled",
+            headline: "Add one accent color",
+            body: "Your neutral palette is a perfect canvas. Introduce a single accent — sage, slate, or navy — through cushions or art."
+        ),
+        AxisTipKey(axis: .neutralSaturated, positive: true): Tip(
+            icon: "paintpalette",
+            headline: "Layer color fearlessly",
+            body: "Your vivid instinct lives in saturation. Mix a bold rug with a printed throw and chromatic cushions — commit to the energy."
+        ),
+        AxisTipKey(axis: .sparseLayered, positive: false): Tip(
+            icon: "rectangle.split.3x1",
+            headline: "Keep surfaces clear",
+            body: "Your spare instinct values open planes. Display only what you use daily and store the rest — negative space is the design."
+        ),
+        AxisTipKey(axis: .sparseLayered, positive: true): Tip(
+            icon: "rectangle.3.group",
+            headline: "Build density with intent",
+            body: "Your layered instinct thrives on accumulation. Group objects in clusters of three — a vase, a candle, a small sculpture — to build narrative."
         ),
     ]
 }
@@ -221,13 +248,16 @@ private extension DesignTipsEngine {
 
 private extension DesignTipsEngine {
 
-    static func blendTip(primary: String, secondary: String) -> Tip {
-        let primaryLabel = TasteBadge.badgeMap[primary]?.title ?? primary
-        let secondaryLabel = TasteBadge.badgeMap[secondary]?.title ?? secondary
+    static func blendTip(profile: TasteProfile) -> Tip {
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let phrases = AxisPresentation.influencePhrases(axisScores: axisScores)
+        let primaryLabel = phrases.first ?? "primary"
+        let secondaryLabel = phrases.dropFirst().first ?? "secondary"
         return Tip(
             icon: "arrow.triangle.merge",
             headline: "Blend your two sides",
-            body: "Your \(primaryLabel) and \(secondaryLabel) leanings create a unique mix. Use one style for structure (furniture) and the other for soul (textiles, art)."
+            body: "Your \(primaryLabel.lowercased()) and \(secondaryLabel.lowercased()) leanings create a unique mix. Use one direction for structure (furniture) and the other for soul (textiles, art)."
         )
     }
 }

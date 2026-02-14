@@ -50,6 +50,27 @@ enum ProfileStore {
         return (try? JSONDecoder().decode([SavedProfile].self, from: data)) ?? []
     }
 
+    // MARK: - Update Naming
+
+    static func updateNaming(profileId: UUID, result: ProfileNamingResult) {
+        var all = loadAll()
+        guard let idx = all.firstIndex(where: { $0.id == profileId }) else { return }
+        var tp = all[idx].tasteProfile
+        tp.profileName = result.name
+        tp.profileNameVersion = result.version
+        tp.profileNameUpdatedAt = result.updatedAt
+        tp.profileNameBasisHash = result.basisHash
+        tp.previousNames = result.previousNames
+        all[idx] = SavedProfile(
+            tasteProfile: tp,
+            recommendations: all[idx].recommendations,
+            savedAt: all[idx].savedAt,
+            roomContext: all[idx].roomContext,
+            designGoal: all[idx].designGoal
+        )
+        write(all)
+    }
+
     // MARK: - Delete
 
     static func delete(id: UUID) {

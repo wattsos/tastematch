@@ -15,9 +15,10 @@ struct ResultScreen: View {
     @State private var revealPicks = false
     @State private var showDetails = false
     @State private var calibrationRecord: CalibrationRecord?
-    @State private var activeMode: ActiveMode = .base
     @State private var variants: [TasteVariant] = []
-    @State private var gridOpacity: Double = 1
+    @State private var variantLabels: [String] = []
+    @State private var discoveryItems: [DiscoveryItem] = []
+    @State private var namingResult: ProfileNamingResult?
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -25,40 +26,8 @@ struct ResultScreen: View {
         case priceHigh = "Price ↓"
     }
 
-    private enum ActiveMode: Equatable {
-        case base
-        case variant(Int)
-
-        var label: String {
-            switch self {
-            case .base: return "BASE"
-            case .variant(let i): return "VARIANT \(["A", "B", "C"][i])"
-            }
-        }
-
-        func next(variantCount: Int) -> ActiveMode {
-            switch self {
-            case .base:
-                return variantCount > 0 ? .variant(0) : .base
-            case .variant(let i):
-                return i + 1 < variantCount ? .variant(i + 1) : .base
-            }
-        }
-    }
-
     private var sortedRecommendations: [RecommendationItem] {
-        var items: [RecommendationItem]
-        if case .variant(let i) = activeMode, i < variants.count {
-            items = RecommendationEngine.rankWithVector(
-                recommendations,
-                vector: variants[i].vector,
-                catalog: MockCatalog.items,
-                context: nil,
-                goal: nil
-            )
-        } else {
-            items = recommendations
-        }
+        var items = recommendations
         switch sortMode {
         case .match: break
         case .priceLow: items.sort { $0.price < $1.price }
@@ -70,18 +39,27 @@ struct ResultScreen: View {
     // MARK: - Body
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                heroSection
-                readingSection
-                calibrationInfoSection
-                commandSection
-                activeModeLabel
-                selectionHeader
-                selectionGrid
-                detailsSection
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    heroSection
+                    readingSection
+                    calibrationInfoSection
+                    inYourWorldSection
+                    justOutsideSection
+                    outThereSection
+                    detailsSection
+
+                    if favoritedIds.count >= 3 {
+                        Spacer().frame(height: 52)
+                    }
+                }
+                .padding(16)
             }
-            .padding(16)
+
+            if favoritedIds.count >= 3 {
+                boardDock
+            }
         }
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle("")
@@ -109,6 +87,8 @@ struct ResultScreen: View {
             refreshFavorites()
             calibrationRecord = CalibrationStore.load(for: profile.id)
             computeVariants()
+            computeDiscovery()
+            resolveProfileName()
             withAnimation(.easeOut(duration: 0.6).delay(0.1)) { revealHero = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.45)) { revealStory = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.75)) { revealPicks = true }
@@ -119,17 +99,43 @@ struct ResultScreen: View {
 
     private var heroSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("PROFILE 01")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-                .tracking(1.2)
+            if let naming = namingResult, naming.didUpdate, naming.version > 1 {
+                Text("PROFILE UPDATED")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.2)
+            } else {
+                Text("PROFILE 01")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.2)
+            }
 
-            if let primary = profile.tags.first {
-                Text(primary.label)
+            if let naming = namingResult, !naming.name.isEmpty {
+                Text(naming.name)
                     .font(.system(size: 48, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)
 
+                Text(naming.description)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.muted)
+                    .lineSpacing(2)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                if naming.didUpdate, naming.version > 1, let prev = naming.previousNames.last {
+                    Text("Evolved from: \(prev)")
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
+                }
+            } else if let primary = profile.tags.first {
+                Text(primary.label)
+                    .font(.system(size: 48, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let primary = profile.tags.first {
                 HStack(spacing: 10) {
                     Text("ALIGNMENT")
                         .font(.caption.weight(.semibold))
@@ -254,116 +260,25 @@ struct ResultScreen: View {
         TasteEngine.displayLabel(for: key)
     }
 
-    // MARK: - Command
+    // MARK: - In Your World
 
-    private var commandSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("COMMAND")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-                .tracking(1.2)
-
-            HStack(spacing: 14) {
-                commandButton("Refine") {
-                    Haptics.tap()
-                    path.append(Route.calibration(profile, recommendations))
-                }
-
-                commandButton("Vary") {
-                    Haptics.tap()
-                    cycleVariant()
-                }
-
-                commandButton("Build") {
-                    Haptics.tap()
-                    path.append(Route.board(sortedRecommendations))
-                }
-
+    private var inYourWorldSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("IN YOUR WORLD")
+                    .sectionLabel()
                 Spacer()
-            }
-        }
-    }
-
-    private func commandButton(_ label: String, disabled: Bool = false, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Text("[ \(label) ]")
-                .font(.caption.weight(.medium).monospaced())
-                .foregroundStyle(disabled ? Theme.muted.opacity(0.4) : Theme.ink)
-        }
-        .buttonStyle(.plain)
-        .disabled(disabled)
-    }
-
-    private var activeModeLabel: some View {
-        HStack(spacing: 6) {
-            Text("ACTIVE MODE")
-                .font(.caption2.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-                .tracking(1.0)
-            Text(activeMode.label)
-                .font(.caption2.weight(.semibold).monospaced())
-                .foregroundStyle(activeMode == .base ? Theme.ink : Theme.accent)
-                .tracking(1.0)
-        }
-    }
-
-    private func cycleVariant() {
-        let next = activeMode.next(variantCount: variants.count)
-        withAnimation(.easeOut(duration: 0.15)) {
-            gridOpacity = 0
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            activeMode = next
-            withAnimation(.easeIn(duration: 0.2)) {
-                gridOpacity = 1
-            }
-        }
-    }
-
-    private func computeVariants() {
-        let baseVector = resolveBaseVector()
-        variants = baseVector.generateVariants()
-    }
-
-    private func resolveBaseVector() -> TasteVector {
-        if let record = CalibrationStore.load(for: profile.id) {
-            let imageVector = TasteEngine.vectorFromProfile(profile)
-            return TasteVector.blend(
-                image: imageVector,
-                swipe: record.vector.normalized(),
-                mode: .wantMore
-            )
-        } else {
-            return TasteEngine.vectorFromProfile(profile)
-        }
-    }
-
-    // MARK: - Selection Header
-
-    private var selectionHeader: some View {
-        HStack(alignment: .firstTextBaseline) {
-            Text("SELECTION")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-                .tracking(1.2)
-            Spacer()
-            Picker("Sort", selection: $sortMode) {
-                ForEach(SortMode.allCases, id: \.self) { mode in
-                    Text(mode.rawValue).tag(mode)
+                Picker("Sort", selection: $sortMode) {
+                    ForEach(SortMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
                 }
+                .pickerStyle(.menu)
+                .tint(Theme.muted)
             }
-            .pickerStyle(.menu)
-            .tint(Theme.muted)
-        }
-        .padding(.top, 8)
-    }
 
-    // MARK: - Selection Grid
-
-    private var selectionGrid: some View {
-        Group {
             if sortedRecommendations.isEmpty {
-                Text("No picks matched your profile. Try a different room or goal.")
+                Text("No pieces matched your profile.")
                     .font(.subheadline)
                     .foregroundStyle(Theme.muted)
                     .frame(maxWidth: .infinity)
@@ -371,10 +286,10 @@ struct ResultScreen: View {
             } else {
                 LazyVGrid(
                     columns: [
-                        GridItem(.flexible(), spacing: 14),
-                        GridItem(.flexible(), spacing: 14)
+                        GridItem(.flexible(), spacing: 16),
+                        GridItem(.flexible(), spacing: 16)
                     ],
-                    spacing: 14
+                    spacing: 16
                 ) {
                     ForEach(sortedRecommendations) { item in
                         Button {
@@ -388,8 +303,150 @@ struct ResultScreen: View {
                 }
             }
         }
-        .opacity(revealPicks ? gridOpacity : 0)
+        .padding(.top, 8)
+        .opacity(revealPicks ? 1 : 0)
         .offset(y: revealPicks ? 0 : 12)
+    }
+
+    // MARK: - Just Outside
+
+    private var justOutsideSection: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("JUST OUTSIDE")
+                .sectionLabel()
+
+            ForEach(Array(variants.enumerated()), id: \.offset) { index, variant in
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(index < variantLabels.count ? variantLabels[index] : variant.label)
+                        .font(.system(.subheadline, design: .serif, weight: .medium))
+                        .foregroundStyle(Theme.ink)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(Array(variantItems(for: variant).prefix(8))) { item in
+                                Button {
+                                    path.append(Route.recommendationDetail(item, tasteProfileId: profile.id))
+                                } label: {
+                                    compactCard(item)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.top, 8)
+    }
+
+    private func variantItems(for variant: TasteVariant) -> [RecommendationItem] {
+        RecommendationEngine.rankWithVector(
+            recommendations,
+            vector: variant.vector,
+            catalog: MockCatalog.items,
+            context: nil,
+            goal: nil
+        )
+    }
+
+    private func compactCard(_ item: RecommendationItem) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                default:
+                    Color(white: 0.94)
+                }
+            }
+            .frame(width: 140, height: 110)
+            .clipped()
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(item.title)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Theme.ink)
+                    .lineLimit(2)
+                Text("$\(Int(item.price))")
+                    .font(.caption2.monospacedDigit())
+                    .foregroundStyle(Theme.muted)
+            }
+            .padding(8)
+        }
+        .frame(width: 140)
+        .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Out There
+
+    @ViewBuilder
+    private var outThereSection: some View {
+        if !discoveryItems.isEmpty {
+            VStack(alignment: .leading, spacing: 14) {
+                Text("OUT THERE")
+                    .sectionLabel()
+
+                ForEach(discoveryItems) { item in
+                    Button {
+                        path.append(Route.discoveryDetail(item))
+                    } label: {
+                        discoveryCard(item)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.top, 8)
+        }
+    }
+
+    private func discoveryCard(_ item: DiscoveryItem) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(item.category.uppercased())
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.0)
+
+            Text(item.title)
+                .font(.system(.subheadline, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+
+            Text(item.body)
+                .font(.caption)
+                .foregroundStyle(Theme.muted)
+                .lineLimit(3)
+                .lineSpacing(2)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .labSurface(padded: true, bordered: true)
+    }
+
+    // MARK: - Board Dock
+
+    private var boardDock: some View {
+        HStack {
+            Text("\(favoritedIds.count) SAVED")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.0)
+            Spacer()
+            Button {
+                Haptics.tap()
+                path.append(Route.board(sortedRecommendations))
+            } label: {
+                Text("[ Open Board ]")
+                    .font(.caption.weight(.medium).monospaced())
+                    .foregroundStyle(Theme.ink)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(Theme.surface)
+        .overlay(alignment: .top) {
+            HairlineDivider()
+        }
     }
 
     // MARK: - Pick Card
@@ -506,6 +563,81 @@ struct ResultScreen: View {
         }
         .tint(Theme.muted)
         .labSurface(padded: true, bordered: true)
+    }
+
+    // MARK: - Compute
+
+    private func computeVariants() {
+        let baseVector = resolveBaseVector()
+        variants = baseVector.generateVariants()
+        let baseScores = AxisMapping.computeAxisScores(from: baseVector)
+        variantLabels = variants.map { variant in
+            let variantScores = AxisMapping.computeAxisScores(from: variant.vector)
+            var maxDelta = 0.0
+            var maxAxis: Axis = .minimalOrnate
+            for axis in Axis.allCases {
+                let delta = variantScores.value(for: axis) - baseScores.value(for: axis)
+                if abs(delta) > abs(maxDelta) {
+                    maxDelta = delta
+                    maxAxis = axis
+                }
+            }
+            return axisPoetPhrase(maxAxis, positive: maxDelta >= 0)
+        }
+    }
+
+    private func computeDiscovery() {
+        let baseVector = resolveBaseVector()
+        let scores = AxisMapping.computeAxisScores(from: baseVector)
+        discoveryItems = DiscoveryFeed.items(for: scores)
+    }
+
+    private func resolveBaseVector() -> TasteVector {
+        if let record = CalibrationStore.load(for: profile.id) {
+            let imageVector = TasteEngine.vectorFromProfile(profile)
+            return TasteVector.blend(
+                image: imageVector,
+                swipe: record.vector.normalized(),
+                mode: .wantMore
+            )
+        } else {
+            return TasteEngine.vectorFromProfile(profile)
+        }
+    }
+
+    private func axisPoetPhrase(_ axis: Axis, positive: Bool) -> String {
+        switch (axis, positive) {
+        case (.minimalOrnate, false): return "Strip Back"
+        case (.minimalOrnate, true): return "Layer In"
+        case (.warmCool, true): return "Add Warmth"
+        case (.warmCool, false): return "Cool Down"
+        case (.softStructured, true): return "Sharpen Edges"
+        case (.softStructured, false): return "Soften"
+        case (.organicIndustrial, true): return "Go Raw"
+        case (.organicIndustrial, false): return "Go Natural"
+        case (.lightDark, true): return "Lean Darker"
+        case (.lightDark, false): return "Lighten Up"
+        case (.neutralSaturated, true): return "Add Color"
+        case (.neutralSaturated, false): return "Desaturate"
+        case (.sparseLayered, true): return "Build Density"
+        case (.sparseLayered, false): return "Open Up"
+        }
+    }
+
+    // MARK: - Profile Naming
+
+    private func resolveProfileName() {
+        let stored = ProfileStore.loadAll().first(where: { $0.id == profile.id })
+        let existingProfile = stored?.tasteProfile ?? profile
+        let vector = resolveBaseVector()
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
+        let result = ProfileNamingEngine.resolve(
+            vector: vector, swipeCount: swipeCount, existingProfile: existingProfile
+        )
+        namingResult = result
+        if result.didUpdate {
+            ProfileStore.updateNaming(profileId: profile.id, result: result)
+        }
     }
 
     // MARK: - Favorites

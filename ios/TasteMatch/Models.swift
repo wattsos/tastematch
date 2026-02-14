@@ -31,12 +31,42 @@ struct TasteProfile: Identifiable, Codable {
     let tags: [TasteTag]
     let story: String
     let signals: [Signal]
+    var profileName: String
+    var profileNameVersion: Int
+    var profileNameUpdatedAt: Date?
+    var profileNameBasisHash: String
+    var previousNames: [String]
 
     init(id: UUID = UUID(), tags: [TasteTag], story: String, signals: [Signal]) {
         self.id = id
         self.tags = tags
         self.story = story
         self.signals = signals
+        self.profileName = ""
+        self.profileNameVersion = 0
+        self.profileNameUpdatedAt = nil
+        self.profileNameBasisHash = ""
+        self.previousNames = []
+    }
+
+    // Backward-compatible decoding — old JSON without naming fields still decodes.
+    enum CodingKeys: String, CodingKey {
+        case id, tags, story, signals
+        case profileName, profileNameVersion, profileNameUpdatedAt
+        case profileNameBasisHash, previousNames
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        tags = try c.decode([TasteTag].self, forKey: .tags)
+        story = try c.decode(String.self, forKey: .story)
+        signals = try c.decode([Signal].self, forKey: .signals)
+        profileName = try c.decodeIfPresent(String.self, forKey: .profileName) ?? ""
+        profileNameVersion = try c.decodeIfPresent(Int.self, forKey: .profileNameVersion) ?? 0
+        profileNameUpdatedAt = try c.decodeIfPresent(Date.self, forKey: .profileNameUpdatedAt)
+        profileNameBasisHash = try c.decodeIfPresent(String.self, forKey: .profileNameBasisHash) ?? ""
+        previousNames = try c.decodeIfPresent([String].self, forKey: .previousNames) ?? []
     }
 }
 

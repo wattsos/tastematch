@@ -128,6 +128,21 @@ enum AxisMapping {
         )
     }
 
+    /// Reverse-map axis weights to a synthetic TasteVector.
+    /// For each canonical tag, score = dot product of tag's axis contributions with given axes.
+    static func syntheticVector(fromAxes axisWeights: [String: Double]) -> TasteVector {
+        var weights: [String: Double] = [:]
+        for (tag, tagContributions) in contributions {
+            var dot = 0.0
+            for axis in Axis.allCases {
+                let axisValue = axisWeights[axis.rawValue] ?? 0.0
+                dot += axisValue * tagContributions.value(for: axis)
+            }
+            weights[tag] = dot
+        }
+        return TasteVector(weights: weights).normalized()
+    }
+
     private static func clamp(_ v: Double) -> Double { min(1, max(-1, v)) }
 }
 

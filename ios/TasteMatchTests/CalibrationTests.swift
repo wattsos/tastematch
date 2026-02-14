@@ -189,10 +189,11 @@ final class CalibrationTests: XCTestCase {
     // MARK: - rankWithVector
 
     func testRankWithVector_boostedTagRanksHigher() {
+        let catalog = MockCatalog.legacyItems
         let profile = makeProfile(primaryKey: "scandinavian", primaryLabel: "Scandinavian")
         let recs = RecommendationEngine.recommend(
             profile: profile,
-            catalog: MockCatalog.items,
+            catalog: catalog,
             context: .livingRoom,
             goal: .refresh,
             limit: 30
@@ -202,22 +203,23 @@ final class CalibrationTests: XCTestCase {
         vector.weights["industrial"] = 1.0
 
         let reranked = RecommendationEngine.rankWithVector(
-            recs, vector: vector, catalog: MockCatalog.items,
+            recs, vector: vector, catalog: catalog,
             context: .livingRoom, goal: .refresh
         )
 
         // Industrial items should be near the top
         let topSkus = reranked.prefix(5).map(\.skuId)
-        let industrialSkus = Set(MockCatalog.items.filter { $0.tags.contains(.industrial) }.map(\.skuId))
+        let industrialSkus = Set(catalog.filter { $0.tags.contains(.industrial) }.map(\.skuId))
         let industrialInTop = topSkus.filter { industrialSkus.contains($0) }
         XCTAssertFalse(industrialInTop.isEmpty, "Industrial items should rank high when boosted")
     }
 
     func testRankWithVector_avoidedTagRanksLower() {
+        let catalog = MockCatalog.legacyItems
         let profile = makeProfile(primaryKey: "scandinavian", primaryLabel: "Scandinavian")
         let recs = RecommendationEngine.recommend(
             profile: profile,
-            catalog: MockCatalog.items,
+            catalog: catalog,
             context: .livingRoom,
             goal: .refresh,
             limit: 30
@@ -227,13 +229,13 @@ final class CalibrationTests: XCTestCase {
         vector.weights["industrial"] = -0.5
 
         let reranked = RecommendationEngine.rankWithVector(
-            recs, vector: vector, catalog: MockCatalog.items,
+            recs, vector: vector, catalog: catalog,
             context: .livingRoom, goal: .refresh
         )
 
         // Industrial items should NOT be near the top
         let topSkus = reranked.prefix(5).map(\.skuId)
-        let industrialSkus = Set(MockCatalog.items.filter { $0.tags.contains(.industrial) }.map(\.skuId))
+        let industrialSkus = Set(catalog.filter { $0.tags.contains(.industrial) }.map(\.skuId))
         let industrialInTop = topSkus.filter { industrialSkus.contains($0) }
         XCTAssertTrue(industrialInTop.isEmpty, "Avoided industrial items should not rank in top 5")
     }

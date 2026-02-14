@@ -24,6 +24,9 @@ struct ResultScreen: View {
     @State private var discoverySignals: DiscoverySignals?
     @State private var namingResult: ProfileNamingResult?
     @State private var readingText: String = ""
+    @State private var expandedMaterialIds: Set<String> = []
+    @State private var materialShopItem: DiscoveryItem? = nil
+    @State private var toastMessage: String? = nil
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -53,6 +56,7 @@ struct ResultScreen: View {
                     inYourWorldSection
                     justOutsideSection
                     outThereSection
+                    shopEntrySection
                     detailsSection
 
                     if favoritedIds.count >= 3 {
@@ -64,6 +68,18 @@ struct ResultScreen: View {
 
             if favoritedIds.count >= 3 {
                 boardDock
+            }
+
+            if let toast = toastMessage {
+                Text(toast)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .padding(.bottom, favoritedIds.count >= 3 ? 60 : 16)
             }
         }
         .background(Theme.bg.ignoresSafeArea())
@@ -86,6 +102,9 @@ struct ResultScreen: View {
             if let image = cardImage {
                 ImageShareSheet(image: image)
             }
+        }
+        .sheet(item: $materialShopItem) { material in
+            MaterialShopSheet(material: material)
         }
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
@@ -425,13 +444,17 @@ struct ResultScreen: View {
                 .padding(.top, 4)
 
             ForEach(items) { item in
-                Button {
-                    DiscoverySignalStore.recordViewed(item.id, profileId: profile.id, item: item)
-                    path.append(Route.discoveryDetail(item))
-                } label: {
-                    discoveryCard(item)
+                if item.type == .material {
+                    materialCard(item)
+                } else {
+                    Button {
+                        DiscoverySignalStore.recordViewed(item.id, profileId: profile.id, item: item)
+                        path.append(Route.discoveryDetail(item))
+                    } label: {
+                        discoveryCard(item)
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
     }
@@ -479,6 +502,138 @@ struct ResultScreen: View {
             } label: {
                 Label("Not for me", systemImage: "hand.thumbsdown")
             }
+        }
+    }
+
+    private func materialCard(_ item: DiscoveryItem) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(item.type.rawValue.uppercased())
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
+                Spacer()
+                Button {
+                    Haptics.tap()
+                    toggleDiscoverySaved(item)
+                } label: {
+                    Image(systemName: isDiscoverySaved(item) ? "bookmark.fill" : "bookmark")
+                        .font(.caption2)
+                        .foregroundStyle(isDiscoverySaved(item) ? Theme.accent : Theme.muted)
+                }
+                .buttonStyle(.plain)
+            }
+
+            Text(item.title)
+                .font(.system(.subheadline, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+
+            if !item.primaryRegion.isEmpty {
+                Text(item.primaryRegion)
+                    .font(.caption2)
+                    .foregroundStyle(Theme.muted)
+            }
+
+            Button {
+                EventLogger.shared.logEvent(
+                    "material_shop_tapped",
+                    tasteProfileId: profile.id,
+                    metadata: ["itemId": item.id, "title": item.title]
+                )
+                materialShopItem = item
+            } label: {
+                Text("Shop With This")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    if expandedMaterialIds.contains(item.id) {
+                        expandedMaterialIds.remove(item.id)
+                    } else {
+                        expandedMaterialIds.insert(item.id)
+                    }
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "chevron.right")
+                        .font(.caption2)
+                        .rotationEffect(expandedMaterialIds.contains(item.id) ? .degrees(90) : .degrees(0))
+                    Text("Why this matters")
+                        .font(.caption)
+                }
+                .foregroundStyle(Theme.muted)
+            }
+            .buttonStyle(.plain)
+
+            if expandedMaterialIds.contains(item.id) {
+                Text(item.body)
+                    .font(.caption)
+                    .foregroundStyle(Theme.muted)
+                    .lineSpacing(2)
+            }
+
+            HStack {
+                Spacer()
+                Button {
+                    applyMaterialShift(item)
+                } label: {
+                    Text("Lean into this")
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .labSurface(padded: true, bordered: true)
+        .contextMenu {
+            Button(role: .destructive) {
+                dismissDiscoveryItem(item)
+            } label: {
+                Label("Not for me", systemImage: "hand.thumbsdown")
+            }
+        }
+    }
+
+    private func applyMaterialShift(_ item: DiscoveryItem) {
+        let synthetic = AxisMapping.syntheticVector(fromAxes: item.axisWeights)
+        var scaled: [String: Double] = [:]
+        for (key, val) in synthetic.weights {
+            scaled[key] = val * 0.15
+        }
+
+        var record = calibrationRecord ?? CalibrationRecord(
+            tasteProfileId: profile.id,
+            vector: resolveBaseVector(),
+            swipeCount: 0,
+            createdAt: Date()
+        )
+
+        for (key, val) in scaled {
+            record.vector.weights[key, default: 0] += val
+        }
+        record.vector = record.vector.normalized()
+
+        CalibrationStore.save(record)
+        calibrationRecord = record
+
+        EventLogger.shared.logEvent(
+            "material_shift_applied",
+            tasteProfileId: profile.id,
+            metadata: ["itemId": item.id, "title": item.title]
+        )
+
+        Haptics.success()
+        withAnimation { toastMessage = "Profile shifted." }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation { toastMessage = nil }
         }
     }
 
@@ -585,6 +740,31 @@ struct ResultScreen: View {
             .padding(.vertical, 10)
         }
         .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Shop Entry
+
+    private var shopEntrySection: some View {
+        Button {
+            Haptics.tap()
+            EventLogger.shared.logEvent("shop_opened", tasteProfileId: profile.id)
+            path.append(Route.shop(profile))
+        } label: {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("ENTER SHOP")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.2)
+
+                Text("Browse inside your profile.")
+                    .font(.system(.subheadline, design: .serif, weight: .medium))
+                    .foregroundStyle(Theme.ink)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .labSurface(padded: true, bordered: true)
+        }
+        .buttonStyle(.plain)
+        .padding(.top, 8)
     }
 
     // MARK: - Details (Collapsed)

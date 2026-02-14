@@ -1,5 +1,18 @@
 import Foundation
 
+// MARK: - Item Category
+
+enum ItemCategory: String, Codable, CaseIterable {
+    case lighting
+    case textile
+    case art
+    case furniture
+    case decor
+    case unknown
+}
+
+// MARK: - Catalog Item
+
 struct CatalogItem {
     let skuId: String
     let title: String
@@ -8,7 +21,48 @@ struct CatalogItem {
     let imageURL: String
     let productURL: String
     let tags: [TasteEngine.CanonicalTag]
+    let brand: String
+    let currency: String
+    let category: ItemCategory
+    let materialTags: [String]
+    let commerceAxisWeights: [String: Double]
+    let discoveryClusters: [String]
+    let affiliateURL: String?
+
+    init(
+        skuId: String,
+        title: String,
+        merchant: String,
+        price: Double,
+        imageURL: String,
+        productURL: String,
+        tags: [TasteEngine.CanonicalTag],
+        brand: String = "",
+        currency: String = "USD",
+        category: ItemCategory = .furniture,
+        materialTags: [String] = [],
+        commerceAxisWeights: [String: Double] = [:],
+        discoveryClusters: [String] = [],
+        affiliateURL: String? = nil
+    ) {
+        self.skuId = skuId
+        self.title = title
+        self.merchant = merchant
+        self.price = price
+        self.imageURL = imageURL
+        self.productURL = productURL
+        self.tags = tags
+        self.brand = brand.isEmpty ? merchant : brand
+        self.currency = currency
+        self.category = category
+        self.materialTags = materialTags
+        self.commerceAxisWeights = commerceAxisWeights
+        self.discoveryClusters = discoveryClusters
+        self.affiliateURL = affiliateURL
+    }
 }
+
+// MARK: - Catalog Provider
 
 protocol CatalogProvider {
     var items: [CatalogItem] { get }
@@ -20,7 +74,30 @@ struct MockCatalogProvider: CatalogProvider {
 
 enum MockCatalog {
 
-    static let items: [CatalogItem] = [
+    private static var cachedItems: [CatalogItem]?
+    private static var commerceProvider: CommerceInventoryProvider = LocalSeedCommerceProvider()
+
+    /// Primary catalog access point. Loads from commerce_seed.json, falls back to legacy 30 items.
+    static var items: [CatalogItem] {
+        if let cached = cachedItems { return cached }
+        let loaded = commerceProvider.load()
+        cachedItems = loaded
+        return loaded
+    }
+
+    /// Replace the commerce provider (for testing).
+    static func setProvider(_ provider: CommerceInventoryProvider) {
+        commerceProvider = provider
+        cachedItems = nil
+    }
+
+    /// Reset cached items (for testing).
+    static func resetCache() {
+        cachedItems = nil
+    }
+
+    /// Hardcoded legacy catalog (30 items). Used as fallback when commerce_seed.json is unavailable.
+    static let legacyItems: [CatalogItem] = [
         // Mid-Century Modern
         CatalogItem(skuId: "sku-001", title: "Walnut Credenza", merchant: "Elm & Oak", price: 899,
                     imageURL: "https://cdn.burgundy.app/images/sku-001.jpg",

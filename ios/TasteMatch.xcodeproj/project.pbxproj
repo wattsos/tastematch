@@ -65,6 +65,14 @@
 		I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21006000000000000000006 /* DiscoverySignalStoreTests.swift */; };
 		J11001000000000000000001 /* AxisPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = J21001000000000000000001 /* AxisPresentation.swift */; };
 		J11002000000000000000002 /* AxisPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = J21002000000000000000002 /* AxisPresentationTests.swift */; };
+		K11001000000000000000001 /* MaterialShopSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = K21001000000000000000001 /* MaterialShopSheet.swift */; };
+		K11002000000000000000002 /* AxisMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = K21002000000000000000002 /* AxisMappingTests.swift */; };
+		L11001000000000000000001 /* commerce_seed.json in Resources */ = {isa = PBXBuildFile; fileRef = L21001000000000000000001 /* commerce_seed.json */; };
+		L11002000000000000000002 /* CommerceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = L21002000000000000000002 /* CommerceProviderTests.swift */; };
+		L11003000000000000000003 /* CommerceRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = L21003000000000000000003 /* CommerceRankingTests.swift */; };
+		L11004000000000000000004 /* commerce_seed.json in Resources */ = {isa = PBXBuildFile; fileRef = L21001000000000000000001 /* commerce_seed.json */; };
+		M11001000000000000000001 /* ShopScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21001000000000000000001 /* ShopScreen.swift */; };
+		M11002000000000000000002 /* ShopScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21002000000000000000002 /* ShopScreenTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +147,13 @@
 		I21006000000000000000006 /* DiscoverySignalStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySignalStoreTests.swift; sourceTree = "<group>"; };
 		J21001000000000000000001 /* AxisPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisPresentation.swift; sourceTree = "<group>"; };
 		J21002000000000000000002 /* AxisPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisPresentationTests.swift; sourceTree = "<group>"; };
+		K21001000000000000000001 /* MaterialShopSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialShopSheet.swift; sourceTree = "<group>"; };
+		K21002000000000000000002 /* AxisMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisMappingTests.swift; sourceTree = "<group>"; };
+		L21001000000000000000001 /* commerce_seed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commerce_seed.json; sourceTree = "<group>"; };
+		L21002000000000000000002 /* CommerceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceProviderTests.swift; sourceTree = "<group>"; };
+		L21003000000000000000003 /* CommerceRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceRankingTests.swift; sourceTree = "<group>"; };
+		M21001000000000000000001 /* ShopScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreen.swift; sourceTree = "<group>"; };
+		M21002000000000000000002 /* ShopScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreenTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +197,7 @@
 				C21002000000000000000002 /* catalog.json */,
 				C21001000000000000000001 /* CatalogLoader.swift */,
 				A20004000000000000000004 /* CompareScreen.swift */,
+				L21001000000000000000001 /* commerce_seed.json */,
 				A20005000000000000000005 /* ContextScreen.swift */,
 				I21004000000000000000004 /* DiscoveryCacheStore.swift */,
 				H21001000000000000000001 /* DiscoveryEngine.swift */,
@@ -198,6 +214,7 @@
 				A20009000000000000000009 /* FavoritesStore.swift */,
 				A2000A00000000000000000A /* Haptics.swift */,
 				A2000B00000000000000000B /* HistoryScreen.swift */,
+				K21001000000000000000001 /* MaterialShopSheet.swift */,
 				A2000C00000000000000000C /* MockCatalog.swift */,
 				A2000D00000000000000000D /* Models.swift */,
 				A2000E00000000000000000E /* OnboardingScreen.swift */,
@@ -207,6 +224,7 @@
 				A20011000000000000000011 /* RecommendationEngine.swift */,
 				A20012000000000000000012 /* ResultScreen.swift */,
 				A20013000000000000000013 /* SettingsScreen.swift */,
+				M21001000000000000000001 /* ShopScreen.swift */,
 				B21003000000000000000003 /* ShareTextBuilder.swift */,
 				A20014000000000000000014 /* SignalExtractor.swift */,
 				D21003000000000000000003 /* SwipeDeckView.swift */,
@@ -226,14 +244,18 @@
 		A80003000000000000000003 /* TasteMatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				K21002000000000000000002 /* AxisMappingTests.swift */,
 				J21002000000000000000002 /* AxisPresentationTests.swift */,
 				D21005000000000000000005 /* CalibrationTests.swift */,
+				L21002000000000000000002 /* CommerceProviderTests.swift */,
+				L21003000000000000000003 /* CommerceRankingTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
 				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
 				I21006000000000000000006 /* DiscoverySignalStoreTests.swift */,
 				F21002000000000000000002 /* ProfileNamingTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
+				M21002000000000000000002 /* ShopScreenTests.swift */,
 				B21006000000000000000006 /* ShareTextTests.swift */,
 				B21005000000000000000005 /* TasteBadgeTests.swift */,
 				A2001B00000000000000001B /* TasteEngineTests.swift */,
@@ -276,6 +298,7 @@
 			buildPhases = (
 				AA0002000000000000000002 /* Sources */,
 				A70002000000000000000002 /* Frameworks */,
+				LB0001000000000000000001 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -332,7 +355,16 @@
 			files = (
 				A1001A00000000000000001A /* Assets.xcassets in Resources */,
 				C11002000000000000000002 /* catalog.json in Resources */,
+				L11001000000000000000001 /* commerce_seed.json in Resources */,
 				I11005000000000000000005 /* discovery.ndjson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		LB0001000000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				L11004000000000000000004 /* commerce_seed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +399,7 @@
 				A10009000000000000000009 /* FavoritesStore.swift in Sources */,
 				A1000A00000000000000000A /* Haptics.swift in Sources */,
 				A1000B00000000000000000B /* HistoryScreen.swift in Sources */,
+				K11001000000000000000001 /* MaterialShopSheet.swift in Sources */,
 				A1000C00000000000000000C /* MockCatalog.swift in Sources */,
 				A1000D00000000000000000D /* Models.swift in Sources */,
 				A1000E00000000000000000E /* OnboardingScreen.swift in Sources */,
@@ -376,6 +409,7 @@
 				A10011000000000000000011 /* RecommendationEngine.swift in Sources */,
 				A10012000000000000000012 /* ResultScreen.swift in Sources */,
 				A10013000000000000000013 /* SettingsScreen.swift in Sources */,
+				M11001000000000000000001 /* ShopScreen.swift in Sources */,
 				B11003000000000000000003 /* ShareTextBuilder.swift in Sources */,
 				A10014000000000000000014 /* SignalExtractor.swift in Sources */,
 				D11003000000000000000003 /* SwipeDeckView.swift in Sources */,
@@ -393,14 +427,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				K11002000000000000000002 /* AxisMappingTests.swift in Sources */,
 				J11002000000000000000002 /* AxisPresentationTests.swift in Sources */,
 				D11005000000000000000005 /* CalibrationTests.swift in Sources */,
+				L11002000000000000000002 /* CommerceProviderTests.swift in Sources */,
+				L11003000000000000000003 /* CommerceRankingTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
 				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
 				I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */,
 				F11002000000000000000002 /* ProfileNamingTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,
+				M11002000000000000000002 /* ShopScreenTests.swift in Sources */,
 				B11006000000000000000006 /* ShareTextTests.swift in Sources */,
 				B11005000000000000000005 /* TasteBadgeTests.swift in Sources */,
 				A1001B00000000000000001B /* TasteEngineTests.swift in Sources */,

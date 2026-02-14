@@ -84,10 +84,12 @@ struct RecommendationItem: Identifiable, Codable, Hashable {
     let imageURL: String?
     let merchant: String
     let productURL: String
+    let brand: String
+    let affiliateURL: String?
 
     var id: String { skuId }
 
-    init(skuId: String, title: String, subtitle: String, reason: String, attributionConfidence: Double, price: Double = 0, imageURL: String? = nil, merchant: String, productURL: String) {
+    init(skuId: String, title: String, subtitle: String, reason: String, attributionConfidence: Double, price: Double = 0, imageURL: String? = nil, merchant: String, productURL: String, brand: String = "", affiliateURL: String? = nil) {
         self.skuId = skuId
         self.title = title
         self.subtitle = subtitle
@@ -97,6 +99,31 @@ struct RecommendationItem: Identifiable, Codable, Hashable {
         self.imageURL = imageURL
         self.merchant = merchant
         self.productURL = productURL
+        self.brand = brand.isEmpty ? merchant : brand
+        self.affiliateURL = affiliateURL
+    }
+
+    // Backward-compatible decoding — old JSON without brand/affiliateURL still decodes.
+    enum CodingKeys: String, CodingKey {
+        case skuId, title, subtitle, reason, attributionConfidence
+        case price, imageURL, merchant, productURL, brand, affiliateURL
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        skuId = try c.decode(String.self, forKey: .skuId)
+        title = try c.decode(String.self, forKey: .title)
+        subtitle = try c.decode(String.self, forKey: .subtitle)
+        reason = try c.decode(String.self, forKey: .reason)
+        let rawConf = try c.decode(Double.self, forKey: .attributionConfidence)
+        attributionConfidence = min(1, max(0, rawConf))
+        price = try c.decodeIfPresent(Double.self, forKey: .price) ?? 0
+        imageURL = try c.decodeIfPresent(String.self, forKey: .imageURL)
+        merchant = try c.decode(String.self, forKey: .merchant)
+        productURL = try c.decode(String.self, forKey: .productURL)
+        let rawBrand = try c.decodeIfPresent(String.self, forKey: .brand) ?? ""
+        brand = rawBrand.isEmpty ? merchant : rawBrand
+        affiliateURL = try c.decodeIfPresent(String.self, forKey: .affiliateURL)
     }
 }
 

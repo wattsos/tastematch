@@ -40,14 +40,15 @@ final class RecommendationEngineTests: XCTestCase {
 
     func testRecommendations_limitLargerThanCatalog_returnsAll() {
         let profile = makeProfile()
+        let catalog = MockCatalog.legacyItems
         let recs = RecommendationEngine.recommend(
             profile: profile,
-            catalog: MockCatalog.items,
+            catalog: catalog,
             context: .livingRoom,
             goal: .refresh,
             limit: 100
         )
-        XCTAssertEqual(recs.count, MockCatalog.items.count)
+        XCTAssertEqual(recs.count, catalog.count)
     }
 
     // MARK: - Determinism

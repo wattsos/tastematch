@@ -13,6 +13,7 @@ enum Route: Hashable {
     case about
     case board([RecommendationItem])
     case discoveryDetail(DiscoveryItem)
+    case shop(TasteProfile)
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -42,6 +43,9 @@ enum Route: Hashable {
         case .discoveryDetail(let item):
             hasher.combine("discoveryDetail")
             hasher.combine(item.id)
+        case .shop(let profile):
+            hasher.combine("shop")
+            hasher.combine(profile.id)
         }
     }
 
@@ -67,6 +71,8 @@ enum Route: Hashable {
             return true
         case (.discoveryDetail(let a), .discoveryDetail(let b)):
             return a.id == b.id
+        case (.shop(let p1), .shop(let p2)):
+            return p1.id == p2.id
         default:
             return false
         }
@@ -195,6 +201,8 @@ struct MainTabView: View {
             BoardScreen(path: path, items: items)
         case .discoveryDetail(let item):
             DiscoveryDetailScreen(item: item)
+        case .shop(let profile):
+            ShopScreen(path: path, profile: profile)
         }
     }
 }

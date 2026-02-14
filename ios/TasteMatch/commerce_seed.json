@@ -1,0 +1,4907 @@
+[
+  {
+    "skuId": "commerce-001",
+    "title": "Meridian Pendant",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 791.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-001.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-001",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-001",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.28,
+      "warmCool": 0.26,
+      "softStructured": 0.66,
+      "organicIndustrial": 0.84,
+      "lightDark": 0.53,
+      "neutralSaturated": -0.24,
+      "sparseLayered": 0.13
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-002",
+    "title": "Halo Chandelier",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 544.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-002.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-002",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-002",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass",
+      "crystal"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.38,
+      "warmCool": -0.65,
+      "softStructured": 0.8,
+      "organicIndustrial": 0.82,
+      "lightDark": 0.55,
+      "neutralSaturated": -0.38,
+      "sparseLayered": 0.11
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-003",
+    "title": "Eclipse Floor Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 315.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-003.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-003",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-003",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "steel",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.79,
+      "warmCool": -0.15,
+      "softStructured": 0.12,
+      "organicIndustrial": 0.05,
+      "lightDark": -0.57,
+      "neutralSaturated": -0.53,
+      "sparseLayered": -0.76
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-004",
+    "title": "Orbit Table Lamp",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 1151.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-004.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-004",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-004",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "fabric"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.73,
+      "warmCool": 0.33,
+      "softStructured": 0.04,
+      "organicIndustrial": -0.14,
+      "lightDark": -0.28,
+      "neutralSaturated": -0.35,
+      "sparseLayered": -0.46
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-005",
+    "title": "Arc Wall Sconce",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 674.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-005.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-005",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-005",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.78,
+      "warmCool": 0.28,
+      "softStructured": 0.51,
+      "organicIndustrial": 0.25,
+      "lightDark": 0.62,
+      "neutralSaturated": 0.56,
+      "sparseLayered": 0.61
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-006",
+    "title": "Zenith Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 865.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-006.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-006",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-006",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.53,
+      "warmCool": 0.66,
+      "softStructured": 0.27,
+      "organicIndustrial": -0.37,
+      "lightDark": 0.06,
+      "neutralSaturated": 0.34,
+      "sparseLayered": 0.46
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-007",
+    "title": "Nova Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 787.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-007.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-007",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-007",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "cord"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.08,
+      "warmCool": 0.48,
+      "softStructured": -0.55,
+      "organicIndustrial": -0.74,
+      "lightDark": -0.13,
+      "neutralSaturated": -0.18,
+      "sparseLayered": 0.32
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-008",
+    "title": "Crescent Floor Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 259.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-008.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-008",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-008",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.26,
+      "warmCool": 0.15,
+      "softStructured": -0.32,
+      "organicIndustrial": -0.52,
+      "lightDark": -0.38,
+      "neutralSaturated": -0.49,
+      "sparseLayered": -0.17
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-009",
+    "title": "Apex Table Lamp",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 1022.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-009.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-009",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-009",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.36,
+      "warmCool": -0.54,
+      "softStructured": 0.73,
+      "organicIndustrial": 0.27,
+      "lightDark": 0.16,
+      "neutralSaturated": -0.35,
+      "sparseLayered": 0.07
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-010",
+    "title": "Prism Pendant",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 1060.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-010.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-010",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-010",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.37,
+      "warmCool": 0.62,
+      "softStructured": -0.22,
+      "organicIndustrial": -0.33,
+      "lightDark": 0.29,
+      "neutralSaturated": 0.26,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-011",
+    "title": "Aura Chandelier",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 702.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-011.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-011",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-011",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "iron",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.24,
+      "warmCool": 0.31,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.78,
+      "lightDark": 0.46,
+      "neutralSaturated": -0.22,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-012",
+    "title": "Signal Wall Sconce",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 168.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-012.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-012",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-012",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "copper",
+      "opal glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.37,
+      "warmCool": -0.66,
+      "softStructured": 0.82,
+      "organicIndustrial": 0.95,
+      "lightDark": 0.59,
+      "neutralSaturated": -0.47,
+      "sparseLayered": 0.08
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-013",
+    "title": "Beacon Table Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 1196.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-013.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-013",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-013",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "stone",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.8,
+      "warmCool": -0.12,
+      "softStructured": 0.26,
+      "organicIndustrial": -0.08,
+      "lightDark": -0.56,
+      "neutralSaturated": -0.47,
+      "sparseLayered": -0.69
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-014",
+    "title": "Ridge Pendant",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 368.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-014.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-014",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-014",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "rattan",
+      "bamboo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.68,
+      "warmCool": 0.34,
+      "softStructured": 0.09,
+      "organicIndustrial": -0.21,
+      "lightDark": -0.23,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.54
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-015",
+    "title": "Summit Floor Lamp",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 633.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-015.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-015",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-015",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "oak",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.65,
+      "warmCool": 0.37,
+      "softStructured": 0.56,
+      "organicIndustrial": 0.17,
+      "lightDark": 0.62,
+      "neutralSaturated": 0.52,
+      "sparseLayered": 0.54
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-016",
+    "title": "Basin Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 930.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-016.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-016",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-016",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.61,
+      "warmCool": 0.74,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.38,
+      "lightDark": 0.07,
+      "neutralSaturated": 0.32,
+      "sparseLayered": 0.57
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-017",
+    "title": "Dune Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 1062.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-017.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-017",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-017",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "steel",
+      "mesh"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.15,
+      "warmCool": 0.47,
+      "softStructured": -0.57,
+      "organicIndustrial": -0.64,
+      "lightDark": -0.13,
+      "neutralSaturated": -0.27,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-018",
+    "title": "Mesa Table Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 144.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-018.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-018",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-018",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "terrazzo",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.26,
+      "warmCool": 0.24,
+      "softStructured": -0.36,
+      "organicIndustrial": -0.6,
+      "lightDark": -0.39,
+      "neutralSaturated": -0.54,
+      "sparseLayered": -0.14
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-019",
+    "title": "Fjord Chandelier",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 545.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-019.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-019",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-019",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "amber glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.45,
+      "warmCool": -0.49,
+      "softStructured": 0.84,
+      "organicIndustrial": 0.25,
+      "lightDark": 0.17,
+      "neutralSaturated": -0.22,
+      "sparseLayered": 0.02
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-020",
+    "title": "Atlas Wall Sconce",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 562.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-020.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-020",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-020",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "ceramic",
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.4,
+      "warmCool": 0.54,
+      "softStructured": -0.24,
+      "organicIndustrial": -0.43,
+      "lightDark": 0.31,
+      "neutralSaturated": 0.26,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-021",
+    "title": "Lumen Pendant",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 146.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-021.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-021",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-021",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.18,
+      "warmCool": 0.26,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.43,
+      "neutralSaturated": -0.34,
+      "sparseLayered": 0.23
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-022",
+    "title": "Opal Chandelier",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 308.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-022.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-022",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-022",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass",
+      "crystal"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.36,
+      "warmCool": -0.53,
+      "softStructured": 0.81,
+      "organicIndustrial": 0.9,
+      "lightDark": 0.65,
+      "neutralSaturated": -0.35,
+      "sparseLayered": 0.05
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-023",
+    "title": "Onyx Floor Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 175.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-023.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-023",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-023",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "steel",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.81,
+      "warmCool": -0.21,
+      "softStructured": 0.19,
+      "organicIndustrial": 0.04,
+      "lightDark": -0.57,
+      "neutralSaturated": -0.42,
+      "sparseLayered": -0.76
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-024",
+    "title": "Ivory Table Lamp",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 522.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-024.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-024",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-024",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "fabric"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.73,
+      "warmCool": 0.46,
+      "softStructured": 0.06,
+      "organicIndustrial": -0.25,
+      "lightDark": -0.31,
+      "neutralSaturated": -0.41,
+      "sparseLayered": -0.54
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-025",
+    "title": "Slate Wall Sconce",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 349.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-025.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-025",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-025",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.77,
+      "warmCool": 0.29,
+      "softStructured": 0.56,
+      "organicIndustrial": 0.21,
+      "lightDark": 0.53,
+      "neutralSaturated": 0.58,
+      "sparseLayered": 0.65
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-026",
+    "title": "Ember Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 1165.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-026.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-026",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-026",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.67,
+      "warmCool": 0.76,
+      "softStructured": 0.25,
+      "organicIndustrial": -0.3,
+      "lightDark": 0.05,
+      "neutralSaturated": 0.38,
+      "sparseLayered": 0.43
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-027",
+    "title": "Frost Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 495.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-027.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-027",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-027",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "cord"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.18,
+      "warmCool": 0.46,
+      "softStructured": -0.45,
+      "organicIndustrial": -0.71,
+      "lightDark": -0.21,
+      "neutralSaturated": -0.13,
+      "sparseLayered": 0.38
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-028",
+    "title": "Dusk Floor Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 696.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-028.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-028",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-028",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.27,
+      "warmCool": 0.14,
+      "softStructured": -0.33,
+      "organicIndustrial": -0.53,
+      "lightDark": -0.39,
+      "neutralSaturated": -0.49,
+      "sparseLayered": -0.16
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-029",
+    "title": "Brine Table Lamp",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 130.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-029.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-029",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-029",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.39,
+      "warmCool": -0.5,
+      "softStructured": 0.86,
+      "organicIndustrial": 0.25,
+      "lightDark": 0.27,
+      "neutralSaturated": -0.37,
+      "sparseLayered": -0.05
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-030",
+    "title": "Flint Pendant",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 740.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-030.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-030",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-030",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.43,
+      "warmCool": 0.56,
+      "softStructured": -0.26,
+      "organicIndustrial": -0.34,
+      "lightDark": 0.26,
+      "neutralSaturated": 0.32,
+      "sparseLayered": 0.72
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-031",
+    "title": "Cinder Chandelier",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 541.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-031.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-031",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-031",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "iron",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.19,
+      "warmCool": 0.3,
+      "softStructured": 0.77,
+      "organicIndustrial": 0.75,
+      "lightDark": 0.53,
+      "neutralSaturated": -0.34,
+      "sparseLayered": 0.18
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-032",
+    "title": "Moss Wall Sconce",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 827.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-032.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-032",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-032",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "copper",
+      "opal glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.33,
+      "warmCool": -0.63,
+      "softStructured": 0.84,
+      "organicIndustrial": 0.83,
+      "lightDark": 0.59,
+      "neutralSaturated": -0.32,
+      "sparseLayered": 0.18
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-033",
+    "title": "Reed Table Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 148.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-033.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-033",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-033",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "stone",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.85,
+      "warmCool": -0.24,
+      "softStructured": 0.27,
+      "organicIndustrial": 0.06,
+      "lightDark": -0.54,
+      "neutralSaturated": -0.52,
+      "sparseLayered": -0.75
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-034",
+    "title": "Sage Pendant",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 1011.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-034.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-034",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-034",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "rattan",
+      "bamboo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.67,
+      "warmCool": 0.42,
+      "softStructured": 0.18,
+      "organicIndustrial": -0.18,
+      "lightDark": -0.38,
+      "neutralSaturated": -0.35,
+      "sparseLayered": -0.53
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-035",
+    "title": "Clay Floor Lamp",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 818.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-035.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-035",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-035",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "oak",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.77,
+      "warmCool": 0.24,
+      "softStructured": 0.44,
+      "organicIndustrial": 0.14,
+      "lightDark": 0.61,
+      "neutralSaturated": 0.46,
+      "sparseLayered": 0.62
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-036",
+    "title": "Birch Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 879.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-036.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-036",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-036",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.55,
+      "warmCool": 0.72,
+      "softStructured": 0.26,
+      "organicIndustrial": -0.3,
+      "lightDark": 0.16,
+      "neutralSaturated": 0.46,
+      "sparseLayered": 0.43
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-037",
+    "title": "Cedar Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 546.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-037.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-037",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-037",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "steel",
+      "mesh"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.06,
+      "warmCool": 0.42,
+      "softStructured": -0.46,
+      "organicIndustrial": -0.68,
+      "lightDark": -0.24,
+      "neutralSaturated": -0.16,
+      "sparseLayered": 0.31
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-038",
+    "title": "Aspen Table Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 550.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-038.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-038",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-038",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "terrazzo",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.38,
+      "warmCool": 0.13,
+      "softStructured": -0.24,
+      "organicIndustrial": -0.54,
+      "lightDark": -0.39,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.19
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-039",
+    "title": "Alder Chandelier",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 233.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-039.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-039",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-039",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "amber glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.46,
+      "warmCool": -0.53,
+      "softStructured": 0.86,
+      "organicIndustrial": 0.35,
+      "lightDark": 0.26,
+      "neutralSaturated": -0.24,
+      "sparseLayered": -0.05
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-040",
+    "title": "Thorn Wall Sconce",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 348.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-040.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-040",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-040",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "ceramic",
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.34,
+      "warmCool": 0.64,
+      "softStructured": -0.14,
+      "organicIndustrial": -0.41,
+      "lightDark": 0.32,
+      "neutralSaturated": 0.24,
+      "sparseLayered": 0.77
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-041",
+    "title": "Fern Pendant",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 1046.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-041.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-041",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-041",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.12,
+      "warmCool": 0.35,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.72,
+      "lightDark": 0.54,
+      "neutralSaturated": -0.33,
+      "sparseLayered": 0.27
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-042",
+    "title": "Quartz Chandelier",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 976.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-042.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-042",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-042",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass",
+      "crystal"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.24,
+      "warmCool": -0.55,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.95,
+      "lightDark": 0.54,
+      "neutralSaturated": -0.34,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-043",
+    "title": "Granite Floor Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 317.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-043.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-043",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-043",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "steel",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.75,
+      "warmCool": -0.21,
+      "softStructured": 0.17,
+      "organicIndustrial": 0.05,
+      "lightDark": -0.64,
+      "neutralSaturated": -0.58,
+      "sparseLayered": -0.75
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-044",
+    "title": "Basalt Table Lamp",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 438.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-044.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-044",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-044",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "fabric"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.64,
+      "warmCool": 0.47,
+      "softStructured": 0.06,
+      "organicIndustrial": -0.18,
+      "lightDark": -0.32,
+      "neutralSaturated": -0.32,
+      "sparseLayered": -0.49
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-045",
+    "title": "Cobalt Wall Sconce",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 1131.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-045.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-045",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-045",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.64,
+      "warmCool": 0.38,
+      "softStructured": 0.45,
+      "organicIndustrial": 0.27,
+      "lightDark": 0.56,
+      "neutralSaturated": 0.44,
+      "sparseLayered": 0.59
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-046",
+    "title": "Umber Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 892.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-046.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-046",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-046",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.57,
+      "warmCool": 0.72,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.32,
+      "lightDark": 0.11,
+      "neutralSaturated": 0.36,
+      "sparseLayered": 0.53
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-047",
+    "title": "Sienna Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 67.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-047.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-047",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-047",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "cord"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.17,
+      "warmCool": 0.51,
+      "softStructured": -0.46,
+      "organicIndustrial": -0.66,
+      "lightDark": -0.17,
+      "neutralSaturated": -0.22,
+      "sparseLayered": 0.23
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-048",
+    "title": "Ochre Floor Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 819.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-048.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-048",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-048",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.33,
+      "warmCool": 0.17,
+      "softStructured": -0.24,
+      "organicIndustrial": -0.56,
+      "lightDark": -0.43,
+      "neutralSaturated": -0.53,
+      "sparseLayered": -0.21
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-049",
+    "title": "Jet Table Lamp",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 522.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-049.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-049",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-049",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.43,
+      "warmCool": -0.56,
+      "softStructured": 0.79,
+      "organicIndustrial": 0.37,
+      "lightDark": 0.23,
+      "neutralSaturated": -0.24,
+      "sparseLayered": 0.02
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-050",
+    "title": "Pearl Pendant",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 407.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-050.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-050",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-050",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.41,
+      "warmCool": 0.52,
+      "softStructured": -0.23,
+      "organicIndustrial": -0.41,
+      "lightDark": 0.31,
+      "neutralSaturated": 0.32,
+      "sparseLayered": 0.69
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-051",
+    "title": "Meridian Chandelier",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 567.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-051.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-051",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-051",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "iron",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.25,
+      "warmCool": 0.3,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.85,
+      "lightDark": 0.45,
+      "neutralSaturated": -0.37,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-052",
+    "title": "Halo Wall Sconce",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 783.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-052.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-052",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-052",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "copper",
+      "opal glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.33,
+      "warmCool": -0.55,
+      "softStructured": 0.84,
+      "organicIndustrial": 0.93,
+      "lightDark": 0.56,
+      "neutralSaturated": -0.45,
+      "sparseLayered": 0.02
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-053",
+    "title": "Eclipse Table Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 343.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-053.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-053",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-053",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "stone",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.8,
+      "warmCool": -0.14,
+      "softStructured": 0.13,
+      "organicIndustrial": -0.01,
+      "lightDark": -0.58,
+      "neutralSaturated": -0.55,
+      "sparseLayered": -0.67
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-054",
+    "title": "Orbit Pendant",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 626.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-054.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-054",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-054",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "rattan",
+      "bamboo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.74,
+      "warmCool": 0.42,
+      "softStructured": 0.02,
+      "organicIndustrial": -0.16,
+      "lightDark": -0.26,
+      "neutralSaturated": -0.46,
+      "sparseLayered": -0.51
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-055",
+    "title": "Arc Floor Lamp",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 265.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-055.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-055",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-055",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "oak",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.77,
+      "warmCool": 0.3,
+      "softStructured": 0.43,
+      "organicIndustrial": 0.16,
+      "lightDark": 0.66,
+      "neutralSaturated": 0.49,
+      "sparseLayered": 0.65
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-056",
+    "title": "Zenith Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 823.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-056.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-056",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-056",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.68,
+      "warmCool": 0.72,
+      "softStructured": 0.37,
+      "organicIndustrial": -0.24,
+      "lightDark": 0.12,
+      "neutralSaturated": 0.44,
+      "sparseLayered": 0.5
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-057",
+    "title": "Nova Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 1008.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-057.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-057",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-057",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "steel",
+      "mesh"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.11,
+      "warmCool": 0.56,
+      "softStructured": -0.46,
+      "organicIndustrial": -0.7,
+      "lightDark": -0.24,
+      "neutralSaturated": -0.24,
+      "sparseLayered": 0.32
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-058",
+    "title": "Crescent Table Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 934.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-058.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-058",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-058",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "terrazzo",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.22,
+      "softStructured": -0.34,
+      "organicIndustrial": -0.67,
+      "lightDark": -0.43,
+      "neutralSaturated": -0.54,
+      "sparseLayered": -0.23
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-059",
+    "title": "Apex Chandelier",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 678.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-059.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-059",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-059",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "amber glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.46,
+      "warmCool": -0.54,
+      "softStructured": 0.83,
+      "organicIndustrial": 0.33,
+      "lightDark": 0.13,
+      "neutralSaturated": -0.31,
+      "sparseLayered": 0.01
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-060",
+    "title": "Prism Wall Sconce",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 537.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-060.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-060",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-060",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "ceramic",
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.35,
+      "warmCool": 0.59,
+      "softStructured": -0.14,
+      "organicIndustrial": -0.39,
+      "lightDark": 0.33,
+      "neutralSaturated": 0.36,
+      "sparseLayered": 0.74
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-061",
+    "title": "Aura Pendant",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 497.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-061.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-061",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-061",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.28,
+      "warmCool": 0.28,
+      "softStructured": 0.74,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.57,
+      "neutralSaturated": -0.31,
+      "sparseLayered": 0.24
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-062",
+    "title": "Signal Chandelier",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 685.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-062.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-062",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-062",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass",
+      "crystal"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.28,
+      "warmCool": -0.64,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.89,
+      "lightDark": 0.52,
+      "neutralSaturated": -0.43,
+      "sparseLayered": 0.13
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-063",
+    "title": "Beacon Floor Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 524.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-063.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-063",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-063",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "steel",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.85,
+      "warmCool": -0.21,
+      "softStructured": 0.14,
+      "organicIndustrial": 0.02,
+      "lightDark": -0.68,
+      "neutralSaturated": -0.52,
+      "sparseLayered": -0.69
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-064",
+    "title": "Ridge Table Lamp",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 96.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-064.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-064",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-064",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "fabric"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.68,
+      "warmCool": 0.34,
+      "softStructured": 0.09,
+      "organicIndustrial": -0.27,
+      "lightDark": -0.32,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.53
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-065",
+    "title": "Summit Wall Sconce",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 929.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-065.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-065",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-065",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.68,
+      "warmCool": 0.34,
+      "softStructured": 0.55,
+      "organicIndustrial": 0.16,
+      "lightDark": 0.53,
+      "neutralSaturated": 0.42,
+      "sparseLayered": 0.61
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-066",
+    "title": "Basin Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 1200.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-066.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-066",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-066",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.58,
+      "warmCool": 0.72,
+      "softStructured": 0.34,
+      "organicIndustrial": -0.28,
+      "lightDark": 0.14,
+      "neutralSaturated": 0.47,
+      "sparseLayered": 0.45
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-067",
+    "title": "Dune Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 88.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-067.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-067",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-067",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "cord"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.04,
+      "warmCool": 0.44,
+      "softStructured": -0.47,
+      "organicIndustrial": -0.69,
+      "lightDark": -0.25,
+      "neutralSaturated": -0.17,
+      "sparseLayered": 0.34
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-068",
+    "title": "Mesa Floor Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 255.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-068.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-068",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-068",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.28,
+      "warmCool": 0.24,
+      "softStructured": -0.36,
+      "organicIndustrial": -0.55,
+      "lightDark": -0.33,
+      "neutralSaturated": -0.56,
+      "sparseLayered": -0.28
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-069",
+    "title": "Fjord Table Lamp",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 419.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-069.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-069",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-069",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.37,
+      "warmCool": -0.43,
+      "softStructured": 0.78,
+      "organicIndustrial": 0.33,
+      "lightDark": 0.13,
+      "neutralSaturated": -0.27,
+      "sparseLayered": 0.02
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-070",
+    "title": "Atlas Pendant",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 181.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-070.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-070",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-070",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.44,
+      "warmCool": 0.66,
+      "softStructured": -0.18,
+      "organicIndustrial": -0.46,
+      "lightDark": 0.38,
+      "neutralSaturated": 0.35,
+      "sparseLayered": 0.68
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-071",
+    "title": "Lumen Chandelier",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 551.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-071.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-071",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-071",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "iron",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.22,
+      "warmCool": 0.3,
+      "softStructured": 0.67,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.55,
+      "neutralSaturated": -0.36,
+      "sparseLayered": 0.27
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-072",
+    "title": "Opal Wall Sconce",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 786.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-072.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-072",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-072",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "copper",
+      "opal glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.25,
+      "warmCool": -0.57,
+      "softStructured": 0.79,
+      "organicIndustrial": 0.94,
+      "lightDark": 0.67,
+      "neutralSaturated": -0.44,
+      "sparseLayered": 0.15
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-073",
+    "title": "Onyx Table Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 676.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-073.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-073",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-073",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "stone",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.8,
+      "warmCool": -0.21,
+      "softStructured": 0.24,
+      "organicIndustrial": -0.04,
+      "lightDark": -0.54,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.77
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-074",
+    "title": "Ivory Pendant",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 1066.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-074.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-074",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-074",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "rattan",
+      "bamboo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.74,
+      "warmCool": 0.39,
+      "softStructured": 0.12,
+      "organicIndustrial": -0.22,
+      "lightDark": -0.38,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.55
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-075",
+    "title": "Slate Floor Lamp",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 306.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-075.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-075",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-075",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "oak",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.75,
+      "warmCool": 0.27,
+      "softStructured": 0.56,
+      "organicIndustrial": 0.23,
+      "lightDark": 0.56,
+      "neutralSaturated": 0.42,
+      "sparseLayered": 0.67
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-076",
+    "title": "Ember Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 162.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-076.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-076",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-076",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.64,
+      "warmCool": 0.7,
+      "softStructured": 0.34,
+      "organicIndustrial": -0.27,
+      "lightDark": 0.12,
+      "neutralSaturated": 0.4,
+      "sparseLayered": 0.55
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-077",
+    "title": "Frost Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 171.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-077.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-077",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-077",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "steel",
+      "mesh"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.06,
+      "warmCool": 0.53,
+      "softStructured": -0.53,
+      "organicIndustrial": -0.69,
+      "lightDark": -0.2,
+      "neutralSaturated": -0.2,
+      "sparseLayered": 0.29
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-078",
+    "title": "Dusk Table Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 912.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-078.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-078",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-078",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "terrazzo",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.33,
+      "warmCool": 0.23,
+      "softStructured": -0.34,
+      "organicIndustrial": -0.64,
+      "lightDark": -0.46,
+      "neutralSaturated": -0.55,
+      "sparseLayered": -0.26
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-079",
+    "title": "Brine Chandelier",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 673.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-079.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-079",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-079",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "amber glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.36,
+      "warmCool": -0.55,
+      "softStructured": 0.75,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.24,
+      "neutralSaturated": -0.22,
+      "sparseLayered": 0.0
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-080",
+    "title": "Flint Wall Sconce",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 386.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-080.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-080",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-080",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "ceramic",
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.34,
+      "warmCool": 0.55,
+      "softStructured": -0.24,
+      "organicIndustrial": -0.45,
+      "lightDark": 0.22,
+      "neutralSaturated": 0.31,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-081",
+    "title": "Cinder Pendant",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 1171.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-081.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-081",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-081",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.19,
+      "warmCool": 0.33,
+      "softStructured": 0.64,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.5,
+      "neutralSaturated": -0.24,
+      "sparseLayered": 0.21
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-082",
+    "title": "Moss Chandelier",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 598.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-082.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-082",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-082",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass",
+      "crystal"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.31,
+      "warmCool": -0.65,
+      "softStructured": 0.73,
+      "organicIndustrial": 0.97,
+      "lightDark": 0.6,
+      "neutralSaturated": -0.35,
+      "sparseLayered": 0.08
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-083",
+    "title": "Reed Floor Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 149.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-083.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-083",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-083",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "steel",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.78,
+      "warmCool": -0.27,
+      "softStructured": 0.14,
+      "organicIndustrial": 0.01,
+      "lightDark": -0.63,
+      "neutralSaturated": -0.42,
+      "sparseLayered": -0.76
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-084",
+    "title": "Sage Table Lamp",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 933.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-084.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-084",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-084",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "fabric"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.68,
+      "warmCool": 0.45,
+      "softStructured": 0.06,
+      "organicIndustrial": -0.2,
+      "lightDark": -0.31,
+      "neutralSaturated": -0.41,
+      "sparseLayered": -0.44
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-085",
+    "title": "Clay Wall Sconce",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 1189.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-085.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-085",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-085",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.67,
+      "warmCool": 0.32,
+      "softStructured": 0.52,
+      "organicIndustrial": 0.24,
+      "lightDark": 0.67,
+      "neutralSaturated": 0.45,
+      "sparseLayered": 0.55
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-086",
+    "title": "Birch Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 815.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-086.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-086",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-086",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.55,
+      "warmCool": 0.65,
+      "softStructured": 0.23,
+      "organicIndustrial": -0.38,
+      "lightDark": 0.09,
+      "neutralSaturated": 0.42,
+      "sparseLayered": 0.47
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-087",
+    "title": "Cedar Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 328.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-087.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-087",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-087",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "cord"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.13,
+      "warmCool": 0.53,
+      "softStructured": -0.51,
+      "organicIndustrial": -0.67,
+      "lightDark": -0.13,
+      "neutralSaturated": -0.15,
+      "sparseLayered": 0.32
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-088",
+    "title": "Aspen Floor Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 815.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-088.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-088",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-088",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": 0.19,
+      "softStructured": -0.29,
+      "organicIndustrial": -0.58,
+      "lightDark": -0.33,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.27
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-089",
+    "title": "Alder Table Lamp",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 253.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-089.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-089",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-089",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.43,
+      "warmCool": -0.46,
+      "softStructured": 0.81,
+      "organicIndustrial": 0.27,
+      "lightDark": 0.14,
+      "neutralSaturated": -0.27,
+      "sparseLayered": 0.03
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-090",
+    "title": "Thorn Pendant",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 1135.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-090.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-090",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-090",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.4,
+      "warmCool": 0.6,
+      "softStructured": -0.27,
+      "organicIndustrial": -0.47,
+      "lightDark": 0.29,
+      "neutralSaturated": 0.27,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-091",
+    "title": "Fern Chandelier",
+    "brand": "Faro Studio",
+    "merchant": "Faro Studio",
+    "price": 169.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-091.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-091",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-091",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "iron",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.13,
+      "warmCool": 0.35,
+      "softStructured": 0.71,
+      "organicIndustrial": 0.87,
+      "lightDark": 0.58,
+      "neutralSaturated": -0.27,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-092",
+    "title": "Quartz Wall Sconce",
+    "brand": "Lumi\u00e8re Atelier",
+    "merchant": "Lumi\u00e8re Atelier",
+    "price": 111.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-092.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-092",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-092",
+    "category": "lighting",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "copper",
+      "opal glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.26,
+      "warmCool": -0.6,
+      "softStructured": 0.82,
+      "organicIndustrial": 0.97,
+      "lightDark": 0.55,
+      "neutralSaturated": -0.39,
+      "sparseLayered": 0.12
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-093",
+    "title": "Granite Table Lamp",
+    "brand": "Volta Lighting",
+    "merchant": "Volta Lighting",
+    "price": 623.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-093.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-093",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-093",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "stone",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.87,
+      "warmCool": -0.22,
+      "softStructured": 0.17,
+      "organicIndustrial": 0.03,
+      "lightDark": -0.54,
+      "neutralSaturated": -0.53,
+      "sparseLayered": -0.67
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-094",
+    "title": "Basalt Pendant",
+    "brand": "Cast & Glow",
+    "merchant": "Cast & Glow",
+    "price": 392.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-094.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-094",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-094",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "rattan",
+      "bamboo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.63,
+      "warmCool": 0.45,
+      "softStructured": 0.11,
+      "organicIndustrial": -0.21,
+      "lightDark": -0.33,
+      "neutralSaturated": -0.43,
+      "sparseLayered": -0.42
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-095",
+    "title": "Cobalt Floor Lamp",
+    "brand": "Nocturn Labs",
+    "merchant": "Nocturn Labs",
+    "price": 524.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-095.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-095",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-095",
+    "category": "lighting",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "oak",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.7,
+      "warmCool": 0.38,
+      "softStructured": 0.53,
+      "organicIndustrial": 0.21,
+      "lightDark": 0.59,
+      "neutralSaturated": 0.45,
+      "sparseLayered": 0.58
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-096",
+    "title": "Umber Desk Lamp",
+    "brand": "Photon Craft",
+    "merchant": "Photon Craft",
+    "price": 924.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-096.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-096",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-096",
+    "category": "lighting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.62,
+      "warmCool": 0.74,
+      "softStructured": 0.25,
+      "organicIndustrial": -0.29,
+      "lightDark": 0.17,
+      "neutralSaturated": 0.39,
+      "sparseLayered": 0.53
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-097",
+    "title": "Sienna Pendant",
+    "brand": "Arc & Filament",
+    "merchant": "Arc & Filament",
+    "price": 203.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-097.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-097",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-097",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "steel",
+      "mesh"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.18,
+      "warmCool": 0.52,
+      "softStructured": -0.54,
+      "organicIndustrial": -0.75,
+      "lightDark": -0.19,
+      "neutralSaturated": -0.19,
+      "sparseLayered": 0.23
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-098",
+    "title": "Ochre Table Lamp",
+    "brand": "Lux Forge",
+    "merchant": "Lux Forge",
+    "price": 1191.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-098.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-098",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-098",
+    "category": "lighting",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "terrazzo",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": 0.19,
+      "softStructured": -0.36,
+      "organicIndustrial": -0.55,
+      "lightDark": -0.4,
+      "neutralSaturated": -0.47,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-099",
+    "title": "Jet Chandelier",
+    "brand": "Candela Works",
+    "merchant": "Candela Works",
+    "price": 375.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-099.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-099",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-099",
+    "category": "lighting",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "amber glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.35,
+      "warmCool": -0.42,
+      "softStructured": 0.76,
+      "organicIndustrial": 0.31,
+      "lightDark": 0.18,
+      "neutralSaturated": -0.23,
+      "sparseLayered": 0.0
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-100",
+    "title": "Pearl Wall Sconce",
+    "brand": "Beam Theory",
+    "merchant": "Beam Theory",
+    "price": 1063.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-100.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-100",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-100",
+    "category": "lighting",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "ceramic",
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.46,
+      "warmCool": 0.56,
+      "softStructured": -0.15,
+      "organicIndustrial": -0.41,
+      "lightDark": 0.37,
+      "neutralSaturated": 0.3,
+      "sparseLayered": 0.75
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-101",
+    "title": "Solstice Throw Blanket",
+    "brand": "Thread Collective",
+    "merchant": "Thread Collective",
+    "price": 161.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-101.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-101",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-101",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "wool",
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": 0.31,
+      "softStructured": 0.78,
+      "organicIndustrial": 0.8,
+      "lightDark": 0.44,
+      "neutralSaturated": -0.29,
+      "sparseLayered": 0.18
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-102",
+    "title": "Drift Accent Cushion",
+    "brand": "Loom & Weave",
+    "merchant": "Loom & Weave",
+    "price": 281.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-102.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-102",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-102",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "linen",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": -0.61,
+      "softStructured": 0.77,
+      "organicIndustrial": 0.85,
+      "lightDark": 0.63,
+      "neutralSaturated": -0.39,
+      "sparseLayered": 0.06
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-103",
+    "title": "Whisper Area Rug",
+    "brand": "Fiber Atelier",
+    "merchant": "Fiber Atelier",
+    "price": 380.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-103.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-103",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-103",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "jute",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.87,
+      "warmCool": -0.16,
+      "softStructured": 0.23,
+      "organicIndustrial": 0.05,
+      "lightDark": -0.62,
+      "neutralSaturated": -0.47,
+      "sparseLayered": -0.65
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-104",
+    "title": "Terrain Curtain Panel",
+    "brand": "Knot Studio",
+    "merchant": "Knot Studio",
+    "price": 471.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-104.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-104",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-104",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "linen",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": 0.33,
+      "softStructured": 0.1,
+      "organicIndustrial": -0.19,
+      "lightDark": -0.24,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.51
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-105",
+    "title": "Haven Duvet Cover",
+    "brand": "Warp & Weft",
+    "merchant": "Warp & Weft",
+    "price": 269.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-105.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-105",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-105",
+    "category": "textile",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "cotton",
+      "percale"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.69,
+      "warmCool": 0.34,
+      "softStructured": 0.49,
+      "organicIndustrial": 0.22,
+      "lightDark": 0.54,
+      "neutralSaturated": 0.5,
+      "sparseLayered": 0.68
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-106",
+    "title": "Fold Table Runner",
+    "brand": "Nubby Textiles",
+    "merchant": "Nubby Textiles",
+    "price": 186.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-106.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-106",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-106",
+    "category": "textile",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "linen",
+      "hemp"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.63,
+      "warmCool": 0.72,
+      "softStructured": 0.36,
+      "organicIndustrial": -0.24,
+      "lightDark": 0.16,
+      "neutralSaturated": 0.38,
+      "sparseLayered": 0.47
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-107",
+    "title": "Ripple Floor Cushion",
+    "brand": "Drape Theory",
+    "merchant": "Drape Theory",
+    "price": 355.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-107.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-107",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-107",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "velvet",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.14,
+      "warmCool": 0.56,
+      "softStructured": -0.57,
+      "organicIndustrial": -0.77,
+      "lightDark": -0.18,
+      "neutralSaturated": -0.13,
+      "sparseLayered": 0.38
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-108",
+    "title": "Cascade Throw Blanket",
+    "brand": "Selvage House",
+    "merchant": "Selvage House",
+    "price": 367.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-108.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-108",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-108",
+    "category": "textile",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "alpaca",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.31,
+      "warmCool": 0.14,
+      "softStructured": -0.28,
+      "organicIndustrial": -0.54,
+      "lightDark": -0.41,
+      "neutralSaturated": -0.47,
+      "sparseLayered": -0.14
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-109",
+    "title": "Plume Accent Cushion",
+    "brand": "Felt Workshop",
+    "merchant": "Felt Workshop",
+    "price": 55.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-109.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-109",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-109",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "silk",
+      "velvet"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.35,
+      "warmCool": -0.53,
+      "softStructured": 0.78,
+      "organicIndustrial": 0.24,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.29,
+      "sparseLayered": 0.05
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-110",
+    "title": "Tuft Area Rug",
+    "brand": "Canvas & Co",
+    "merchant": "Canvas & Co",
+    "price": 111.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-110.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-110",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-110",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "wool",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.33,
+      "warmCool": 0.66,
+      "softStructured": -0.18,
+      "organicIndustrial": -0.44,
+      "lightDark": 0.37,
+      "neutralSaturated": 0.24,
+      "sparseLayered": 0.69
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-111",
+    "title": "Weave Curtain Panel",
+    "brand": "Thread Collective",
+    "merchant": "Thread Collective",
+    "price": 148.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-111.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-111",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-111",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "cotton",
+      "voile"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.24,
+      "warmCool": 0.22,
+      "softStructured": 0.75,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.53,
+      "neutralSaturated": -0.35,
+      "sparseLayered": 0.19
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-112",
+    "title": "Loop Duvet Cover",
+    "brand": "Loom & Weave",
+    "merchant": "Loom & Weave",
+    "price": 189.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-112.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-112",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-112",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "linen",
+      "sateen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": -0.58,
+      "softStructured": 0.79,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.66,
+      "neutralSaturated": -0.45,
+      "sparseLayered": 0.08
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-113",
+    "title": "Strand Table Runner",
+    "brand": "Fiber Atelier",
+    "merchant": "Fiber Atelier",
+    "price": 250.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-113.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-113",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-113",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "cotton",
+      "jute"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.84,
+      "warmCool": -0.19,
+      "softStructured": 0.21,
+      "organicIndustrial": 0.08,
+      "lightDark": -0.63,
+      "neutralSaturated": -0.42,
+      "sparseLayered": -0.67
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-114",
+    "title": "Gauge Throw Blanket",
+    "brand": "Knot Studio",
+    "merchant": "Knot Studio",
+    "price": 157.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-114.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-114",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-114",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "cotton",
+      "waffle knit"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.69,
+      "warmCool": 0.43,
+      "softStructured": 0.14,
+      "organicIndustrial": -0.27,
+      "lightDark": -0.28,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.44
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-115",
+    "title": "Pile Accent Cushion",
+    "brand": "Warp & Weft",
+    "merchant": "Warp & Weft",
+    "price": 162.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-115.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-115",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-115",
+    "category": "textile",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "boucle",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.75,
+      "warmCool": 0.32,
+      "softStructured": 0.48,
+      "organicIndustrial": 0.22,
+      "lightDark": 0.62,
+      "neutralSaturated": 0.53,
+      "sparseLayered": 0.64
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-116",
+    "title": "Nap Throw Blanket",
+    "brand": "Nubby Textiles",
+    "merchant": "Nubby Textiles",
+    "price": 328.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-116.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-116",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-116",
+    "category": "textile",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "wool",
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.65,
+      "warmCool": 0.72,
+      "softStructured": 0.36,
+      "organicIndustrial": -0.28,
+      "lightDark": 0.07,
+      "neutralSaturated": 0.39,
+      "sparseLayered": 0.51
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-117",
+    "title": "Drape Accent Cushion",
+    "brand": "Drape Theory",
+    "merchant": "Drape Theory",
+    "price": 361.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-117.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-117",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-117",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "linen",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.03,
+      "warmCool": 0.47,
+      "softStructured": -0.46,
+      "organicIndustrial": -0.75,
+      "lightDark": -0.26,
+      "neutralSaturated": -0.19,
+      "sparseLayered": 0.38
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-118",
+    "title": "Selvage Area Rug",
+    "brand": "Selvage House",
+    "merchant": "Selvage House",
+    "price": 271.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-118.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-118",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-118",
+    "category": "textile",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "jute",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": 0.25,
+      "softStructured": -0.34,
+      "organicIndustrial": -0.55,
+      "lightDark": -0.4,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.16
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-119",
+    "title": "Warp Curtain Panel",
+    "brand": "Felt Workshop",
+    "merchant": "Felt Workshop",
+    "price": 186.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-119.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-119",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-119",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "linen",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.46,
+      "warmCool": -0.43,
+      "softStructured": 0.74,
+      "organicIndustrial": 0.37,
+      "lightDark": 0.26,
+      "neutralSaturated": -0.26,
+      "sparseLayered": 0.08
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-120",
+    "title": "Twill Duvet Cover",
+    "brand": "Canvas & Co",
+    "merchant": "Canvas & Co",
+    "price": 465.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-120.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-120",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-120",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "cotton",
+      "percale"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.45,
+      "warmCool": 0.58,
+      "softStructured": -0.15,
+      "organicIndustrial": -0.48,
+      "lightDark": 0.31,
+      "neutralSaturated": 0.29,
+      "sparseLayered": 0.73
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-121",
+    "title": "Herringbone Table Runner",
+    "brand": "Thread Collective",
+    "merchant": "Thread Collective",
+    "price": 334.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-121.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-121",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-121",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "linen",
+      "hemp"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.19,
+      "warmCool": 0.35,
+      "softStructured": 0.77,
+      "organicIndustrial": 0.74,
+      "lightDark": 0.46,
+      "neutralSaturated": -0.38,
+      "sparseLayered": 0.26
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-122",
+    "title": "Chevron Floor Cushion",
+    "brand": "Loom & Weave",
+    "merchant": "Loom & Weave",
+    "price": 285.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-122.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-122",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-122",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "velvet",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": -0.64,
+      "softStructured": 0.73,
+      "organicIndustrial": 0.95,
+      "lightDark": 0.67,
+      "neutralSaturated": -0.43,
+      "sparseLayered": 0.09
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-123",
+    "title": "Diamond Throw Blanket",
+    "brand": "Fiber Atelier",
+    "merchant": "Fiber Atelier",
+    "price": 97.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-123.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-123",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-123",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "alpaca",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.73,
+      "warmCool": -0.23,
+      "softStructured": 0.2,
+      "organicIndustrial": -0.06,
+      "lightDark": -0.54,
+      "neutralSaturated": -0.56,
+      "sparseLayered": -0.71
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-124",
+    "title": "Grid Accent Cushion",
+    "brand": "Knot Studio",
+    "merchant": "Knot Studio",
+    "price": 333.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-124.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-124",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-124",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "silk",
+      "velvet"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.66,
+      "warmCool": 0.47,
+      "softStructured": 0.09,
+      "organicIndustrial": -0.16,
+      "lightDark": -0.36,
+      "neutralSaturated": -0.41,
+      "sparseLayered": -0.56
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-125",
+    "title": "Stone Area Rug",
+    "brand": "Warp & Weft",
+    "merchant": "Warp & Weft",
+    "price": 253.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-125.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-125",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-125",
+    "category": "textile",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "wool",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.69,
+      "warmCool": 0.37,
+      "softStructured": 0.43,
+      "organicIndustrial": 0.18,
+      "lightDark": 0.59,
+      "neutralSaturated": 0.57,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-126",
+    "title": "Cloud Curtain Panel",
+    "brand": "Nubby Textiles",
+    "merchant": "Nubby Textiles",
+    "price": 79.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-126.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-126",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-126",
+    "category": "textile",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "cotton",
+      "voile"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.63,
+      "warmCool": 0.71,
+      "softStructured": 0.38,
+      "organicIndustrial": -0.32,
+      "lightDark": 0.08,
+      "neutralSaturated": 0.35,
+      "sparseLayered": 0.44
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-127",
+    "title": "Harbor Duvet Cover",
+    "brand": "Drape Theory",
+    "merchant": "Drape Theory",
+    "price": 412.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-127.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-127",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-127",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "linen",
+      "sateen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.09,
+      "warmCool": 0.53,
+      "softStructured": -0.48,
+      "organicIndustrial": -0.68,
+      "lightDark": -0.28,
+      "neutralSaturated": -0.15,
+      "sparseLayered": 0.26
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-128",
+    "title": "Shore Table Runner",
+    "brand": "Selvage House",
+    "merchant": "Selvage House",
+    "price": 91.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-128.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-128",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-128",
+    "category": "textile",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "cotton",
+      "jute"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": 0.13,
+      "softStructured": -0.26,
+      "organicIndustrial": -0.65,
+      "lightDark": -0.45,
+      "neutralSaturated": -0.44,
+      "sparseLayered": -0.23
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-129",
+    "title": "Delta Throw Blanket",
+    "brand": "Felt Workshop",
+    "merchant": "Felt Workshop",
+    "price": 101.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-129.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-129",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-129",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "cotton",
+      "waffle knit"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.34,
+      "warmCool": -0.58,
+      "softStructured": 0.86,
+      "organicIndustrial": 0.24,
+      "lightDark": 0.14,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.05
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-130",
+    "title": "Meadow Accent Cushion",
+    "brand": "Canvas & Co",
+    "merchant": "Canvas & Co",
+    "price": 329.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-130.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-130",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-130",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "boucle",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.32,
+      "warmCool": 0.52,
+      "softStructured": -0.15,
+      "organicIndustrial": -0.44,
+      "lightDark": 0.27,
+      "neutralSaturated": 0.25,
+      "sparseLayered": 0.63
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-131",
+    "title": "Summit Throw Blanket",
+    "brand": "Thread Collective",
+    "merchant": "Thread Collective",
+    "price": 365.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-131.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-131",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-131",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "wool",
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.34,
+      "softStructured": 0.7,
+      "organicIndustrial": 0.84,
+      "lightDark": 0.5,
+      "neutralSaturated": -0.36,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-132",
+    "title": "Valley Accent Cushion",
+    "brand": "Loom & Weave",
+    "merchant": "Loom & Weave",
+    "price": 456.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-132.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-132",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-132",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "linen",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.37,
+      "warmCool": -0.55,
+      "softStructured": 0.86,
+      "organicIndustrial": 0.9,
+      "lightDark": 0.59,
+      "neutralSaturated": -0.33,
+      "sparseLayered": 0.03
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-133",
+    "title": "Ridge Area Rug",
+    "brand": "Fiber Atelier",
+    "merchant": "Fiber Atelier",
+    "price": 248.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-133.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-133",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-133",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "jute",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.82,
+      "warmCool": -0.17,
+      "softStructured": 0.2,
+      "organicIndustrial": 0.07,
+      "lightDark": -0.67,
+      "neutralSaturated": -0.57,
+      "sparseLayered": -0.68
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-134",
+    "title": "Canopy Curtain Panel",
+    "brand": "Knot Studio",
+    "merchant": "Knot Studio",
+    "price": 64.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-134.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-134",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-134",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "linen",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.74,
+      "warmCool": 0.42,
+      "softStructured": 0.11,
+      "organicIndustrial": -0.23,
+      "lightDark": -0.22,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.51
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-135",
+    "title": "Bower Duvet Cover",
+    "brand": "Warp & Weft",
+    "merchant": "Warp & Weft",
+    "price": 304.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-135.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-135",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-135",
+    "category": "textile",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "cotton",
+      "percale"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.64,
+      "warmCool": 0.33,
+      "softStructured": 0.56,
+      "organicIndustrial": 0.22,
+      "lightDark": 0.64,
+      "neutralSaturated": 0.54,
+      "sparseLayered": 0.55
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-136",
+    "title": "Glen Table Runner",
+    "brand": "Nubby Textiles",
+    "merchant": "Nubby Textiles",
+    "price": 236.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-136.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-136",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-136",
+    "category": "textile",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "linen",
+      "hemp"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.56,
+      "warmCool": 0.67,
+      "softStructured": 0.29,
+      "organicIndustrial": -0.31,
+      "lightDark": 0.04,
+      "neutralSaturated": 0.39,
+      "sparseLayered": 0.53
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-137",
+    "title": "Prairie Floor Cushion",
+    "brand": "Drape Theory",
+    "merchant": "Drape Theory",
+    "price": 202.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-137.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-137",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-137",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "velvet",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.04,
+      "warmCool": 0.57,
+      "softStructured": -0.57,
+      "organicIndustrial": -0.65,
+      "lightDark": -0.27,
+      "neutralSaturated": -0.26,
+      "sparseLayered": 0.34
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-138",
+    "title": "Heath Throw Blanket",
+    "brand": "Selvage House",
+    "merchant": "Selvage House",
+    "price": 396.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-138.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-138",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-138",
+    "category": "textile",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "alpaca",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": 0.21,
+      "softStructured": -0.29,
+      "organicIndustrial": -0.63,
+      "lightDark": -0.46,
+      "neutralSaturated": -0.52,
+      "sparseLayered": -0.17
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-139",
+    "title": "Moor Accent Cushion",
+    "brand": "Felt Workshop",
+    "merchant": "Felt Workshop",
+    "price": 369.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-139.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-139",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-139",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "silk",
+      "velvet"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.34,
+      "warmCool": -0.46,
+      "softStructured": 0.87,
+      "organicIndustrial": 0.32,
+      "lightDark": 0.18,
+      "neutralSaturated": -0.29,
+      "sparseLayered": -0.05
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-140",
+    "title": "Copse Area Rug",
+    "brand": "Canvas & Co",
+    "merchant": "Canvas & Co",
+    "price": 327.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-140.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-140",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-140",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "wool",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.36,
+      "warmCool": 0.54,
+      "softStructured": -0.14,
+      "organicIndustrial": -0.42,
+      "lightDark": 0.34,
+      "neutralSaturated": 0.31,
+      "sparseLayered": 0.75
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-141",
+    "title": "Thicket Curtain Panel",
+    "brand": "Thread Collective",
+    "merchant": "Thread Collective",
+    "price": 411.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-141.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-141",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-141",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "cotton",
+      "voile"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.12,
+      "warmCool": 0.35,
+      "softStructured": 0.72,
+      "organicIndustrial": 0.82,
+      "lightDark": 0.42,
+      "neutralSaturated": -0.23,
+      "sparseLayered": 0.25
+    },
+    "discoveryClusters": [
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-142",
+    "title": "Glade Duvet Cover",
+    "brand": "Loom & Weave",
+    "merchant": "Loom & Weave",
+    "price": 154.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-142.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-142",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-142",
+    "category": "textile",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "linen",
+      "sateen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.35,
+      "warmCool": -0.57,
+      "softStructured": 0.77,
+      "organicIndustrial": 0.87,
+      "lightDark": 0.52,
+      "neutralSaturated": -0.34,
+      "sparseLayered": 0.11
+    },
+    "discoveryClusters": [
+      "industrialDark",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-143",
+    "title": "Brook Table Runner",
+    "brand": "Fiber Atelier",
+    "merchant": "Fiber Atelier",
+    "price": 213.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-143.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-143",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-143",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "cotton",
+      "jute"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.86,
+      "warmCool": -0.18,
+      "softStructured": 0.12,
+      "organicIndustrial": 0.04,
+      "lightDark": -0.65,
+      "neutralSaturated": -0.51,
+      "sparseLayered": -0.73
+    },
+    "discoveryClusters": [
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-144",
+    "title": "Spring Throw Blanket",
+    "brand": "Knot Studio",
+    "merchant": "Knot Studio",
+    "price": 200.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-144.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-144",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-144",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "cotton",
+      "waffle knit"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.66,
+      "warmCool": 0.44,
+      "softStructured": 0.11,
+      "organicIndustrial": -0.27,
+      "lightDark": -0.37,
+      "neutralSaturated": -0.45,
+      "sparseLayered": -0.48
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-145",
+    "title": "Tide Accent Cushion",
+    "brand": "Warp & Weft",
+    "merchant": "Warp & Weft",
+    "price": 335.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-145.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-145",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-145",
+    "category": "textile",
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "boucle",
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.66,
+      "warmCool": 0.33,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.19,
+      "lightDark": 0.56,
+      "neutralSaturated": 0.54,
+      "sparseLayered": 0.54
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-146",
+    "title": "Current Throw Blanket",
+    "brand": "Nubby Textiles",
+    "merchant": "Nubby Textiles",
+    "price": 226.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-146.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-146",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-146",
+    "category": "textile",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "wool",
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.57,
+      "warmCool": 0.73,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.27,
+      "lightDark": 0.03,
+      "neutralSaturated": 0.38,
+      "sparseLayered": 0.52
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-147",
+    "title": "Breeze Accent Cushion",
+    "brand": "Drape Theory",
+    "merchant": "Drape Theory",
+    "price": 38.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-147.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-147",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-147",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "linen",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.07,
+      "warmCool": 0.45,
+      "softStructured": -0.56,
+      "organicIndustrial": -0.74,
+      "lightDark": -0.23,
+      "neutralSaturated": -0.28,
+      "sparseLayered": 0.34
+    },
+    "discoveryClusters": [
+      "warmOrganic"
+    ]
+  },
+  {
+    "skuId": "commerce-148",
+    "title": "Zephyr Area Rug",
+    "brand": "Selvage House",
+    "merchant": "Selvage House",
+    "price": 113.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-148.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-148",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-148",
+    "category": "textile",
+    "tags": [
+      "japandi",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "jute",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.32,
+      "warmCool": 0.23,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.55,
+      "lightDark": -0.35,
+      "neutralSaturated": -0.57,
+      "sparseLayered": -0.14
+    },
+    "discoveryClusters": [
+      "warmOrganic",
+      "minimalNeutral"
+    ]
+  },
+  {
+    "skuId": "commerce-149",
+    "title": "Storm Curtain Panel",
+    "brand": "Felt Workshop",
+    "merchant": "Felt Workshop",
+    "price": 54.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-149.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-149",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-149",
+    "category": "textile",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "linen",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.48,
+      "warmCool": -0.43,
+      "softStructured": 0.86,
+      "organicIndustrial": 0.31,
+      "lightDark": 0.21,
+      "neutralSaturated": -0.27,
+      "sparseLayered": -0.01
+    },
+    "discoveryClusters": [
+      "minimalNeutral",
+      "industrialDark"
+    ]
+  },
+  {
+    "skuId": "commerce-150",
+    "title": "Mist Duvet Cover",
+    "brand": "Canvas & Co",
+    "merchant": "Canvas & Co",
+    "price": 86.0,
+    "currency": "USD",
+    "imageURL": "https://cdn.burgundy.app/commerce/commerce-150.jpg",
+    "productURL": "https://cdn.burgundy.app/products/commerce-150",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/commerce-150",
+    "category": "textile",
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "cotton",
+      "percale"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.32,
+      "warmCool": 0.57,
+      "softStructured": -0.15,
+      "organicIndustrial": -0.38,
+      "lightDark": 0.35,
+      "neutralSaturated": 0.37,
+      "sparseLayered": 0.63
+    },
+    "discoveryClusters": [
+      "layeredSaturated",
+      "warmOrganic"
+    ]
+  }
+]

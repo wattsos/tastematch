@@ -71,7 +71,9 @@ struct RecommendationEngine {
                 price: entry.item.price,
                 imageURL: entry.item.imageURL,
                 merchant: entry.item.merchant,
-                productURL: entry.item.productURL
+                productURL: entry.item.productURL,
+                brand: entry.item.brand,
+                affiliateURL: entry.item.affiliateURL
             )
         }
     }
@@ -129,6 +131,99 @@ struct RecommendationEngine {
         }
 
         return sorted.map(\.item)
+    }
+    // MARK: - Commerce Ranking
+
+    /// Rank catalog items using axis-based scoring. Single entry point for commerce inventory.
+    /// Score = 0.6 × vector alignment + 0.2 × material boost + 0.1 × cluster boost + 0.1 × category priority.
+    static func rankCommerceItems(
+        vector: TasteVector,
+        axisScores: AxisScores,
+        items: [CatalogItem],
+        materialFilter: String? = nil,
+        categoryFilter: ItemCategory? = nil
+    ) -> [RecommendationItem] {
+        let dominantCluster = DiscoveryEngine.identifyCluster(axisScores)
+        let normalized = vector.normalized()
+
+        var filtered = items
+        if let mat = materialFilter {
+            let lower = mat.lowercased()
+            filtered = filtered.filter { item in
+                item.materialTags.contains { $0.lowercased().contains(lower) }
+            }
+        }
+        if let cat = categoryFilter {
+            filtered = filtered.filter { $0.category == cat }
+        }
+
+        let scored: [(item: CatalogItem, score: Double)] = filtered.map { item in
+            // 0.6 — vector alignment via item's commerce axis weights
+            let alignment: Double
+            if !item.commerceAxisWeights.isEmpty {
+                alignment = DiscoveryEngine.vectorAlignment(
+                    axisScores: axisScores,
+                    itemWeights: item.commerceAxisWeights
+                )
+            } else {
+                // Fallback: use tag-based alignment
+                var tagScore = 0.0
+                for tag in item.tags {
+                    let key = String(describing: tag)
+                    tagScore += normalized.weights[key, default: 0.0]
+                }
+                alignment = max(0, min(1, (tagScore + 1) / 2))
+            }
+
+            // 0.2 — material boost (any materialTag overlap with vector influences)
+            let materialBoost: Double = {
+                guard !item.materialTags.isEmpty else { return 0.5 }
+                let influences = Set(normalized.influences)
+                let overlap = item.materialTags.filter { influences.contains($0) }.count
+                return overlap > 0 ? 1.0 : 0.3
+            }()
+
+            // 0.1 — cluster boost
+            let clusterBoost: Double = item.discoveryClusters.contains(dominantCluster) ? 1.0 : 0.0
+
+            // 0.1 — category priority (lighting > textile > other)
+            let categoryPriority: Double = {
+                switch item.category {
+                case .lighting: return 1.0
+                case .textile:  return 0.8
+                default:        return 0.5
+                }
+            }()
+
+            let score = 0.6 * alignment
+                + 0.2 * materialBoost
+                + 0.1 * clusterBoost
+                + 0.1 * categoryPriority
+
+            return (item, score)
+        }
+
+        let sorted = scored.sorted {
+            if $0.score != $1.score { return $0.score > $1.score }
+            return $0.item.skuId < $1.item.skuId
+        }
+
+        return sorted.map { entry in
+            let subtitle = "\(entry.item.brand) — $\(Int(entry.item.price))"
+            return RecommendationItem(
+                skuId: entry.item.skuId,
+                title: entry.item.title,
+                subtitle: subtitle,
+                reason: "",
+                attributionConfidence: min(1, max(0, entry.score)),
+                price: entry.item.price,
+                imageURL: entry.item.imageURL,
+                merchant: entry.item.merchant,
+                productURL: entry.item.productURL,
+                brand: entry.item.brand,
+                affiliateURL: entry.item.affiliateURL
+            )
+        }
     }
 }
 

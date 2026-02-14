@@ -54,11 +54,15 @@ struct SettingsScreen: View {
                     }
                     Button("Cancel", role: .cancel) {}
                 } message: {
-                    Text("The welcome screen will appear next time you open ItMe.")
+                    Text("The welcome screen will appear next time you open \(Brand.name).")
                 }
             }
 
             Section("About") {
+                NavigationLink(value: Route.about) {
+                    Label("About \(Brand.name)", systemImage: "info.circle")
+                        .foregroundStyle(Theme.espresso)
+                }
                 HStack {
                     Text("Version")
                         .foregroundStyle(Theme.espresso)
@@ -72,13 +76,6 @@ struct SettingsScreen: View {
                     Spacer()
                     Text(buildNumber)
                         .foregroundStyle(Theme.clay)
-                }
-                HStack {
-                    Text("Website")
-                        .foregroundStyle(Theme.espresso)
-                    Spacer()
-                    Text("itme2.com")
-                        .foregroundStyle(Theme.accent)
                 }
             }
         }

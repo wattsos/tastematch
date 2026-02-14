@@ -1,43 +1,65 @@
 import SwiftUI
 import UIKit
 
-// MARK: - ItMe Design System
+// MARK: - Cultural Lab Design System
 
 enum Theme {
 
-    // MARK: - Adaptive Palette
+    // MARK: - Neutral Palette
 
-    /// Warm terracotta — primary accent for buttons, links, active states
-    static let accent = Color(light: .init(red: 0.82, green: 0.45, blue: 0.33),
-                              dark: .init(red: 0.90, green: 0.52, blue: 0.40))
+    /// Off-white page background
+    static let bg = Color(light: .init(red: 0.96, green: 0.96, blue: 0.95, alpha: 1),
+                          dark: .init(red: 0.10, green: 0.10, blue: 0.10, alpha: 1))
 
-    /// Soft blush — secondary accent for highlights, badges, subtle emphasis
-    static let blush = Color(light: .init(red: 0.93, green: 0.78, blue: 0.72),
-                             dark: .init(red: 0.45, green: 0.35, blue: 0.32))
+    /// Content surface — pure white
+    static let surface = Color(light: .init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1),
+                               dark: .init(red: 0.14, green: 0.14, blue: 0.13, alpha: 1))
 
-    /// Warm cream — card backgrounds, section fills (dark: charcoal)
-    static let cream = Color(light: .init(red: 0.98, green: 0.96, blue: 0.93),
-                             dark: .init(red: 0.14, green: 0.13, blue: 0.12))
+    /// Primary text — near-black
+    static let ink = Color(light: .init(red: 0.06, green: 0.06, blue: 0.06, alpha: 1),
+                           dark: .init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1))
 
-    /// Deep espresso — primary text (dark: warm white)
-    static let espresso = Color(light: .init(red: 0.18, green: 0.14, blue: 0.12),
-                                dark: .init(red: 0.95, green: 0.93, blue: 0.90))
+    /// Secondary text / captions
+    static let muted = Color(light: .init(red: 0.38, green: 0.38, blue: 0.38, alpha: 1),
+                             dark: .init(red: 0.62, green: 0.62, blue: 0.62, alpha: 1))
 
-    /// Soft clay — secondary text, captions
-    static let clay = Color(light: .init(red: 0.55, green: 0.48, blue: 0.44),
-                            dark: .init(red: 0.65, green: 0.60, blue: 0.56))
+    /// Hairline separators
+    static let hairline = Color.black.opacity(0.08)
 
-    /// Sage green — success, strong match
-    static let sage = Color(light: .init(red: 0.55, green: 0.71, blue: 0.56),
-                            dark: .init(red: 0.60, green: 0.78, blue: 0.62))
+    /// Radius
+    static let radius: CGFloat = 8
 
-    /// Warm amber — good match, mid-confidence
-    static let amber = Color(light: .init(red: 0.87, green: 0.68, blue: 0.35),
-                             dark: .init(red: 0.92, green: 0.75, blue: 0.42))
+    // MARK: - Accent (burgundy)
 
-    /// Muted rose — partial match, low-confidence
-    static let rose = Color(light: .init(red: 0.76, green: 0.52, blue: 0.52),
-                            dark: .init(red: 0.82, green: 0.58, blue: 0.58))
+    /// Primary accent — burgundy
+    static let accent = Color(light: .init(red: 0.427, green: 0.122, blue: 0.169, alpha: 1),
+                              dark: .init(red: 0.58, green: 0.20, blue: 0.25, alpha: 1))
+
+    /// Pressed / darker accent
+    static let accentPressed = Color(light: .init(red: 0.306, green: 0.078, blue: 0.114, alpha: 1),
+                                     dark: .init(red: 0.48, green: 0.15, blue: 0.20, alpha: 1))
+
+    // MARK: - Legacy Aliases (keep other files compiling)
+
+    static let offWhite = bg
+    static let cream = bg
+    static let espresso = ink
+    static let clay = muted
+    static let blush = hairline
+
+    // MARK: - Match Colors (desaturated)
+
+    /// Cooler sage green — strong match
+    static let sage = Color(light: .init(red: 0.50, green: 0.65, blue: 0.50, alpha: 1),
+                            dark: .init(red: 0.55, green: 0.72, blue: 0.55, alpha: 1))
+
+    /// Less-warm amber — good match
+    static let amber = Color(light: .init(red: 0.75, green: 0.62, blue: 0.35, alpha: 1),
+                             dark: .init(red: 0.80, green: 0.68, blue: 0.42, alpha: 1))
+
+    /// Cooler rose — partial match
+    static let rose = Color(light: .init(red: 0.65, green: 0.48, blue: 0.48, alpha: 1),
+                            dark: .init(red: 0.72, green: 0.54, blue: 0.54, alpha: 1))
 
     // MARK: - Semantic Colors
 
@@ -45,19 +67,16 @@ enum Theme {
     static let goodMatch = amber
     static let partialMatch = rose
 
-    static let favorite = Color(light: .init(red: 0.84, green: 0.32, blue: 0.37),
-                                dark: .init(red: 0.90, green: 0.38, blue: 0.42))
-
-    /// Surface for cards on top of the system background
-    static let surface = Color(light: .init(red: 1.0, green: 0.99, blue: 0.97),
-                               dark: .init(red: 0.18, green: 0.17, blue: 0.16))
+    static let favorite = Color(light: .init(red: 0.84, green: 0.32, blue: 0.37, alpha: 1),
+                                dark: .init(red: 0.90, green: 0.38, blue: 0.42, alpha: 1))
 
     // MARK: - Typography Helpers
 
-    static let displayFont: Font = .system(.largeTitle, design: .serif, weight: .bold)
-    static let headlineFont: Font = .system(.title3, design: .serif, weight: .semibold)
+    static let displayFont: Font = .system(size: 48, weight: .bold, design: .serif)
+    static let headlineFont: Font = .system(.title3, design: .default, weight: .semibold)
     static let bodyFont: Font = .system(.body, design: .default)
     static let captionFont: Font = .system(.caption, design: .default)
+    static let labelFont: Font = .system(.caption, design: .default, weight: .medium)
 }
 
 // MARK: - Adaptive Color Initializer
@@ -72,11 +91,43 @@ extension Color {
 
 // MARK: - View Modifiers
 
-extension View {
-    func itmeCardStyle() -> some View {
-        self
-            .padding()
+struct LabSurface: ViewModifier {
+    var padded: Bool = true
+    var bordered: Bool = true
+
+    func body(content: Content) -> some View {
+        content
+            .padding(padded ? 16 : 0)
             .background(Theme.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                    .stroke(bordered ? Theme.hairline : .clear, lineWidth: 1)
+            )
+            .shadow(color: .clear, radius: 0) // ensure no shadows
+    }
+}
+
+extension View {
+    func labSurface(padded: Bool = true, bordered: Bool = true) -> some View {
+        modifier(LabSurface(padded: padded, bordered: bordered))
+    }
+
+    /// Editorial section label: uppercase, tracked, muted
+    func sectionLabel() -> some View {
+        self
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(Theme.muted)
+            .tracking(1.2)
+    }
+}
+
+// MARK: - Hairline Divider
+
+struct HairlineDivider: View {
+    var body: some View {
+        Rectangle()
+            .fill(Theme.hairline)
+            .frame(height: 1)
     }
 }

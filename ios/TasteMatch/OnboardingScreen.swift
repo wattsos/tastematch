@@ -25,14 +25,14 @@ struct OnboardingScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             // Logo
-            Text("ItMe")
+            Text(Brand.name)
                 .font(Theme.displayFont)
-                .foregroundStyle(Theme.espresso)
+                .foregroundStyle(Theme.ink)
                 .padding(.top, 56)
 
-            Text("Discover your taste")
+            Text(Brand.tagline)
                 .font(.system(.subheadline, design: .serif))
-                .foregroundStyle(Theme.clay)
+                .foregroundStyle(Theme.muted)
                 .padding(.top, 4)
 
             // Pages
@@ -70,7 +70,7 @@ struct OnboardingScreen: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Theme.accent)
-                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
             }
             .padding(.horizontal, 24)
 

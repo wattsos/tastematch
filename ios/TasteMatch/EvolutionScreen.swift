@@ -31,7 +31,7 @@ struct EvolutionScreen: View {
                 }
             }
         }
-        .navigationTitle("Your Evolution")
+        .navigationTitle("Evolution")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             history = ProfileStore.loadAll()
@@ -42,9 +42,10 @@ struct EvolutionScreen: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Taste Over Time")
-                .font(Theme.headlineFont)
-                .foregroundStyle(Theme.espresso)
+            Text("OVER TIME")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.2)
             Text("How your primary style has shifted across \(history.count) analyses.")
                 .font(.subheadline)
                 .foregroundStyle(Theme.clay)
@@ -145,7 +146,7 @@ struct EvolutionScreen: View {
                 }
             }
         }
-        .itmeCardStyle()
+        .labSurface()
     }
 
     // MARK: - Legend
@@ -165,21 +166,17 @@ struct EvolutionScreen: View {
                         Text(point.tagLabel)
                             .font(.subheadline.weight(.medium))
                             .foregroundStyle(Theme.espresso)
-                        Text("\(Int(point.confidence * 100))% confidence — \(fullDate(point.date))")
-                            .font(.caption)
-                            .foregroundStyle(Theme.clay)
+                        Text("\(fullDate(point.date))")
+                            .font(.caption2)
+                            .foregroundStyle(Theme.muted)
                     }
                     Spacer()
                     if i > 0 {
                         let prev = dataPoints[i - 1]
                         let delta = point.confidence - prev.confidence
-                        HStack(spacing: 2) {
-                            Image(systemName: delta >= 0 ? "arrow.up.right" : "arrow.down.right")
-                                .font(.caption2)
-                            Text("\(Int(abs(delta) * 100))%")
-                                .font(.caption2.monospacedDigit())
-                        }
-                        .foregroundStyle(delta >= 0 ? Theme.sage : Theme.rose)
+                        Image(systemName: delta >= 0 ? "arrow.up.right" : "arrow.down.right")
+                            .font(.caption2)
+                            .foregroundStyle(delta >= 0 ? Theme.sage : Theme.rose)
                     }
                 }
             }

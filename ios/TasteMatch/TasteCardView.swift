@@ -9,9 +9,9 @@ struct TasteCardView: View {
         VStack(spacing: 0) {
             // Header
             VStack(spacing: 6) {
-                Text("ItMe")
-                    .font(.system(.caption, design: .serif, weight: .semibold))
-                    .foregroundStyle(Theme.clay)
+                Text(Brand.name.uppercased())
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
                     .tracking(2)
 
                 if let primary = profile.tags.first {
@@ -57,9 +57,9 @@ struct TasteCardView: View {
                         }
                         .frame(height: 6)
 
-                        Text("\(Int(tag.confidence * 100))%")
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(Theme.clay)
+                        Text(alignmentWord(tag.confidence))
+                            .font(.caption2)
+                            .foregroundStyle(Theme.muted)
                             .frame(width: 36, alignment: .leading)
                     }
                 }
@@ -85,24 +85,32 @@ struct TasteCardView: View {
                 .frame(height: 1)
 
             HStack {
-                Text("itme2.com")
+                Text(Brand.domain)
                     .font(.caption2)
-                    .foregroundStyle(Theme.clay)
+                    .foregroundStyle(Theme.muted)
                 Spacer()
-                Text("Discover your taste")
+                Text(Brand.tagline)
                     .font(.caption2)
-                    .foregroundStyle(Theme.clay)
+                    .foregroundStyle(Theme.muted)
             }
             .padding(.horizontal, 24)
             .padding(.vertical, 12)
         }
         .background(Theme.cream)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: Theme.radius)
                 .stroke(Theme.blush, lineWidth: 1)
         )
         .frame(width: 320)
+    }
+
+    private func alignmentWord(_ confidence: Double) -> String {
+        switch confidence {
+        case 0.8...: return "High"
+        case 0.5...: return "Moderate"
+        default:     return "Low"
+        }
     }
 
     private var primaryLabel: String {

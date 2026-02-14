@@ -4,17 +4,16 @@ struct ResultScreen: View {
     @Binding var path: NavigationPath
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
+    @Environment(\.openURL) private var openURL
     @State private var showShareSheet = false
     @State private var showCardShareSheet = false
     @State private var cardImage: UIImage?
     @State private var favoritedIds: Set<String> = []
-    @State private var maxBudget: Double = 0
     @State private var sortMode: SortMode = .match
-    @State private var revealBadge = false
-    @State private var revealTags = false
+    @State private var revealHero = false
     @State private var revealStory = false
     @State private var revealPicks = false
-    @State private var isGridMode = false
+    @State private var showDetails = false
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -22,253 +21,42 @@ struct ResultScreen: View {
         case priceHigh = "Price ↓"
     }
 
-    private var priceRange: ClosedRange<Double> {
-        let prices = recommendations.map(\.price)
-        let lo = prices.min() ?? 0
-        let hi = prices.max() ?? 1
-        return lo == hi ? lo...(hi + 1) : lo...hi
-    }
-
-    private var filteredRecommendations: [RecommendationItem] {
-        var items = maxBudget > 0 ? recommendations.filter { $0.price <= maxBudget } : recommendations
+    private var sortedRecommendations: [RecommendationItem] {
+        var items = recommendations
         switch sortMode {
-        case .match:
-            break // Already sorted by match from engine
-        case .priceLow:
-            items.sort { $0.price < $1.price }
-        case .priceHigh:
-            items.sort { $0.price > $1.price }
+        case .match: break
+        case .priceLow: items.sort { $0.price < $1.price }
+        case .priceHigh: items.sort { $0.price > $1.price }
         }
         return items
     }
 
+    // MARK: - Body
+
     var body: some View {
-        List {
-            // Featured badge for primary style
-            if let primaryTag = profile.tags.first {
-                Section {
-                    VStack(spacing: 12) {
-                        TasteBadge(tagKey: primaryTag.key, size: .featured)
-                        if let secondary = profile.tags.dropFirst().first {
-                            TasteBadge(tagKey: secondary.key, size: .compact)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
-                    .listRowBackground(Color.clear)
-                    .opacity(revealBadge ? 1 : 0)
-                    .offset(y: revealBadge ? 0 : 20)
-                }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                heroSection
+                readingSection
+                selectionHeader
+                selectionGrid
+                detailsSection
             }
-
-            Section {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Your Taste")
-                        .font(Theme.headlineFont)
-                        .foregroundStyle(Theme.espresso)
-                    ForEach(profile.tags) { tag in
-                        HStack(spacing: 12) {
-                            Text(tag.label)
-                                .font(.body.weight(.medium))
-                                .foregroundStyle(Theme.espresso)
-                            Spacer()
-                            ProgressView(value: tag.confidence)
-                                .tint(Theme.accent)
-                                .frame(width: 80)
-                            Text("\(Int(tag.confidence * 100))%")
-                                .font(.caption.monospacedDigit())
-                                .foregroundStyle(Theme.clay)
-                                .frame(width: 36, alignment: .trailing)
-                        }
-                        .accessibilityElement(children: .combine)
-                        .accessibilityLabel("\(tag.label), \(Int(tag.confidence * 100)) percent confidence")
-                    }
-                }
-                .opacity(revealTags ? 1 : 0)
-                .offset(y: revealTags ? 0 : 16)
-            }
-
-            Section {
-                Text(profile.story)
-                    .font(.body)
-                    .foregroundStyle(Theme.espresso)
-                    .lineSpacing(4)
-                    .italic()
-                    .opacity(revealStory ? 1 : 0)
-                    .offset(y: revealStory ? 0 : 12)
-            } header: {
-                Text("Your Story")
-            }
-
-            Section("Signals") {
-                ForEach(profile.signals) { signal in
-                    HStack {
-                        Text(signal.key.replacingOccurrences(of: "_", with: " ").capitalized)
-                            .font(.caption)
-                            .foregroundStyle(Theme.clay)
-                            .frame(width: 120, alignment: .leading)
-                        Spacer()
-                        Text(signal.value.capitalized)
-                            .font(.body)
-                            .foregroundStyle(Theme.espresso)
-                    }
-                }
-            }
-
-            if recommendations.count > 1 {
-                Section("Budget") {
-                    VStack(spacing: 4) {
-                        HStack {
-                            Text("Max price")
-                                .font(.subheadline)
-                                .foregroundStyle(Theme.clay)
-                            Spacer()
-                            Text(maxBudget >= priceRange.upperBound ? "Any" : "$\(Int(maxBudget))")
-                                .font(.subheadline.monospacedDigit().weight(.medium))
-                                .foregroundStyle(Theme.espresso)
-                        }
-                        Slider(value: $maxBudget, in: priceRange, step: 25)
-                            .tint(Theme.accent)
-                        HStack {
-                            Text("$\(Int(priceRange.lowerBound))")
-                                .font(.caption2)
-                                .foregroundStyle(Theme.clay)
-                            Spacer()
-                            Text("$\(Int(priceRange.upperBound))")
-                                .font(.caption2)
-                                .foregroundStyle(Theme.clay)
-                        }
-                    }
-                }
-            }
-
-            Section {
-                if filteredRecommendations.isEmpty {
-                    Text(recommendations.isEmpty
-                        ? "No picks matched your profile. Try a different room or goal."
-                        : "No picks within this budget. Try raising your max price.")
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.clay)
-                }
-
-                if isGridMode {
-                    // Moodboard grid
-                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
-                        ForEach(filteredRecommendations) { item in
-                            Button {
-                                path.append(Route.recommendationDetail(item))
-                            } label: {
-                                moodboardCard(item)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .padding(.vertical, 4)
-                    .opacity(revealPicks ? 1 : 0)
-                    .offset(y: revealPicks ? 0 : 10)
-                } else {
-                    // List view
-                    ForEach(filteredRecommendations) { item in
-                        Button {
-                            path.append(Route.recommendationDetail(item))
-                        } label: {
-                            VStack(alignment: .leading, spacing: 6) {
-                                HStack(alignment: .firstTextBaseline) {
-                                    Text(item.title)
-                                        .font(.headline)
-                                        .foregroundStyle(Theme.espresso)
-                                    Spacer()
-                                    Text(confidenceLabel(item.attributionConfidence))
-                                        .font(.caption2.weight(.medium))
-                                        .padding(.horizontal, 6)
-                                        .padding(.vertical, 2)
-                                        .background(confidenceColor(item.attributionConfidence).opacity(0.15))
-                                        .foregroundStyle(confidenceColor(item.attributionConfidence))
-                                        .clipShape(Capsule())
-                                }
-                                Text(item.subtitle)
-                                    .font(.subheadline)
-                                    .foregroundStyle(Theme.clay)
-                                HStack {
-                                    Text(item.reason)
-                                        .font(.callout)
-                                        .italic()
-                                        .foregroundStyle(Theme.clay)
-                                    Spacer()
-                                    Button {
-                                        toggleFavorite(item)
-                                    } label: {
-                                        Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
-                                            .foregroundStyle(isFavorited(item) ? Theme.favorite : Theme.clay)
-                                    }
-                                    .buttonStyle(.plain)
-                                    .accessibilityLabel(isFavorited(item) ? "Remove from favorites" : "Add to favorites")
-                                }
-                            }
-                            .padding(.vertical, 4)
-                        }
-                        .foregroundStyle(.primary)
-                    }
-                    .opacity(revealPicks ? 1 : 0)
-                    .offset(y: revealPicks ? 0 : 10)
-                }
-            } header: {
-                HStack {
-                    Text("Picks for You")
-                    Spacer()
-                    Button {
-                        withAnimation(.easeInOut(duration: 0.25)) { isGridMode.toggle() }
-                    } label: {
-                        Image(systemName: isGridMode ? "list.bullet" : "square.grid.2x2")
-                            .font(.subheadline)
-                            .foregroundStyle(Theme.accent)
-                    }
-                    .textCase(nil)
-                    .accessibilityLabel(isGridMode ? "Switch to list" : "Switch to grid")
-                    Picker("Sort", selection: $sortMode) {
-                        ForEach(SortMode.allCases, id: \.self) { mode in
-                            Text(mode.rawValue).tag(mode)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                    .textCase(nil)
-                }
-            }
+            .padding(16)
         }
-        .navigationTitle("Results")
+        .background(Theme.bg.ignoresSafeArea())
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Menu {
-                    Button {
-                        showShareSheet = true
-                    } label: {
-                        Label("Share as Text", systemImage: "doc.plaintext")
-                    }
-                    Button {
-                        cardImage = TasteCardView(profile: profile).renderImage()
-                        if cardImage != nil {
-                            showCardShareSheet = true
-                        }
-                    } label: {
-                        Label("Share Taste Card", systemImage: "photo")
-                    }
-                } label: {
-                    Image(systemName: "square.and.arrow.up")
-                }
-                .tint(Theme.accent)
-                .accessibilityLabel("Share results")
-            }
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Start Over") {
-                    Haptics.warning()
-                    ProfileStore.clear()
+                Button("New") {
+                    Haptics.tap()
                     path = NavigationPath()
                 }
-                .font(.subheadline)
-                .tint(Theme.accent)
+                .foregroundStyle(Theme.ink)
+                .font(.callout.weight(.semibold))
             }
         }
-        .tint(Theme.accent)
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(text: shareSummary)
         }
@@ -280,71 +68,234 @@ struct ResultScreen: View {
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
             refreshFavorites()
-            if maxBudget == 0 {
-                maxBudget = priceRange.upperBound
-            }
-            // Staggered reveal
-            withAnimation(.easeOut(duration: 0.5).delay(0.1)) { revealBadge = true }
-            withAnimation(.easeOut(duration: 0.5).delay(0.35)) { revealTags = true }
-            withAnimation(.easeOut(duration: 0.5).delay(0.6)) { revealStory = true }
-            withAnimation(.easeOut(duration: 0.5).delay(0.85)) { revealPicks = true }
+            withAnimation(.easeOut(duration: 0.6).delay(0.1)) { revealHero = true }
+            withAnimation(.easeOut(duration: 0.5).delay(0.45)) { revealStory = true }
+            withAnimation(.easeOut(duration: 0.5).delay(0.75)) { revealPicks = true }
         }
     }
 
-    // MARK: - Moodboard Card
+    // MARK: - Hero
 
-    private func moodboardCard(_ item: RecommendationItem) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // Color swatch placeholder based on match strength
-            RoundedRectangle(cornerRadius: 8)
-                .fill(
-                    LinearGradient(
-                        colors: [confidenceColor(item.attributionConfidence).opacity(0.25), Theme.blush.opacity(0.15)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(height: 80)
-                .overlay(
-                    Image(systemName: "sparkles")
-                        .font(.title2)
-                        .foregroundStyle(confidenceColor(item.attributionConfidence).opacity(0.5))
-                )
+    private var heroSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("PROFILE 01")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.2)
 
-            Text(item.title)
-                .font(.system(.caption, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.espresso)
-                .lineLimit(2)
+            if let primary = profile.tags.first {
+                Text(primary.label)
+                    .font(.system(size: 48, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .fixedSize(horizontal: false, vertical: true)
 
-            HStack {
-                Text("$\(Int(item.price))")
-                    .font(.caption2.monospacedDigit().weight(.medium))
-                    .foregroundStyle(Theme.accent)
-                Spacer()
-                Text(confidenceLabel(item.attributionConfidence))
-                    .font(.system(size: 9, weight: .medium))
-                    .foregroundStyle(confidenceColor(item.attributionConfidence))
+                HStack(spacing: 10) {
+                    Text("ALIGNMENT")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(1.2)
+                    Text(alignmentWord(primary.confidence))
+                        .font(.caption)
+                        .foregroundStyle(Theme.ink)
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Alignment \(alignmentWord(primary.confidence))")
             }
+        }
+        .padding(.top, 6)
+        .opacity(revealHero ? 1 : 0)
+        .offset(y: revealHero ? 0 : 18)
+    }
 
-            HStack(spacing: 4) {
+    // MARK: - Reading
+
+    private var readingSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("READING")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.2)
+
+            Text(profile.story)
+                .foregroundStyle(Theme.ink)
+                .font(.system(size: 18, weight: .regular))
+                .lineSpacing(3)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .labSurface()
+        .opacity(revealStory ? 1 : 0)
+        .offset(y: revealStory ? 0 : 14)
+    }
+
+    // MARK: - Selection Header
+
+    private var selectionHeader: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text("SELECTION")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.muted)
+                .tracking(1.2)
+            Spacer()
+            Picker("Sort", selection: $sortMode) {
+                ForEach(SortMode.allCases, id: \.self) { mode in
+                    Text(mode.rawValue).tag(mode)
+                }
+            }
+            .pickerStyle(.menu)
+            .tint(Theme.muted)
+        }
+        .padding(.top, 8)
+    }
+
+    // MARK: - Selection Grid
+
+    private var selectionGrid: some View {
+        Group {
+            if sortedRecommendations.isEmpty {
+                Text("No picks matched your profile. Try a different room or goal.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.muted)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 32)
+            } else {
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 14),
+                        GridItem(.flexible(), spacing: 14)
+                    ],
+                    spacing: 14
+                ) {
+                    ForEach(sortedRecommendations) { item in
+                        Button {
+                            EventLogger.shared.logEvent("pick_tapped", tasteProfileId: profile.id, metadata: ["skuId": item.skuId])
+                            path.append(Route.recommendationDetail(item, tasteProfileId: profile.id))
+                        } label: {
+                            pickCard(item)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+        .opacity(revealPicks ? 1 : 0)
+        .offset(y: revealPicks ? 0 : 12)
+    }
+
+    // MARK: - Pick Card
+
+    private func pickCard(_ item: RecommendationItem) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ZStack(alignment: .topTrailing) {
+                AsyncImage(url: URL(string: item.imageURL ?? "")) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    default:
+                        Color(white: 0.94)
+                            .overlay(
+                                Image(systemName: "sparkles")
+                                    .font(.title3)
+                                    .foregroundStyle(Theme.muted.opacity(0.25))
+                            )
+                    }
+                }
+                .frame(height: 150)
+                .clipped()
+
                 Button {
                     toggleFavorite(item)
                 } label: {
-                    Image(systemName: isFavorited(item) ? "heart.fill" : "heart")
-                        .font(.caption2)
-                        .foregroundStyle(isFavorited(item) ? Theme.favorite : Theme.clay)
+                    Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
+                        .font(.caption)
+                        .foregroundStyle(isFavorited(item) ? Theme.accent : Theme.ink.opacity(0.55))
+                        .padding(6)
+                        .background(Theme.surface)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(Theme.hairline, lineWidth: 1)
+                        )
                 }
                 .buttonStyle(.plain)
-                Spacer()
+                .padding(6)
+                .accessibilityLabel(isFavorited(item) ? "Saved" : "Save")
             }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(item.title)
+                    .font(.system(.subheadline, design: .default, weight: .medium))
+                    .foregroundStyle(Theme.ink)
+                    .lineLimit(2)
+
+                Text("$\(Int(item.price))")
+                    .font(.caption.monospacedDigit().weight(.medium))
+                    .foregroundStyle(Theme.muted)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
         }
-        .padding(10)
-        .background(Theme.surface)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Theme.blush.opacity(0.4), lineWidth: 1)
-        )
+        .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Details (Collapsed)
+
+    private var detailsSection: some View {
+        DisclosureGroup(isExpanded: $showDetails) {
+            VStack(alignment: .leading, spacing: 16) {
+                VStack(spacing: 8) {
+                    ForEach(profile.signals) { signal in
+                        HStack {
+                            Text(signal.key.replacingOccurrences(of: "_", with: " ").capitalized)
+                                .font(.caption)
+                                .foregroundStyle(Theme.muted)
+                            Spacer()
+                            Text(signal.value.capitalized)
+                                .font(.subheadline.weight(.medium))
+                                .foregroundStyle(Theme.ink)
+                        }
+                    }
+                }
+
+                let tips = DesignTipsEngine.tips(for: profile)
+                if !tips.isEmpty {
+                    HairlineDivider()
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Design Tips")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(Theme.ink)
+
+                        ForEach(tips) { tip in
+                            HStack(alignment: .top, spacing: 10) {
+                                Image(systemName: tip.icon)
+                                    .font(.caption)
+                                    .foregroundStyle(Theme.muted)
+                                    .frame(width: 20)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(tip.headline)
+                                        .font(.caption.weight(.semibold))
+                                        .foregroundStyle(Theme.ink)
+                                    Text(tip.body)
+                                        .font(.caption2)
+                                        .foregroundStyle(Theme.muted)
+                                        .lineSpacing(2)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .padding(.top, 14)
+        } label: {
+            Text("Details")
+                .font(Theme.headlineFont)
+                .foregroundStyle(Theme.ink)
+        }
+        .tint(Theme.muted)
+        .labSurface(padded: true, bordered: true)
     }
 
     // MARK: - Favorites
@@ -355,6 +306,7 @@ struct ResultScreen: View {
 
     private func toggleFavorite(_ item: RecommendationItem) {
         Haptics.tap()
+        let meta = ["skuId": item.skuId, "merchant": item.merchant, "source": "results_grid"]
         let key = favoriteKey(item)
         if favoritedIds.contains(key) {
             favoritedIds.remove(key)
@@ -362,9 +314,11 @@ struct ResultScreen: View {
             if let match = stored.first(where: { $0.title == item.title && $0.subtitle == item.subtitle }) {
                 FavoritesStore.remove(id: match.id)
             }
+            EventLogger.shared.logEvent("product_unsaved", tasteProfileId: profile.id, metadata: meta)
         } else {
             favoritedIds.insert(key)
             FavoritesStore.add(item)
+            EventLogger.shared.logEvent("product_saved", tasteProfileId: profile.id, metadata: meta)
         }
     }
 
@@ -377,13 +331,13 @@ struct ResultScreen: View {
         "\(item.title)|\(item.subtitle)"
     }
 
-    // MARK: - Attribution Helpers
+    // MARK: - Helpers
 
-    private func confidenceLabel(_ value: Double) -> String {
-        switch value {
-        case 0.8...: return "Strong match"
-        case 0.5...: return "Good match"
-        default:     return "Partial match"
+    private func alignmentWord(_ confidence: Double) -> String {
+        switch confidence {
+        case 0.8...: return "High"
+        case 0.5...: return "Moderate"
+        default:     return "Low"
         }
     }
 
@@ -395,30 +349,10 @@ struct ResultScreen: View {
         }
     }
 
-    // MARK: - Share Summary
+    // MARK: - Share
 
     private var shareSummary: String {
-        var lines: [String] = []
-
-        lines.append("My ItMe Results")
-        lines.append("")
-
-        let tagLine = profile.tags.map { "\($0.label) (\(Int($0.confidence * 100))%)" }.joined(separator: ", ")
-        lines.append("Style: \(tagLine)")
-        lines.append("")
-
-        lines.append(profile.story)
-        lines.append("")
-
-        lines.append("Top Picks:")
-        for item in filteredRecommendations {
-            lines.append("- \(item.title) — \(item.subtitle)")
-        }
-
-        lines.append("")
-        lines.append("Discovered on ItMe — itme2.com")
-
-        return lines.joined(separator: "\n")
+        ShareTextBuilder.build(profile: profile, recommendations: sortedRecommendations)
     }
 }
 

@@ -3,36 +3,24 @@ import SwiftUI
 // MARK: - Routing
 
 enum Route: Hashable {
-    case upload
     case context([UIImage], RoomContext, DesignGoal)
     case result(TasteProfile, [RecommendationItem])
-    case history
-    case settings
-    case favorites
     case compare
-    case recommendationDetail(RecommendationItem)
+    case recommendationDetail(RecommendationItem, tasteProfileId: UUID)
     case reanalyze(RoomContext, DesignGoal)
     case evolution
+    case about
 
-    // Hashable conformance (identity-based for payloads)
     func hash(into hasher: inout Hasher) {
         switch self {
-        case .upload:
-            hasher.combine("upload")
         case .context:
             hasher.combine("context")
         case .result(let profile, _):
             hasher.combine("result")
             hasher.combine(profile.id)
-        case .history:
-            hasher.combine("history")
-        case .settings:
-            hasher.combine("settings")
-        case .favorites:
-            hasher.combine("favorites")
         case .compare:
             hasher.combine("compare")
-        case .recommendationDetail(let item):
+        case .recommendationDetail(let item, _):
             hasher.combine("recommendationDetail")
             hasher.combine(item.id)
         case .reanalyze(let room, let goal):
@@ -41,33 +29,47 @@ enum Route: Hashable {
             hasher.combine(goal.rawValue)
         case .evolution:
             hasher.combine("evolution")
+        case .about:
+            hasher.combine("about")
         }
     }
 
     static func == (lhs: Route, rhs: Route) -> Bool {
         switch (lhs, rhs) {
-        case (.upload, .upload):
-            return true
         case (.context(let a, _, _), .context(let b, _, _)):
             return a.count == b.count
         case (.result(let p1, _), .result(let p2, _)):
             return p1.id == p2.id
-        case (.history, .history):
-            return true
-        case (.settings, .settings):
-            return true
-        case (.favorites, .favorites):
-            return true
         case (.compare, .compare):
             return true
-        case (.recommendationDetail(let a), .recommendationDetail(let b)):
+        case (.recommendationDetail(let a, _), .recommendationDetail(let b, _)):
             return a.id == b.id
         case (.reanalyze(let r1, let g1), .reanalyze(let r2, let g2)):
             return r1 == r2 && g1 == g2
         case (.evolution, .evolution):
             return true
+        case (.about, .about):
+            return true
         default:
             return false
+        }
+    }
+}
+
+// MARK: - Tab
+
+enum AppTab: String, CaseIterable {
+    case home = "Home"
+    case saved = "Saved"
+    case history = "History"
+    case settings = "Settings"
+
+    var icon: String {
+        switch self {
+        case .home: return "camera.viewfinder"
+        case .saved: return "bookmark"
+        case .history: return "clock.arrow.circlepath"
+        case .settings: return "gearshape"
         }
     }
 }
@@ -76,50 +78,100 @@ enum Route: Hashable {
 
 @main
 struct TasteMatchApp: App {
-    @State private var path = NavigationPath()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $path) {
-                UploadScreen(path: $path)
+            MainTabView()
+                .fullScreenCover(isPresented: Binding(
+                    get: { !hasCompletedOnboarding },
+                    set: { if $0 { hasCompletedOnboarding = false } }
+                )) {
+                    OnboardingScreen(hasCompletedOnboarding: $hasCompletedOnboarding)
+                }
+        }
+    }
+}
+
+// MARK: - Main Tab View
+
+struct MainTabView: View {
+    @State private var selectedTab: AppTab = .home
+    @State private var homePath = NavigationPath()
+    @State private var savedPath = NavigationPath()
+    @State private var historyPath = NavigationPath()
+    @State private var settingsPath = NavigationPath()
+
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            // Home tab
+            NavigationStack(path: $homePath) {
+                UploadScreen(path: $homePath)
                     .navigationDestination(for: Route.self) { route in
-                        switch route {
-                        case .upload:
-                            UploadScreen(path: $path)
-                        case .context(let images, let room, let goal):
-                            ContextScreen(path: $path, images: images, initialRoom: room, initialGoal: goal)
-                        case .result(let profile, let recs):
-                            ResultScreen(path: $path, profile: profile, recommendations: recs)
-                        case .history:
-                            HistoryScreen(path: $path)
-                        case .settings:
-                            SettingsScreen(path: $path)
-                        case .favorites:
-                            FavoritesScreen()
-                        case .compare:
-                            CompareScreen(path: $path)
-                        case .recommendationDetail(let item):
-                            RecommendationDetailScreen(item: item)
-                        case .reanalyze(let room, let goal):
-                            UploadScreen(path: $path, prefillRoom: room, prefillGoal: goal)
-                        case .evolution:
-                            EvolutionScreen()
-                        }
+                        destinationView(for: route, path: $homePath)
                     }
-                    .onAppear {
-                        if let saved = ProfileStore.loadLatest() {
-                            path.append(Route.result(saved.tasteProfile, saved.recommendations))
-                        }
+            }
+            .tabItem {
+                Label(AppTab.home.rawValue, systemImage: AppTab.home.icon)
+            }
+            .tag(AppTab.home)
+
+            // Saved tab
+            NavigationStack(path: $savedPath) {
+                FavoritesScreen()
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route, path: $savedPath)
                     }
-            .tint(Theme.accent)
             }
-            .fullScreenCover(isPresented: Binding(
-                get: { !hasCompletedOnboarding },
-                set: { if $0 { hasCompletedOnboarding = false } }
-            )) {
-                OnboardingScreen(hasCompletedOnboarding: $hasCompletedOnboarding)
+            .tabItem {
+                Label(AppTab.saved.rawValue, systemImage: AppTab.saved.icon)
             }
+            .tag(AppTab.saved)
+
+            // History tab
+            NavigationStack(path: $historyPath) {
+                HistoryScreen(path: $historyPath)
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route, path: $historyPath)
+                    }
+            }
+            .tabItem {
+                Label(AppTab.history.rawValue, systemImage: AppTab.history.icon)
+            }
+            .tag(AppTab.history)
+
+            // Settings tab
+            NavigationStack(path: $settingsPath) {
+                SettingsScreen(path: $settingsPath)
+                    .navigationDestination(for: Route.self) { route in
+                        destinationView(for: route, path: $settingsPath)
+                    }
+            }
+            .tabItem {
+                Label(AppTab.settings.rawValue, systemImage: AppTab.settings.icon)
+            }
+            .tag(AppTab.settings)
+        }
+        .tint(Theme.accent)
+    }
+
+    @ViewBuilder
+    private func destinationView(for route: Route, path: Binding<NavigationPath>) -> some View {
+        switch route {
+        case .context(let images, let room, let goal):
+            ContextScreen(path: path, images: images, initialRoom: room, initialGoal: goal)
+        case .result(let profile, let recs):
+            ResultScreen(path: path, profile: profile, recommendations: recs)
+        case .compare:
+            CompareScreen(path: path)
+        case .recommendationDetail(let item, let profileId):
+            RecommendationDetailScreen(item: item, tasteProfileId: profileId)
+        case .reanalyze(let room, let goal):
+            UploadScreen(path: path, prefillRoom: room, prefillGoal: goal)
+        case .evolution:
+            EvolutionScreen()
+        case .about:
+            AboutScreen()
         }
     }
 }

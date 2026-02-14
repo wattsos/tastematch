@@ -44,6 +44,7 @@
 		B11006000000000000000006 /* ShareTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21006000000000000000006 /* ShareTextTests.swift */; };
 		C11001000000000000000001 /* CatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21001000000000000000001 /* CatalogLoader.swift */; };
 		C11002000000000000000002 /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = C21002000000000000000002 /* catalog.json */; };
+		E11001000000000000000001 /* BoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21001000000000000000001 /* BoardScreen.swift */; };
 		859BEC168102C01A5993CD82 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E6421A33BBF48B4B8E5CB /* Brand.swift */; };
 		D11001000000000000000001 /* TasteVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21001000000000000000001 /* TasteVector.swift */; };
 		D11002000000000000000002 /* CalibrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21002000000000000000002 /* CalibrationStore.swift */; };
@@ -104,6 +105,7 @@
 		C21001000000000000000001 /* CatalogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogLoader.swift; sourceTree = "<group>"; };
 		C21002000000000000000002 /* catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
 		345E6421A33BBF48B4B8E5CB /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		E21001000000000000000001 /* BoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScreen.swift; sourceTree = "<group>"; };
 		D21001000000000000000001 /* TasteVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteVector.swift; sourceTree = "<group>"; };
 		D21002000000000000000002 /* CalibrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationStore.swift; sourceTree = "<group>"; };
 		D21003000000000000000003 /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				A20001000000000000000001 /* TasteMatchApp.swift */,
 				B21002000000000000000002 /* AboutScreen.swift */,
 				A20002000000000000000002 /* AnalyzingView.swift */,
+				E21001000000000000000001 /* BoardScreen.swift */,
 				A20003000000000000000003 /* APIClient.swift */,
 				345E6421A33BBF48B4B8E5CB /* Brand.swift */,
 				D21002000000000000000002 /* CalibrationStore.swift */,
@@ -301,6 +304,7 @@
 				B11002000000000000000002 /* AboutScreen.swift in Sources */,
 				A10002000000000000000002 /* AnalyzingView.swift in Sources */,
 				A10003000000000000000003 /* APIClient.swift in Sources */,
+				E11001000000000000000001 /* BoardScreen.swift in Sources */,
 				859BEC168102C01A5993CD82 /* Brand.swift in Sources */,
 				D11002000000000000000002 /* CalibrationStore.swift in Sources */,
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,

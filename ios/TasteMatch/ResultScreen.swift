@@ -274,7 +274,10 @@ struct ResultScreen: View {
                     cycleVariant()
                 }
 
-                commandButton("Build", disabled: true) {}
+                commandButton("Build") {
+                    Haptics.tap()
+                    path.append(Route.board(sortedRecommendations))
+                }
 
                 Spacer()
             }
@@ -420,9 +423,9 @@ struct ResultScreen: View {
                         .foregroundStyle(isFavorited(item) ? Theme.accent : Theme.ink.opacity(0.55))
                         .padding(6)
                         .background(Theme.surface)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
                                 .stroke(Theme.hairline, lineWidth: 1)
                         )
                 }

@@ -171,7 +171,7 @@ struct UploadScreen: View {
                     Text("Your latest vibe")
                         .font(.system(.caption, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.clay)
-                    Text(saved.tasteProfile.tags.first?.label ?? "Your Style")
+                    Text(saved.tasteProfile.displayName)
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(Theme.espresso)
                 }
@@ -208,11 +208,12 @@ struct UploadScreen: View {
             material: .wood
         )
 
-        let profile = TasteEngine.analyze(
+        var profile = TasteEngine.analyze(
             signals: signals,
             context: .livingRoom,
             goal: .refresh
         )
+        ProfileNamingEngine.applyInitialNaming(to: &profile)
 
         let recommendations = RecommendationEngine.recommend(
             profile: profile,

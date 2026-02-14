@@ -37,6 +37,10 @@ struct TasteProfile: Identifiable, Codable {
     var profileNameBasisHash: String
     var previousNames: [String]
 
+    var displayName: String {
+        profileName.isEmpty ? (tags.first?.label ?? "Profile") : profileName
+    }
+
     init(id: UUID = UUID(), tags: [TasteTag], story: String, signals: [Signal]) {
         self.id = id
         self.tags = tags

@@ -14,14 +14,10 @@ struct TasteCardView: View {
                     .foregroundStyle(Theme.muted)
                     .tracking(2)
 
-                if let primary = profile.tags.first {
-                    TasteBadge(tagKey: primary.key, size: .featured)
-                } else {
-                    Text(primaryLabel)
-                        .font(.system(.title, design: .serif, weight: .bold))
-                        .foregroundStyle(Theme.espresso)
-                        .multilineTextAlignment(.center)
-                }
+                Text(profile.displayName)
+                    .font(.system(.title, design: .serif, weight: .bold))
+                    .foregroundStyle(Theme.espresso)
+                    .multilineTextAlignment(.center)
 
                 if let secondary = profile.tags.dropFirst().first {
                     TasteBadge(tagKey: secondary.key, size: .compact)
@@ -111,10 +107,6 @@ struct TasteCardView: View {
         case 0.5...: return "Moderate"
         default:     return "Low"
         }
-    }
-
-    private var primaryLabel: String {
-        profile.tags.first?.label ?? "Your Style"
     }
 
     private var storyExcerpt: String {

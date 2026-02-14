@@ -132,8 +132,8 @@ struct ResultScreen: View {
                         .font(.caption2)
                         .foregroundStyle(Theme.muted)
                 }
-            } else if let primary = profile.tags.first {
-                Text(primary.label)
+            } else {
+                Text(profile.displayName)
                     .font(.system(size: 48, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)

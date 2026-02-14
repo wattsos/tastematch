@@ -72,7 +72,7 @@ struct CompareScreen: View {
                         .font(.caption)
                         .foregroundStyle(Theme.clay)
                     if let profile {
-                        Text(profile.tasteProfile.tags.first?.label ?? "Unknown")
+                        Text(profile.tasteProfile.displayName)
                             .font(.body.weight(.medium))
                             .foregroundStyle(Theme.espresso)
                         Text(formatted(profile.savedAt))
@@ -236,7 +236,7 @@ private struct ProfilePickerList: View {
                     } label: {
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text(saved.tasteProfile.tags.first?.label ?? "Unknown")
+                                Text(saved.tasteProfile.displayName)
                                     .font(.body.weight(.medium))
                                 if let secondary = saved.tasteProfile.tags.dropFirst().first {
                                     Text(secondary.label)

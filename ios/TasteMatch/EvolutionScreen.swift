@@ -195,7 +195,7 @@ struct EvolutionScreen: View {
         history.compactMap { saved in
             guard let primary = saved.tasteProfile.tags.first else { return nil }
             return DataPoint(
-                tagLabel: primary.label,
+                tagLabel: saved.tasteProfile.displayName,
                 confidence: primary.confidence,
                 date: saved.savedAt
             )

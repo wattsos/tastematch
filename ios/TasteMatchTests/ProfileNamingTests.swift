@@ -212,6 +212,54 @@ final class ProfileNamingTests: XCTestCase {
         XCTAssertTrue(profile.previousNames.isEmpty)
     }
 
+    // MARK: - displayName prefers profileName over canonical label
+
+    func testDisplayName_prefersProfileName() {
+        var profile = TasteProfile(
+            tags: [TasteTag(key: "artDeco", label: "Art Deco", confidence: 0.9)],
+            story: "Test",
+            signals: []
+        )
+        // Before naming: falls back to canonical label
+        XCTAssertEqual(profile.displayName, "Art Deco")
+
+        // After naming: returns generated name
+        profile.profileName = "Berlin Industrial"
+        XCTAssertEqual(profile.displayName, "Berlin Industrial")
+    }
+
+    func testDisplayName_neverReturnsCanonicalLabel_whenNamed() {
+        let canonicalLabels: Set<String> = [
+            "Mid-Century Modern", "Scandinavian", "Industrial", "Bohemian",
+            "Minimalist", "Traditional", "Coastal", "Rustic", "Art Deco", "Japandi"
+        ]
+
+        for tag in TasteEngine.CanonicalTag.allCases {
+            var profile = TasteProfile(
+                tags: [TasteTag(key: String(describing: tag), label: tag.rawValue, confidence: 0.9)],
+                story: "Test",
+                signals: []
+            )
+            ProfileNamingEngine.applyInitialNaming(to: &profile)
+
+            XCTAssertFalse(profile.profileName.isEmpty, "profileName should be set for \(tag)")
+            XCTAssertFalse(canonicalLabels.contains(profile.displayName),
+                           "displayName '\(profile.displayName)' should not be a canonical label for \(tag)")
+        }
+    }
+
+    func testApplyInitialNaming_setsAllFields() {
+        var profile = makeEmptyNameProfile()
+        XCTAssertTrue(profile.profileName.isEmpty)
+
+        ProfileNamingEngine.applyInitialNaming(to: &profile)
+
+        XCTAssertFalse(profile.profileName.isEmpty)
+        XCTAssertEqual(profile.profileNameVersion, 1)
+        XCTAssertFalse(profile.profileNameBasisHash.isEmpty)
+        XCTAssertNotNil(profile.profileNameUpdatedAt)
+    }
+
     // MARK: - Helpers
 
     private func makeVector(_ weights: [String: Double]) -> TasteVector {

@@ -420,6 +420,16 @@ enum ProfileNamingEngine {
         )
     }
 
+    static func applyInitialNaming(to profile: inout TasteProfile) {
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let result = resolve(vector: vector, swipeCount: 0, existingProfile: profile)
+        profile.profileName = result.name
+        profile.profileNameVersion = result.version
+        profile.profileNameBasisHash = result.basisHash
+        profile.profileNameUpdatedAt = result.updatedAt
+        profile.previousNames = result.previousNames
+    }
+
     private static func shouldEvolve(vector: TasteVector, swipeCount: Int) -> Bool {
         let norm = vector.normalized()
         let sorted = norm.weights.values.sorted(by: >)

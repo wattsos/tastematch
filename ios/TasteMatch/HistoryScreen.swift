@@ -29,7 +29,7 @@ struct HistoryScreen: View {
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text(saved.tasteProfile.tags.first?.label ?? "Unknown Style")
+                                    Text(saved.tasteProfile.displayName)
                                         .font(.headline)
                                         .foregroundStyle(Theme.espresso)
                                     if let secondary = saved.tasteProfile.tags.dropFirst().first {

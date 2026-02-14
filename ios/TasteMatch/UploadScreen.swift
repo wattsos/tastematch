@@ -161,7 +161,7 @@ struct UploadScreen: View {
 
     private func lastResultCard(_ saved: SavedProfile) -> some View {
         Button {
-            path.append(Route.result(saved.tasteProfile, saved.recommendations))
+            path.append(Route.profile(saved.tasteProfile.id))
         } label: {
             HStack(spacing: 14) {
                 if let primaryTag = saved.tasteProfile.tags.first {

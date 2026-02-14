@@ -154,6 +154,25 @@ struct TasteVector: Codable, Equatable {
             return "Low"
         }
     }
+    /// Stability level for evolution section.
+    /// - Stable: >= 14 swipes AND separation >= 0.15
+    /// - Developing: >= 7 swipes OR confidence > 0.2
+    /// - Low: minimal signal
+    func stabilityLevel(swipeCount: Int) -> String {
+        let norm = normalized()
+        let sorted = norm.weights.values.sorted(by: >)
+        let top1 = sorted.first ?? 0
+        let top2 = sorted.dropFirst().first ?? 0
+        let separation = top1 - top2
+
+        if swipeCount >= 14 && separation >= 0.15 {
+            return "Stable"
+        } else if swipeCount >= 7 || confidence > 0.2 {
+            return "Developing"
+        } else {
+            return "Low"
+        }
+    }
 }
 
 // MARK: - Taste Variant

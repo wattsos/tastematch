@@ -80,6 +80,10 @@
 		N11005000000000000000005 /* CachedImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21005000000000000000005 /* CachedImageTests.swift */; };
 		N11006000000000000000006 /* NetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21006000000000000000006 /* NetworkModelTests.swift */; };
 		N11007000000000000000007 /* BackendClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21007000000000000000007 /* BackendClientTests.swift */; };
+		P11001000000000000000001 /* MyProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = P21001000000000000000001 /* MyProfileScreen.swift */; };
+		P11002000000000000000002 /* RadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = P21002000000000000000002 /* RadarChart.swift */; };
+		P11003000000000000000003 /* MyProfileScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = P21003000000000000000003 /* MyProfileScreenTests.swift */; };
+		P11004000000000000000004 /* RadarChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = P21004000000000000000004 /* RadarChartTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +172,10 @@
 		N21005000000000000000005 /* CachedImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageTests.swift; sourceTree = "<group>"; };
 		N21006000000000000000006 /* NetworkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelTests.swift; sourceTree = "<group>"; };
 		N21007000000000000000007 /* BackendClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClientTests.swift; sourceTree = "<group>"; };
+		P21001000000000000000001 /* MyProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileScreen.swift; sourceTree = "<group>"; };
+		P21002000000000000000002 /* RadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChart.swift; sourceTree = "<group>"; };
+		P21003000000000000000003 /* MyProfileScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileScreenTests.swift; sourceTree = "<group>"; };
+		P21004000000000000000004 /* RadarChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChartTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,12 +242,14 @@
 				K21001000000000000000001 /* MaterialShopSheet.swift */,
 				A2000C00000000000000000C /* MockCatalog.swift */,
 				A2000D00000000000000000D /* Models.swift */,
+				P21001000000000000000001 /* MyProfileScreen.swift */,
 				N21003000000000000000003 /* NetworkModels.swift */,
 				A2000E00000000000000000E /* OnboardingScreen.swift */,
 				F21001000000000000000001 /* ProfileNaming.swift */,
 				A2000F00000000000000000F /* ProfileStore.swift */,
 				A20010000000000000000010 /* RecommendationDetailScreen.swift */,
 				A20011000000000000000011 /* RecommendationEngine.swift */,
+				P21002000000000000000002 /* RadarChart.swift */,
 				A20012000000000000000012 /* ResultScreen.swift */,
 				A20013000000000000000013 /* SettingsScreen.swift */,
 				M21001000000000000000001 /* ShopScreen.swift */,
@@ -263,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				K21002000000000000000002 /* AxisMappingTests.swift */,
+				P21003000000000000000003 /* MyProfileScreenTests.swift */,
+				P21004000000000000000004 /* RadarChartTests.swift */,
 				J21002000000000000000002 /* AxisPresentationTests.swift */,
 				N21007000000000000000007 /* BackendClientTests.swift */,
 				N21005000000000000000005 /* CachedImageTests.swift */,
@@ -426,12 +438,14 @@
 				K11001000000000000000001 /* MaterialShopSheet.swift in Sources */,
 				A1000C00000000000000000C /* MockCatalog.swift in Sources */,
 				A1000D00000000000000000D /* Models.swift in Sources */,
+				P11001000000000000000001 /* MyProfileScreen.swift in Sources */,
 				N11003000000000000000003 /* NetworkModels.swift in Sources */,
 				A1000E00000000000000000E /* OnboardingScreen.swift in Sources */,
 				F11001000000000000000001 /* ProfileNaming.swift in Sources */,
 				A1000F00000000000000000F /* ProfileStore.swift in Sources */,
 				A10010000000000000000010 /* RecommendationDetailScreen.swift in Sources */,
 				A10011000000000000000011 /* RecommendationEngine.swift in Sources */,
+				P11002000000000000000002 /* RadarChart.swift in Sources */,
 				A10012000000000000000012 /* ResultScreen.swift in Sources */,
 				A10013000000000000000013 /* SettingsScreen.swift in Sources */,
 				M11001000000000000000001 /* ShopScreen.swift in Sources */,
@@ -453,6 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				K11002000000000000000002 /* AxisMappingTests.swift in Sources */,
+				P11003000000000000000003 /* MyProfileScreenTests.swift in Sources */,
+				P11004000000000000000004 /* RadarChartTests.swift in Sources */,
 				J11002000000000000000002 /* AxisPresentationTests.swift in Sources */,
 				N11007000000000000000007 /* BackendClientTests.swift in Sources */,
 				N11005000000000000000005 /* CachedImageTests.swift in Sources */,

@@ -73,7 +73,7 @@ struct TasteCalibrationScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Skip") {
                     Haptics.tap()
-                    path.append(Route.result(profile, recommendations))
+                    path.append(Route.profile(profile.id))
                 }
                 .foregroundStyle(Theme.muted)
                 .font(.callout.weight(.medium))
@@ -368,18 +368,7 @@ struct TasteCalibrationScreen: View {
         showUpdating = true
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            let imageVector = TasteEngine.vectorFromProfile(profile)
-            let blended = TasteVector.blend(image: imageVector, swipe: vector.normalized(), mode: .wantMore)
-
-            let reranked = RecommendationEngine.rankWithVector(
-                recommendations,
-                vector: blended,
-                catalog: MockCatalog.items,
-                context: nil,
-                goal: nil
-            )
-
-            path.append(Route.result(profile, reranked))
+            path.append(Route.profile(profile.id))
         }
     }
 

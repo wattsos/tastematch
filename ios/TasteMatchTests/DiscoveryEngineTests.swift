@@ -260,6 +260,86 @@ final class DiscoveryEngineTests: XCTestCase {
         XCTAssertEqual(score, 0.5, "Item without createdAt should score 0.5")
     }
 
+    // MARK: - Daily Radar
+
+    func testDailyRadar_stableWithinSameDay() {
+        let items = makeTestItems()
+        let scores = makeIndustrialScores()
+        let profileId = UUID()
+        let vector = TasteVector(weights: ["scandinavian": 0.6, "minimalist": 0.4])
+
+        let result1 = DiscoveryEngine.dailyRadar(
+            items: items, axisScores: scores, profileId: profileId, vector: vector, dayIndex: 100
+        )
+        let result2 = DiscoveryEngine.dailyRadar(
+            items: items, axisScores: scores, profileId: profileId, vector: vector, dayIndex: 100
+        )
+
+        XCTAssertEqual(result1.map(\.id), result2.map(\.id), "Same day should produce identical ordering")
+    }
+
+    func testDailyRadar_changesAcrossDays() {
+        let items = makeTestItems()
+        let scores = makeIndustrialScores()
+        let profileId = UUID()
+        let vector = TasteVector(weights: ["scandinavian": 0.6, "minimalist": 0.4])
+
+        let baseline = DiscoveryEngine.dailyRadar(
+            items: items, axisScores: scores, profileId: profileId, vector: vector, dayIndex: 100
+        ).map(\.id)
+
+        // Check across 10 different days — at least one must differ
+        let anyDifferent = (101...110).contains { day in
+            let result = DiscoveryEngine.dailyRadar(
+                items: items, axisScores: scores, profileId: profileId, vector: vector, dayIndex: day
+            ).map(\.id)
+            return result != baseline
+        }
+
+        XCTAssertTrue(anyDifferent, "Radar ordering should vary across days")
+    }
+
+    func testDailyRadar_respectsLimit() {
+        let items = makeTestItems()
+        let scores = makeIndustrialScores()
+        let profileId = UUID()
+        let vector = TasteVector(weights: ["scandinavian": 0.6])
+
+        let result = DiscoveryEngine.dailyRadar(
+            items: items, axisScores: scores, profileId: profileId, vector: vector, limit: 3, dayIndex: 50
+        )
+
+        XCTAssertEqual(result.count, 3)
+    }
+
+    func testDailyRadar_emptyInputReturnsEmpty() {
+        let scores = makeIndustrialScores()
+        let result = DiscoveryEngine.dailyRadar(
+            items: [], axisScores: scores, profileId: UUID(), vector: .zero, dayIndex: 1
+        )
+        XCTAssertTrue(result.isEmpty)
+    }
+
+    func testBuildDayKey_differentDaysProduceDifferentKeys() {
+        let profileId = UUID()
+        let vector = TasteVector(weights: ["scandinavian": 0.5])
+
+        let key1 = DiscoveryEngine.buildDayKey(dayIndex: 100, profileId: profileId, vector: vector)
+        let key2 = DiscoveryEngine.buildDayKey(dayIndex: 101, profileId: profileId, vector: vector)
+
+        XCTAssertNotEqual(key1, key2)
+    }
+
+    func testBuildDayKey_sameDaySameKey() {
+        let profileId = UUID()
+        let vector = TasteVector(weights: ["scandinavian": 0.5])
+
+        let key1 = DiscoveryEngine.buildDayKey(dayIndex: 42, profileId: profileId, vector: vector)
+        let key2 = DiscoveryEngine.buildDayKey(dayIndex: 42, profileId: profileId, vector: vector)
+
+        XCTAssertEqual(key1, key2)
+    }
+
     // MARK: - Backward-Compatible Decoding
 
     func testBackwardCompatibleDecoding_legacyJSON() {

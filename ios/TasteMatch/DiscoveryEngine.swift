@@ -58,6 +58,52 @@ enum DiscoveryEngine {
         return diversify(sorted.map(\.0), maxConsecutiveType: 2, maxConsecutiveCluster: 2)
     }
 
+    // MARK: - Daily Radar
+
+    /// Returns a day-keyed deterministic selection of discovery items.
+    /// The ordering rotates daily based on `dayIndex + profileId hash + vectorHash`.
+    static func dailyRadar(
+        items: [DiscoveryItem],
+        axisScores: AxisScores,
+        signals: DiscoverySignals? = nil,
+        profileId: UUID,
+        vector: TasteVector,
+        limit: Int = 6,
+        dayIndex: Int? = nil
+    ) -> [DiscoveryItem] {
+        let ranked = rank(items: items, axisScores: axisScores, signals: signals)
+        guard !ranked.isEmpty else { return [] }
+
+        let day = dayIndex ?? currentDayIndex()
+        let dayKey = buildDayKey(dayIndex: day, profileId: profileId, vector: vector)
+
+        // Deterministic shuffle: score each item with a day-keyed hash
+        let shuffled = ranked.map { item -> (DiscoveryItem, UInt64) in
+            let combined = dayKey + item.id
+            let hash = combined.utf8.reduce(UInt64(0)) { ($0 &+ UInt64($1)) &* 2654435761 }
+            return (item, hash)
+        }
+        .sorted { $0.1 < $1.1 }
+        .map(\.0)
+
+        return Array(shuffled.prefix(limit))
+    }
+
+    /// Day index: days since Unix epoch.
+    static func currentDayIndex() -> Int {
+        Int(Date().timeIntervalSince1970 / 86400)
+    }
+
+    /// Deterministic key combining day, profile, and vector state.
+    static func buildDayKey(dayIndex: Int, profileId: UUID, vector: TasteVector) -> String {
+        let profileHash = profileId.uuidString.utf8.reduce(UInt64(0)) { ($0 &+ UInt64($1)) &* 31 }
+        let vectorHash = vector.weights.sorted(by: { $0.key < $1.key })
+            .map { "\($0.key):\(Int($0.value * 100))" }
+            .joined(separator: "|")
+            .utf8.reduce(UInt64(0)) { ($0 &+ UInt64($1)) &* 37 }
+        return "\(dayIndex)|\(profileHash)|\(vectorHash)"
+    }
+
     // MARK: - Paginate
 
     static func page(_ ranked: [DiscoveryItem], offset: Int, limit: Int = 20) -> (items: [DiscoveryItem], hasMore: Bool) {

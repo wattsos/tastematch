@@ -117,19 +117,6 @@ struct HistoryScreen: View {
     }
 
     private func navigateToResult(saved: SavedProfile) {
-        if let record = CalibrationStore.load(for: saved.tasteProfile.id) {
-            let imageVector = TasteEngine.vectorFromProfile(saved.tasteProfile)
-            let blended = TasteVector.blend(image: imageVector, swipe: record.vector.normalized(), mode: .wantMore)
-            let reranked = RecommendationEngine.rankWithVector(
-                saved.recommendations,
-                vector: blended,
-                catalog: MockCatalog.items,
-                context: saved.roomContext,
-                goal: saved.designGoal
-            )
-            path.append(Route.result(saved.tasteProfile, reranked))
-        } else {
-            path.append(Route.result(saved.tasteProfile, saved.recommendations))
-        }
+        path.append(Route.profile(saved.tasteProfile.id))
     }
 }

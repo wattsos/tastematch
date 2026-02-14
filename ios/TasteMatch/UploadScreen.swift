@@ -230,7 +230,7 @@ struct UploadScreen: View {
         )
 
         Haptics.success()
-        path.append(Route.result(profile, recommendations))
+        path.append(Route.calibration(profile, recommendations))
     }
 
     // MARK: - Actions

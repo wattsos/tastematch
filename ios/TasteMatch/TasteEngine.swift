@@ -123,6 +123,18 @@ struct TasteEngine {
 
         return TasteProfile(tags: tags, story: story, signals: signalList)
     }
+
+    /// Convert a TasteProfile's tags into a TasteVector (tag key → confidence as weight).
+    static func vectorFromProfile(_ profile: TasteProfile) -> TasteVector {
+        var weights: [String: Double] = [:]
+        for tag in CanonicalTag.allCases {
+            weights[String(describing: tag)] = 0.0
+        }
+        for tag in profile.tags {
+            weights[tag.key] = tag.confidence
+        }
+        return TasteVector(weights: weights)
+    }
 }
 
 // MARK: - Ideal Profiles

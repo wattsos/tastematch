@@ -99,7 +99,7 @@ struct ContextScreen: View {
             )
             ProfileStore.save(profile: response.tasteProfile, recommendations: response.recommendations, roomContext: selectedRoom, designGoal: selectedGoal)
             Haptics.success()
-            path.append(Route.result(response.tasteProfile, response.recommendations))
+            path.append(Route.calibration(response.tasteProfile, response.recommendations))
         } catch {
             errorMessage = error.localizedDescription
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])

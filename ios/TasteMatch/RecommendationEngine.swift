@@ -71,6 +71,61 @@ struct RecommendationEngine {
             )
         }
     }
+
+    /// Re-rank existing recommendations using a blended TasteVector.
+    static func rankWithVector(
+        _ items: [RecommendationItem],
+        vector: TasteVector,
+        catalog: [CatalogItem],
+        context: RoomContext?,
+        goal: DesignGoal?
+    ) -> [RecommendationItem] {
+        let catalogMap = Dictionary(uniqueKeysWithValues: catalog.map { ($0.skuId, $0) })
+        let goalMult = goal.map { goalMultiplier(for: $0) } ?? 1.0
+        let roomTags: Set<TasteEngine.CanonicalTag> = context.flatMap { roomFavoredTags[$0] } ?? []
+        let normalized = vector.normalized()
+        let avoided = Set(normalized.avoids)
+
+        let scored: [(item: RecommendationItem, score: Double)] = items.map { item in
+            guard let catalogItem = catalogMap[item.skuId] else {
+                return (item, 0.0)
+            }
+
+            var score = 0.0
+            for (i, tag) in catalogItem.tags.enumerated() {
+                let key = String(describing: tag)
+                let weight = normalized.weights[key, default: 0.0]
+                let matchWeight = i == 0 ? 1.0 : 0.6
+                score += matchWeight * weight
+            }
+
+            // Avoid penalty
+            for tag in catalogItem.tags {
+                let key = String(describing: tag)
+                if avoided.contains(key) {
+                    score -= 0.4
+                }
+            }
+
+            // Context bonus
+            for tag in catalogItem.tags {
+                if roomTags.contains(tag) {
+                    score += 0.1
+                    break
+                }
+            }
+
+            score *= goalMult
+            return (item, score)
+        }
+
+        let sorted = scored.sorted {
+            if $0.score != $1.score { return $0.score > $1.score }
+            return $0.item.skuId < $1.item.skuId
+        }
+
+        return sorted.map(\.item)
+    }
 }
 
 // MARK: - Private Helpers

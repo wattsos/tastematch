@@ -25,7 +25,7 @@ struct HistoryScreen: View {
                 List {
                     ForEach(history.reversed()) { saved in
                         Button {
-                            path.append(Route.result(saved.tasteProfile, saved.recommendations))
+                            navigateToResult(saved: saved)
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
@@ -119,5 +119,22 @@ struct HistoryScreen: View {
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: date)
+    }
+
+    private func navigateToResult(saved: SavedProfile) {
+        if let record = CalibrationStore.load(for: saved.tasteProfile.id) {
+            let imageVector = TasteEngine.vectorFromProfile(saved.tasteProfile)
+            let blended = TasteVector.blend(image: imageVector, swipe: record.vector.normalized(), mode: .wantMore)
+            let reranked = RecommendationEngine.rankWithVector(
+                saved.recommendations,
+                vector: blended,
+                catalog: MockCatalog.items,
+                context: saved.roomContext,
+                goal: saved.designGoal
+            )
+            path.append(Route.result(saved.tasteProfile, reranked))
+        } else {
+            path.append(Route.result(saved.tasteProfile, saved.recommendations))
+        }
     }
 }

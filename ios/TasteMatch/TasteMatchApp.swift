@@ -4,6 +4,7 @@ import SwiftUI
 
 enum Route: Hashable {
     case context([UIImage], RoomContext, DesignGoal)
+    case calibration(TasteProfile, [RecommendationItem])
     case result(TasteProfile, [RecommendationItem])
     case compare
     case recommendationDetail(RecommendationItem, tasteProfileId: UUID)
@@ -15,6 +16,9 @@ enum Route: Hashable {
         switch self {
         case .context:
             hasher.combine("context")
+        case .calibration(let profile, _):
+            hasher.combine("calibration")
+            hasher.combine(profile.id)
         case .result(let profile, _):
             hasher.combine("result")
             hasher.combine(profile.id)
@@ -38,6 +42,8 @@ enum Route: Hashable {
         switch (lhs, rhs) {
         case (.context(let a, _, _), .context(let b, _, _)):
             return a.count == b.count
+        case (.calibration(let p1, _), .calibration(let p2, _)):
+            return p1.id == p2.id
         case (.result(let p1, _), .result(let p2, _)):
             return p1.id == p2.id
         case (.compare, .compare):
@@ -160,6 +166,8 @@ struct MainTabView: View {
         switch route {
         case .context(let images, let room, let goal):
             ContextScreen(path: path, images: images, initialRoom: room, initialGoal: goal)
+        case .calibration(let profile, let recs):
+            TasteCalibrationScreen(path: path, profile: profile, recommendations: recs)
         case .result(let profile, let recs):
             ResultScreen(path: path, profile: profile, recommendations: recs)
         case .compare:

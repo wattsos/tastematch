@@ -45,6 +45,11 @@
 		C11001000000000000000001 /* CatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21001000000000000000001 /* CatalogLoader.swift */; };
 		C11002000000000000000002 /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = C21002000000000000000002 /* catalog.json */; };
 		859BEC168102C01A5993CD82 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E6421A33BBF48B4B8E5CB /* Brand.swift */; };
+		D11001000000000000000001 /* TasteVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21001000000000000000001 /* TasteVector.swift */; };
+		D11002000000000000000002 /* CalibrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21002000000000000000002 /* CalibrationStore.swift */; };
+		D11003000000000000000003 /* SwipeDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003000000000000000003 /* SwipeDeckView.swift */; };
+		D11004000000000000000004 /* TasteCalibrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21004000000000000000004 /* TasteCalibrationScreen.swift */; };
+		D11005000000000000000005 /* CalibrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21005000000000000000005 /* CalibrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +104,11 @@
 		C21001000000000000000001 /* CatalogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogLoader.swift; sourceTree = "<group>"; };
 		C21002000000000000000002 /* catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
 		345E6421A33BBF48B4B8E5CB /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		D21001000000000000000001 /* TasteVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteVector.swift; sourceTree = "<group>"; };
+		D21002000000000000000002 /* CalibrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationStore.swift; sourceTree = "<group>"; };
+		D21003000000000000000003 /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
+		D21004000000000000000004 /* TasteCalibrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteCalibrationScreen.swift; sourceTree = "<group>"; };
+		D21005000000000000000005 /* CalibrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +146,7 @@
 				A20002000000000000000002 /* AnalyzingView.swift */,
 				A20003000000000000000003 /* APIClient.swift */,
 				345E6421A33BBF48B4B8E5CB /* Brand.swift */,
+				D21002000000000000000002 /* CalibrationStore.swift */,
 				C21002000000000000000002 /* catalog.json */,
 				C21001000000000000000001 /* CatalogLoader.swift */,
 				A20004000000000000000004 /* CompareScreen.swift */,
@@ -157,9 +168,12 @@
 				A20013000000000000000013 /* SettingsScreen.swift */,
 				B21003000000000000000003 /* ShareTextBuilder.swift */,
 				A20014000000000000000014 /* SignalExtractor.swift */,
+				D21003000000000000000003 /* SwipeDeckView.swift */,
 				A20015000000000000000015 /* TasteBadge.swift */,
+				D21004000000000000000004 /* TasteCalibrationScreen.swift */,
 				A20016000000000000000016 /* TasteCardView.swift */,
 				A20017000000000000000017 /* TasteEngine.swift */,
+				D21001000000000000000001 /* TasteVector.swift */,
 				A20018000000000000000018 /* Theme.swift */,
 				A20019000000000000000019 /* UploadScreen.swift */,
 				A2001A00000000000000001A /* Assets.xcassets */,
@@ -171,6 +185,7 @@
 		A80003000000000000000003 /* TasteMatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				D21005000000000000000005 /* CalibrationTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
@@ -287,6 +302,7 @@
 				A10002000000000000000002 /* AnalyzingView.swift in Sources */,
 				A10003000000000000000003 /* APIClient.swift in Sources */,
 				859BEC168102C01A5993CD82 /* Brand.swift in Sources */,
+				D11002000000000000000002 /* CalibrationStore.swift in Sources */,
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,
 				A10004000000000000000004 /* CompareScreen.swift in Sources */,
 				A10005000000000000000005 /* ContextScreen.swift in Sources */,
@@ -307,9 +323,12 @@
 				A10013000000000000000013 /* SettingsScreen.swift in Sources */,
 				B11003000000000000000003 /* ShareTextBuilder.swift in Sources */,
 				A10014000000000000000014 /* SignalExtractor.swift in Sources */,
+				D11003000000000000000003 /* SwipeDeckView.swift in Sources */,
 				A10015000000000000000015 /* TasteBadge.swift in Sources */,
+				D11004000000000000000004 /* TasteCalibrationScreen.swift in Sources */,
 				A10016000000000000000016 /* TasteCardView.swift in Sources */,
 				A10017000000000000000017 /* TasteEngine.swift in Sources */,
+				D11001000000000000000001 /* TasteVector.swift in Sources */,
 				A10018000000000000000018 /* Theme.swift in Sources */,
 				A10019000000000000000019 /* UploadScreen.swift in Sources */,
 			);
@@ -319,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11005000000000000000005 /* CalibrationTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,

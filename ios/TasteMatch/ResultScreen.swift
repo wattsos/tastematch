@@ -14,6 +14,7 @@ struct ResultScreen: View {
     @State private var revealStory = false
     @State private var revealPicks = false
     @State private var showDetails = false
+    @State private var calibrationRecord: CalibrationRecord?
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -38,6 +39,7 @@ struct ResultScreen: View {
             VStack(alignment: .leading, spacing: 20) {
                 heroSection
                 readingSection
+                calibrationInfoSection
                 selectionHeader
                 selectionGrid
                 detailsSection
@@ -68,6 +70,7 @@ struct ResultScreen: View {
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
             refreshFavorites()
+            calibrationRecord = CalibrationStore.load(for: profile.id)
             withAnimation(.easeOut(duration: 0.6).delay(0.1)) { revealHero = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.45)) { revealStory = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.75)) { revealPicks = true }
@@ -126,6 +129,103 @@ struct ResultScreen: View {
         .labSurface()
         .opacity(revealStory ? 1 : 0)
         .offset(y: revealStory ? 0 : 14)
+    }
+
+    // MARK: - Calibration Info
+
+    @ViewBuilder
+    private var calibrationInfoSection: some View {
+        if let record = calibrationRecord {
+            let normalized = record.vector.normalized()
+            let level = record.vector.confidenceLevel(swipeCount: record.swipeCount)
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text("CALIBRATION")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(1.2)
+                    Spacer()
+                    HStack(spacing: 12) {
+                        Button {
+                            Haptics.tap()
+                            CalibrationStore.delete(for: profile.id)
+                            calibrationRecord = nil
+                        } label: {
+                            Text("Reset")
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(Theme.muted)
+                        }
+                        Button {
+                            Haptics.tap()
+                            path.append(Route.calibration(profile, recommendations))
+                        } label: {
+                            Text("Refine")
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(Theme.accent)
+                        }
+                    }
+                }
+
+                if !normalized.influences.isEmpty {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("INFLUENCES")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Theme.muted)
+                            .tracking(1.0)
+
+                        FlowLayout(spacing: 6) {
+                            ForEach(normalized.influences, id: \.self) { tag in
+                                Text(tagLabel(tag))
+                                    .font(.caption2.weight(.medium))
+                                    .foregroundStyle(Theme.ink)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(Theme.bg)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                            }
+                        }
+                    }
+                }
+
+                if !normalized.avoids.isEmpty {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("AVOIDS")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Theme.muted)
+                            .tracking(1.0)
+
+                        FlowLayout(spacing: 6) {
+                            ForEach(normalized.avoids, id: \.self) { tag in
+                                Text(tagLabel(tag))
+                                    .font(.caption2.weight(.medium))
+                                    .foregroundStyle(Theme.muted)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(Theme.bg)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                            }
+                        }
+                    }
+                }
+
+                HStack(spacing: 10) {
+                    Text("CONFIDENCE")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(1.0)
+                    Text(level)
+                        .font(.caption2)
+                        .foregroundStyle(Theme.ink)
+                }
+            }
+            .labSurface(padded: true, bordered: true)
+        }
+    }
+
+    private func tagLabel(_ key: String) -> String {
+        TasteEngine.CanonicalTag.allCases
+            .first { String(describing: $0) == key }?
+            .rawValue ?? key
     }
 
     // MARK: - Selection Header
@@ -378,4 +478,53 @@ struct ImageShareSheet: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
+// MARK: - Flow Layout
+
+struct FlowLayout: Layout {
+    var spacing: CGFloat = 6
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let rows = computeRows(proposal: proposal, subviews: subviews)
+        var height: CGFloat = 0
+        for (i, row) in rows.enumerated() {
+            let maxH = row.map { $0.sizeThatFits(.unspecified).height }.max() ?? 0
+            height += maxH
+            if i > 0 { height += spacing }
+        }
+        return CGSize(width: proposal.width ?? 0, height: height)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let rows = computeRows(proposal: proposal, subviews: subviews)
+        var y = bounds.minY
+        for (i, row) in rows.enumerated() {
+            if i > 0 { y += spacing }
+            var x = bounds.minX
+            let maxH = row.map { $0.sizeThatFits(.unspecified).height }.max() ?? 0
+            for subview in row {
+                let size = subview.sizeThatFits(.unspecified)
+                subview.place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(size))
+                x += size.width + spacing
+            }
+            y += maxH
+        }
+    }
+
+    private func computeRows(proposal: ProposedViewSize, subviews: Subviews) -> [[LayoutSubview]] {
+        let maxWidth = proposal.width ?? .infinity
+        var rows: [[LayoutSubview]] = [[]]
+        var currentWidth: CGFloat = 0
+        for subview in subviews {
+            let size = subview.sizeThatFits(.unspecified)
+            if currentWidth + size.width > maxWidth && !rows[rows.count - 1].isEmpty {
+                rows.append([])
+                currentWidth = 0
+            }
+            rows[rows.count - 1].append(subview)
+            currentWidth += size.width + spacing
+        }
+        return rows
+    }
 }

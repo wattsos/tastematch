@@ -1,83 +1,24 @@
 import Foundation
 
-// MARK: - Discovery Type
-
-enum DiscoveryType: String, Codable, CaseIterable {
-    case designer
-    case studio
-    case object
-    case material
-    case movement
-    case region
-    case reference
-}
-
-// MARK: - Discovery Layer
-
-enum DiscoveryLayer: String, CaseIterable {
-    case culturalSignals
-    case objectsInTheWild
-    case materialIntelligence
-
-    var label: String {
-        switch self {
-        case .culturalSignals: return "CULTURAL SIGNALS"
-        case .objectsInTheWild: return "OBJECTS IN THE WILD"
-        case .materialIntelligence: return "MATERIAL INTELLIGENCE"
-        }
-    }
-
-    static func layer(for type: DiscoveryType) -> DiscoveryLayer {
-        switch type {
-        case .designer, .studio, .movement: return .culturalSignals
-        case .object, .region, .reference: return .objectsInTheWild
-        case .material: return .materialIntelligence
-        }
-    }
-}
-
-// MARK: - Discovery Item
-
-struct DiscoveryItem: Identifiable, Codable {
-    let id: String
-    let title: String
-    let type: DiscoveryType
-    let region: String
-    let body: String
-    let cluster: String
-    let axisWeights: [String: Double]
-    let rarityScore: Double
-
-    var layer: DiscoveryLayer {
-        DiscoveryLayer.layer(for: type)
-    }
-}
-
-extension DiscoveryItem: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    static func == (lhs: DiscoveryItem, rhs: DiscoveryItem) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
 // MARK: - Discovery Engine
 
 enum DiscoveryEngine {
 
     private static var cachedItems: [DiscoveryItem]?
+    private static var provider: DiscoveryInventoryProvider = LocalNDJSONProvider()
+
+    // MARK: - Provider
+
+    static func setProvider(_ p: DiscoveryInventoryProvider) {
+        provider = p
+        cachedItems = nil
+    }
 
     // MARK: - Load
 
     static func loadAll() -> [DiscoveryItem] {
         if let cached = cachedItems { return cached }
-        guard let url = Bundle.main.url(forResource: "discovery", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let items = try? JSONDecoder().decode([DiscoveryItem].self, from: data) else {
-            return []
-        }
+        let items = provider.loadItems()
         cachedItems = items
         return items
     }
@@ -88,13 +29,24 @@ enum DiscoveryEngine {
 
     // MARK: - Rank
 
-    static func rank(items: [DiscoveryItem], axisScores: AxisScores) -> [DiscoveryItem] {
+    static func rank(
+        items: [DiscoveryItem],
+        axisScores: AxisScores,
+        signals: DiscoverySignals? = nil
+    ) -> [DiscoveryItem] {
         let dominantCluster = identifyCluster(axisScores)
+        let now = Date()
 
         let scored = items.map { item -> (DiscoveryItem, Double) in
             let alignment = vectorAlignment(axisScores: axisScores, itemWeights: item.axisWeights)
-            let clusterBoost: Double = item.cluster == dominantCluster ? 1.0 : 0.0
-            let score = alignment * 0.6 + clusterBoost * 0.2 + item.rarityScore * 0.1
+            let clusterMatch: Double = item.primaryCluster == dominantCluster ? 1.0 : 0.0
+            let affinity = userAffinity(item: item, signals: signals)
+            let fresh = freshness(item: item, now: now)
+            let score = 0.55 * alignment
+                + 0.20 * clusterMatch
+                + 0.10 * item.rarity
+                + 0.10 * affinity
+                + 0.05 * fresh
             return (item, score)
         }
 
@@ -103,7 +55,7 @@ enum DiscoveryEngine {
             return $0.0.id < $1.0.id
         }
 
-        return diversify(sorted.map(\.0), maxConsecutive: 4)
+        return diversify(sorted.map(\.0), maxConsecutiveType: 2, maxConsecutiveCluster: 2)
     }
 
     // MARK: - Paginate
@@ -143,15 +95,57 @@ enum DiscoveryEngine {
         return clusters.max(by: { $0.1 < $1.1 })!.0
     }
 
-    static func diversify(_ ranked: [DiscoveryItem], maxConsecutive: Int) -> [DiscoveryItem] {
+    // MARK: - User Affinity
+
+    static func userAffinity(item: DiscoveryItem, signals: DiscoverySignals?) -> Double {
+        guard let signals = signals else { return 0.5 }
+        if signals.dismissedIds.contains(item.id) { return -1.0 }
+        if signals.savedIds.contains(item.id) { return 1.0 }
+        if signals.viewedIds.contains(item.id) { return 0.3 }
+        return 0.5
+    }
+
+    // MARK: - Freshness
+
+    static func freshness(item: DiscoveryItem, now: Date = Date()) -> Double {
+        guard let created = item.createdAt else { return 0.5 }
+        let days = now.timeIntervalSince(created) / 86400
+        if days < 7 { return 1.0 }
+        if days < 30 { return 0.7 }
+        return 0.3
+    }
+
+    // MARK: - Diversity
+
+    static func diversify(
+        _ ranked: [DiscoveryItem],
+        maxConsecutiveType: Int,
+        maxConsecutiveCluster: Int
+    ) -> [DiscoveryItem] {
         var result: [DiscoveryItem] = []
         var remaining = ranked
 
         while !remaining.isEmpty {
-            let count = consecutiveTypeCount(in: result)
+            let typeCount = consecutiveCount(in: result, by: \.type)
+            let clusterCount = consecutiveCount(in: result, by: \.primaryCluster)
 
-            if count >= maxConsecutive, let lastType = result.last?.type {
-                if let idx = remaining.firstIndex(where: { $0.type != lastType }) {
+            let lastType = result.last?.type
+            let lastCluster = result.last?.primaryCluster
+
+            let needDifferentType = typeCount >= maxConsecutiveType && lastType != nil
+            let needDifferentCluster = clusterCount >= maxConsecutiveCluster && lastCluster != nil
+
+            if needDifferentType || needDifferentCluster {
+                if let idx = remaining.firstIndex(where: { item in
+                    let typeOk = !needDifferentType || item.type != lastType
+                    let clusterOk = !needDifferentCluster || item.primaryCluster != lastCluster
+                    return typeOk && clusterOk
+                }) {
+                    result.append(remaining.remove(at: idx))
+                } else if let idx = remaining.firstIndex(where: { item in
+                    let typeOk = !needDifferentType || item.type != lastType
+                    return typeOk
+                }) {
                     result.append(remaining.remove(at: idx))
                 } else {
                     result.append(remaining.removeFirst())
@@ -164,11 +158,14 @@ enum DiscoveryEngine {
         return result
     }
 
-    private static func consecutiveTypeCount(in items: [DiscoveryItem]) -> Int {
-        guard let lastType = items.last?.type else { return 0 }
+    private static func consecutiveCount<T: Equatable>(
+        in items: [DiscoveryItem],
+        by keyPath: KeyPath<DiscoveryItem, T>
+    ) -> Int {
+        guard let lastValue = items.last?[keyPath: keyPath] else { return 0 }
         var count = 0
         for item in items.reversed() {
-            if item.type == lastType { count += 1 } else { break }
+            if item[keyPath: keyPath] == lastValue { count += 1 } else { break }
         }
         return count
     }

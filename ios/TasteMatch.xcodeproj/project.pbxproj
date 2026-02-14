@@ -57,6 +57,12 @@
 		H11001000000000000000001 /* DiscoveryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21001000000000000000001 /* DiscoveryEngine.swift */; };
 		H11002000000000000000002 /* discovery.json in Resources */ = {isa = PBXBuildFile; fileRef = H21002000000000000000002 /* discovery.json */; };
 		H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21003000000000000000003 /* DiscoveryEngineTests.swift */; };
+		I11001000000000000000001 /* DiscoveryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21001000000000000000001 /* DiscoveryItem.swift */; };
+		I11002000000000000000002 /* DiscoveryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21002000000000000000002 /* DiscoveryLoader.swift */; };
+		I11003000000000000000003 /* DiscoverySignalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21003000000000000000003 /* DiscoverySignalStore.swift */; };
+		I11004000000000000000004 /* DiscoveryCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21004000000000000000004 /* DiscoveryCacheStore.swift */; };
+		I11005000000000000000005 /* discovery.ndjson in Resources */ = {isa = PBXBuildFile; fileRef = I21005000000000000000005 /* discovery.ndjson */; };
+		I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21006000000000000000006 /* DiscoverySignalStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +129,12 @@
 		H21001000000000000000001 /* DiscoveryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngine.swift; sourceTree = "<group>"; };
 		H21002000000000000000002 /* discovery.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = discovery.json; sourceTree = "<group>"; };
 		H21003000000000000000003 /* DiscoveryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngineTests.swift; sourceTree = "<group>"; };
+		I21001000000000000000001 /* DiscoveryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryItem.swift; sourceTree = "<group>"; };
+		I21002000000000000000002 /* DiscoveryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryLoader.swift; sourceTree = "<group>"; };
+		I21003000000000000000003 /* DiscoverySignalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySignalStore.swift; sourceTree = "<group>"; };
+		I21004000000000000000004 /* DiscoveryCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCacheStore.swift; sourceTree = "<group>"; };
+		I21005000000000000000005 /* discovery.ndjson */ = {isa = PBXFileReference; lastKnownFileType = text; path = discovery.ndjson; sourceTree = "<group>"; };
+		I21006000000000000000006 /* DiscoverySignalStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySignalStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,9 +178,14 @@
 				C21001000000000000000001 /* CatalogLoader.swift */,
 				A20004000000000000000004 /* CompareScreen.swift */,
 				A20005000000000000000005 /* ContextScreen.swift */,
+				I21004000000000000000004 /* DiscoveryCacheStore.swift */,
 				H21001000000000000000001 /* DiscoveryEngine.swift */,
 				G21001000000000000000001 /* DiscoveryFeed.swift */,
+				I21001000000000000000001 /* DiscoveryItem.swift */,
+				I21002000000000000000002 /* DiscoveryLoader.swift */,
+				I21003000000000000000003 /* DiscoverySignalStore.swift */,
 				H21002000000000000000002 /* discovery.json */,
+				I21005000000000000000005 /* discovery.ndjson */,
 				B21001000000000000000001 /* DesignTipsEngine.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
@@ -207,6 +224,7 @@
 				D21005000000000000000005 /* CalibrationTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
 				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
+				I21006000000000000000006 /* DiscoverySignalStoreTests.swift */,
 				F21002000000000000000002 /* ProfileNamingTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
@@ -308,7 +326,7 @@
 			files = (
 				A1001A00000000000000001A /* Assets.xcassets in Resources */,
 				C11002000000000000000002 /* catalog.json in Resources */,
-				H11002000000000000000002 /* discovery.json in Resources */,
+				I11005000000000000000005 /* discovery.ndjson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,8 +347,12 @@
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,
 				A10004000000000000000004 /* CompareScreen.swift in Sources */,
 				A10005000000000000000005 /* ContextScreen.swift in Sources */,
+				I11004000000000000000004 /* DiscoveryCacheStore.swift in Sources */,
 				H11001000000000000000001 /* DiscoveryEngine.swift in Sources */,
 				G11001000000000000000001 /* DiscoveryFeed.swift in Sources */,
+				I11001000000000000000001 /* DiscoveryItem.swift in Sources */,
+				I11002000000000000000002 /* DiscoveryLoader.swift in Sources */,
+				I11003000000000000000003 /* DiscoverySignalStore.swift in Sources */,
 				B11001000000000000000001 /* DesignTipsEngine.swift in Sources */,
 				A10006000000000000000006 /* EventLogger.swift in Sources */,
 				A10007000000000000000007 /* EvolutionScreen.swift in Sources */,
@@ -367,6 +389,7 @@
 				D11005000000000000000005 /* CalibrationTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
 				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
+				I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */,
 				F11002000000000000000002 /* ProfileNamingTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,

@@ -74,25 +74,43 @@ final class DiscoveryEngineTests: XCTestCase {
 
     // MARK: - Type Diversity Enforcement
 
-    func testDiversity_noFiveConsecutiveSameType() {
-        // Create 20 designers followed by 1 material
+    func testDiversity_maxTwoConsecutiveSameType() {
         var items: [DiscoveryItem] = (0..<20).map { i in
             makeItem(id: "d-\(i)", type: .designer, rarity: Double(20 - i) / 20)
         }
         items.append(makeItem(id: "m-0", type: .material, rarity: 0.5))
 
-        let diversified = DiscoveryEngine.diversify(items, maxConsecutive: 4)
+        let diversified = DiscoveryEngine.diversify(items, maxConsecutiveType: 2, maxConsecutiveCluster: 100)
 
-        for i in 4..<diversified.count {
-            let window = (i-4)...i
+        for i in 2..<diversified.count {
+            let window = (i-2)...i
             let types = window.map { diversified[$0].type }
-            let allDesigner = types.allSatisfy { $0 == .designer }
-            // Only fail if there's a non-designer available that could have been placed
-            if allDesigner && diversified.contains(where: { $0.type != .designer }) {
-                // Check if any non-designer items remain after position i-4
-                let remainingNonDesigner = diversified[i...].contains(where: { $0.type != .designer })
-                if remainingNonDesigner {
-                    XCTFail("Found 5 consecutive designers at index \(i-4) despite diversity enforcement")
+            let allSame = types.allSatisfy { $0 == types[0] }
+            if allSame {
+                let remaining = diversified[(i+1)...].contains(where: { $0.type != types[0] })
+                if remaining {
+                    XCTFail("Found 3 consecutive same type at index \(i-2)")
+                }
+            }
+        }
+    }
+
+    func testDiversity_maxTwoConsecutiveSameCluster() {
+        var items: [DiscoveryItem] = (0..<20).map { i in
+            makeItem(id: "c-\(i)", type: .designer, clusters: ["industrialDark"], rarity: Double(20 - i) / 20)
+        }
+        items.append(makeItem(id: "w-0", type: .designer, clusters: ["warmOrganic"], rarity: 0.5))
+
+        let diversified = DiscoveryEngine.diversify(items, maxConsecutiveType: 100, maxConsecutiveCluster: 2)
+
+        for i in 2..<diversified.count {
+            let window = (i-2)...i
+            let clusters = window.map { diversified[$0].primaryCluster }
+            let allSame = clusters.allSatisfy { $0 == clusters[0] }
+            if allSame {
+                let remaining = diversified[(i+1)...].contains(where: { $0.primaryCluster != clusters[0] })
+                if remaining {
+                    XCTFail("Found 3 consecutive same cluster at index \(i-2)")
                 }
             }
         }
@@ -100,7 +118,7 @@ final class DiscoveryEngineTests: XCTestCase {
 
     func testDiversity_preservesAllItems() {
         let items = makeTestItems()
-        let diversified = DiscoveryEngine.diversify(items, maxConsecutive: 4)
+        let diversified = DiscoveryEngine.diversify(items, maxConsecutiveType: 2, maxConsecutiveCluster: 2)
 
         XCTAssertEqual(Set(items.map(\.id)), Set(diversified.map(\.id)), "Diversification must not drop items")
     }
@@ -109,14 +127,14 @@ final class DiscoveryEngineTests: XCTestCase {
 
     func testAxisWeightInfluence_industrialScoresPreferIndustrialItems() {
         let industrial = makeItem(
-            id: "ind", type: .designer, cluster: "industrialDark",
+            id: "ind", type: .designer, clusters: ["industrialDark"],
             weights: ["organicIndustrial": 0.9, "lightDark": 0.8, "softStructured": 0.5,
                       "warmCool": -0.4, "minimalOrnate": -0.2, "neutralSaturated": -0.4, "sparseLayered": 0.1],
             rarity: 0.5
         )
 
         let minimal = makeItem(
-            id: "min", type: .designer, cluster: "minimalNeutral",
+            id: "min", type: .designer, clusters: ["minimalNeutral"],
             weights: ["minimalOrnate": -0.8, "neutralSaturated": -0.6, "sparseLayered": -0.6,
                       "lightDark": -0.5, "warmCool": -0.2, "softStructured": 0.2, "organicIndustrial": 0.0],
             rarity: 0.5
@@ -130,14 +148,14 @@ final class DiscoveryEngineTests: XCTestCase {
 
     func testAxisWeightInfluence_minimalScoresPreferMinimalItems() {
         let industrial = makeItem(
-            id: "ind", type: .designer, cluster: "industrialDark",
+            id: "ind", type: .designer, clusters: ["industrialDark"],
             weights: ["organicIndustrial": 0.9, "lightDark": 0.8, "softStructured": 0.5,
                       "warmCool": -0.4, "minimalOrnate": -0.2, "neutralSaturated": -0.4, "sparseLayered": 0.1],
             rarity: 0.5
         )
 
         let minimal = makeItem(
-            id: "min", type: .designer, cluster: "minimalNeutral",
+            id: "min", type: .designer, clusters: ["minimalNeutral"],
             weights: ["minimalOrnate": -0.8, "neutralSaturated": -0.6, "sparseLayered": -0.6,
                       "lightDark": -0.5, "warmCool": -0.2, "softStructured": 0.2, "organicIndustrial": 0.0],
             rarity: 0.5
@@ -199,10 +217,78 @@ final class DiscoveryEngineTests: XCTestCase {
         XCTAssertEqual(cluster, "warmOrganic")
     }
 
+    // MARK: - User Affinity
+
+    func testUserAffinity_dismissedDownranked() {
+        let item = makeItem(id: "x", type: .designer, rarity: 0.9)
+        let signals = DiscoverySignals(profileId: UUID(), dismissedIds: ["x"])
+        let affinity = DiscoveryEngine.userAffinity(item: item, signals: signals)
+        XCTAssertEqual(affinity, -1.0, "Dismissed items should have -1 affinity")
+    }
+
+    func testUserAffinity_savedBoosted() {
+        let item = makeItem(id: "y", type: .designer, rarity: 0.5)
+        let signals = DiscoverySignals(profileId: UUID(), savedIds: ["y"])
+        let affinity = DiscoveryEngine.userAffinity(item: item, signals: signals)
+        XCTAssertEqual(affinity, 1.0, "Saved items should have 1.0 affinity")
+    }
+
+    func testUserAffinity_viewedModerate() {
+        let item = makeItem(id: "z", type: .designer, rarity: 0.5)
+        let signals = DiscoverySignals(profileId: UUID(), viewedIds: ["z"])
+        let affinity = DiscoveryEngine.userAffinity(item: item, signals: signals)
+        XCTAssertEqual(affinity, 0.3, "Viewed items should have 0.3 affinity")
+    }
+
+    // MARK: - Freshness
+
+    func testFreshness_recentItemScoresHigh() {
+        let item = makeItem(id: "f1", type: .designer, rarity: 0.5, createdAt: Date().addingTimeInterval(-86400))
+        let score = DiscoveryEngine.freshness(item: item)
+        XCTAssertEqual(score, 1.0, "Item created 1 day ago should score 1.0")
+    }
+
+    func testFreshness_oldItemScoresLow() {
+        let item = makeItem(id: "f2", type: .designer, rarity: 0.5, createdAt: Date().addingTimeInterval(-86400 * 60))
+        let score = DiscoveryEngine.freshness(item: item)
+        XCTAssertEqual(score, 0.3, "Item created 60 days ago should score 0.3")
+    }
+
+    func testFreshness_noDateReturnsDefault() {
+        let item = makeItem(id: "f3", type: .designer, rarity: 0.5)
+        let score = DiscoveryEngine.freshness(item: item)
+        XCTAssertEqual(score, 0.5, "Item without createdAt should score 0.5")
+    }
+
+    // MARK: - Backward-Compatible Decoding
+
+    func testBackwardCompatibleDecoding_legacyJSON() {
+        let json = """
+        {
+            "id": "disc-001",
+            "title": "Test Item",
+            "type": "region",
+            "region": "Tokyo",
+            "body": "Test body",
+            "cluster": "warmOrganic",
+            "axisWeights": {"warmCool": 0.5},
+            "rarityScore": 0.7
+        }
+        """
+        let data = json.data(using: .utf8)!
+        let item = try! JSONDecoder().decode(DiscoveryItem.self, from: data)
+
+        XCTAssertEqual(item.type, .place, "Legacy 'region' type should decode as .place")
+        XCTAssertEqual(item.regions, ["Tokyo"], "Legacy single region should wrap in array")
+        XCTAssertEqual(item.clusters, ["warmOrganic"], "Legacy single cluster should wrap in array")
+        XCTAssertEqual(item.rarity, 0.7, "Legacy rarityScore should map to rarity")
+        XCTAssertEqual(item.sourceTier, .curated, "Missing sourceTier should default to .curated")
+    }
+
     // MARK: - Helpers
 
     private func makeTestItems() -> [DiscoveryItem] {
-        let types: [DiscoveryType] = [.designer, .studio, .object, .material, .movement, .region, .reference]
+        let types: [DiscoveryType] = [.designer, .studio, .object, .material, .movement, .place, .reference]
         let clusters = ["industrialDark", "warmOrganic", "minimalNeutral", "layeredSaturated"]
         var items: [DiscoveryItem] = []
         for i in 0..<21 {
@@ -219,11 +305,11 @@ final class DiscoveryEngineTests: XCTestCase {
                 id: "test-\(String(format: "%03d", i))",
                 title: "Item \(i)",
                 type: types[i % types.count],
-                region: "Test",
+                regions: ["Test"],
                 body: "Test body \(i)",
-                cluster: clusters[i % clusters.count],
+                clusters: [clusters[i % clusters.count]],
                 axisWeights: weights,
-                rarityScore: Double(i) / 21
+                rarity: Double(i) / 21
             )
             items.append(item)
         }
@@ -236,11 +322,11 @@ final class DiscoveryEngineTests: XCTestCase {
                 id: "n-\(String(format: "%03d", i))",
                 title: "Item \(i)",
                 type: .designer,
-                region: "Test",
+                regions: ["Test"],
                 body: "Test",
-                cluster: "industrialDark",
+                clusters: ["industrialDark"],
                 axisWeights: [:],
-                rarityScore: 0.5
+                rarity: 0.5
             )
         }
     }
@@ -248,14 +334,16 @@ final class DiscoveryEngineTests: XCTestCase {
     private func makeItem(
         id: String,
         type: DiscoveryType,
-        cluster: String = "industrialDark",
+        clusters: [String] = ["industrialDark"],
         weights: [String: Double] = [:],
-        rarity: Double = 0.5
+        rarity: Double = 0.5,
+        createdAt: Date? = nil
     ) -> DiscoveryItem {
         DiscoveryItem(
-            id: id, title: id, type: type, region: "Test",
-            body: "Test", cluster: cluster,
-            axisWeights: weights, rarityScore: rarity
+            id: id, title: id, type: type, regions: ["Test"],
+            body: "Test", clusters: clusters,
+            axisWeights: weights, rarity: rarity,
+            createdAt: createdAt
         )
     }
 

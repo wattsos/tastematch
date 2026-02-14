@@ -17,8 +17,8 @@ struct DiscoveryDetailScreen: View {
                     .font(.system(size: 32, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
 
-                if !item.region.isEmpty {
-                    Text(item.region)
+                if !item.primaryRegion.isEmpty {
+                    Text(item.primaryRegion)
                         .font(.caption)
                         .foregroundStyle(Theme.muted)
                 }

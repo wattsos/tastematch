@@ -21,6 +21,7 @@ struct ResultScreen: View {
     @State private var discoveryLoaded: [DiscoveryItem] = []
     @State private var discoveryOffset = 0
     @State private var discoveryHasMore = false
+    @State private var discoverySignals: DiscoverySignals?
     @State private var namingResult: ProfileNamingResult?
 
     private enum SortMode: String, CaseIterable {
@@ -426,6 +427,7 @@ struct ResultScreen: View {
 
             ForEach(items) { item in
                 Button {
+                    DiscoverySignalStore.recordViewed(item.id, profileId: profile.id, item: item)
                     path.append(Route.discoveryDetail(item))
                 } label: {
                     discoveryCard(item)
@@ -443,16 +445,26 @@ struct ResultScreen: View {
                     .foregroundStyle(Theme.muted)
                     .tracking(1.0)
                 Spacer()
-                if !item.region.isEmpty {
-                    Text(item.region)
+                Button {
+                    Haptics.tap()
+                    toggleDiscoverySaved(item)
+                } label: {
+                    Image(systemName: isDiscoverySaved(item) ? "bookmark.fill" : "bookmark")
                         .font(.caption2)
-                        .foregroundStyle(Theme.muted)
+                        .foregroundStyle(isDiscoverySaved(item) ? Theme.accent : Theme.muted)
                 }
+                .buttonStyle(.plain)
             }
 
             Text(item.title)
                 .font(.system(.subheadline, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
+
+            if !item.primaryRegion.isEmpty {
+                Text(item.primaryRegion)
+                    .font(.caption2)
+                    .foregroundStyle(Theme.muted)
+            }
 
             Text(item.body)
                 .font(.caption)
@@ -462,6 +474,33 @@ struct ResultScreen: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .labSurface(padded: true, bordered: true)
+        .contextMenu {
+            Button(role: .destructive) {
+                dismissDiscoveryItem(item)
+            } label: {
+                Label("Not for me", systemImage: "hand.thumbsdown")
+            }
+        }
+    }
+
+    private func isDiscoverySaved(_ item: DiscoveryItem) -> Bool {
+        discoverySignals?.savedIds.contains(item.id) ?? false
+    }
+
+    private func toggleDiscoverySaved(_ item: DiscoveryItem) {
+        if isDiscoverySaved(item) {
+            discoverySignals?.savedIds.remove(item.id)
+        } else {
+            DiscoverySignalStore.recordSaved(item.id, profileId: profile.id, item: item)
+            discoverySignals?.savedIds.insert(item.id)
+        }
+    }
+
+    private func dismissDiscoveryItem(_ item: DiscoveryItem) {
+        Haptics.tap()
+        DiscoverySignalStore.recordDismissed(item.id, profileId: profile.id, item: item)
+        discoverySignals?.dismissedIds.insert(item.id)
+        discoveryLoaded.removeAll { $0.id == item.id }
     }
 
     // MARK: - Board Dock
@@ -632,7 +671,9 @@ struct ResultScreen: View {
         let baseVector = resolveBaseVector()
         let scores = AxisMapping.computeAxisScores(from: baseVector)
         let allItems = DiscoveryEngine.loadAll()
-        discoveryRanked = DiscoveryEngine.rank(items: allItems, axisScores: scores)
+        let signals = DiscoverySignalStore.load(for: profile.id)
+        discoverySignals = signals
+        discoveryRanked = DiscoveryEngine.rank(items: allItems, axisScores: scores, signals: signals)
         discoveryOffset = 0
         discoveryLoaded = []
         loadMoreDiscovery()

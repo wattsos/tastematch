@@ -39,7 +39,7 @@ struct RecommendationDetailScreen: View {
 
     private var heroImage: some View {
         ZStack(alignment: .bottomTrailing) {
-            CachedImage(url: item.imageURL, height: 300)
+            CachedImage(url: item.resolvedImageURL, height: 300)
 
             // Bookmark overlay
             Button {

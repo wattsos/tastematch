@@ -83,6 +83,12 @@ struct RecommendationItem: Identifiable, Codable, Hashable {
     let price: Double
     let imageURL: String?
     let merchant: String
+
+    /// Returns the current catalog image URL for this SKU, falling back to the stored URL.
+    /// Saved profiles may contain stale CDN URLs; this resolves to the live catalog entry.
+    var resolvedImageURL: String? {
+        MockCatalog.items.first(where: { $0.skuId == skuId })?.imageURL ?? imageURL
+    }
     let productURL: String
     let brand: String
     let affiliateURL: String?

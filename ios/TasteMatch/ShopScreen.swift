@@ -241,7 +241,7 @@ struct ShopScreen: View {
     private func shopCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                CachedImage(url: item.imageURL, height: 150)
+                CachedImage(url: item.resolvedImageURL, height: 150)
 
                 Button {
                     toggleFavorite(item)

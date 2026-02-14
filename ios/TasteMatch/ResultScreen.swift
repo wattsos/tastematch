@@ -384,7 +384,7 @@ struct ResultScreen: View {
 
     private func compactCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            CachedImage(url: item.imageURL, height: 110, width: 140)
+            CachedImage(url: item.resolvedImageURL, height: 110, width: 140)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
@@ -689,7 +689,7 @@ struct ResultScreen: View {
     private func pickCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                CachedImage(url: item.imageURL, height: 150)
+                CachedImage(url: item.resolvedImageURL, height: 150)
 
                 Button {
                     toggleFavorite(item)

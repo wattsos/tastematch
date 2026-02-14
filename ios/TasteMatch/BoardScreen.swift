@@ -95,7 +95,7 @@ struct BoardScreen: View {
 
     private func boardCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            CachedImage(url: item.imageURL, height: 150)
+            CachedImage(url: item.resolvedImageURL, height: 150)
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)

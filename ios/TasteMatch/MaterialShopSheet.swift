@@ -66,7 +66,7 @@ struct MaterialShopSheet: View {
 
     private func shopCard(_ item: RecommendationItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            CachedImage(url: item.imageURL, height: 150)
+            CachedImage(url: item.resolvedImageURL, height: 150)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)

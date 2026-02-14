@@ -54,6 +54,9 @@
 		D11005000000000000000005 /* CalibrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21005000000000000000005 /* CalibrationTests.swift */; };
 		F11001000000000000000001 /* ProfileNaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21001000000000000000001 /* ProfileNaming.swift */; };
 		F11002000000000000000002 /* ProfileNamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21002000000000000000002 /* ProfileNamingTests.swift */; };
+		H11001000000000000000001 /* DiscoveryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21001000000000000000001 /* DiscoveryEngine.swift */; };
+		H11002000000000000000002 /* discovery.json in Resources */ = {isa = PBXBuildFile; fileRef = H21002000000000000000002 /* discovery.json */; };
+		H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21003000000000000000003 /* DiscoveryEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,9 @@
 		D21005000000000000000005 /* CalibrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationTests.swift; sourceTree = "<group>"; };
 		F21001000000000000000001 /* ProfileNaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNaming.swift; sourceTree = "<group>"; };
 		F21002000000000000000002 /* ProfileNamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNamingTests.swift; sourceTree = "<group>"; };
+		H21001000000000000000001 /* DiscoveryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngine.swift; sourceTree = "<group>"; };
+		H21002000000000000000002 /* discovery.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = discovery.json; sourceTree = "<group>"; };
+		H21003000000000000000003 /* DiscoveryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +166,9 @@
 				C21001000000000000000001 /* CatalogLoader.swift */,
 				A20004000000000000000004 /* CompareScreen.swift */,
 				A20005000000000000000005 /* ContextScreen.swift */,
+				H21001000000000000000001 /* DiscoveryEngine.swift */,
 				G21001000000000000000001 /* DiscoveryFeed.swift */,
+				H21002000000000000000002 /* discovery.json */,
 				B21001000000000000000001 /* DesignTipsEngine.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
@@ -198,6 +206,7 @@
 			children = (
 				D21005000000000000000005 /* CalibrationTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
+				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
 				F21002000000000000000002 /* ProfileNamingTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
@@ -299,6 +308,7 @@
 			files = (
 				A1001A00000000000000001A /* Assets.xcassets in Resources */,
 				C11002000000000000000002 /* catalog.json in Resources */,
+				H11002000000000000000002 /* discovery.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +329,7 @@
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,
 				A10004000000000000000004 /* CompareScreen.swift in Sources */,
 				A10005000000000000000005 /* ContextScreen.swift in Sources */,
+				H11001000000000000000001 /* DiscoveryEngine.swift in Sources */,
 				G11001000000000000000001 /* DiscoveryFeed.swift in Sources */,
 				B11001000000000000000001 /* DesignTipsEngine.swift in Sources */,
 				A10006000000000000000006 /* EventLogger.swift in Sources */,
@@ -355,6 +366,7 @@
 			files = (
 				D11005000000000000000005 /* CalibrationTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
+				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
 				F11002000000000000000002 /* ProfileNamingTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,

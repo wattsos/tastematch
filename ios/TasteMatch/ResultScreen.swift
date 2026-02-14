@@ -17,7 +17,10 @@ struct ResultScreen: View {
     @State private var calibrationRecord: CalibrationRecord?
     @State private var variants: [TasteVariant] = []
     @State private var variantLabels: [String] = []
-    @State private var discoveryItems: [DiscoveryItem] = []
+    @State private var discoveryRanked: [DiscoveryItem] = []
+    @State private var discoveryLoaded: [DiscoveryItem] = []
+    @State private var discoveryOffset = 0
+    @State private var discoveryHasMore = false
     @State private var namingResult: ProfileNamingResult?
 
     private enum SortMode: String, CaseIterable {
@@ -383,30 +386,69 @@ struct ResultScreen: View {
 
     @ViewBuilder
     private var outThereSection: some View {
-        if !discoveryItems.isEmpty {
-            VStack(alignment: .leading, spacing: 14) {
+        if !discoveryLoaded.isEmpty {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("OUT THERE")
                     .sectionLabel()
 
-                ForEach(discoveryItems) { item in
-                    Button {
-                        path.append(Route.discoveryDetail(item))
-                    } label: {
-                        discoveryCard(item)
-                    }
-                    .buttonStyle(.plain)
+                let cultural = discoveryLoaded.filter { $0.layer == .culturalSignals }
+                if !cultural.isEmpty {
+                    discoverySubsection("CULTURAL SIGNALS", items: cultural)
+                }
+
+                let objects = discoveryLoaded.filter { $0.layer == .objectsInTheWild }
+                if !objects.isEmpty {
+                    discoverySubsection("OBJECTS IN THE WILD", items: objects)
+                }
+
+                let materials = discoveryLoaded.filter { $0.layer == .materialIntelligence }
+                if !materials.isEmpty {
+                    discoverySubsection("MATERIAL INTELLIGENCE", items: materials)
+                }
+
+                if discoveryHasMore {
+                    Color.clear
+                        .frame(height: 1)
+                        .onAppear { loadMoreDiscovery() }
                 }
             }
             .padding(.top, 8)
         }
     }
 
-    private func discoveryCard(_ item: DiscoveryItem) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(item.category.uppercased())
+    private func discoverySubsection(_ header: String, items: [DiscoveryItem]) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(header)
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(Theme.muted)
-                .tracking(1.0)
+                .tracking(0.8)
+                .padding(.top, 4)
+
+            ForEach(items) { item in
+                Button {
+                    path.append(Route.discoveryDetail(item))
+                } label: {
+                    discoveryCard(item)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    private func discoveryCard(_ item: DiscoveryItem) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(item.type.rawValue.uppercased())
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
+                Spacer()
+                if !item.region.isEmpty {
+                    Text(item.region)
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
+                }
+            }
 
             Text(item.title)
                 .font(.system(.subheadline, design: .serif, weight: .semibold))
@@ -589,7 +631,18 @@ struct ResultScreen: View {
     private func computeDiscovery() {
         let baseVector = resolveBaseVector()
         let scores = AxisMapping.computeAxisScores(from: baseVector)
-        discoveryItems = DiscoveryFeed.items(for: scores)
+        let allItems = DiscoveryEngine.loadAll()
+        discoveryRanked = DiscoveryEngine.rank(items: allItems, axisScores: scores)
+        discoveryOffset = 0
+        discoveryLoaded = []
+        loadMoreDiscovery()
+    }
+
+    private func loadMoreDiscovery() {
+        let result = DiscoveryEngine.page(discoveryRanked, offset: discoveryOffset)
+        discoveryLoaded.append(contentsOf: result.items)
+        discoveryHasMore = result.hasMore
+        discoveryOffset += result.items.count
     }
 
     private func resolveBaseVector() -> TasteVector {

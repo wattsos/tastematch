@@ -37,6 +37,7 @@ struct MyProfileScreen: View {
     @State private var currentDomain: TasteDomain = DomainStore.current
     @State private var domainName: String? = nil
     @State private var currentCatalog: [CatalogItem] = []
+    @State private var showDomainPrompt = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -110,7 +111,12 @@ struct MyProfileScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New") {
                     Haptics.tap()
-                    path.append(Route.newScan)
+                    let enabled = DomainPreferencesStore.enabledDomains
+                    if enabled.count > 1 {
+                        showDomainPrompt = true
+                    } else {
+                        path.append(Route.newScan(enabled.first ?? .space))
+                    }
                 }
                 .foregroundStyle(Theme.ink)
                 .font(.callout.weight(.semibold))
@@ -127,6 +133,15 @@ struct MyProfileScreen: View {
         .sheet(item: $signalShopItem) { item in
             MaterialShopSheet(material: item)
         }
+        .confirmationDialog("What are we reading today?", isPresented: $showDomainPrompt, titleVisibility: .visible) {
+            let enabled = DomainPreferencesStore.enabledDomains
+            ForEach(TasteDomain.allCases.filter { enabled.contains($0) }) { d in
+                Button(d.displayLabel) {
+                    path.append(Route.newScan(d))
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        }
         .onAppear { loadData() }
     }
 
@@ -136,6 +151,12 @@ struct MyProfileScreen: View {
         guard let s = ProfileStore.loadAll().first(where: { $0.id == profileId }) else { return }
         saved = s
         let profile = s.tasteProfile
+
+        // Resolve default domain: lastViewed → primaryDomain → .space
+        let resolved = DomainPreferencesStore.lastViewed(for: profileId)
+            ?? DomainPreferencesStore.primaryDomain
+        currentDomain = resolved
+        DomainStore.current = resolved
 
         calibrationRecord = CalibrationStore.load(for: profileId)
         vector = resolveBaseVector(profile: profile)
@@ -445,6 +466,25 @@ struct MyProfileScreen: View {
         }
     }
 
+    // MARK: - Domain Picker
+
+    @ViewBuilder
+    private var domainPicker: some View {
+        let enabled = DomainPreferencesStore.enabledDomains
+        let enabledList = TasteDomain.allCases.filter { enabled.contains($0) }
+        if enabledList.count > 1 {
+            Picker("Domain", selection: $currentDomain) {
+                ForEach(enabledList) { d in Text(d.displayLabel).tag(d) }
+            }
+            .pickerStyle(.segmented)
+            .onChange(of: currentDomain) { _, newDomain in
+                DomainStore.current = newDomain
+                DomainPreferencesStore.setLastViewed(domain: newDomain, for: profileId)
+                reloadForDomain(newDomain)
+            }
+        }
+    }
+
     // MARK: - Section A: Identity
 
     private func identitySection(_ saved: SavedProfile) -> some View {
@@ -452,14 +492,7 @@ struct MyProfileScreen: View {
             Text("PROFILE 01")
                 .sectionLabel()
 
-            Picker("Domain", selection: $currentDomain) {
-                ForEach(TasteDomain.allCases) { d in Text(d.displayLabel).tag(d) }
-            }
-            .pickerStyle(.segmented)
-            .onChange(of: currentDomain) { _, newDomain in
-                DomainStore.current = newDomain
-                reloadForDomain(newDomain)
-            }
+            domainPicker
 
             if let naming = namingResult, !naming.name.isEmpty {
                 Text(naming.name)
@@ -541,7 +574,7 @@ struct MyProfileScreen: View {
             }
 
             if !heroObjects.isEmpty {
-                Text("SIGNATURE OBJECTS")
+                Text(DomainLayout.config(for: currentDomain).heroLabel)
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Theme.muted)
                     .tracking(1.0)
@@ -596,9 +629,21 @@ struct MyProfileScreen: View {
         .labSurface(padded: false, bordered: true)
     }
 
-    // MARK: - Section B: Your World
+    // MARK: - Section B: Your World / Uniform / Rarity
 
+    @ViewBuilder
     private var worldSection: some View {
+        let config = DomainLayout.config(for: currentDomain)
+        if config.showWorldGrid {
+            spaceWorldSection
+        } else if config.showUniform {
+            uniformSection
+        } else if config.showRarityLanes {
+            raritySection
+        }
+    }
+
+    private var spaceWorldSection: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("YOUR WORLD")
                 .sectionLabel()
@@ -619,6 +664,99 @@ struct MyProfileScreen: View {
                 ) {
                     ForEach(topCommerce) { item in
                         commerceCard(item)
+                    }
+                }
+            }
+        }
+    }
+
+    private var uniformItems: [RecommendationItem] {
+        var seen = Set<ItemCategory>()
+        var result: [RecommendationItem] = []
+        for item in topCommerce {
+            let cat = currentCatalog.first(where: { $0.skuId == item.skuId })?.category ?? .unknown
+            if !seen.contains(cat) {
+                seen.insert(cat)
+                result.append(item)
+            }
+            if result.count >= 6 { break }
+        }
+        return result
+    }
+
+    private var uniformSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("UNIFORM")
+                .sectionLabel()
+
+            if uniformItems.isEmpty {
+                Text("No pieces matched your profile.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.muted)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 32)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 12) {
+                        ForEach(uniformItems) { item in
+                            commerceCard(item, width: 160)
+                        }
+                    }
+                    .padding(.horizontal, 1)
+                }
+            }
+        }
+    }
+
+    private struct RarityLane: Identifiable {
+        let id: String
+        let tier: ArtRarityTier
+        let label: String
+        let items: [RecommendationItem]
+    }
+
+    private var rarityLanes: [RarityLane] {
+        let tierLabels: [(ArtRarityTier, String)] = [
+            (.archive, "ARCHIVE"),
+            (.contemporary, "CONTEMPORARY"),
+            (.emergent, "EMERGENT"),
+        ]
+        return tierLabels.compactMap { tier, label in
+            let items = topCommerce.filter { item in
+                currentCatalog.first(where: { $0.skuId == item.skuId })?.rarityTier == tier
+            }
+            guard !items.isEmpty else { return nil }
+            return RarityLane(id: tier.rawValue, tier: tier, label: label, items: Array(items.prefix(8)))
+        }
+    }
+
+    private var raritySection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("RARITY")
+                .sectionLabel()
+
+            if rarityLanes.isEmpty {
+                Text("No pieces matched your profile.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.muted)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 32)
+            } else {
+                ForEach(rarityLanes) { lane in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(lane.label)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Theme.muted)
+                            .tracking(1.0)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 10) {
+                                ForEach(lane.items) { item in
+                                    commerceCard(item, width: 140)
+                                }
+                            }
+                            .padding(.horizontal, 1)
+                        }
                     }
                 }
             }
@@ -774,7 +912,7 @@ struct MyProfileScreen: View {
                 Text("RADAR")
                     .sectionLabel()
 
-                Text("Updated today.")
+                Text(DomainLayout.config(for: currentDomain).radarSubtitle)
                     .font(.caption2)
                     .foregroundStyle(Theme.muted)
             }
@@ -933,7 +1071,7 @@ struct MyProfileScreen: View {
 
     @ViewBuilder
     private var materialsSection: some View {
-        if !materialSections.isEmpty {
+        if DomainLayout.config(for: currentDomain).showMaterials && !materialSections.isEmpty {
             VStack(alignment: .leading, spacing: 14) {
                 Text("MATERIALS")
                     .sectionLabel()

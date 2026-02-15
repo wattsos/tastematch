@@ -101,6 +101,11 @@
 		Q1100F00000000000000000F /* discovery_objects.ndjson in Resources */ = {isa = PBXBuildFile; fileRef = Q21008000000000000000008 /* discovery_objects.ndjson */; };
 		Q11010000000000000000010 /* discovery_art.ndjson in Resources */ = {isa = PBXBuildFile; fileRef = Q21009000000000000000009 /* discovery_art.ndjson */; };
 		Q11011000000000000000011 /* discovery_space.ndjson in Resources */ = {isa = PBXBuildFile; fileRef = I21005000000000000000005 /* discovery_space.ndjson */; };
+		R11001000000000000000001 /* DomainPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21001000000000000000001 /* DomainPreferencesStore.swift */; };
+		R11002000000000000000002 /* GoalSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21002000000000000000002 /* GoalSelectionScreen.swift */; };
+		R11003000000000000000003 /* DomainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21003000000000000000003 /* DomainLayout.swift */; };
+		R11004000000000000000004 /* DomainPreferencesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21004000000000000000004 /* DomainPreferencesStoreTests.swift */; };
+		R11005000000000000000005 /* DomainEnablementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21005000000000000000005 /* DomainEnablementTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +210,11 @@
 		Q2100A00000000000000000A /* DomainInventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainInventoryTests.swift; sourceTree = "<group>"; };
 		Q2100B00000000000000000B /* DomainNamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainNamingTests.swift; sourceTree = "<group>"; };
 		Q2100C00000000000000000C /* ArtRarityRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtRarityRankingTests.swift; sourceTree = "<group>"; };
+		R21001000000000000000001 /* DomainPreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainPreferencesStore.swift; sourceTree = "<group>"; };
+		R21002000000000000000002 /* GoalSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionScreen.swift; sourceTree = "<group>"; };
+		R21003000000000000000003 /* DomainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayout.swift; sourceTree = "<group>"; };
+		R21004000000000000000004 /* DomainPreferencesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainPreferencesStoreTests.swift; sourceTree = "<group>"; };
+		R21005000000000000000005 /* DomainEnablementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEnablementTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,12 +279,15 @@
 				Q21001000000000000000001 /* Domain.swift */,
 				Q21002000000000000000002 /* DomainCatalog.swift */,
 				Q21003000000000000000003 /* DomainDiscovery.swift */,
+				R21003000000000000000003 /* DomainLayout.swift */,
 				Q21004000000000000000004 /* DomainNaming.swift */,
+				R21001000000000000000001 /* DomainPreferencesStore.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
 				N21002000000000000000002 /* FeatureFlags.swift */,
 				A20008000000000000000008 /* FavoritesScreen.swift */,
 				A20009000000000000000009 /* FavoritesStore.swift */,
+				R21002000000000000000002 /* GoalSelectionScreen.swift */,
 				A2000A00000000000000000A /* Haptics.swift */,
 				A2000B00000000000000000B /* HistoryScreen.swift */,
 				K21001000000000000000001 /* MaterialShopSheet.swift */,
@@ -321,8 +334,10 @@
 				L21002000000000000000002 /* CommerceProviderTests.swift */,
 				L21003000000000000000003 /* CommerceRankingTests.swift */,
 				B21004000000000000000004 /* DesignTipsEngineTests.swift */,
+				R21005000000000000000005 /* DomainEnablementTests.swift */,
 				Q2100A00000000000000000A /* DomainInventoryTests.swift */,
 				Q2100B00000000000000000B /* DomainNamingTests.swift */,
+				R21004000000000000000004 /* DomainPreferencesStoreTests.swift */,
 				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
 				I21006000000000000000006 /* DiscoverySignalStoreTests.swift */,
 				N21006000000000000000006 /* NetworkModelTests.swift */,
@@ -482,7 +497,10 @@
 				Q11001000000000000000001 /* Domain.swift in Sources */,
 				Q11002000000000000000002 /* DomainCatalog.swift in Sources */,
 				Q11003000000000000000003 /* DomainDiscovery.swift in Sources */,
+				R11003000000000000000003 /* DomainLayout.swift in Sources */,
 				Q11004000000000000000004 /* DomainNaming.swift in Sources */,
+				R11001000000000000000001 /* DomainPreferencesStore.swift in Sources */,
+				R11002000000000000000002 /* GoalSelectionScreen.swift in Sources */,
 				A10006000000000000000006 /* EventLogger.swift in Sources */,
 				A10007000000000000000007 /* EvolutionScreen.swift in Sources */,
 				N11002000000000000000002 /* FeatureFlags.swift in Sources */,
@@ -532,8 +550,10 @@
 				L11002000000000000000002 /* CommerceProviderTests.swift in Sources */,
 				L11003000000000000000003 /* CommerceRankingTests.swift in Sources */,
 				B11004000000000000000004 /* DesignTipsEngineTests.swift in Sources */,
+				R11005000000000000000005 /* DomainEnablementTests.swift in Sources */,
 				Q1100A00000000000000000A /* DomainInventoryTests.swift in Sources */,
 				Q1100B00000000000000000B /* DomainNamingTests.swift in Sources */,
+				R11004000000000000000004 /* DomainPreferencesStoreTests.swift in Sources */,
 				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
 				I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */,
 				N11006000000000000000006 /* NetworkModelTests.swift in Sources */,

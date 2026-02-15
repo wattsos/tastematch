@@ -15,7 +15,7 @@ enum Route: Hashable {
     case discoveryDetail(DiscoveryItem)
     case profile(UUID)
     case shop(TasteProfile)
-    case newScan
+    case newScan(TasteDomain? = nil)
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -83,7 +83,7 @@ enum Route: Hashable {
         case (.shop(let p1), .shop(let p2)):
             return p1.id == p2.id
         case (.newScan, .newScan):
-            return true
+            return true  // Ignore domain for nav stack dedup
         default:
             return false
         }
@@ -114,15 +114,59 @@ enum AppTab: String, CaseIterable {
 struct TasteMatchApp: App {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
+    private enum OnboardingPhase {
+        case goalSelection, carousel, done
+    }
+
+    @State private var onboardingPhase: OnboardingPhase = .done
+    @State private var showOnboarding = false
+
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .fullScreenCover(isPresented: Binding(
-                    get: { !hasCompletedOnboarding },
-                    set: { if $0 { hasCompletedOnboarding = false } }
-                )) {
-                    OnboardingScreen(hasCompletedOnboarding: $hasCompletedOnboarding)
+                .fullScreenCover(isPresented: $showOnboarding) {
+                    onboardingFlow
                 }
+                .onAppear {
+                    resolvePhase()
+                }
+        }
+    }
+
+    @ViewBuilder
+    private var onboardingFlow: some View {
+        switch onboardingPhase {
+        case .goalSelection:
+            GoalSelectionScreen(isPresented: $showOnboarding) {
+                DomainPreferencesStore.markOnboardingComplete()
+                onboardingPhase = .carousel
+            }
+        case .carousel:
+            OnboardingScreen(hasCompletedOnboarding: Binding(
+                get: { hasCompletedOnboarding },
+                set: { newValue in
+                    hasCompletedOnboarding = newValue
+                    if newValue {
+                        onboardingPhase = .done
+                        showOnboarding = false
+                    }
+                }
+            ))
+        case .done:
+            EmptyView()
+        }
+    }
+
+    private func resolvePhase() {
+        if !DomainPreferencesStore.isOnboardingComplete {
+            onboardingPhase = .goalSelection
+            showOnboarding = true
+        } else if !hasCompletedOnboarding {
+            onboardingPhase = .carousel
+            showOnboarding = true
+        } else {
+            onboardingPhase = .done
+            showOnboarding = false
         }
     }
 }
@@ -215,8 +259,8 @@ struct MainTabView: View {
             MyProfileScreen(profileId: profileId, path: path)
         case .shop(let profile):
             ShopScreen(path: path, profile: profile)
-        case .newScan:
-            UploadScreen(path: path)
+        case .newScan(let domain):
+            UploadScreen(path: path, domain: domain ?? DomainPreferencesStore.primaryDomain)
         }
     }
 }

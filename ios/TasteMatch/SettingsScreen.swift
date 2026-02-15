@@ -6,6 +6,7 @@ struct SettingsScreen: View {
     @State private var showClearConfirmation = false
     @State private var showClearFavoritesConfirmation = false
     @State private var showResetOnboardingConfirmation = false
+    @State private var showDomainSettings = false
 
     var body: some View {
         List {
@@ -42,6 +43,19 @@ struct SettingsScreen: View {
             }
 
             Section("App") {
+                Button {
+                    showDomainSettings = true
+                } label: {
+                    HStack {
+                        Label("Domains", systemImage: "square.grid.3x3")
+                            .foregroundStyle(Theme.espresso)
+                        Spacer()
+                        Text(domainSummary)
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.clay)
+                    }
+                }
+
                 Button {
                     showResetOnboardingConfirmation = true
                 } label: {
@@ -81,6 +95,15 @@ struct SettingsScreen: View {
         }
         .navigationTitle("Settings")
         .tint(Theme.accent)
+        .sheet(isPresented: $showDomainSettings) {
+            GoalSelectionScreen(isPresented: $showDomainSettings)
+        }
+    }
+
+    private var domainSummary: String {
+        let enabled = DomainPreferencesStore.enabledDomains
+        let labels = TasteDomain.allCases.filter { enabled.contains($0) }.map(\.displayLabel)
+        return labels.joined(separator: ", ")
     }
 
     private var appVersion: String {

@@ -5,11 +5,42 @@ struct UploadScreen: View {
     @Binding var path: NavigationPath
     var prefillRoom: RoomContext = .livingRoom
     var prefillGoal: DesignGoal = .refresh
+    var domain: TasteDomain = DomainPreferencesStore.primaryDomain
 
+    @State private var selectedDomain: TasteDomain
     @State private var selectedItems: [PhotosPickerItem] = []
     @State private var images: [UIImage] = []
     @State private var isLoading = false
     @State private var loadError = false
+
+    private var enabledDomains: [TasteDomain] {
+        let enabled = DomainPreferencesStore.enabledDomains
+        return TasteDomain.allCases.filter { enabled.contains($0) }
+    }
+
+    init(path: Binding<NavigationPath>, prefillRoom: RoomContext = .livingRoom, prefillGoal: DesignGoal = .refresh, domain: TasteDomain = DomainPreferencesStore.primaryDomain) {
+        self._path = path
+        self.prefillRoom = prefillRoom
+        self.prefillGoal = prefillGoal
+        self.domain = domain
+        self._selectedDomain = State(initialValue: domain)
+    }
+
+    private struct DomainCopy {
+        let headline: String
+        let subtitle: String
+    }
+
+    private var domainCopy: DomainCopy {
+        switch selectedDomain {
+        case .space:
+            return DomainCopy(headline: "Show us your space", subtitle: "Upload a few photos of a room. We'll read materials, light, and layout.")
+        case .objects:
+            return DomainCopy(headline: "Show us your objects", subtitle: "Upload watches, bags, accessories, shoes, or favorite pieces you own.")
+        case .art:
+            return DomainCopy(headline: "Show us your walls", subtitle: "Upload your walls + art you love. We'll map your collection taste.")
+        }
+    }
 
     var body: some View {
         VStack(spacing: 24) {
@@ -56,15 +87,23 @@ struct UploadScreen: View {
         VStack(spacing: 16) {
             Spacer()
 
+            if enabledDomains.count > 1 {
+                Picker("Domain", selection: $selectedDomain) {
+                    ForEach(enabledDomains) { d in Text(d.displayLabel).tag(d) }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 32)
+            }
+
             Image(systemName: "camera.viewfinder")
                 .font(.system(size: 56))
                 .foregroundStyle(Theme.blush)
 
-            Text("Show us your space")
+            Text(domainCopy.headline)
                 .font(Theme.headlineFont)
                 .foregroundStyle(Theme.espresso)
 
-            Text("Upload a few photos of your room.\nWe'll read the vibe and find pieces that feel like you.")
+            Text(domainCopy.subtitle)
                 .font(.subheadline)
                 .foregroundStyle(Theme.clay)
                 .multilineTextAlignment(.center)
@@ -196,6 +235,7 @@ struct UploadScreen: View {
 
     private func runDemo() {
         Haptics.impact()
+        DomainStore.current = selectedDomain
         EventLogger.shared.logEvent("demo_started")
 
         // Use preset signals that produce a nice Scandinavian + Japandi result

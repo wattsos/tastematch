@@ -3,7 +3,9 @@ import SwiftUI
 struct ShopScreen: View {
     @Binding var path: NavigationPath
     let profile: TasteProfile
+    var domain: TasteDomain = .space
     @Environment(\.openURL) private var openURL
+    @EnvironmentObject private var advisorySettings: AdvisorySettings
 
     @State private var searchText = ""
     @State private var selectedCategory: ItemCategory? = nil
@@ -12,6 +14,9 @@ struct ShopScreen: View {
     @State private var displayedItems: [RecommendationItem] = []
     @State private var favoritedIds: Set<String> = []
     @State private var hasMore = true
+    @State private var guardItem: RecommendationItem?
+    @State private var guardDecision: AdvisoryDecision?
+    @State private var showShiftToast = false
 
     private let pageSize = 20
 
@@ -30,7 +35,7 @@ struct ShopScreen: View {
     }
 
     private var materialChips: [String] {
-        let catalog = MockCatalog.items
+        let catalog = DomainCatalog.items(for: domain)
         let topSkus = Set(allRanked.prefix(60).map(\.skuId))
         var freq: [String: Int] = [:]
         for item in catalog where topSkus.contains(item.skuId) {
@@ -46,7 +51,27 @@ struct ShopScreen: View {
     }
 
     private var categoryChips: [ItemCategory] {
-        [.lighting, .textile]
+        switch domain {
+        case .space:   return [.lighting, .textile]
+        case .objects: return [.timepiece, .bag, .accessory, .footwear]
+        case .art:     return [.painting, .sculpture, .print, .photograph]
+        }
+    }
+
+    private var objectAxisScores: ObjectAxisScores? {
+        guard domain == .objects,
+              let record = ObjectCalibrationStore.load(for: profile.id) else { return nil }
+        return ObjectAxisMapping.computeAxisScores(from: record.vector)
+    }
+
+    private func objectDecision(for item: RecommendationItem) -> AdvisoryDecision? {
+        guard let scores = objectAxisScores else { return nil }
+        return ObjectAdvisory.decision(
+            for: item,
+            scores: scores,
+            level: advisorySettings.level,
+            tolerance: AdvisoryToleranceStore.tolerance
+        )
     }
 
     // MARK: - Body
@@ -73,6 +98,50 @@ struct ShopScreen: View {
             loadCatalog()
             refreshFavorites()
         }
+        .sheet(item: $guardItem) { item in
+            if let decision = guardDecision {
+                TasteGuardSheet(
+                    item: item,
+                    decision: decision,
+                    advisoryLevel: advisorySettings.level,
+                    profileId: profile.id,
+                    onProceed: {
+                        let urlString = item.affiliateURL ?? item.productURL
+                        if let url = URL(string: urlString) {
+                            openURL(url)
+                        }
+                    },
+                    onSave: {
+                        toggleFavorite(item)
+                    },
+                    onIntentionalShift: {
+                        applyIntentionalShift(item)
+                        reloadRanked()
+                        showShiftToast = true
+                    }
+                )
+                .presentationDetents([.medium])
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if showShiftToast {
+                Text("Profile updated.")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                    .padding(.bottom, 24)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation { showShiftToast = false }
+                        }
+                    }
+            }
+        }
+        .animation(.easeInOut(duration: 0.3), value: showShiftToast)
     }
 
     // MARK: - Header
@@ -220,7 +289,7 @@ struct ShopScreen: View {
                             tasteProfileId: profile.id,
                             metadata: ["skuId": item.skuId, "title": item.title]
                         )
-                        path.append(Route.recommendationDetail(item, tasteProfileId: profile.id))
+                        path.append(Route.recommendationDetail(item, tasteProfileId: profile.id, domain: domain))
                     } label: {
                         shopCard(item)
                     }
@@ -263,10 +332,16 @@ struct ShopScreen: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(item.brand)
-                    .font(.caption2.weight(.medium))
-                    .foregroundStyle(Theme.muted)
-                    .lineLimit(1)
+                HStack {
+                    Text(item.brand)
+                        .font(.caption2.weight(.medium))
+                        .foregroundStyle(Theme.muted)
+                        .lineLimit(1)
+                    Spacer()
+                    if domain == .objects, let decision = objectDecision(for: item) {
+                        ObjectFitBadge(decision: decision)
+                    }
+                }
 
                 Text(item.title)
                     .font(.system(.subheadline, design: .default, weight: .medium))
@@ -286,10 +361,7 @@ struct ShopScreen: View {
                     tasteProfileId: profile.id,
                     metadata: ["skuId": item.skuId]
                 )
-                let urlString = item.affiliateURL ?? item.productURL
-                if let url = URL(string: urlString) {
-                    openURL(url)
-                }
+                handleOutboundTap(item)
             } label: {
                 Text("View")
                     .font(.caption.weight(.semibold))
@@ -310,15 +382,39 @@ struct ShopScreen: View {
     }
 
     private func reloadRanked() {
-        let vector = resolveVector()
-        let axisScores = AxisMapping.computeAxisScores(from: vector)
-        allRanked = RecommendationEngine.rankCommerceItems(
-            vector: vector,
-            axisScores: axisScores,
-            items: MockCatalog.items,
-            materialFilter: selectedMaterial,
-            categoryFilter: selectedCategory
-        )
+        let catalog = DomainCatalog.items(for: domain)
+
+        if domain == .objects, let objRecord = ObjectCalibrationStore.load(for: profile.id) {
+            let objVector = objRecord.vector
+            let objScores = ObjectAxisMapping.computeAxisScores(from: objVector)
+            var ranked = ObjectsRankingEngine.rankObjectItems(
+                vector: objVector, axisScores: objScores,
+                items: catalog, swipeCount: objRecord.swipeCount
+            )
+            if let mat = selectedMaterial {
+                ranked = ranked.filter { item in
+                    catalog.first(where: { $0.skuId == item.skuId })?.materialTags
+                        .contains(where: { $0.lowercased() == mat }) ?? false
+                }
+            }
+            if let cat = selectedCategory {
+                ranked = ranked.filter { item in
+                    catalog.first(where: { $0.skuId == item.skuId })?.category == cat
+                }
+            }
+            allRanked = ranked
+        } else {
+            let vector = resolveVector()
+            let axisScores = AxisMapping.computeAxisScores(from: vector)
+            allRanked = RecommendationEngine.rankCommerceItems(
+                vector: vector,
+                axisScores: axisScores,
+                items: catalog,
+                materialFilter: selectedMaterial,
+                categoryFilter: selectedCategory,
+                domain: domain
+            )
+        }
         resetPagination()
     }
 
@@ -351,6 +447,24 @@ struct ShopScreen: View {
         } else {
             return TasteEngine.vectorFromProfile(profile)
         }
+    }
+
+    // MARK: - Advisory
+
+    private func handleOutboundTap(_ item: RecommendationItem) {
+        if domain == .objects, let decision = objectDecision(for: item), decision.shouldIntercept {
+            guardItem = item
+            guardDecision = decision
+        } else {
+            let urlString = item.affiliateURL ?? item.productURL
+            if let url = URL(string: urlString) {
+                openURL(url)
+            }
+        }
+    }
+
+    private func applyIntentionalShift(_ item: RecommendationItem) {
+        ObjectAdvisory.applyIntentionalShift(item: item, profileId: profile.id)
     }
 
     // MARK: - Favorites

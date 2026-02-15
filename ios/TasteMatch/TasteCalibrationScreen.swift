@@ -4,6 +4,7 @@ struct TasteCalibrationScreen: View {
     @Binding var path: NavigationPath
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
+    var domain: TasteDomain = .space
 
     @State private var vector = TasteVector.zero
     @State private var swipeCount = 0
@@ -19,11 +20,12 @@ struct TasteCalibrationScreen: View {
 
     /// 20 cards: 2 per canonical tag, balanced distribution, deterministic shuffle.
     private var calibrationItems: [CatalogItem] {
+        let catalog = DomainCatalog.items(for: domain)
         var tagBuckets: [String: [CatalogItem]] = [:]
         for tag in TasteEngine.CanonicalTag.allCases {
             tagBuckets[String(describing: tag)] = []
         }
-        for item in MockCatalog.items {
+        for item in catalog {
             if let primaryTag = item.tags.first {
                 let key = String(describing: primaryTag)
                 if var bucket = tagBuckets[key], bucket.count < 2 {
@@ -73,7 +75,7 @@ struct TasteCalibrationScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Skip") {
                     Haptics.tap()
-                    path.append(Route.result(profile, recommendations))
+                    path.append(Route.result(profile, recommendations, domain))
                 }
                 .foregroundStyle(Theme.muted)
                 .font(.callout.weight(.medium))
@@ -368,7 +370,7 @@ struct TasteCalibrationScreen: View {
         showUpdating = true
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            path.append(Route.result(profile, recommendations))
+            path.append(Route.result(profile, recommendations, domain))
         }
     }
 
@@ -397,7 +399,7 @@ struct TasteCalibrationScreen: View {
 
 // MARK: - Seeded RNG (deterministic shuffle)
 
-private struct SeededRNG: RandomNumberGenerator {
+struct SeededRNG: RandomNumberGenerator {
     private var state: UInt64
 
     init(seed: Int) {

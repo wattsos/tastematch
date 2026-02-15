@@ -60,7 +60,11 @@ struct UploadScreen: View {
             // Primary action button
             Button {
                 EventLogger.shared.logEvent("photos_confirmed", metadata: ["count": "\(images.count)"])
-                path.append(Route.context(images, prefillRoom, prefillGoal))
+                if selectedDomain == .space {
+                    path.append(Route.context(images, prefillRoom, prefillGoal, selectedDomain))
+                } else {
+                    Task { await analyzeDirect() }
+                }
             } label: {
                 Text("Next")
                     .font(.headline)
@@ -236,7 +240,7 @@ struct UploadScreen: View {
     private func runDemo() {
         Haptics.impact()
         DomainStore.current = selectedDomain
-        EventLogger.shared.logEvent("demo_started")
+        EventLogger.shared.logEvent("demo_started", metadata: ["domain": selectedDomain.rawValue])
 
         // Use preset signals that produce a nice Scandinavian + Japandi result
         let signals = VisualSignals(
@@ -255,9 +259,10 @@ struct UploadScreen: View {
         )
         ProfileNamingEngine.applyInitialNaming(to: &profile)
 
+        let catalog = DomainCatalog.items(for: selectedDomain)
         let recommendations = RecommendationEngine.recommend(
             profile: profile,
-            catalog: MockCatalog.items,
+            catalog: catalog,
             context: .livingRoom,
             goal: .refresh,
             limit: 6
@@ -267,11 +272,63 @@ struct UploadScreen: View {
             profile: profile,
             recommendations: recommendations,
             roomContext: .livingRoom,
-            designGoal: .refresh
+            designGoal: .refresh,
+            domain: selectedDomain
         )
 
         Haptics.success()
-        path.append(Route.calibration(profile, recommendations))
+        path.append(Route.calibration(profile, recommendations, selectedDomain))
+    }
+
+    // MARK: - Direct Analysis (non-Space domains skip ContextScreen)
+
+    private func analyzeDirect() async {
+        isLoading = true
+        defer { isLoading = false }
+
+        Haptics.impact()
+        DomainStore.current = selectedDomain
+        EventLogger.shared.logEvent(
+            "analyze_started",
+            metadata: ["domain": selectedDomain.rawValue]
+        )
+
+        let imageData = images.compactMap { $0.jpegData(compressionQuality: 0.8) }
+        guard !imageData.isEmpty else {
+            loadError = true
+            return
+        }
+
+        do {
+            let response = try await APIClient.shared.analyze(
+                imageData: imageData,
+                roomContext: .livingRoom,
+                goal: .refresh
+            )
+            var profile = response.tasteProfile
+            ProfileNamingEngine.applyInitialNaming(to: &profile)
+
+            let catalog = DomainCatalog.items(for: selectedDomain)
+            let recommendations = RecommendationEngine.recommend(
+                profile: profile,
+                catalog: catalog,
+                context: .livingRoom,
+                goal: .refresh,
+                limit: 6
+            )
+
+            ProfileStore.save(
+                profile: profile,
+                recommendations: recommendations,
+                domain: selectedDomain
+            )
+
+            Haptics.success()
+            path.append(Route.calibration(profile, recommendations, selectedDomain))
+        } catch {
+            loadError = true
+            EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])
+        }
     }
 
     // MARK: - Actions

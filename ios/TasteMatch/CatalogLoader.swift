@@ -54,6 +54,7 @@ struct LocalSeedCommerceProvider: CommerceInventoryProvider {
                 category: category,
                 materialTags: entry.materialTags,
                 commerceAxisWeights: entry.axisWeights,
+                objectAxisWeights: entry.objectAxisWeights ?? [:],
                 discoveryClusters: entry.discoveryClusters,
                 affiliateURL: entry.affiliateURL,
                 rarityTier: rarity,
@@ -131,6 +132,7 @@ struct CommerceEntry: Decodable {
     let tags: [String]
     let materialTags: [String]
     let axisWeights: [String: Double]
+    let objectAxisWeights: [String: Double]?
     let discoveryClusters: [String]
     let rarityTier: String?
     let movementCluster: String?

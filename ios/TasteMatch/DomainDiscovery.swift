@@ -29,14 +29,26 @@ enum DomainDiscovery {
         cache.removeAll()
     }
 
-    // MARK: - Objects Clusters
+    // MARK: - Objects Clusters (legacy — Space AxisScores)
 
     private static func identifyObjectsCluster(_ s: AxisScores) -> String {
         let clusters: [(String, Double)] = [
-            ("precision", s.softStructured + s.organicIndustrial),
+            ("precisionTool", s.softStructured + s.organicIndustrial),
             ("heritageCraft", s.warmCool - s.minimalOrnate + s.sparseLayered),
-            ("technicalLuxury", s.lightDark + s.neutralSaturated + s.softStructured),
-            ("minimalUtility", -s.minimalOrnate - s.sparseLayered - s.neutralSaturated),
+            ("streetSignal", s.lightDark + s.neutralSaturated + s.softStructured),
+            ("quietCeremony", -s.minimalOrnate - s.sparseLayered - s.neutralSaturated),
+        ]
+        return clusters.max(by: { $0.1 < $1.1 })!.0
+    }
+
+    // MARK: - Objects Clusters V2 (ObjectAxisScores)
+
+    static func identifyObjectsClusterV2(objectScores s: ObjectAxisScores) -> String {
+        let clusters: [(String, Double)] = [
+            ("precisionTool", s.precision + s.technicality),
+            ("heritageCraft", s.heritage + s.patina),
+            ("streetSignal", s.subculture + s.utility),
+            ("quietCeremony", s.formality + s.minimalism),
         ]
         return clusters.max(by: { $0.1 < $1.1 })!.0
     }

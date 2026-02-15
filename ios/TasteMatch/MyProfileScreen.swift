@@ -1,9 +1,14 @@
 import SwiftUI
 
+private enum ShiftAxisKind {
+    case space(Axis)
+    case object(ObjectAxis)
+}
+
 private struct ShiftDirection: Identifiable {
     let id: String
     let label: String
-    let axis: Axis
+    let axisKind: ShiftAxisKind
     let delta: Double
     let products: [RecommendationItem]
 }
@@ -39,6 +44,12 @@ struct MyProfileScreen: View {
     @State private var currentCatalog: [CatalogItem] = []
     @State private var showDomainPrompt = false
 
+    // Object-specific state
+    @State private var objectCalibrationRecord: ObjectCalibrationRecord?
+    @State private var objectVector: ObjectVector = .zero
+    @State private var objectAxisScores: ObjectAxisScores = .zero
+    @EnvironmentObject private var advisorySettings: AdvisorySettings
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollViewReader { proxy in
@@ -71,6 +82,7 @@ struct MyProfileScreen: View {
                             evolutionSection(saved)
                             radarSection(saved)
                                 .id("radar")
+                            guardSection
                             materialsSection
                         }
                         .padding(16)
@@ -131,7 +143,7 @@ struct MyProfileScreen: View {
             }
         }
         .sheet(item: $signalShopItem) { item in
-            MaterialShopSheet(material: item)
+            MaterialShopSheet(material: item, domain: currentDomain, profileId: profileId)
         }
         .confirmationDialog("What are we reading today?", isPresented: $showDomainPrompt, titleVisibility: .visible) {
             let enabled = DomainPreferencesStore.enabledDomains
@@ -159,8 +171,20 @@ struct MyProfileScreen: View {
         DomainStore.current = resolved
 
         calibrationRecord = CalibrationStore.load(for: profileId)
+        objectCalibrationRecord = ObjectCalibrationStore.load(for: profileId)
         vector = resolveBaseVector(profile: profile)
         axisScores = AxisMapping.computeAxisScores(from: vector)
+
+        // Load object-specific data
+        if let objRecord = objectCalibrationRecord {
+            objectVector = objRecord.vector
+            objectAxisScores = ObjectAxisMapping.computeAxisScores(from: objectVector)
+        }
+
+        // Adjust advisory tolerance for Objects domain (once per day)
+        if currentDomain == .objects, objectCalibrationRecord != nil {
+            AdvisoryToleranceStore.adjustIfNeeded()
+        }
 
         let swipeCount = calibrationRecord?.swipeCount ?? 0
         let existingProfile = s.tasteProfile
@@ -174,14 +198,26 @@ struct MyProfileScreen: View {
 
         currentCatalog = DomainCatalog.items(for: currentDomain)
 
-        topCommerce = Array(RecommendationEngine.rankCommerceItems(
-            vector: vector, axisScores: axisScores, items: currentCatalog,
-            domain: currentDomain, swipeCount: swipeCount
-        ).prefix(20))
+        if currentDomain == .objects, let objRecord = objectCalibrationRecord {
+            topCommerce = Array(ObjectsRankingEngine.rankObjectItems(
+                vector: objectVector, axisScores: objectAxisScores,
+                items: currentCatalog, swipeCount: objRecord.swipeCount
+            ).prefix(20))
+        } else {
+            topCommerce = Array(RecommendationEngine.rankCommerceItems(
+                vector: vector, axisScores: axisScores, items: currentCatalog,
+                domain: currentDomain, swipeCount: swipeCount
+            ).prefix(20))
+        }
 
         heroObjects = computeHeroObjects(catalog: currentCatalog)
 
-        let domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: currentDomain)
+        let domainCluster: String
+        if currentDomain == .objects, objectCalibrationRecord != nil {
+            domainCluster = DomainDiscovery.identifyObjectsClusterV2(objectScores: objectAxisScores)
+        } else {
+            domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: currentDomain)
+        }
         let allDiscovery = DomainDiscovery.items(for: currentDomain)
         let signals = DiscoverySignalStore.load(for: profileId)
         topDiscovery = DiscoveryEngine.dailyRadar(
@@ -198,7 +234,14 @@ struct MyProfileScreen: View {
         materialSections = computeMaterialSections(catalog: currentCatalog)
         favoritedIds = Set(FavoritesStore.loadAll().map { "\($0.title)|\($0.subtitle)" })
 
-        if currentDomain != .space {
+        if currentDomain == .objects && objectCalibrationRecord != nil {
+            let basisHash = BasisHashBuilder.build(
+                axisScores: axisScores, vector: vector, swipeCount: swipeCount
+            )
+            domainName = DomainNameDispatcher.generateObjects(
+                objectScores: objectAxisScores, basisHash: basisHash
+            )
+        } else if currentDomain != .space {
             let domainResult = ProfileNamingEngine.resolve(
                 vector: vector, swipeCount: swipeCount,
                 existingProfile: existingProfile, domain: currentDomain
@@ -212,16 +255,35 @@ struct MyProfileScreen: View {
     private func reloadForDomain(_ domain: TasteDomain) {
         let swipeCount = calibrationRecord?.swipeCount ?? 0
 
+        // Refresh object calibration data
+        objectCalibrationRecord = ObjectCalibrationStore.load(for: profileId)
+        if let objRecord = objectCalibrationRecord {
+            objectVector = objRecord.vector
+            objectAxisScores = ObjectAxisMapping.computeAxisScores(from: objectVector)
+        }
+
         currentCatalog = DomainCatalog.items(for: domain)
 
-        topCommerce = Array(RecommendationEngine.rankCommerceItems(
-            vector: vector, axisScores: axisScores, items: currentCatalog,
-            domain: domain, swipeCount: swipeCount
-        ).prefix(20))
+        if domain == .objects, let objRecord = objectCalibrationRecord {
+            topCommerce = Array(ObjectsRankingEngine.rankObjectItems(
+                vector: objectVector, axisScores: objectAxisScores,
+                items: currentCatalog, swipeCount: objRecord.swipeCount
+            ).prefix(20))
+        } else {
+            topCommerce = Array(RecommendationEngine.rankCommerceItems(
+                vector: vector, axisScores: axisScores, items: currentCatalog,
+                domain: domain, swipeCount: swipeCount
+            ).prefix(20))
+        }
 
         heroObjects = computeHeroObjects(catalog: currentCatalog)
 
-        let domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: domain)
+        let domainCluster: String
+        if domain == .objects, objectCalibrationRecord != nil {
+            domainCluster = DomainDiscovery.identifyObjectsClusterV2(objectScores: objectAxisScores)
+        } else {
+            domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: domain)
+        }
         let allDiscovery = DomainDiscovery.items(for: domain)
         let signals = DiscoverySignalStore.load(for: profileId)
         topDiscovery = DiscoveryEngine.dailyRadar(
@@ -237,7 +299,14 @@ struct MyProfileScreen: View {
         shiftDirections = computeShiftDirections(catalog: currentCatalog)
         materialSections = computeMaterialSections(catalog: currentCatalog)
 
-        if domain != .space, let saved {
+        if domain == .objects && objectCalibrationRecord != nil {
+            let basisHash = BasisHashBuilder.build(
+                axisScores: axisScores, vector: vector, swipeCount: swipeCount
+            )
+            domainName = DomainNameDispatcher.generateObjects(
+                objectScores: objectAxisScores, basisHash: basisHash
+            )
+        } else if domain != .space, let saved {
             let domainResult = ProfileNamingEngine.resolve(
                 vector: vector, swipeCount: swipeCount,
                 existingProfile: saved.tasteProfile, domain: domain
@@ -262,6 +331,11 @@ struct MyProfileScreen: View {
     }
 
     private func computeHeroObjects(catalog: [CatalogItem]) -> [RecommendationItem] {
+        // Objects domain with calibration: use ObjectAxis-based hero selection
+        if currentDomain == .objects, objectCalibrationRecord != nil {
+            return computeObjectHeroes(catalog: catalog)
+        }
+
         let sorted = Axis.allCases.sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
         let topAxes = Array(sorted.prefix(3))
         let swipeCount = calibrationRecord?.swipeCount ?? 0
@@ -293,7 +367,43 @@ struct MyProfileScreen: View {
         return heroes
     }
 
+    private func computeObjectHeroes(catalog: [CatalogItem]) -> [RecommendationItem] {
+        let sorted = ObjectAxis.allCases.sorted { abs(objectAxisScores.value(for: $0)) > abs(objectAxisScores.value(for: $1)) }
+        let topAxes = Array(sorted.prefix(3))
+        let swipeCount = objectCalibrationRecord?.swipeCount ?? 0
+        let allRanked = ObjectsRankingEngine.rankObjectItems(
+            vector: objectVector, axisScores: objectAxisScores,
+            items: catalog, swipeCount: swipeCount
+        )
+        var usedSkus: Set<String> = []
+        var heroes: [RecommendationItem] = []
+
+        for axis in topAxes {
+            let positive = objectAxisScores.value(for: axis) >= 0
+            if let hero = allRanked.first(where: { item in
+                guard !usedSkus.contains(item.skuId) else { return false }
+                guard let cat = catalog.first(where: { $0.skuId == item.skuId }) else { return false }
+                let weight = cat.objectAxisWeights[axis.rawValue] ?? 0
+                return positive ? weight > 0 : weight < 0
+            }) {
+                heroes.append(hero)
+                usedSkus.insert(hero.skuId)
+            }
+        }
+
+        for item in allRanked where heroes.count < 3 && !usedSkus.contains(item.skuId) {
+            heroes.append(item)
+            usedSkus.insert(item.skuId)
+        }
+
+        return heroes
+    }
+
     private func computeShiftDirections(catalog: [CatalogItem]) -> [ShiftDirection] {
+        if currentDomain == .objects && objectCalibrationRecord != nil {
+            return computeObjectShiftDirections(catalog: catalog)
+        }
+
         let sorted = Axis.allCases
             .sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
         let candidates = Array(sorted.dropFirst().prefix(4))
@@ -324,7 +434,42 @@ struct MyProfileScreen: View {
             return ShiftDirection(
                 id: axis.rawValue,
                 label: "\(prefix) \(word)",
-                axis: axis,
+                axisKind: .space(axis),
+                delta: delta,
+                products: products
+            )
+        }
+    }
+
+    private func computeObjectShiftDirections(catalog: [CatalogItem]) -> [ShiftDirection] {
+        let sorted = ObjectAxis.allCases
+            .sorted { abs(objectAxisScores.value(for: $0)) > abs(objectAxisScores.value(for: $1)) }
+        let candidates = Array(sorted.dropFirst().prefix(4))
+        var usedSkus = Set(topCommerce.map(\.skuId) + heroObjects.map(\.skuId))
+        let swipeCount = objectCalibrationRecord?.swipeCount ?? 0
+
+        return candidates.map { axis in
+            let score = objectAxisScores.value(for: axis)
+            let positive = score >= 0
+            let delta: Double = positive ? 0.3 : -0.3
+            let word = ObjectAxisPresentation.influenceWord(axis: axis, positive: positive)
+            let prefix = abs(score) < 0.3 ? "Lean" : "Go"
+
+            var shiftedWeights = objectVector.weights
+            shiftedWeights[axis.rawValue] = (shiftedWeights[axis.rawValue] ?? 0) + delta
+            let shiftedVector = ObjectVector(weights: shiftedWeights)
+            let shiftedScores = ObjectAxisMapping.computeAxisScores(from: shiftedVector)
+            let ranked = ObjectsRankingEngine.rankObjectItems(
+                vector: shiftedVector, axisScores: shiftedScores,
+                items: catalog, swipeCount: swipeCount
+            )
+            let products = Array(ranked.filter { !usedSkus.contains($0.skuId) }.prefix(3))
+            for p in products { usedSkus.insert(p.skuId) }
+
+            return ShiftDirection(
+                id: axis.rawValue,
+                label: "\(prefix) \(word)",
+                axisKind: .object(axis),
                 delta: delta,
                 products: products
             )
@@ -428,14 +573,21 @@ struct MyProfileScreen: View {
 
     private func applyShift(_ direction: ShiftDirection) {
         Haptics.impact()
-        for (tagKey, axisContrib) in AxisMapping.contributions {
-            let contribution = axisContrib.value(for: direction.axis)
-            if direction.delta * contribution > 0 {
-                vector.weights[tagKey] = (vector.weights[tagKey] ?? 0) + 0.08
+        switch direction.axisKind {
+        case .space(let axis):
+            for (tagKey, axisContrib) in AxisMapping.contributions {
+                let contribution = axisContrib.value(for: axis)
+                if direction.delta * contribution > 0 {
+                    vector.weights[tagKey] = (vector.weights[tagKey] ?? 0) + 0.08
+                }
             }
+            vector = vector.normalized()
+            axisScores = AxisMapping.computeAxisScores(from: vector)
+        case .object(let axis):
+            objectVector.weights[axis.rawValue] = (objectVector.weights[axis.rawValue] ?? 0) + direction.delta * 0.25
+            objectVector = objectVector.normalized()
+            objectAxisScores = ObjectAxisMapping.computeAxisScores(from: objectVector)
         }
-        vector = vector.normalized()
-        axisScores = AxisMapping.computeAxisScores(from: vector)
         rerank()
         showToast("Profile shifted.")
     }
@@ -454,6 +606,9 @@ struct MyProfileScreen: View {
     // MARK: - Stability
 
     private var stability: String {
+        if currentDomain == .objects, let objRecord = objectCalibrationRecord {
+            return objRecord.vector.stabilityLevel(swipeCount: objRecord.swipeCount)
+        }
         guard let record = calibrationRecord else { return "Low" }
         return record.vector.stabilityLevel(swipeCount: record.swipeCount)
     }
@@ -513,11 +668,27 @@ struct MyProfileScreen: View {
                     .tracking(1.0)
             }
 
-            RadarChart(axisScores: axisScores)
+            if currentDomain == .objects && objectCalibrationRecord != nil {
+                RadarChart(
+                    values: ObjectAxis.allCases.map { objectAxisScores.value(for: $0) },
+                    labels: ObjectAxis.allCases.map { axis in
+                        ObjectAxisPresentation.influenceWord(axis: axis, positive: objectAxisScores.value(for: axis) >= 0)
+                    }
+                )
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
+            } else {
+                RadarChart(axisScores: axisScores)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+            }
 
-            let influencePhrases = AxisPresentation.influencePhrases(axisScores: axisScores)
+            let influencePhrases: [String] = {
+                if currentDomain == .objects && objectCalibrationRecord != nil {
+                    return ObjectAxisPresentation.influencePhrases(objectScores: objectAxisScores)
+                }
+                return AxisPresentation.influencePhrases(axisScores: axisScores)
+            }()
             if !influencePhrases.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("INFLUENCES")
@@ -539,7 +710,12 @@ struct MyProfileScreen: View {
                 }
             }
 
-            let avoidPhrases = AxisPresentation.avoidPhrases(axisScores: axisScores)
+            let avoidPhrases: [String] = {
+                if currentDomain == .objects && objectCalibrationRecord != nil {
+                    return ObjectAxisPresentation.avoidPhrases(objectScores: objectAxisScores)
+                }
+                return AxisPresentation.avoidPhrases(axisScores: axisScores)
+            }()
             if !avoidPhrases.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("AVOIDS")
@@ -561,8 +737,13 @@ struct MyProfileScreen: View {
                 }
             }
 
-            let swipeCount = calibrationRecord?.swipeCount ?? 0
-            let level = vector.confidenceLevel(swipeCount: swipeCount)
+            let level: String = {
+                if currentDomain == .objects, let objRecord = objectCalibrationRecord {
+                    return objectVector.confidenceLevel(swipeCount: objRecord.swipeCount)
+                }
+                let swipeCount = calibrationRecord?.swipeCount ?? 0
+                return vector.confidenceLevel(swipeCount: swipeCount)
+            }()
             HStack(spacing: 10) {
                 Text("CONFIDENCE")
                     .font(.caption2.weight(.semibold))
@@ -596,7 +777,7 @@ struct MyProfileScreen: View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
                 Button {
-                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId, domain: currentDomain))
                 } label: {
                     CachedImage(url: item.resolvedImageURL, height: 200, width: 200)
                 }
@@ -614,10 +795,16 @@ struct MyProfileScreen: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(item.brand)
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(Theme.ink)
-                    .lineLimit(1)
+                HStack {
+                    Text(item.brand)
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(Theme.ink)
+                        .lineLimit(1)
+                    if let decision = objectDecisionFor(item) {
+                        Spacer()
+                        ObjectFitBadge(decision: decision)
+                    }
+                }
                 Text("$\(Int(item.price))")
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(Theme.muted)
@@ -767,7 +954,7 @@ struct MyProfileScreen: View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
                 Button {
-                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId, domain: currentDomain))
                 } label: {
                     CachedImage(url: item.resolvedImageURL, height: 150, width: width)
                 }
@@ -785,10 +972,16 @@ struct MyProfileScreen: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(item.brand)
-                    .font(.caption2.weight(.medium))
-                    .foregroundStyle(Theme.ink)
-                    .lineLimit(1)
+                HStack {
+                    Text(item.brand)
+                        .font(.caption2.weight(.medium))
+                        .foregroundStyle(Theme.ink)
+                        .lineLimit(1)
+                    if let decision = objectDecisionFor(item) {
+                        Spacer()
+                        ObjectFitBadge(decision: decision, compact: true)
+                    }
+                }
                 Text("$\(Int(item.price))")
                     .font(.caption2.monospacedDigit())
                     .foregroundStyle(Theme.muted)
@@ -819,7 +1012,7 @@ struct MyProfileScreen: View {
 
             Button {
                 Haptics.tap()
-                path.append(Route.calibration(saved.tasteProfile, saved.recommendations))
+                path.append(Route.calibration(saved.tasteProfile, saved.recommendations, currentDomain))
             } label: {
                 Text(refineCTALabel)
                     .font(.callout.weight(.semibold))
@@ -966,7 +1159,7 @@ struct MyProfileScreen: View {
 
             Button {
                 Haptics.tap()
-                path.append(Route.result(saved.tasteProfile, saved.recommendations))
+                path.append(Route.result(saved.tasteProfile, saved.recommendations, currentDomain))
             } label: {
                 Text("See more")
                     .font(.callout.weight(.semibold))
@@ -1034,7 +1227,7 @@ struct MyProfileScreen: View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
                 Button {
-                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId, domain: currentDomain))
                 } label: {
                     CachedImage(url: item.resolvedImageURL, height: 110, width: 110)
                 }
@@ -1052,10 +1245,17 @@ struct MyProfileScreen: View {
             }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(item.brand)
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundStyle(Theme.ink)
-                    .lineLimit(1)
+                HStack(spacing: 3) {
+                    if let d = objectDecisionFor(item) {
+                        Circle()
+                            .fill(ObjectAdvisory.verdictDotColor(d.verdict))
+                            .frame(width: 4, height: 4)
+                    }
+                    Text(item.brand)
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(Theme.ink)
+                        .lineLimit(1)
+                }
                 Text("$\(Int(item.price))")
                     .font(.system(size: 10).monospacedDigit())
                     .foregroundStyle(Theme.muted)
@@ -1065,6 +1265,62 @@ struct MyProfileScreen: View {
         }
         .frame(width: 110)
         .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Advisory Helpers
+
+    private func objectDecisionFor(_ item: RecommendationItem) -> AdvisoryDecision? {
+        guard currentDomain == .objects, objectCalibrationRecord != nil else { return nil }
+        return ObjectAdvisory.decision(
+            for: item,
+            scores: objectAxisScores,
+            level: advisorySettings.level,
+            tolerance: AdvisoryToleranceStore.tolerance
+        )
+    }
+
+    // MARK: - Section: Guard
+
+    @ViewBuilder
+    private var guardSection: some View {
+        if currentDomain == .objects, objectCalibrationRecord != nil {
+            let stats = AdvisorySignalStore.weeklyStats()
+            VStack(alignment: .leading, spacing: 10) {
+                Text("GUARD")
+                    .sectionLabel()
+
+                VStack(alignment: .leading, spacing: 4) {
+                    if stats.nearMisses > 0 || stats.overrides > 0 {
+                        Text(guardHeadline(stats))
+                            .font(.caption)
+                            .foregroundStyle(Theme.ink)
+                    } else {
+                        Text("No advisory signals this week.")
+                            .font(.caption)
+                            .foregroundStyle(Theme.muted)
+                    }
+                    if stats.intentionalShifts > 0 {
+                        Text("\(stats.intentionalShifts) intentional \(stats.intentionalShifts == 1 ? "shift" : "shifts") applied.")
+                            .font(.caption)
+                            .foregroundStyle(Theme.muted)
+                    }
+                    Text("Advisory: \(advisorySettings.level.displayName)")
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
+                }
+            }
+        }
+    }
+
+    private func guardHeadline(_ stats: AdvisoryWeeklyStats) -> String {
+        var parts: [String] = []
+        if stats.nearMisses > 0 {
+            parts.append("\(stats.nearMisses) flagged and avoided")
+        }
+        if stats.overrides > 0 {
+            parts.append("\(stats.overrides) \(stats.overrides == 1 ? "override" : "overrides")")
+        }
+        return parts.joined(separator: ". ") + "."
     }
 
     // MARK: - Section E: Materials

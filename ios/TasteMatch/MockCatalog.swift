@@ -17,6 +17,10 @@ enum ItemCategory: String, Codable, CaseIterable {
     case print
     case photograph
     case installation
+    case clothing
+    case footwear
+    case tech
+    case jewelry
     case unknown
 }
 
@@ -43,6 +47,7 @@ struct CatalogItem {
     let category: ItemCategory
     let materialTags: [String]
     let commerceAxisWeights: [String: Double]
+    let objectAxisWeights: [String: Double]
     let discoveryClusters: [String]
     let affiliateURL: String?
     let rarityTier: ArtRarityTier?
@@ -62,6 +67,7 @@ struct CatalogItem {
         category: ItemCategory = .furniture,
         materialTags: [String] = [],
         commerceAxisWeights: [String: Double] = [:],
+        objectAxisWeights: [String: Double] = [:],
         discoveryClusters: [String] = [],
         affiliateURL: String? = nil,
         rarityTier: ArtRarityTier? = nil,
@@ -80,6 +86,7 @@ struct CatalogItem {
         self.category = category
         self.materialTags = materialTags
         self.commerceAxisWeights = commerceAxisWeights
+        self.objectAxisWeights = objectAxisWeights
         self.discoveryClusters = discoveryClusters
         self.affiliateURL = affiliateURL
         self.rarityTier = rarityTier
@@ -104,6 +111,7 @@ enum MockCatalog {
     private static var commerceProvider: CommerceInventoryProvider = LocalSeedCommerceProvider()
 
     /// Primary catalog access point. Loads from commerce_seed.json, falls back to legacy 30 items.
+    @available(*, deprecated, message: "Use DomainCatalog.items(for:) instead")
     static var items: [CatalogItem] {
         if let cached = cachedItems { return cached }
         let loaded = commerceProvider.load()

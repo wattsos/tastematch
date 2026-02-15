@@ -3,13 +3,15 @@ import SwiftUI
 struct ContextScreen: View {
     @Binding var path: NavigationPath
     let images: [UIImage]
+    let domain: TasteDomain
 
     @State private var selectedRoom: RoomContext
     @State private var selectedGoal: DesignGoal
 
-    init(path: Binding<NavigationPath>, images: [UIImage], initialRoom: RoomContext = .livingRoom, initialGoal: DesignGoal = .refresh) {
+    init(path: Binding<NavigationPath>, images: [UIImage], initialRoom: RoomContext = .livingRoom, initialGoal: DesignGoal = .refresh, domain: TasteDomain = .space) {
         _path = path
         self.images = images
+        self.domain = domain
         _selectedRoom = State(initialValue: initialRoom)
         _selectedGoal = State(initialValue: initialGoal)
     }
@@ -99,9 +101,9 @@ struct ContextScreen: View {
             )
             var profile = response.tasteProfile
             ProfileNamingEngine.applyInitialNaming(to: &profile)
-            ProfileStore.save(profile: profile, recommendations: response.recommendations, roomContext: selectedRoom, designGoal: selectedGoal)
+            ProfileStore.save(profile: profile, recommendations: response.recommendations, roomContext: selectedRoom, designGoal: selectedGoal, domain: domain)
             Haptics.success()
-            path.append(Route.calibration(profile, response.recommendations))
+            path.append(Route.calibration(profile, response.recommendations, domain))
         } catch {
             errorMessage = error.localizedDescription
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])

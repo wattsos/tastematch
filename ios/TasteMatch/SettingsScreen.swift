@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsScreen: View {
     @Binding var path: NavigationPath
+    @EnvironmentObject private var advisorySettings: AdvisorySettings
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = true
     @State private var showClearConfirmation = false
     @State private var showClearFavoritesConfirmation = false
@@ -39,6 +40,26 @@ struct SettingsScreen: View {
                     Button("Cancel", role: .cancel) {}
                 } message: {
                     Text("This will remove all saved favorites. This cannot be undone.")
+                }
+            }
+
+            Section {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("ADVISORY")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(1.2)
+
+                    Picker("Guidance level", selection: $advisorySettings.level) {
+                        ForEach(AdvisoryLevel.allCases, id: \.self) { level in
+                            Text(level.displayName).tag(level)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    Text(advisorySettings.level.helperText)
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
                 }
             }
 

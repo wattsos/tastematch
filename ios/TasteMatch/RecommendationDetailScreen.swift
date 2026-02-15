@@ -3,16 +3,28 @@ import SwiftUI
 struct RecommendationDetailScreen: View {
     let item: RecommendationItem
     let tasteProfileId: UUID
+    var domain: TasteDomain = .space
     @Environment(\.openURL) private var openURL
+    @EnvironmentObject private var advisorySettings: AdvisorySettings
     @State private var isFavorited = false
+    @State private var showGuard = false
+    @State private var showShiftToast = false
+
+    private var objectDecision: AdvisoryDecision? {
+        guard domain == .objects else { return nil }
+        return ObjectAdvisory.decision(
+            for: item,
+            profileId: tasteProfileId,
+            level: advisorySettings.level,
+            tolerance: AdvisoryToleranceStore.tolerance
+        )
+    }
 
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                // Hero image
                 heroImage
 
-                // Content
                 VStack(alignment: .leading, spacing: 28) {
                     titleSection
                     reasonSection
@@ -33,6 +45,47 @@ struct RecommendationDetailScreen: View {
             isFavorited = FavoritesStore.isFavorited(item)
             EventLogger.shared.logEvent("product_viewed", tasteProfileId: tasteProfileId, metadata: eventMeta)
         }
+        .sheet(isPresented: $showGuard) {
+            if let decision = objectDecision {
+                TasteGuardSheet(
+                    item: item,
+                    decision: decision,
+                    advisoryLevel: advisorySettings.level,
+                    profileId: tasteProfileId,
+                    onProceed: {
+                        let urlString = item.affiliateURL ?? item.productURL
+                        if let url = URL(string: urlString) { openURL(url) }
+                    },
+                    onSave: {
+                        if !isFavorited { toggleFavorite() }
+                    },
+                    onIntentionalShift: {
+                        ObjectAdvisory.applyIntentionalShift(item: item, profileId: tasteProfileId)
+                        showShiftToast = true
+                    }
+                )
+                .presentationDetents([.medium])
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if showShiftToast {
+                Text("Profile updated.")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                    .padding(.bottom, 24)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation { showShiftToast = false }
+                        }
+                    }
+            }
+        }
+        .animation(.easeInOut(duration: 0.3), value: showShiftToast)
     }
 
     // MARK: - Hero Image
@@ -41,7 +94,6 @@ struct RecommendationDetailScreen: View {
         ZStack(alignment: .bottomTrailing) {
             CachedImage(url: item.resolvedImageURL, height: 300)
 
-            // Bookmark overlay
             Button {
                 toggleFavorite()
             } label: {
@@ -50,9 +102,9 @@ struct RecommendationDetailScreen: View {
                     .foregroundStyle(isFavorited ? Theme.accent : Theme.ink.opacity(0.55))
                     .padding(10)
                     .background(Theme.surface)
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
                             .stroke(Theme.hairline, lineWidth: 1)
                     )
             }
@@ -106,24 +158,36 @@ struct RecommendationDetailScreen: View {
         )
     }
 
-    // MARK: - Match Strength
+    // MARK: - Match / FIT Section
 
+    @ViewBuilder
     private var matchSection: some View {
-        HStack(spacing: 12) {
-            Text("ALIGNMENT")
-                .font(.caption.weight(.semibold))
-                .tracking(1)
-                .foregroundStyle(Theme.muted)
+        if domain == .objects, let decision = objectDecision {
+            HStack(spacing: 12) {
+                Text("FIT")
+                    .font(.caption.weight(.semibold))
+                    .tracking(1)
+                    .foregroundStyle(Theme.muted)
+                Spacer()
+                ObjectFitBadge(decision: decision)
+            }
+        } else {
+            HStack(spacing: 12) {
+                Text("ALIGNMENT")
+                    .font(.caption.weight(.semibold))
+                    .tracking(1)
+                    .foregroundStyle(Theme.muted)
 
-            ProgressView(value: item.attributionConfidence)
-                .tint(confidenceColor)
+                ProgressView(value: item.attributionConfidence)
+                    .tint(confidenceColor)
 
-            Text("\(Int(item.attributionConfidence * 100))%")
-                .font(.caption2.monospacedDigit())
-                .foregroundStyle(Theme.muted)
+                Text("\(Int(item.attributionConfidence * 100))%")
+                    .font(.caption2.monospacedDigit())
+                    .foregroundStyle(Theme.muted)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Alignment, \(Int(item.attributionConfidence * 100)) percent")
         }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Alignment, \(Int(item.attributionConfidence * 100)) percent")
     }
 
     // MARK: - Shop Button
@@ -131,11 +195,9 @@ struct RecommendationDetailScreen: View {
     private var shopButton: some View {
         Button {
             EventLogger.shared.logEvent("product_clicked", tasteProfileId: tasteProfileId, metadata: eventMeta)
-            if let url = URL(string: item.productURL) {
-                openURL(url)
-            }
+            handleOutboundTap()
         } label: {
-            Text("Shop This")
+            Text("View")
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
@@ -143,6 +205,19 @@ struct RecommendationDetailScreen: View {
         .foregroundStyle(.white)
         .background(Theme.accent)
         .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
+    }
+
+    // MARK: - Advisory
+
+    private func handleOutboundTap() {
+        if domain == .objects, let decision = objectDecision, decision.shouldIntercept {
+            showGuard = true
+        } else {
+            let urlString = item.affiliateURL ?? item.productURL
+            if let url = URL(string: urlString) {
+                openURL(url)
+            }
+        }
     }
 
     // MARK: - Favorites

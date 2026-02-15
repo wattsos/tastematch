@@ -81,7 +81,7 @@ final class DomainInventoryTests: XCTestCase {
             organicIndustrial: 0.7, lightDark: 0.2, neutralSaturated: -0.3, sparseLayered: -0.2
         )
         let cluster = DomainDiscovery.identifyCluster(scores, domain: .objects)
-        XCTAssertEqual(cluster, "precision")
+        XCTAssertEqual(cluster, "precisionTool")
     }
 
     func testDomainDiscovery_artCluster_brutalGesture() {

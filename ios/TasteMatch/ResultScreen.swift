@@ -4,6 +4,7 @@ struct ResultScreen: View {
     @Binding var path: NavigationPath
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
+    var domain: TasteDomain = .space
     @Environment(\.openURL) private var openURL
     @State private var showShareSheet = false
     @State private var showCardShareSheet = false
@@ -140,7 +141,7 @@ struct ResultScreen: View {
             }
         }
         .sheet(item: $materialShopItem) { material in
-            MaterialShopSheet(material: material)
+            MaterialShopSheet(material: material, domain: domain, profileId: profile.id)
         }
         .onAppear {
             EventLogger.shared.logEvent("results_viewed", tasteProfileId: profile.id)
@@ -297,7 +298,9 @@ struct ResultScreen: View {
 
     // MARK: - Just Outside
 
+    @ViewBuilder
     private var justOutsideSection: some View {
+        if !variants.isEmpty {
         VStack(alignment: .leading, spacing: 20) {
             Text("JUST OUTSIDE")
                 .sectionLabel()
@@ -324,13 +327,14 @@ struct ResultScreen: View {
             }
         }
         .padding(.top, 8)
+        }
     }
 
     private func variantItems(for variant: TasteVariant) -> [RecommendationItem] {
         RecommendationEngine.rankWithVector(
             recommendations,
             vector: variant.vector,
-            catalog: MockCatalog.items,
+            catalog: DomainCatalog.items(for: domain),
             context: nil,
             goal: nil
         )
@@ -686,7 +690,7 @@ struct ResultScreen: View {
         Button {
             Haptics.tap()
             EventLogger.shared.logEvent("shop_opened", tasteProfileId: profile.id)
-            path.append(Route.shop(profile))
+            path.append(Route.shop(profile, domain))
         } label: {
             VStack(alignment: .leading, spacing: 8) {
                 Text("ENTER SHOP")
@@ -774,6 +778,12 @@ struct ResultScreen: View {
     // MARK: - Compute
 
     private func computeVariants() {
+        // Variants use Space TasteVector axis system — skip for non-Space domains
+        guard domain == .space else {
+            variants = []
+            variantLabels = []
+            return
+        }
         let baseVector = resolveBaseVector()
         variants = baseVector.generateVariants()
         let baseScores = AxisMapping.computeAxisScores(from: baseVector)
@@ -795,7 +805,7 @@ struct ResultScreen: View {
     private func computeDiscovery() {
         let baseVector = resolveBaseVector()
         let scores = AxisMapping.computeAxisScores(from: baseVector)
-        let allItems = DiscoveryEngine.loadAll()
+        let allItems = DomainDiscovery.items(for: domain)
         let signals = DiscoverySignalStore.load(for: profile.id)
         discoverySignals = signals
         discoveryRanked = DiscoveryEngine.rank(items: allItems, axisScores: scores, signals: signals)

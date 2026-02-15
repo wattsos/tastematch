@@ -163,6 +163,39 @@ struct RecommendationEngine {
             )
         }
 
+        // Objects domain uses dedicated ranking engine when objectAxisWeights are available
+        if domain == .objects {
+            var filtered = items
+            if let mat = materialFilter {
+                let lower = mat.lowercased()
+                filtered = filtered.filter { item in
+                    item.materialTags.contains { $0.lowercased().contains(lower) }
+                }
+            }
+            if let cat = categoryFilter {
+                filtered = filtered.filter { $0.category == cat }
+            }
+            // Approximate ObjectAxisScores from Space AxisScores for fallback
+            let objectScores = ObjectAxisScores(
+                precision: axisScores.softStructured,
+                patina: axisScores.warmCool,
+                utility: -axisScores.minimalOrnate,
+                formality: axisScores.minimalOrnate,
+                subculture: -axisScores.neutralSaturated,
+                ornament: axisScores.minimalOrnate,
+                heritage: axisScores.warmCool,
+                technicality: axisScores.organicIndustrial,
+                minimalism: -axisScores.sparseLayered
+            )
+            let objectVector = ObjectVector(weights: Dictionary(
+                uniqueKeysWithValues: ObjectAxis.allCases.map { ($0.rawValue, objectScores.value(for: $0)) }
+            ))
+            return ObjectsRankingEngine.rankObjectItems(
+                vector: objectVector, axisScores: objectScores,
+                items: filtered, swipeCount: swipeCount
+            )
+        }
+
         let dominantCluster = DomainDiscovery.identifyCluster(axisScores, domain: domain)
         let normalized = vector.normalized()
 

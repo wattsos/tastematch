@@ -10,8 +10,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-001",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-001",
     "category": "timepiece",
-    "tags": ["minimalist", "industrial"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.3,
@@ -21,7 +27,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.2,
+      "technicality": 0.4,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-002",
@@ -34,8 +53,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-002",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-002",
     "category": "bag",
-    "tags": ["traditional", "rustic"],
-    "materialTags": ["leather", "brass"],
+    "tags": [
+      "traditional",
+      "rustic"
+    ],
+    "materialTags": [
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.3,
       "warmCool": 0.6,
@@ -45,7 +70,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.4
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.5,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.3,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": -0.4
+    }
   },
   {
     "skuId": "obj-003",
@@ -58,8 +96,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-003",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-003",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["brass", "walnut"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "brass",
+      "walnut"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.5,
@@ -69,7 +112,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.4,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.3,
+      "ornament": -0.2,
+      "heritage": 0.3,
+      "technicality": -0.3,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-004",
@@ -82,8 +138,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-004",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-004",
     "category": "designObject",
-    "tags": ["japandi", "minimalist"],
-    "materialTags": ["ceramic"],
+    "tags": [
+      "japandi",
+      "minimalist"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.8,
       "warmCool": 0.2,
@@ -93,7 +154,20 @@
       "neutralSaturated": -0.6,
       "sparseLayered": -0.7
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.2,
+      "utility": 0.6,
+      "formality": -0.4,
+      "subculture": 0.4,
+      "ornament": -0.8,
+      "heritage": 0.1,
+      "technicality": -0.7,
+      "minimalism": 0.7
+    }
   },
   {
     "skuId": "obj-005",
@@ -106,8 +180,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-005",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-005",
     "category": "accessory",
-    "tags": ["rustic"],
-    "materialTags": ["leather", "brass"],
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.7,
@@ -117,7 +196,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.6,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.5,
+      "technicality": -0.4,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-006",
@@ -130,8 +222,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-006",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-006",
     "category": "timepiece",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["titanium", "rubber", "sapphire"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "rubber",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.7,
@@ -141,7 +240,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": -0.6,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.6,
+      "heritage": -0.5,
+      "technicality": 0.7,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-007",
@@ -154,8 +266,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-007",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-007",
     "category": "bag",
-    "tags": ["bohemian", "rustic"],
-    "materialTags": ["canvas", "leather"],
+    "tags": [
+      "bohemian",
+      "rustic"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.5,
@@ -165,7 +283,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.4,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.1,
+      "heritage": 0.3,
+      "technicality": -0.6,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-008",
@@ -178,8 +309,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-008",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-008",
     "category": "designObject",
-    "tags": ["scandinavian", "minimalist"],
-    "materialTags": ["porcelain"],
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "porcelain"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": -0.1,
@@ -189,7 +325,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": -0.1,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.7,
+      "heritage": -0.1,
+      "technicality": -0.3,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-009",
@@ -202,8 +351,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-009",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-009",
     "category": "accessory",
-    "tags": ["traditional"],
-    "materialTags": ["horn"],
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "horn"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.4,
@@ -213,7 +366,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.4,
+      "heritage": 0.3,
+      "technicality": -0.6,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-010",
@@ -226,8 +392,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-010",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-010",
     "category": "timepiece",
-    "tags": ["artDeco", "traditional"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.5,
       "warmCool": 0.3,
@@ -237,7 +410,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.5
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": 0.2,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.1,
+      "ornament": 0.5,
+      "heritage": 0.2,
+      "technicality": -0.2,
+      "minimalism": -0.5
+    }
   },
   {
     "skuId": "obj-011",
@@ -250,8 +436,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-011",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-011",
     "category": "bag",
-    "tags": ["minimalist", "industrial"],
-    "materialTags": ["nylon", "aluminum"],
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon",
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.5,
@@ -261,7 +453,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.4,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.6,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-012",
@@ -274,8 +479,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-012",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-012",
     "category": "designObject",
-    "tags": ["minimalist"],
-    "materialTags": ["marble"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "marble"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.4,
@@ -285,7 +494,20 @@
       "neutralSaturated": -0.6,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.4,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": -0.1,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-013",
@@ -298,8 +520,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-013",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-013",
     "category": "accessory",
-    "tags": ["traditional", "artDeco"],
-    "materialTags": ["silk"],
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "silk"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.4,
       "warmCool": 0.3,
@@ -309,7 +536,20 @@
       "neutralSaturated": 0.5,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.5,
+      "patina": 0.2,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.3,
+      "ornament": 0.4,
+      "heritage": 0.2,
+      "technicality": -0.6,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-014",
@@ -322,8 +562,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-014",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-014",
     "category": "timepiece",
-    "tags": ["minimalist", "japandi"],
-    "materialTags": ["titanium", "nylon"],
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "titanium",
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": -0.2,
@@ -333,7 +579,20 @@
       "neutralSaturated": -0.6,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.7,
+      "heritage": -0.1,
+      "technicality": 0.3,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-015",
@@ -346,8 +605,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-015",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-015",
     "category": "bag",
-    "tags": ["minimalist"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.1,
@@ -357,7 +620,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.4,
+      "heritage": 0.1,
+      "technicality": 0.1,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-016",
@@ -370,8 +646,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-016",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-016",
     "category": "designObject",
-    "tags": ["midCenturyModern", "rustic"],
-    "materialTags": ["walnut"],
+    "tags": [
+      "midCenturyModern",
+      "rustic"
+    ],
+    "materialTags": [
+      "walnut"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.7,
@@ -381,7 +662,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.6,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.5,
+      "technicality": -0.8,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-017",
@@ -394,8 +688,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-017",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-017",
     "category": "accessory",
-    "tags": ["artDeco"],
-    "materialTags": ["enamel", "steel"],
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "enamel",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.3,
       "warmCool": 0.1,
@@ -405,7 +704,20 @@
       "neutralSaturated": 0.4,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.1,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": -0.2,
+      "ornament": 0.3,
+      "heritage": 0.1,
+      "technicality": 0.2,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-018",
@@ -418,8 +730,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-018",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-018",
     "category": "timepiece",
-    "tags": ["industrial"],
-    "materialTags": ["steel", "leather", "sapphire"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "steel",
+      "leather",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": -0.1,
@@ -429,7 +747,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.0
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.1,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.2,
+      "heritage": -0.1,
+      "technicality": 0.5,
+      "minimalism": -0.0
+    }
   },
   {
     "skuId": "obj-019",
@@ -442,8 +773,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-019",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-019",
     "category": "bag",
-    "tags": ["rustic", "bohemian"],
-    "materialTags": ["canvas", "leather", "brass"],
+    "tags": [
+      "rustic",
+      "bohemian"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.0,
       "warmCool": 0.6,
@@ -453,7 +791,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.5,
+      "utility": -0.0,
+      "formality": 0.0,
+      "subculture": 0.2,
+      "ornament": 0.0,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": -0.3
+    }
   },
   {
     "skuId": "obj-020",
@@ -466,8 +817,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-020",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-020",
     "category": "designObject",
-    "tags": ["scandinavian"],
-    "materialTags": ["glass"],
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "glass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": -0.3,
@@ -477,7 +832,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": -0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.7,
+      "heritage": -0.2,
+      "technicality": -0.2,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-021",
@@ -490,8 +858,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-021",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-021",
     "category": "accessory",
-    "tags": ["minimalist", "industrial"],
-    "materialTags": ["obsidian", "steel"],
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "obsidian",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.6,
@@ -501,7 +875,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.4,
+      "technicality": 0.3,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-022",
@@ -514,8 +901,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-022",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-022",
     "category": "timepiece",
-    "tags": ["traditional", "artDeco"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.7,
       "warmCool": 0.2,
@@ -525,7 +919,20 @@
       "neutralSaturated": 0.3,
       "sparseLayered": 0.7
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": 0.2,
+      "utility": -0.5,
+      "formality": 0.3,
+      "subculture": -0.2,
+      "ornament": 0.7,
+      "heritage": 0.1,
+      "technicality": 0.0,
+      "minimalism": -0.7
+    }
   },
   {
     "skuId": "obj-023",
@@ -538,8 +945,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-023",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-023",
     "category": "bag",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["aluminum"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": -0.6,
@@ -549,7 +961,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": -0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": -0.4,
+      "technicality": 0.8,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-024",
@@ -562,8 +987,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-024",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-024",
     "category": "designObject",
-    "tags": ["japandi", "industrial"],
-    "materialTags": ["copper", "glass"],
+    "tags": [
+      "japandi",
+      "industrial"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.4,
@@ -573,7 +1004,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": -0.1,
+      "ornament": -0.4,
+      "heritage": 0.3,
+      "technicality": 0.2,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-025",
@@ -586,8 +1030,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-025",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-025",
     "category": "accessory",
-    "tags": ["japandi", "minimalist"],
-    "materialTags": ["linen"],
+    "tags": [
+      "japandi",
+      "minimalist"
+    ],
+    "materialTags": [
+      "linen"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.8,
       "warmCool": 0.1,
@@ -597,7 +1046,20 @@
       "neutralSaturated": -0.7,
       "sparseLayered": -0.7
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.1,
+      "utility": 0.6,
+      "formality": -0.4,
+      "subculture": 0.4,
+      "ornament": -0.8,
+      "heritage": 0.1,
+      "technicality": -0.5,
+      "minimalism": 0.7
+    }
   },
   {
     "skuId": "obj-026",
@@ -610,8 +1072,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-026",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-026",
     "category": "timepiece",
-    "tags": ["industrial"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": -0.4,
@@ -621,7 +1088,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": -0.3,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": -0.3,
+      "technicality": 0.5,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-027",
@@ -634,8 +1114,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-027",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-027",
     "category": "bag",
-    "tags": ["bohemian", "traditional"],
-    "materialTags": ["leather", "linen"],
+    "tags": [
+      "bohemian",
+      "traditional"
+    ],
+    "materialTags": [
+      "leather",
+      "linen"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.1,
       "warmCool": 0.5,
@@ -645,7 +1131,20 @@
       "neutralSaturated": 0.0,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.4,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": -0.0,
+      "ornament": 0.1,
+      "heritage": 0.3,
+      "technicality": -0.6,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-028",
@@ -658,8 +1157,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-028",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-028",
     "category": "designObject",
-    "tags": ["scandinavian"],
-    "materialTags": ["oak"],
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "oak"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": 0.3,
@@ -669,7 +1172,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": 0.2,
+      "technicality": -0.6,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-029",
@@ -682,8 +1198,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-029",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-029",
     "category": "accessory",
-    "tags": ["industrial"],
-    "materialTags": ["rubber"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.5,
@@ -693,7 +1213,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": -0.4,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": -0.3,
+      "technicality": 0.7,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-030",
@@ -706,8 +1239,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-030",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-030",
     "category": "timepiece",
-    "tags": ["artDeco"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.4,
       "warmCool": 0.0,
@@ -717,7 +1255,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.4
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": 0.0,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.1,
+      "ornament": 0.4,
+      "heritage": 0.0,
+      "technicality": 0.1,
+      "minimalism": -0.4
+    }
   },
   {
     "skuId": "obj-031",
@@ -730,8 +1281,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-031",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-031",
     "category": "bag",
-    "tags": ["minimalist"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.2,
@@ -741,7 +1296,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.1,
+      "technicality": -0.1,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-032",
@@ -754,8 +1322,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-032",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-032",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["brass"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.6,
@@ -765,7 +1337,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.5,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": -0.1,
+      "ornament": -0.2,
+      "heritage": 0.4,
+      "technicality": -0.1,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-033",
@@ -778,8 +1363,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-033",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-033",
     "category": "accessory",
-    "tags": ["rustic"],
-    "materialTags": ["leather", "brass"],
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.6,
@@ -789,7 +1379,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-034",
@@ -802,8 +1405,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-034",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-034",
     "category": "timepiece",
-    "tags": ["minimalist", "japandi"],
-    "materialTags": ["ceramic", "sapphire", "leather"],
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.1,
@@ -813,7 +1423,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": 0.1,
+      "technicality": -0.2,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-035",
@@ -826,8 +1449,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-035",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-035",
     "category": "bag",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["nylon", "aluminum"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "nylon",
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.4,
@@ -837,7 +1466,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-036",
@@ -850,8 +1492,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-036",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-036",
     "category": "designObject",
-    "tags": ["japandi"],
-    "materialTags": ["porcelain"],
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "porcelain"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": 0.0,
@@ -861,7 +1507,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.0,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": 0.0,
+      "technicality": -0.7,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-037",
@@ -874,8 +1533,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-037",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-037",
     "category": "accessory",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["copper"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "copper"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.5,
@@ -885,7 +1548,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": -0.1,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": 0.0,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-038",
@@ -898,8 +1574,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-038",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-038",
     "category": "timepiece",
-    "tags": ["artDeco", "traditional"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.6,
       "warmCool": 0.2,
@@ -909,7 +1591,20 @@
       "neutralSaturated": 0.3,
       "sparseLayered": 0.6
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": 0.2,
+      "utility": -0.4,
+      "formality": 0.3,
+      "subculture": -0.2,
+      "ornament": 0.6,
+      "heritage": 0.1,
+      "technicality": 0.1,
+      "minimalism": -0.6
+    }
   },
   {
     "skuId": "obj-039",
@@ -922,8 +1617,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-039",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-039",
     "category": "bag",
-    "tags": ["coastal", "bohemian"],
-    "materialTags": ["linen", "leather"],
+    "tags": [
+      "coastal",
+      "bohemian"
+    ],
+    "materialTags": [
+      "linen",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.4,
@@ -933,7 +1634,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.3,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": 0.3,
+      "technicality": -0.5,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-040",
@@ -946,8 +1660,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-040",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-040",
     "category": "designObject",
-    "tags": ["scandinavian", "industrial"],
-    "materialTags": ["steel", "aluminum"],
+    "tags": [
+      "scandinavian",
+      "industrial"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": -0.3,
@@ -957,7 +1677,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": -0.2,
+      "technicality": 0.5,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-041",
@@ -970,8 +1703,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-041",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-041",
     "category": "accessory",
-    "tags": ["traditional", "bohemian"],
-    "materialTags": ["leather"],
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.2,
       "warmCool": 0.5,
@@ -981,7 +1719,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.3
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.4,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.2,
+      "heritage": 0.3,
+      "technicality": -0.5,
+      "minimalism": -0.3
+    }
   },
   {
     "skuId": "obj-042",
@@ -994,8 +1745,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-042",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-042",
     "category": "timepiece",
-    "tags": ["traditional"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.3,
       "warmCool": 0.3,
@@ -1005,7 +1762,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.5
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": 0.2,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": -0.1,
+      "ornament": 0.3,
+      "heritage": 0.2,
+      "technicality": -0.1,
+      "minimalism": -0.5
+    }
   },
   {
     "skuId": "obj-043",
@@ -1018,8 +1788,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-043",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-043",
     "category": "bag",
-    "tags": ["industrial"],
-    "materialTags": ["nylon", "aluminum"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon",
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.5,
@@ -1029,7 +1804,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.4,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.7,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-044",
@@ -1042,8 +1830,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-044",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-044",
     "category": "designObject",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["ceramic"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.4,
@@ -1053,7 +1846,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.4,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-045",
@@ -1066,8 +1872,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-045",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-045",
     "category": "accessory",
-    "tags": ["traditional", "rustic"],
-    "materialTags": ["leather"],
+    "tags": [
+      "traditional",
+      "rustic"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.7,
@@ -1077,7 +1888,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.6,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.5,
+      "technicality": -0.5,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-046",
@@ -1090,8 +1914,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-046",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-046",
     "category": "timepiece",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["titanium", "rubber"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.6,
@@ -1101,7 +1931,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.5,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.6,
+      "heritage": -0.4,
+      "technicality": 0.8,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-047",
@@ -1114,8 +1957,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-047",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-047",
     "category": "bag",
-    "tags": ["minimalist", "coastal"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist",
+      "coastal"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.2,
@@ -1125,7 +1973,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.2,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.1,
+      "technicality": -0.3,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-048",
@@ -1138,8 +1999,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-048",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-048",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["walnut", "brass", "glass"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "walnut",
+      "brass",
+      "glass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.6,
@@ -1149,7 +2016,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.0
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.5,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": 0.4,
+      "technicality": -0.4,
+      "minimalism": -0.0
+    }
   },
   {
     "skuId": "obj-049",
@@ -1162,8 +2042,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-049",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-049",
     "category": "accessory",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["titanium"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": -0.5,
@@ -1173,7 +2058,20 @@
       "neutralSaturated": -0.6,
       "sparseLayered": -0.7
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.4,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.7,
+      "heritage": -0.3,
+      "technicality": 0.8,
+      "minimalism": 0.7
+    }
   },
   {
     "skuId": "obj-050",
@@ -1186,8 +2084,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-050",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-050",
     "category": "timepiece",
-    "tags": ["artDeco"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.5,
       "warmCool": 0.1,
@@ -1197,7 +2100,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.3
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.1,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.1,
+      "ornament": 0.5,
+      "heritage": 0.1,
+      "technicality": 0.0,
+      "minimalism": -0.3
+    }
   },
   {
     "skuId": "obj-051",
@@ -1210,8 +2126,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-051",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-051",
     "category": "bag",
-    "tags": ["traditional"],
-    "materialTags": ["leather", "brass"],
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.3,
       "warmCool": 0.5,
@@ -1221,7 +2142,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.4
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.4,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.3,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": -0.4
+    }
   },
   {
     "skuId": "obj-052",
@@ -1234,8 +2168,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-052",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-052",
     "category": "designObject",
-    "tags": ["midCenturyModern", "minimalist"],
-    "materialTags": ["brass"],
+    "tags": [
+      "midCenturyModern",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.5,
@@ -1245,7 +2184,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": 0.0,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-053",
@@ -1258,8 +2210,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-053",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-053",
     "category": "accessory",
-    "tags": ["rustic", "minimalist"],
-    "materialTags": ["canvas", "leather"],
+    "tags": [
+      "rustic",
+      "minimalist"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.4,
@@ -1269,7 +2227,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.0,
+      "patina": 0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": 0.3,
+      "technicality": -0.3,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-054",
@@ -1282,8 +2253,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-054",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-054",
     "category": "timepiece",
-    "tags": ["artDeco"],
-    "materialTags": ["steel", "sapphire"],
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.8,
       "warmCool": -0.1,
@@ -1293,7 +2269,20 @@
       "neutralSaturated": 0.4,
       "sparseLayered": 0.8
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.9,
+      "patina": -0.1,
+      "utility": -0.6,
+      "formality": 0.4,
+      "subculture": -0.2,
+      "ornament": 0.8,
+      "heritage": -0.1,
+      "technicality": 0.3,
+      "minimalism": -0.8
+    }
   },
   {
     "skuId": "obj-055",
@@ -1306,8 +2295,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-055",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-055",
     "category": "bag",
-    "tags": ["minimalist"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": 0.0,
@@ -1317,7 +2310,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.0,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": 0.0,
+      "technicality": 0.1,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-056",
@@ -1330,8 +2336,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-056",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-056",
     "category": "designObject",
-    "tags": ["midCenturyModern", "industrial"],
-    "materialTags": ["ceramic"],
+    "tags": [
+      "midCenturyModern",
+      "industrial"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.2,
@@ -1341,7 +2352,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.2,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.1,
+      "technicality": 0.1,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-057",
@@ -1354,8 +2378,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-057",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-057",
     "category": "accessory",
-    "tags": ["traditional", "minimalist"],
-    "materialTags": ["silk"],
+    "tags": [
+      "traditional",
+      "minimalist"
+    ],
+    "materialTags": [
+      "silk"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.3,
@@ -1365,7 +2394,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": -0.1,
+      "ornament": -0.1,
+      "heritage": 0.2,
+      "technicality": -0.5,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-058",
@@ -1378,8 +2420,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-058",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-058",
     "category": "timepiece",
-    "tags": ["industrial"],
-    "materialTags": ["titanium", "sapphire", "rubber"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": -0.5,
@@ -1389,7 +2437,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.0
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": -0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": -0.0
+    }
   },
   {
     "skuId": "obj-059",
@@ -1402,8 +2463,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-059",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-059",
     "category": "bag",
-    "tags": ["traditional", "rustic"],
-    "materialTags": ["leather", "brass"],
+    "tags": [
+      "traditional",
+      "rustic"
+    ],
+    "materialTags": [
+      "leather",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.1,
       "warmCool": 0.6,
@@ -1413,7 +2480,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.3
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.5,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.1,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": -0.3
+    }
   },
   {
     "skuId": "obj-060",
@@ -1426,8 +2506,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-060",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-060",
     "category": "designObject",
-    "tags": ["scandinavian", "coastal"],
-    "materialTags": ["glass", "brass"],
+    "tags": [
+      "scandinavian",
+      "coastal"
+    ],
+    "materialTags": [
+      "glass",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": -0.1,
@@ -1437,7 +2523,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": -0.1,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": -0.1,
+      "technicality": -0.4,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-061",
@@ -1450,8 +2549,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-061",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-061",
     "category": "accessory",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["aluminum"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.6,
@@ -1461,7 +2565,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": -0.5,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": -0.4,
+      "technicality": 0.8,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-062",
@@ -1474,8 +2591,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-062",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-062",
     "category": "timepiece",
-    "tags": ["minimalist", "artDeco"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "minimalist",
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.0,
       "warmCool": 0.0,
@@ -1485,7 +2609,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.0,
+      "utility": -0.0,
+      "formality": 0.0,
+      "subculture": 0.1,
+      "ornament": 0.0,
+      "heritage": 0.0,
+      "technicality": 0.0,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-063",
@@ -1498,8 +2635,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-063",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-063",
     "category": "bag",
-    "tags": ["minimalist", "traditional"],
-    "materialTags": ["leather", "nylon"],
+    "tags": [
+      "minimalist",
+      "traditional"
+    ],
+    "materialTags": [
+      "leather",
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.1,
@@ -1509,7 +2652,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.0
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.1,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.1,
+      "technicality": 0.0,
+      "minimalism": -0.0
+    }
   },
   {
     "skuId": "obj-064",
@@ -1522,8 +2678,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-064",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-064",
     "category": "designObject",
-    "tags": ["minimalist"],
-    "materialTags": ["marble"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "marble"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.2,
@@ -1533,7 +2693,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": -0.1,
+      "technicality": -0.2,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-065",
@@ -1546,8 +2719,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-065",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-065",
     "category": "accessory",
-    "tags": ["bohemian"],
-    "materialTags": ["leather"],
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.1,
       "warmCool": 0.4,
@@ -1557,7 +2734,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.3,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.1,
+      "heritage": 0.3,
+      "technicality": -0.5,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-066",
@@ -1570,8 +2760,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-066",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-066",
     "category": "timepiece",
-    "tags": ["coastal"],
-    "materialTags": ["titanium", "sapphire", "rubber"],
+    "tags": [
+      "coastal"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.3,
@@ -1581,7 +2777,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": -0.1,
+      "ornament": -0.1,
+      "heritage": 0.2,
+      "technicality": 0.3,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-067",
@@ -1594,8 +2803,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-067",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-067",
     "category": "bag",
-    "tags": ["industrial"],
-    "materialTags": ["nylon"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.5,
@@ -1605,7 +2818,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.4,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-068",
@@ -1618,8 +2844,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-068",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-068",
     "category": "designObject",
-    "tags": ["scandinavian", "minimalist"],
-    "materialTags": ["oak", "steel"],
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "oak",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": 0.1,
@@ -1629,7 +2861,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": 0.1,
+      "technicality": -0.3,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-069",
@@ -1642,8 +2887,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-069",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-069",
     "category": "accessory",
-    "tags": ["japandi"],
-    "materialTags": ["porcelain", "steel"],
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "porcelain",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.0,
@@ -1653,7 +2903,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.0,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.0,
+      "technicality": -0.4,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-070",
@@ -1666,8 +2929,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-070",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-070",
     "category": "timepiece",
-    "tags": ["rustic", "minimalist"],
-    "materialTags": ["titanium", "sapphire", "nylon"],
+    "tags": [
+      "rustic",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": 0.1,
@@ -1677,7 +2947,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": 0.1,
+      "technicality": 0.2,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-071",
@@ -1690,8 +2973,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-071",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-071",
     "category": "bag",
-    "tags": ["rustic"],
-    "materialTags": ["canvas", "leather"],
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.4,
@@ -1701,7 +2989,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.3,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-072",
@@ -1714,8 +3015,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-072",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-072",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["copper", "glass"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "copper",
+      "glass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.6,
@@ -1725,7 +3031,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.5,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": -0.1,
+      "ornament": -0.1,
+      "heritage": 0.4,
+      "technicality": -0.1,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-073",
@@ -1738,8 +3057,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-073",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-073",
     "category": "accessory",
-    "tags": ["industrial"],
-    "materialTags": ["nylon"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": -0.4,
@@ -1749,7 +3072,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": -0.3,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-074",
@@ -1762,8 +3098,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-074",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-074",
     "category": "timepiece",
-    "tags": ["traditional", "minimalist"],
-    "materialTags": ["enamel", "steel", "leather"],
+    "tags": [
+      "traditional",
+      "minimalist"
+    ],
+    "materialTags": [
+      "enamel",
+      "steel",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.1,
       "warmCool": 0.3,
@@ -1773,7 +3116,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.2,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": -0.1,
+      "ornament": 0.1,
+      "heritage": 0.2,
+      "technicality": -0.3,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-075",
@@ -1786,8 +3142,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-075",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-075",
     "category": "bag",
-    "tags": ["minimalist", "scandinavian"],
-    "materialTags": ["canvas", "leather"],
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": 0.0,
@@ -1797,7 +3159,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.0,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": 0.0,
+      "technicality": -0.1,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-076",
@@ -1810,8 +3185,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-076",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-076",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["brass"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.5,
@@ -1821,7 +3200,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": 0.0,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-077",
@@ -1834,8 +3226,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-077",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-077",
     "category": "accessory",
-    "tags": ["rustic", "traditional"],
-    "materialTags": ["leather"],
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.6,
@@ -1845,7 +3242,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": 0.5,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-078",
@@ -1858,8 +3268,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-078",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-078",
     "category": "timepiece",
-    "tags": ["industrial", "rustic"],
-    "materialTags": ["titanium", "sapphire", "nylon"],
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": -0.2,
@@ -1869,7 +3286,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.2,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": -0.1,
+      "technicality": 0.5,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-079",
@@ -1882,8 +3312,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-079",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-079",
     "category": "bag",
-    "tags": ["traditional", "artDeco"],
-    "materialTags": ["leather", "silk", "brass"],
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "leather",
+      "silk",
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.4,
       "warmCool": 0.4,
@@ -1893,7 +3330,20 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.5
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.3,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.1,
+      "ornament": 0.4,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": -0.5
+    }
   },
   {
     "skuId": "obj-080",
@@ -1906,8 +3356,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-080",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-080",
     "category": "designObject",
-    "tags": ["japandi"],
-    "materialTags": ["ceramic"],
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": 0.3,
@@ -1917,7 +3371,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.7,
+      "heritage": 0.2,
+      "technicality": -0.8,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-081",
@@ -1930,8 +3397,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-081",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-081",
     "category": "accessory",
-    "tags": ["midCenturyModern", "minimalist"],
-    "materialTags": ["brass"],
+    "tags": [
+      "midCenturyModern",
+      "minimalist"
+    ],
+    "materialTags": [
+      "brass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.5,
@@ -1941,7 +3413,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": 0.1,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-082",
@@ -1954,8 +3439,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-082",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-082",
     "category": "timepiece",
-    "tags": ["traditional", "artDeco"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.6,
       "warmCool": 0.2,
@@ -1965,7 +3457,20 @@
       "neutralSaturated": 0.3,
       "sparseLayered": 0.7
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": 0.2,
+      "utility": -0.4,
+      "formality": 0.3,
+      "subculture": -0.2,
+      "ornament": 0.6,
+      "heritage": 0.1,
+      "technicality": 0.0,
+      "minimalism": -0.7
+    }
   },
   {
     "skuId": "obj-083",
@@ -1978,8 +3483,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-083",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-083",
     "category": "bag",
-    "tags": ["bohemian", "coastal"],
-    "materialTags": ["leather", "linen"],
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "leather",
+      "linen"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.2,
       "warmCool": 0.4,
@@ -1989,7 +3500,20 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.3
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.3,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": -0.1,
+      "ornament": 0.2,
+      "heritage": 0.3,
+      "technicality": -0.6,
+      "minimalism": -0.3
+    }
   },
   {
     "skuId": "obj-084",
@@ -2002,8 +3526,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-084",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-084",
     "category": "designObject",
-    "tags": ["scandinavian", "industrial"],
-    "materialTags": ["steel"],
+    "tags": [
+      "scandinavian",
+      "industrial"
+    ],
+    "materialTags": [
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.3,
@@ -2013,7 +3542,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.2,
+      "technicality": 0.5,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-085",
@@ -2026,8 +3568,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-085",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-085",
     "category": "accessory",
-    "tags": ["rustic", "traditional"],
-    "materialTags": ["leather"],
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.2,
       "warmCool": 0.6,
@@ -2037,7 +3584,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.5,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-086",
@@ -2050,8 +3610,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-086",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-086",
     "category": "timepiece",
-    "tags": ["coastal", "traditional"],
-    "materialTags": ["steel", "sapphire", "rubber"],
+    "tags": [
+      "coastal",
+      "traditional"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.0,
       "warmCool": 0.2,
@@ -2061,7 +3628,20 @@
       "neutralSaturated": 0.0,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": 0.2,
+      "utility": -0.0,
+      "formality": 0.0,
+      "subculture": -0.0,
+      "ornament": 0.0,
+      "heritage": 0.1,
+      "technicality": 0.2,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-087",
@@ -2074,8 +3654,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-087",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-087",
     "category": "bag",
-    "tags": ["traditional", "minimalist"],
-    "materialTags": ["leather"],
+    "tags": [
+      "traditional",
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.3,
@@ -2085,7 +3670,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": 0.2,
+      "technicality": -0.4,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-088",
@@ -2098,8 +3696,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-088",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-088",
     "category": "designObject",
-    "tags": ["japandi", "minimalist"],
-    "materialTags": ["walnut"],
+    "tags": [
+      "japandi",
+      "minimalist"
+    ],
+    "materialTags": [
+      "walnut"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": 0.3,
@@ -2109,7 +3712,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.5
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.1,
+      "patina": 0.2,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": 0.2,
+      "technicality": -0.7,
+      "minimalism": 0.5
+    }
   },
   {
     "skuId": "obj-089",
@@ -2122,8 +3738,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-089",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-089",
     "category": "accessory",
-    "tags": ["traditional"],
-    "materialTags": ["horn", "oak", "nylon"],
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "horn",
+      "oak",
+      "nylon"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.2,
       "warmCool": 0.4,
@@ -2133,7 +3755,20 @@
       "neutralSaturated": -0.1,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.3,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.2,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-090",
@@ -2146,8 +3781,15 @@
     "productURL": "https://cdn.burgundy.app/products/obj-090",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-090",
     "category": "timepiece",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["titanium", "sapphire", "rubber"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.5,
@@ -2157,7 +3799,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.4,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.7,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-091",
@@ -2170,8 +3825,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-091",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-091",
     "category": "bag",
-    "tags": ["minimalist", "bohemian"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist",
+      "bohemian"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.3,
@@ -2181,7 +3841,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.1
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": 0.2,
+      "technicality": -0.3,
+      "minimalism": -0.1
+    }
   },
   {
     "skuId": "obj-092",
@@ -2194,8 +3867,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-092",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-092",
     "category": "designObject",
-    "tags": ["midCenturyModern"],
-    "materialTags": ["brass", "glass"],
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "brass",
+      "glass"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.1,
       "warmCool": 0.5,
@@ -2205,7 +3883,20 @@
       "neutralSaturated": 0.0,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.4,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": -0.0,
+      "ornament": -0.1,
+      "heritage": 0.3,
+      "technicality": -0.1,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-093",
@@ -2218,8 +3909,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-093",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-093",
     "category": "accessory",
-    "tags": ["artDeco", "traditional"],
-    "materialTags": ["enamel", "steel"],
+    "tags": [
+      "artDeco",
+      "traditional"
+    ],
+    "materialTags": [
+      "enamel",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": 0.4,
       "warmCool": 0.1,
@@ -2229,7 +3926,20 @@
       "neutralSaturated": 0.3,
       "sparseLayered": 0.2
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.1,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.2,
+      "ornament": 0.4,
+      "heritage": 0.1,
+      "technicality": 0.1,
+      "minimalism": -0.2
+    }
   },
   {
     "skuId": "obj-094",
@@ -2242,8 +3952,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-094",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-094",
     "category": "timepiece",
-    "tags": ["minimalist"],
-    "materialTags": ["steel", "sapphire", "leather"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "steel",
+      "sapphire",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.6,
       "warmCool": 0.1,
@@ -2253,7 +3969,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.1,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.6,
+      "heritage": 0.1,
+      "technicality": -0.1,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-095",
@@ -2266,8 +3995,13 @@
     "productURL": "https://cdn.burgundy.app/products/obj-095",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-095",
     "category": "bag",
-    "tags": ["industrial", "minimalist"],
-    "materialTags": ["aluminum"],
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "aluminum"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": -0.6,
@@ -2277,7 +4011,20 @@
       "neutralSaturated": -0.3,
       "sparseLayered": -0.2
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": -0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": -0.4,
+      "technicality": 0.8,
+      "minimalism": 0.2
+    }
   },
   {
     "skuId": "obj-096",
@@ -2290,8 +4037,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-096",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-096",
     "category": "designObject",
-    "tags": ["japandi"],
-    "materialTags": ["ceramic"],
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.7,
       "warmCool": 0.2,
@@ -2301,7 +4052,20 @@
       "neutralSaturated": -0.5,
       "sparseLayered": -0.6
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.7,
+      "heritage": 0.1,
+      "technicality": -0.7,
+      "minimalism": 0.6
+    }
   },
   {
     "skuId": "obj-097",
@@ -2314,8 +4078,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-097",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-097",
     "category": "accessory",
-    "tags": ["rustic", "bohemian"],
-    "materialTags": ["copper", "leather"],
+    "tags": [
+      "rustic",
+      "bohemian"
+    ],
+    "materialTags": [
+      "copper",
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.3,
       "warmCool": 0.5,
@@ -2325,7 +4095,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": -0.4
     },
-    "discoveryClusters": ["heritageCraft"]
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.0,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": -0.3,
+      "minimalism": 0.4
+    }
   },
   {
     "skuId": "obj-098",
@@ -2338,8 +4121,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-098",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-098",
     "category": "timepiece",
-    "tags": ["industrial"],
-    "materialTags": ["titanium", "sapphire", "rubber"],
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire",
+      "rubber"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.4,
       "warmCool": -0.7,
@@ -2349,7 +4138,20 @@
       "neutralSaturated": -0.2,
       "sparseLayered": -0.1
     },
-    "discoveryClusters": ["technicalLuxury"]
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": -0.6,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.1,
+      "ornament": -0.4,
+      "heritage": -0.5,
+      "technicality": 0.9,
+      "minimalism": 0.1
+    }
   },
   {
     "skuId": "obj-099",
@@ -2362,8 +4164,12 @@
     "productURL": "https://cdn.burgundy.app/products/obj-099",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-099",
     "category": "bag",
-    "tags": ["minimalist"],
-    "materialTags": ["leather"],
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": 0.0,
@@ -2373,7 +4179,20 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["precision"]
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.0,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": 0.0,
+      "technicality": 0.0,
+      "minimalism": 0.3
+    }
   },
   {
     "skuId": "obj-100",
@@ -2386,8 +4205,14 @@
     "productURL": "https://cdn.burgundy.app/products/obj-100",
     "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-100",
     "category": "designObject",
-    "tags": ["scandinavian", "minimalist"],
-    "materialTags": ["glass", "steel"],
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "glass",
+      "steel"
+    ],
     "axisWeights": {
       "minimalOrnate": -0.5,
       "warmCool": -0.3,
@@ -2397,6 +4222,2128 @@
       "neutralSaturated": -0.4,
       "sparseLayered": -0.3
     },
-    "discoveryClusters": ["minimalUtility"]
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.2,
+      "technicality": 0.2,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-101",
+    "title": "Cashmere Crewneck",
+    "brand": "The Row",
+    "merchant": "The Row",
+    "price": 1290.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-101/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-101",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-101",
+    "category": "clothing",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": 0.3,
+      "softStructured": -0.4,
+      "organicIndustrial": -0.6,
+      "lightDark": -0.2,
+      "neutralSaturated": -0.7,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.7,
+      "heritage": 0.2,
+      "technicality": -0.6,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-102",
+    "title": "Waxed Field Jacket",
+    "brand": "Barbour",
+    "merchant": "Barbour",
+    "price": 425.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-102/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-102",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-102",
+    "category": "clothing",
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "waxed cotton",
+      "corduroy"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.6,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.4,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.4,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.5,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.4,
+      "technicality": -0.4,
+      "minimalism": -0.2
+    }
+  },
+  {
+    "skuId": "obj-103",
+    "title": "Selvedge Denim",
+    "brand": "Momotaro",
+    "merchant": "Momotaro",
+    "price": 350.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-103/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-103",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-103",
+    "category": "clothing",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "denim",
+      "indigo"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": 0.4,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.4,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.4,
+      "heritage": 0.3,
+      "technicality": 0.3,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-104",
+    "title": "Linen Overshirt",
+    "brand": "Margaret Howell",
+    "merchant": "Margaret Howell",
+    "price": 520.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-104/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-104",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-104",
+    "category": "clothing",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": 0.2,
+      "softStructured": -0.2,
+      "organicIndustrial": -0.5,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.6,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": 0.2,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.6,
+      "heritage": 0.1,
+      "technicality": -0.5,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-105",
+    "title": "Wool Trousers",
+    "brand": "Lemaire",
+    "merchant": "Lemaire",
+    "price": 680.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-105/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-105",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-105",
+    "category": "clothing",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": 0.1,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.3,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": 0.1,
+      "technicality": -0.3,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-106",
+    "title": "Canvas Sneaker",
+    "brand": "Shoes Like Pottery",
+    "merchant": "Shoes Like Pottery",
+    "price": 185.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-106/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-106",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-106",
+    "category": "footwear",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "canvas",
+      "rubber"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": -0.1,
+      "softStructured": -0.2,
+      "organicIndustrial": -0.3,
+      "lightDark": -0.4,
+      "neutralSaturated": -0.6,
+      "sparseLayered": -0.7
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": -0.1,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.7,
+      "heritage": -0.1,
+      "technicality": -0.3,
+      "minimalism": 0.7
+    }
+  },
+  {
+    "skuId": "obj-107",
+    "title": "Service Boot",
+    "brand": "Viberg",
+    "merchant": "Viberg",
+    "price": 720.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-107/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-107",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-107",
+    "category": "footwear",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "leather",
+      "rubber"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.5,
+      "softStructured": 0.6,
+      "organicIndustrial": 0.4,
+      "lightDark": 0.4,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": 0.4,
+      "minimalism": 0.2
+    }
+  },
+  {
+    "skuId": "obj-108",
+    "title": "Suede Loafer",
+    "brand": "Crockett & Jones",
+    "merchant": "Crockett & Jones",
+    "price": 595.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-108/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-108",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-108",
+    "category": "footwear",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "suede",
+      "leather"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.1,
+      "warmCool": 0.4,
+      "softStructured": 0.4,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.3,
+      "sparseLayered": 0.1
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.3,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.2,
+      "ornament": 0.1,
+      "heritage": 0.3,
+      "technicality": -0.5,
+      "minimalism": -0.1
+    }
+  },
+  {
+    "skuId": "obj-109",
+    "title": "Trail Runner",
+    "brand": "Salomon",
+    "merchant": "Salomon",
+    "price": 180.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-109/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-109",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-109",
+    "category": "footwear",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "mesh",
+      "rubber",
+      "gore-tex"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": -0.6,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.7,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.2,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": -0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.1,
+      "ornament": -0.4,
+      "heritage": -0.4,
+      "technicality": 0.7,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-110",
+    "title": "Chelsea Boot",
+    "brand": "Common Projects",
+    "merchant": "Common Projects",
+    "price": 575.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-110/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-110",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-110",
+    "category": "footwear",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "leather"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": -0.1,
+      "softStructured": 0.5,
+      "organicIndustrial": -0.2,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.1,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": -0.1,
+      "technicality": -0.2,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-111",
+    "title": "Mechanical Keyboard",
+    "brand": "HHKB",
+    "merchant": "HHKB",
+    "price": 320.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-111/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-111",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-111",
+    "category": "tech",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "ABS",
+      "Topre switch"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": -0.5,
+      "softStructured": 0.7,
+      "organicIndustrial": 0.5,
+      "lightDark": -0.2,
+      "neutralSaturated": -0.6,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.7,
+      "patina": -0.4,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.6,
+      "heritage": -0.3,
+      "technicality": 0.5,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-112",
+    "title": "Wireless Earbuds",
+    "brand": "Bang & Olufsen",
+    "merchant": "Bang & Olufsen",
+    "price": 399.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-112/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-112",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-112",
+    "category": "tech",
+    "tags": [
+      "minimalist",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "aluminum",
+      "silicone"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.8,
+      "warmCool": -0.3,
+      "softStructured": 0.4,
+      "organicIndustrial": 0.3,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.7
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": -0.2,
+      "utility": 0.6,
+      "formality": -0.4,
+      "subculture": 0.3,
+      "ornament": -0.8,
+      "heritage": -0.2,
+      "technicality": 0.3,
+      "minimalism": 0.7
+    }
+  },
+  {
+    "skuId": "obj-113",
+    "title": "Portable Speaker",
+    "brand": "Teenage Engineering",
+    "merchant": "Teenage Engineering",
+    "price": 199.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-113/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-113",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-113",
+    "category": "tech",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "aluminum",
+      "plastic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": -0.4,
+      "softStructured": 0.2,
+      "organicIndustrial": 0.6,
+      "lightDark": -0.1,
+      "neutralSaturated": 0.3,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": -0.3,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": -0.2,
+      "ornament": -0.3,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.2
+    }
+  },
+  {
+    "skuId": "obj-114",
+    "title": "E-Reader",
+    "brand": "Kindle",
+    "merchant": "Amazon",
+    "price": 299.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-114/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-114",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-114",
+    "category": "tech",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "aluminum",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": -0.4,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.4,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": -0.3,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.7,
+      "heritage": -0.3,
+      "technicality": 0.4,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-115",
+    "title": "Film Camera",
+    "brand": "Leica",
+    "merchant": "Leica",
+    "price": 6500.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-115/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-115",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-115",
+    "category": "tech",
+    "tags": [
+      "traditional",
+      "industrial"
+    ],
+    "materialTags": [
+      "brass",
+      "leather",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.3,
+      "softStructured": 0.8,
+      "organicIndustrial": 0.2,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.1
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.3,
+      "ornament": -0.2,
+      "heritage": 0.2,
+      "technicality": 0.2,
+      "minimalism": 0.1
+    }
+  },
+  {
+    "skuId": "obj-116",
+    "title": "Signet Ring",
+    "brand": "Foundrae",
+    "merchant": "Foundrae",
+    "price": 2450.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-116/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-116",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-116",
+    "category": "jewelry",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "gold"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.3,
+      "warmCool": 0.5,
+      "softStructured": 0.4,
+      "organicIndustrial": -0.4,
+      "lightDark": 0.3,
+      "neutralSaturated": 0.2,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.4,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": -0.1,
+      "ornament": 0.3,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": -0.3
+    }
+  },
+  {
+    "skuId": "obj-117",
+    "title": "Chain Bracelet",
+    "brand": "Miansai",
+    "merchant": "Miansai",
+    "price": 195.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-117/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-117",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-117",
+    "category": "jewelry",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "sterling silver"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": -0.2,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.1,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": -0.1,
+      "technicality": 0.1,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-118",
+    "title": "Pendant Necklace",
+    "brand": "Alighieri",
+    "merchant": "Alighieri",
+    "price": 350.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-118/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-118",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-118",
+    "category": "jewelry",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "gold-plated bronze"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.5,
+      "warmCool": 0.6,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.3,
+      "neutralSaturated": 0.3,
+      "sparseLayered": 0.4
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.5,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.2,
+      "ornament": 0.5,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": -0.4
+    }
+  },
+  {
+    "skuId": "obj-119",
+    "title": "Cuff Bracelet",
+    "brand": "Georg Jensen",
+    "merchant": "Georg Jensen",
+    "price": 475.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-119/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-119",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-119",
+    "category": "jewelry",
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "sterling silver"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": -0.3,
+      "softStructured": 0.5,
+      "organicIndustrial": -0.1,
+      "lightDark": -0.2,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": -0.2,
+      "technicality": -0.1,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-120",
+    "title": "Enamel Pin Set",
+    "brand": "PINTRILL",
+    "merchant": "PINTRILL",
+    "price": 45.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-120/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-120",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-120",
+    "category": "jewelry",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "enamel",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.4,
+      "warmCool": 0.1,
+      "softStructured": -0.4,
+      "organicIndustrial": -0.2,
+      "lightDark": -0.1,
+      "neutralSaturated": 0.5,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.1,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.3,
+      "ornament": 0.4,
+      "heritage": 0.1,
+      "technicality": -0.2,
+      "minimalism": -0.3
+    }
+  },
+  {
+    "skuId": "obj-121",
+    "title": "Utility Vest",
+    "brand": "Engineered Garments",
+    "merchant": "Engineered Garments",
+    "price": 385.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-121/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-121",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-121",
+    "category": "clothing",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "cotton",
+      "ripstop"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.1,
+      "warmCool": 0.2,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.5,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.2,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.1,
+      "ornament": -0.1,
+      "heritage": 0.1,
+      "technicality": 0.5,
+      "minimalism": -0.3
+    }
+  },
+  {
+    "skuId": "obj-122",
+    "title": "Silk Scarf",
+    "brand": "Drake's",
+    "merchant": "Drake's",
+    "price": 195.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-122/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-122",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-122",
+    "category": "accessory",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.4,
+      "warmCool": 0.5,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.6,
+      "lightDark": 0.1,
+      "neutralSaturated": 0.4,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.4,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.2,
+      "ornament": 0.4,
+      "heritage": 0.3,
+      "technicality": -0.6,
+      "minimalism": -0.3
+    }
+  },
+  {
+    "skuId": "obj-123",
+    "title": "Tote Bag",
+    "brand": "BAGGU",
+    "merchant": "BAGGU",
+    "price": 38.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-123/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-123",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-123",
+    "category": "bag",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "nylon"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": -0.2,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.1,
+      "lightDark": -0.3,
+      "neutralSaturated": 0.3,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "streetSignal"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": -0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": -0.2,
+      "ornament": -0.7,
+      "heritage": -0.1,
+      "technicality": -0.1,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-124",
+    "title": "Corduroy Cap",
+    "brand": "Norse Projects",
+    "merchant": "Norse Projects",
+    "price": 75.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-124/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-124",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-124",
+    "category": "accessory",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "corduroy",
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": 0.3,
+      "softStructured": -0.2,
+      "organicIndustrial": -0.3,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": 0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": 0.2,
+      "technicality": -0.3,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-125",
+    "title": "Leather Card Case",
+    "brand": "Il Bisonte",
+    "merchant": "Il Bisonte",
+    "price": 120.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-125/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-125",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-125",
+    "category": "accessory",
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "vegetable-tanned leather"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.6,
+      "softStructured": 0.2,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.5,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.4,
+      "technicality": -0.5,
+      "minimalism": 0.2
+    }
+  },
+  {
+    "skuId": "obj-126",
+    "title": "Running Short",
+    "brand": "Satisfy",
+    "merchant": "Satisfy",
+    "price": 145.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-126/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-126",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-126",
+    "category": "clothing",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon",
+      "elastane"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": -0.3,
+      "softStructured": 0.2,
+      "organicIndustrial": 0.4,
+      "lightDark": -0.1,
+      "neutralSaturated": -0.2,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.1,
+      "ornament": -0.5,
+      "heritage": -0.2,
+      "technicality": 0.4,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-127",
+    "title": "Hiking Boot",
+    "brand": "Danner",
+    "merchant": "Danner",
+    "price": 390.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-127/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-127",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-127",
+    "category": "footwear",
+    "tags": [
+      "rustic",
+      "industrial"
+    ],
+    "materialTags": [
+      "leather",
+      "vibram",
+      "gore-tex"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.4,
+      "softStructured": 0.6,
+      "organicIndustrial": 0.5,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.4,
+      "sparseLayered": 0.1
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": 0.3,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.3,
+      "technicality": 0.5,
+      "minimalism": -0.1
+    }
+  },
+  {
+    "skuId": "obj-128",
+    "title": "Titanium Watch",
+    "brand": "Sinn",
+    "merchant": "Sinn",
+    "price": 2100.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-128/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-128",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-128",
+    "category": "timepiece",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "sapphire"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": -0.4,
+      "softStructured": 0.8,
+      "organicIndustrial": 0.6,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.8,
+      "patina": -0.3,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-129",
+    "title": "Merino Beanie",
+    "brand": "Outlier",
+    "merchant": "Outlier",
+    "price": 65.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-129/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-129",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-129",
+    "category": "accessory",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "merino wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": 0.2,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.2,
+      "lightDark": 0.0,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.2,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.3,
+      "ornament": -0.6,
+      "heritage": 0.1,
+      "technicality": -0.2,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-130",
+    "title": "Oxford Shirt",
+    "brand": "Kamakura",
+    "merchant": "Kamakura",
+    "price": 89.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-130/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-130",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-130",
+    "category": "clothing",
+    "tags": [
+      "traditional",
+      "minimalist"
+    ],
+    "materialTags": [
+      "cotton"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.1,
+      "softStructured": 0.4,
+      "organicIndustrial": -0.3,
+      "lightDark": -0.2,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.1,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.1,
+      "technicality": -0.3,
+      "minimalism": 0.2
+    }
+  },
+  {
+    "skuId": "obj-131",
+    "title": "Tech Backpack",
+    "brand": "Aer",
+    "merchant": "Aer",
+    "price": 220.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-131/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-131",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-131",
+    "category": "bag",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "cordura",
+      "nylon"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": -0.4,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.6,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": -0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.6,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-132",
+    "title": "Pocket Knife",
+    "brand": "Opinel",
+    "merchant": "Opinel",
+    "price": 18.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-132/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-132",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-132",
+    "category": "designObject",
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "carbon steel",
+      "beechwood"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": 0.6,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.3,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.5,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.4,
+      "heritage": 0.4,
+      "technicality": -0.3,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-133",
+    "title": "Ceramic Mug",
+    "brand": "Hasami Porcelain",
+    "merchant": "Hasami Porcelain",
+    "price": 32.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-133/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-133",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-133",
+    "category": "designObject",
+    "tags": [
+      "japandi",
+      "minimalist"
+    ],
+    "materialTags": [
+      "porcelain"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": 0.2,
+      "softStructured": -0.2,
+      "organicIndustrial": -0.6,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.6,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": 0.2,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.4,
+      "ornament": -0.7,
+      "heritage": 0.1,
+      "technicality": -0.6,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-134",
+    "title": "Brass Keychain",
+    "brand": "Candy Design",
+    "merchant": "Candy Design",
+    "price": 42.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-134/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-134",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-134",
+    "category": "accessory",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.3,
+      "softStructured": 0.4,
+      "organicIndustrial": 0.2,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.2,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.2,
+      "technicality": 0.2,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-135",
+    "title": "Wool Blanket",
+    "brand": "Pendleton",
+    "merchant": "Pendleton",
+    "price": 199.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-135/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-135",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-135",
+    "category": "designObject",
+    "tags": [
+      "rustic",
+      "traditional"
+    ],
+    "materialTags": [
+      "wool"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.3,
+      "warmCool": 0.7,
+      "softStructured": -0.4,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.2,
+      "neutralSaturated": 0.3,
+      "sparseLayered": 0.4
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.4,
+      "patina": 0.6,
+      "utility": -0.2,
+      "formality": 0.1,
+      "subculture": -0.2,
+      "ornament": 0.3,
+      "heritage": 0.5,
+      "technicality": -0.5,
+      "minimalism": -0.4
+    }
+  },
+  {
+    "skuId": "obj-136",
+    "title": "Smart Watch",
+    "brand": "Apple",
+    "merchant": "Apple",
+    "price": 799.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-136/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-136",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-136",
+    "category": "tech",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "titanium",
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.7,
+      "warmCool": -0.5,
+      "softStructured": 0.6,
+      "organicIndustrial": 0.5,
+      "lightDark": -0.1,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.4,
+      "utility": 0.5,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.7,
+      "heritage": -0.3,
+      "technicality": 0.5,
+      "minimalism": 0.6
+    }
+  },
+  {
+    "skuId": "obj-137",
+    "title": "Canvas Apron",
+    "brand": "Artifact Bags",
+    "merchant": "Artifact Bags",
+    "price": 68.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-137/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-137",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-137",
+    "category": "accessory",
+    "tags": [
+      "industrial",
+      "rustic"
+    ],
+    "materialTags": [
+      "canvas",
+      "leather"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.4,
+      "softStructured": 0.2,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.3,
+      "sparseLayered": 0.1
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.3,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.3,
+      "technicality": 0.3,
+      "minimalism": -0.1
+    }
+  },
+  {
+    "skuId": "obj-138",
+    "title": "Bone China Set",
+    "brand": "Wedgwood",
+    "merchant": "Wedgwood",
+    "price": 280.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-138/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-138",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-138",
+    "category": "designObject",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "bone china"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.4,
+      "warmCool": 0.3,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.6,
+      "lightDark": -0.2,
+      "neutralSaturated": 0.1,
+      "sparseLayered": 0.3
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.2,
+      "utility": -0.3,
+      "formality": 0.2,
+      "subculture": -0.1,
+      "ornament": 0.4,
+      "heritage": 0.2,
+      "technicality": -0.6,
+      "minimalism": -0.3
+    }
+  },
+  {
+    "skuId": "obj-139",
+    "title": "Sling Bag",
+    "brand": "Cote&Ciel",
+    "merchant": "Cote&Ciel",
+    "price": 250.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-139/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-139",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-139",
+    "category": "bag",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "nylon",
+      "coated canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": -0.4,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.5,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": -0.3,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": -0.3,
+      "technicality": 0.5,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-140",
+    "title": "Desk Lamp",
+    "brand": "Anglepoise",
+    "merchant": "Anglepoise",
+    "price": 340.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-140/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-140",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-140",
+    "category": "designObject",
+    "tags": [
+      "industrial",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "steel",
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.2,
+      "warmCool": 0.3,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.4,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.4,
+      "sparseLayered": 0.0
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.2,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.2,
+      "heritage": 0.2,
+      "technicality": 0.4,
+      "minimalism": -0.0
+    }
+  },
+  {
+    "skuId": "obj-141",
+    "title": "Cashmere Hoodie",
+    "brand": "Brunello Cucinelli",
+    "merchant": "Brunello Cucinelli",
+    "price": 2495.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-141/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-141",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-141",
+    "category": "clothing",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "cashmere"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": 0.3,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.0,
+      "neutralSaturated": -0.6,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.4,
+      "ornament": -0.5,
+      "heritage": 0.2,
+      "technicality": -0.5,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-142",
+    "title": "Leather Sandal",
+    "brand": "Brador",
+    "merchant": "Brador",
+    "price": 165.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-142/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-142",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-142",
+    "category": "footwear",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "leather"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.5,
+      "softStructured": -0.2,
+      "organicIndustrial": -0.4,
+      "lightDark": -0.1,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.2,
+      "patina": 0.4,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.3,
+      "technicality": -0.4,
+      "minimalism": 0.2
+    }
+  },
+  {
+    "skuId": "obj-143",
+    "title": "Stacking Ring",
+    "brand": "Mejuri",
+    "merchant": "Mejuri",
+    "price": 98.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-143/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-143",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-143",
+    "category": "jewelry",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "14k gold"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.6,
+      "warmCool": 0.1,
+      "softStructured": 0.2,
+      "organicIndustrial": -0.3,
+      "lightDark": -0.1,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.2,
+      "patina": 0.1,
+      "utility": 0.4,
+      "formality": -0.3,
+      "subculture": 0.2,
+      "ornament": -0.6,
+      "heritage": 0.1,
+      "technicality": -0.3,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-144",
+    "title": "Headphones",
+    "brand": "Grado",
+    "merchant": "Grado",
+    "price": 350.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-144/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-144",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-144",
+    "category": "tech",
+    "tags": [
+      "rustic",
+      "industrial"
+    ],
+    "materialTags": [
+      "mahogany",
+      "leather",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.1,
+      "warmCool": 0.5,
+      "softStructured": 0.3,
+      "organicIndustrial": 0.2,
+      "lightDark": 0.2,
+      "neutralSaturated": -0.3,
+      "sparseLayered": 0.1
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.4,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.2,
+      "ornament": 0.1,
+      "heritage": 0.3,
+      "technicality": 0.2,
+      "minimalism": -0.1
+    }
+  },
+  {
+    "skuId": "obj-145",
+    "title": "Ballpoint Pen",
+    "brand": "Caran d'Ache",
+    "merchant": "Caran d'Ache",
+    "price": 48.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-145/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-145",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-145",
+    "category": "designObject",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "aluminum"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": -0.2,
+      "softStructured": 0.6,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.0,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.5
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.6,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.3,
+      "ornament": -0.5,
+      "heritage": -0.1,
+      "technicality": 0.3,
+      "minimalism": 0.5
+    }
+  },
+  {
+    "skuId": "obj-146",
+    "title": "Down Puffer",
+    "brand": "Snow Peak",
+    "merchant": "Snow Peak",
+    "price": 480.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-146/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-146",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-146",
+    "category": "clothing",
+    "tags": [
+      "minimalist",
+      "industrial"
+    ],
+    "materialTags": [
+      "nylon",
+      "down"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": -0.2,
+      "softStructured": 0.1,
+      "organicIndustrial": 0.4,
+      "lightDark": 0.1,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "precisionTool"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.1,
+      "patina": -0.2,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.4,
+      "heritage": -0.1,
+      "technicality": 0.4,
+      "minimalism": 0.3
+    }
+  },
+  {
+    "skuId": "obj-147",
+    "title": "Wool Fedora",
+    "brand": "Borsalino",
+    "merchant": "Borsalino",
+    "price": 420.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-147/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-147",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-147",
+    "category": "accessory",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "felt",
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.2,
+      "warmCool": 0.4,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.5,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.2,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.3,
+      "patina": 0.3,
+      "utility": -0.1,
+      "formality": 0.1,
+      "subculture": 0.1,
+      "ornament": 0.2,
+      "heritage": 0.3,
+      "technicality": -0.5,
+      "minimalism": -0.2
+    }
+  },
+  {
+    "skuId": "obj-148",
+    "title": "Turntable",
+    "brand": "Rega",
+    "merchant": "Rega",
+    "price": 475.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-148/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-148",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-148",
+    "category": "tech",
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "MDF",
+      "aluminum",
+      "acrylic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.3,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.1,
+      "lightDark": 0.0,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.1
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.5,
+      "patina": 0.2,
+      "utility": 0.2,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.3,
+      "heritage": 0.2,
+      "technicality": 0.1,
+      "minimalism": 0.1
+    }
+  },
+  {
+    "skuId": "obj-149",
+    "title": "Ceramic Vase",
+    "brand": "Bolia",
+    "merchant": "Bolia",
+    "price": 85.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-149/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-149",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-149",
+    "category": "designObject",
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.5,
+      "warmCool": 0.1,
+      "softStructured": -0.3,
+      "organicIndustrial": -0.5,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.4,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "quietCeremony"
+    ],
+    "objectAxisWeights": {
+      "precision": -0.3,
+      "patina": 0.1,
+      "utility": 0.3,
+      "formality": -0.2,
+      "subculture": 0.2,
+      "ornament": -0.5,
+      "heritage": 0.1,
+      "technicality": -0.5,
+      "minimalism": 0.4
+    }
+  },
+  {
+    "skuId": "obj-150",
+    "title": "Messenger Bag",
+    "brand": "Filson",
+    "merchant": "Filson",
+    "price": 395.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/obj-150/400/300",
+    "productURL": "https://cdn.burgundy.app/products/obj-150",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/obj-150",
+    "category": "bag",
+    "tags": [
+      "rustic",
+      "industrial"
+    ],
+    "materialTags": [
+      "tin cloth",
+      "bridle leather",
+      "brass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.1,
+      "warmCool": 0.5,
+      "softStructured": 0.4,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.3,
+      "neutralSaturated": -0.4,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "heritageCraft"
+    ],
+    "objectAxisWeights": {
+      "precision": 0.4,
+      "patina": 0.4,
+      "utility": 0.1,
+      "formality": -0.1,
+      "subculture": 0.2,
+      "ornament": -0.1,
+      "heritage": 0.3,
+      "technicality": 0.3,
+      "minimalism": -0.2
+    }
   }
 ]

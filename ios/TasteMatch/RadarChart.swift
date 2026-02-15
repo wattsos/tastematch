@@ -1,11 +1,28 @@
 import SwiftUI
 
 struct RadarChart: View {
-    let axisScores: AxisScores
+    let values: [Double]
+    let labels: [String]
     var size: CGFloat = 200
 
-    private let axisCount = 7
+    private var axisCount: Int { values.count }
     private let gridLevels: [CGFloat] = [0.33, 0.66, 1.0]
+
+    /// Convenience init from Space AxisScores.
+    init(axisScores: AxisScores, size: CGFloat = 200) {
+        self.values = Axis.allCases.map { axisScores.value(for: $0) }
+        self.labels = Axis.allCases.map { axis in
+            AxisPresentation.influenceWord(axis: axis, positive: axisScores.value(for: axis) >= 0)
+        }
+        self.size = size
+    }
+
+    /// Generic init with raw arrays.
+    init(values: [Double], labels: [String], size: CGFloat = 200) {
+        self.values = values
+        self.labels = labels
+        self.size = size
+    }
 
     var body: some View {
         Canvas { context, canvasSize in
@@ -33,10 +50,10 @@ struct RadarChart: View {
             }
 
             // Data polygon
-            let scores = axisValues
+            guard axisCount > 0 else { return }
             var dataPath = Path()
             for i in 0..<axisCount {
-                let normalizedScore = (scores[i] + 1) / 2 // map [-1,+1] → [0,1]
+                let normalizedScore = (values[i] + 1) / 2 // map [-1,+1] → [0,1]
                 let r = radius * CGFloat(normalizedScore)
                 let pt = point(at: i, distance: r, center: center)
                 if i == 0 { dataPath.move(to: pt) } else { dataPath.addLine(to: pt) }
@@ -50,15 +67,10 @@ struct RadarChart: View {
         .overlay { axisLabelsOverlay }
     }
 
-    // MARK: - Axis Values
-
-    private var axisValues: [Double] {
-        Axis.allCases.map { axisScores.value(for: $0) }
-    }
-
     // MARK: - Geometry
 
     private func angle(at index: Int) -> CGFloat {
+        guard axisCount > 0 else { return 0 }
         let slice = (2 * .pi) / CGFloat(axisCount)
         return slice * CGFloat(index) - .pi / 2
     }
@@ -79,9 +91,7 @@ struct RadarChart: View {
             let radius = min(geo.size.width, geo.size.height) / 2 - 4
 
             ForEach(0..<axisCount, id: \.self) { i in
-                let axis = Axis.allCases[i]
-                let score = axisScores.value(for: axis)
-                let label = AxisPresentation.influenceWord(axis: axis, positive: score >= 0)
+                let label = i < labels.count ? labels[i] : ""
                 let pt = point(at: i, distance: radius, center: center)
 
                 Text(label)

@@ -117,6 +117,6 @@ struct AboutScreen: View {
     }
 
     private var catalogCount: Int {
-        MockCatalog.items.count
+        TasteDomain.allCases.reduce(0) { $0 + DomainCatalog.items(for: $1).count }
     }
 }

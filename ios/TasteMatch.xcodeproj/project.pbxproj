@@ -106,6 +106,25 @@
 		R11003000000000000000003 /* DomainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21003000000000000000003 /* DomainLayout.swift */; };
 		R11004000000000000000004 /* DomainPreferencesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21004000000000000000004 /* DomainPreferencesStoreTests.swift */; };
 		R11005000000000000000005 /* DomainEnablementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = R21005000000000000000005 /* DomainEnablementTests.swift */; };
+		S11001000000000000000001 /* ObjectVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21001000000000000000001 /* ObjectVector.swift */; };
+		S11002000000000000000002 /* ObjectCalibrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21002000000000000000002 /* ObjectCalibrationStore.swift */; };
+		S11003000000000000000003 /* ObjectsCalibrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21003000000000000000003 /* ObjectsCalibrationScreen.swift */; };
+		S11004000000000000000004 /* ObjectArchetype.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21004000000000000000004 /* ObjectArchetype.swift */; };
+		S11005000000000000000005 /* ObjectsRankingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21005000000000000000005 /* ObjectsRankingEngine.swift */; };
+		S11006000000000000000006 /* ObjectAxisPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21006000000000000000006 /* ObjectAxisPresentation.swift */; };
+		S11007000000000000000007 /* ObjectVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21007000000000000000007 /* ObjectVectorTests.swift */; };
+		S11008000000000000000008 /* ObjectNamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21008000000000000000008 /* ObjectNamingTests.swift */; };
+		S11009000000000000000009 /* ArchetypeDuelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21009000000000000000009 /* ArchetypeDuelTests.swift */; };
+		S1100A00000000000000000A /* ObjectsRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100A00000000000000000A /* ObjectsRankingTests.swift */; };
+		S1100B00000000000000000B /* AdvisoryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100B00000000000000000B /* AdvisoryPolicy.swift */; };
+		S1100C00000000000000000C /* TasteConflictEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100C00000000000000000C /* TasteConflictEngine.swift */; };
+		S1100D00000000000000000D /* AdvisorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100D00000000000000000D /* AdvisorySettings.swift */; };
+		S1100E00000000000000000E /* TasteGuardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100E00000000000000000E /* TasteGuardSheet.swift */; };
+		S1100F00000000000000000F /* TasteConflictEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S2100F00000000000000000F /* TasteConflictEngineTests.swift */; };
+		S11010000000000000000010 /* AdvisorySignalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21010000000000000000010 /* AdvisorySignalStore.swift */; };
+		S11011000000000000000011 /* AdvisoryToleranceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21011000000000000000011 /* AdvisoryToleranceStore.swift */; };
+		S11012000000000000000012 /* ObjectAdvisory.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21012000000000000000012 /* ObjectAdvisory.swift */; };
+		S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21013000000000000000013 /* AdvisoryToleranceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +234,25 @@
 		R21003000000000000000003 /* DomainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayout.swift; sourceTree = "<group>"; };
 		R21004000000000000000004 /* DomainPreferencesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainPreferencesStoreTests.swift; sourceTree = "<group>"; };
 		R21005000000000000000005 /* DomainEnablementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEnablementTests.swift; sourceTree = "<group>"; };
+		S21001000000000000000001 /* ObjectVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectVector.swift; sourceTree = "<group>"; };
+		S21002000000000000000002 /* ObjectCalibrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCalibrationStore.swift; sourceTree = "<group>"; };
+		S21003000000000000000003 /* ObjectsCalibrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsCalibrationScreen.swift; sourceTree = "<group>"; };
+		S21004000000000000000004 /* ObjectArchetype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectArchetype.swift; sourceTree = "<group>"; };
+		S21005000000000000000005 /* ObjectsRankingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRankingEngine.swift; sourceTree = "<group>"; };
+		S21006000000000000000006 /* ObjectAxisPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAxisPresentation.swift; sourceTree = "<group>"; };
+		S21007000000000000000007 /* ObjectVectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectVectorTests.swift; sourceTree = "<group>"; };
+		S21008000000000000000008 /* ObjectNamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectNamingTests.swift; sourceTree = "<group>"; };
+		S21009000000000000000009 /* ArchetypeDuelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchetypeDuelTests.swift; sourceTree = "<group>"; };
+		S2100A00000000000000000A /* ObjectsRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRankingTests.swift; sourceTree = "<group>"; };
+		S2100B00000000000000000B /* AdvisoryPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryPolicy.swift; sourceTree = "<group>"; };
+		S2100C00000000000000000C /* TasteConflictEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteConflictEngine.swift; sourceTree = "<group>"; };
+		S2100D00000000000000000D /* AdvisorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorySettings.swift; sourceTree = "<group>"; };
+		S2100E00000000000000000E /* TasteGuardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteGuardSheet.swift; sourceTree = "<group>"; };
+		S2100F00000000000000000F /* TasteConflictEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteConflictEngineTests.swift; sourceTree = "<group>"; };
+		S21010000000000000000010 /* AdvisorySignalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisorySignalStore.swift; sourceTree = "<group>"; };
+		S21011000000000000000011 /* AdvisoryToleranceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryToleranceStore.swift; sourceTree = "<group>"; };
+		S21012000000000000000012 /* ObjectAdvisory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAdvisory.swift; sourceTree = "<group>"; };
+		S21013000000000000000013 /* AdvisoryToleranceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryToleranceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +333,12 @@
 				A2000D00000000000000000D /* Models.swift */,
 				P21001000000000000000001 /* MyProfileScreen.swift */,
 				N21003000000000000000003 /* NetworkModels.swift */,
+				S21004000000000000000004 /* ObjectArchetype.swift */,
+				S21006000000000000000006 /* ObjectAxisPresentation.swift */,
+				S21002000000000000000002 /* ObjectCalibrationStore.swift */,
+				S21003000000000000000003 /* ObjectsCalibrationScreen.swift */,
+				S21005000000000000000005 /* ObjectsRankingEngine.swift */,
+				S21001000000000000000001 /* ObjectVector.swift */,
 				A2000E00000000000000000E /* OnboardingScreen.swift */,
 				F21001000000000000000001 /* ProfileNaming.swift */,
 				A2000F00000000000000000F /* ProfileStore.swift */,
@@ -306,6 +350,13 @@
 				M21001000000000000000001 /* ShopScreen.swift */,
 				B21003000000000000000003 /* ShareTextBuilder.swift */,
 				A20014000000000000000014 /* SignalExtractor.swift */,
+				S2100B00000000000000000B /* AdvisoryPolicy.swift */,
+				S2100D00000000000000000D /* AdvisorySettings.swift */,
+				S21010000000000000000010 /* AdvisorySignalStore.swift */,
+				S21011000000000000000011 /* AdvisoryToleranceStore.swift */,
+				S21012000000000000000012 /* ObjectAdvisory.swift */,
+				S2100C00000000000000000C /* TasteConflictEngine.swift */,
+				S2100E00000000000000000E /* TasteGuardSheet.swift */,
 				D21003000000000000000003 /* SwipeDeckView.swift */,
 				A20015000000000000000015 /* TasteBadge.swift */,
 				D21004000000000000000004 /* TasteCalibrationScreen.swift */,
@@ -323,6 +374,8 @@
 		A80003000000000000000003 /* TasteMatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				S21013000000000000000013 /* AdvisoryToleranceTests.swift */,
+				S21009000000000000000009 /* ArchetypeDuelTests.swift */,
 				Q2100C00000000000000000C /* ArtRarityRankingTests.swift */,
 				K21002000000000000000002 /* AxisMappingTests.swift */,
 				P21003000000000000000003 /* MyProfileScreenTests.swift */,
@@ -341,6 +394,9 @@
 				H21003000000000000000003 /* DiscoveryEngineTests.swift */,
 				I21006000000000000000006 /* DiscoverySignalStoreTests.swift */,
 				N21006000000000000000006 /* NetworkModelTests.swift */,
+				S21008000000000000000008 /* ObjectNamingTests.swift */,
+				S2100A00000000000000000A /* ObjectsRankingTests.swift */,
+				S21007000000000000000007 /* ObjectVectorTests.swift */,
 				F21002000000000000000002 /* ProfileNamingTests.swift */,
 				A2001D00000000000000001D /* ProfileStoreTests.swift */,
 				A2001C00000000000000001C /* RecommendationEngineTests.swift */,
@@ -348,6 +404,7 @@
 				B21006000000000000000006 /* ShareTextTests.swift */,
 				B21005000000000000000005 /* TasteBadgeTests.swift */,
 				A2001B00000000000000001B /* TasteEngineTests.swift */,
+				S2100F00000000000000000F /* TasteConflictEngineTests.swift */,
 			);
 			path = TasteMatchTests;
 			sourceTree = "<group>";
@@ -513,6 +570,12 @@
 				A1000D00000000000000000D /* Models.swift in Sources */,
 				P11001000000000000000001 /* MyProfileScreen.swift in Sources */,
 				N11003000000000000000003 /* NetworkModels.swift in Sources */,
+				S11004000000000000000004 /* ObjectArchetype.swift in Sources */,
+				S11006000000000000000006 /* ObjectAxisPresentation.swift in Sources */,
+				S11002000000000000000002 /* ObjectCalibrationStore.swift in Sources */,
+				S11003000000000000000003 /* ObjectsCalibrationScreen.swift in Sources */,
+				S11005000000000000000005 /* ObjectsRankingEngine.swift in Sources */,
+				S11001000000000000000001 /* ObjectVector.swift in Sources */,
 				A1000E00000000000000000E /* OnboardingScreen.swift in Sources */,
 				F11001000000000000000001 /* ProfileNaming.swift in Sources */,
 				A1000F00000000000000000F /* ProfileStore.swift in Sources */,
@@ -532,6 +595,13 @@
 				D11001000000000000000001 /* TasteVector.swift in Sources */,
 				A10018000000000000000018 /* Theme.swift in Sources */,
 				A10019000000000000000019 /* UploadScreen.swift in Sources */,
+				S1100B00000000000000000B /* AdvisoryPolicy.swift in Sources */,
+				S1100D00000000000000000D /* AdvisorySettings.swift in Sources */,
+				S11010000000000000000010 /* AdvisorySignalStore.swift in Sources */,
+				S11011000000000000000011 /* AdvisoryToleranceStore.swift in Sources */,
+				S11012000000000000000012 /* ObjectAdvisory.swift in Sources */,
+				S1100C00000000000000000C /* TasteConflictEngine.swift in Sources */,
+				S1100E00000000000000000E /* TasteGuardSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +627,10 @@
 				H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */,
 				I11006000000000000000006 /* DiscoverySignalStoreTests.swift in Sources */,
 				N11006000000000000000006 /* NetworkModelTests.swift in Sources */,
+				S11008000000000000000008 /* ObjectNamingTests.swift in Sources */,
+				S1100A00000000000000000A /* ObjectsRankingTests.swift in Sources */,
+				S11007000000000000000007 /* ObjectVectorTests.swift in Sources */,
+				S11009000000000000000009 /* ArchetypeDuelTests.swift in Sources */,
 				F11002000000000000000002 /* ProfileNamingTests.swift in Sources */,
 				A1001D00000000000000001D /* ProfileStoreTests.swift in Sources */,
 				A1001C00000000000000001C /* RecommendationEngineTests.swift in Sources */,
@@ -564,6 +638,8 @@
 				B11006000000000000000006 /* ShareTextTests.swift in Sources */,
 				B11005000000000000000005 /* TasteBadgeTests.swift in Sources */,
 				A1001B00000000000000001B /* TasteEngineTests.swift in Sources */,
+				S1100F00000000000000000F /* TasteConflictEngineTests.swift in Sources */,
+				S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

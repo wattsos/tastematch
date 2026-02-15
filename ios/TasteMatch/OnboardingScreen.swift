@@ -4,23 +4,65 @@ struct OnboardingScreen: View {
     @Binding var hasCompletedOnboarding: Bool
     @State private var currentPage = 0
 
-    private let pages: [OnboardingPage] = [
-        OnboardingPage(
-            icon: "camera.viewfinder",
-            headline: "Your space\ntells a story",
-            body: "Upload a few photos of any room — we'll read the colors, textures, and layout that make it yours."
-        ),
-        OnboardingPage(
-            icon: "wand.and.stars",
-            headline: "We decode\nyour taste",
-            body: "Our engine picks up on visual signals most people can't name — then maps them to a style profile unique to you."
-        ),
-        OnboardingPage(
-            icon: "tag.fill",
-            headline: "Find pieces\nthat feel like you",
-            body: "Get recommendations that actually match your vibe. No generic \"trending\" lists — just things that belong in your world."
-        ),
-    ]
+    private var pages: [OnboardingPage] {
+        let primary = DomainPreferencesStore.primaryDomain
+        switch primary {
+        case .objects:
+            return [
+                OnboardingPage(
+                    icon: "camera.viewfinder",
+                    headline: "Your objects\ntell a story",
+                    body: "Upload watches, bags, accessories — we'll read the details and intent behind what you carry."
+                ),
+                OnboardingPage(
+                    icon: "wand.and.stars",
+                    headline: "We decode\nyour taste",
+                    body: "Our engine picks up on visual signals most people can't name — then maps them to an object profile unique to you."
+                ),
+                OnboardingPage(
+                    icon: "tag.fill",
+                    headline: "Find pieces\nthat feel like you",
+                    body: "Get recommendations that actually match your vibe. No generic \"trending\" lists — just things that belong in your world."
+                ),
+            ]
+        case .art:
+            return [
+                OnboardingPage(
+                    icon: "camera.viewfinder",
+                    headline: "Your walls\ntell a story",
+                    body: "Upload art you love — we'll read the movements, palettes, and tension that define your eye."
+                ),
+                OnboardingPage(
+                    icon: "wand.and.stars",
+                    headline: "We decode\nyour taste",
+                    body: "Our engine picks up on visual signals most people can't name — then maps them to a collection profile unique to you."
+                ),
+                OnboardingPage(
+                    icon: "tag.fill",
+                    headline: "Find pieces\nthat feel like you",
+                    body: "Get recommendations that actually match your vibe. No generic \"trending\" lists — just things that belong in your world."
+                ),
+            ]
+        case .space:
+            return [
+                OnboardingPage(
+                    icon: "camera.viewfinder",
+                    headline: "Your space\ntells a story",
+                    body: "Upload a few photos of any room — we'll read the colors, textures, and layout that make it yours."
+                ),
+                OnboardingPage(
+                    icon: "wand.and.stars",
+                    headline: "We decode\nyour taste",
+                    body: "Our engine picks up on visual signals most people can't name — then maps them to a style profile unique to you."
+                ),
+                OnboardingPage(
+                    icon: "tag.fill",
+                    headline: "Find pieces\nthat feel like you",
+                    body: "Get recommendations that actually match your vibe. No generic \"trending\" lists — just things that belong in your world."
+                ),
+            ]
+        }
+    }
 
     var body: some View {
         VStack(spacing: 0) {

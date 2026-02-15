@@ -85,12 +85,25 @@ struct RecommendationItem: Identifiable, Codable, Hashable {
     let merchant: String
 
     /// Returns the current catalog image URL for this SKU, falling back to the stored URL.
-    /// Saved profiles may contain stale CDN URLs; this resolves to the live catalog entry.
+    /// Builds a cross-domain index on first access so any SKU resolves regardless of domain.
     var resolvedImageURL: String? {
-        MockCatalog.items.first(where: { $0.skuId == skuId })?.imageURL
-            ?? MockCatalog.legacyItems.first(where: { $0.skuId == skuId })?.imageURL
-            ?? imageURL
+        Self.skuImageIndex[skuId] ?? imageURL
     }
+
+    private static let skuImageIndex: [String: String] = {
+        var index: [String: String] = [:]
+        for domain in TasteDomain.allCases {
+            for item in DomainCatalog.items(for: domain) {
+                index[item.skuId] = item.imageURL
+            }
+        }
+        for item in MockCatalog.legacyItems {
+            if index[item.skuId] == nil {
+                index[item.skuId] = item.imageURL
+            }
+        }
+        return index
+    }()
     let productURL: String
     let brand: String
     let affiliateURL: String?

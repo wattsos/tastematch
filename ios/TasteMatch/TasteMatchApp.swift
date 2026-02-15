@@ -130,6 +130,7 @@ struct MainTabView: View {
     @State private var savedPath = NavigationPath()
     @State private var historyPath = NavigationPath()
     @State private var settingsPath = NavigationPath()
+    @State private var didAutoNavigateHome = false
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -138,6 +139,12 @@ struct MainTabView: View {
                 UploadScreen(path: $homePath)
                     .navigationDestination(for: Route.self) { route in
                         destinationView(for: route, path: $homePath)
+                    }
+                    .onAppear {
+                        if !didAutoNavigateHome, let latest = ProfileStore.loadLatest() {
+                            didAutoNavigateHome = true
+                            homePath.append(Route.profile(latest.tasteProfile.id))
+                        }
                     }
             }
             .tabItem {

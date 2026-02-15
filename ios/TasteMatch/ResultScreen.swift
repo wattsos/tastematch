@@ -27,6 +27,8 @@ struct ResultScreen: View {
     @State private var expandedMaterialIds: Set<String> = []
     @State private var materialShopItem: DiscoveryItem? = nil
     @State private var toastMessage: String? = nil
+    @State private var userInteracted = false
+    @State private var autoTransitionTask: Task<Void, Never>?
 
     private enum SortMode: String, CaseIterable {
         case match = "Best Match"
@@ -59,16 +61,40 @@ struct ResultScreen: View {
                     shopEntrySection
                     detailsSection
 
-                    if favoritedIds.count >= 3 {
-                        Spacer().frame(height: 52)
-                    }
+                    Spacer().frame(height: favoritedIds.count >= 3 ? 100 : 60)
                 }
                 .padding(16)
             }
+            .simultaneousGesture(
+                DragGesture(minimumDistance: 1).onChanged { _ in
+                    cancelAutoTransition()
+                }
+            )
 
-            if favoritedIds.count >= 3 {
-                boardDock
+            VStack(spacing: 0) {
+                if favoritedIds.count >= 3 {
+                    boardDock
+                }
+
+                Button {
+                    Haptics.tap()
+                    cancelAutoTransition()
+                    RevealStore.markRevealed(profile.id)
+                    path.append(Route.profile(profile.id))
+                } label: {
+                    Text("Enter your world")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Theme.ink)
+                        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                }
+                .buttonStyle(.plain)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 12)
             }
+            .background(Theme.bg)
 
             if let toast = toastMessage {
                 Text(toast)
@@ -79,7 +105,7 @@ struct ResultScreen: View {
                     .background(Theme.ink)
                     .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
                     .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .padding(.bottom, favoritedIds.count >= 3 ? 60 : 16)
+                    .padding(.bottom, favoritedIds.count >= 3 ? 120 : 76)
             }
         }
         .background(Theme.bg.ignoresSafeArea())
@@ -127,6 +153,18 @@ struct ResultScreen: View {
             withAnimation(.easeOut(duration: 0.6).delay(0.1)) { revealHero = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.45)) { revealStory = true }
             withAnimation(.easeOut(duration: 0.5).delay(0.75)) { revealPicks = true }
+
+            if !RevealStore.isRevealed(profile.id) {
+                autoTransitionTask = Task {
+                    try? await Task.sleep(for: .seconds(2.5))
+                    guard !Task.isCancelled, !userInteracted else { return }
+                    RevealStore.markRevealed(profile.id)
+                    path.append(Route.profile(profile.id))
+                }
+            }
+        }
+        .onDisappear {
+            autoTransitionTask?.cancel()
         }
     }
 
@@ -807,6 +845,14 @@ struct ResultScreen: View {
         }
         .tint(Theme.muted)
         .labSurface(padded: true, bordered: true)
+    }
+
+    // MARK: - Auto-Transition
+
+    private func cancelAutoTransition() {
+        guard !userInteracted else { return }
+        userInteracted = true
+        autoTransitionTask?.cancel()
     }
 
     // MARK: - Compute

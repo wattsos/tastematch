@@ -123,6 +123,104 @@ final class MyProfileScreenTests: XCTestCase {
 
     // MARK: - Route
 
+    // MARK: - Radar Image Coverage
+
+    func testRadarCard_alwaysHasImage() {
+        // dailyRadar output must always resolve to a non-nil image URL
+        // either from the discovery item's own imageURL or from related commerce
+        let allDiscovery = DiscoveryEngine.loadAll()
+        XCTAssertGreaterThan(allDiscovery.count, 0, "Discovery items must be loaded")
+
+        let vector = TasteVector(weights: ["industrial": 0.7, "minimalist": 0.3]).normalized()
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let profileId = UUID()
+
+        let radar = DiscoveryEngine.dailyRadar(
+            items: allDiscovery,
+            axisScores: axisScores,
+            signals: nil,
+            profileId: profileId,
+            vector: vector
+        )
+        XCTAssertGreaterThan(radar.count, 0, "Radar must return items")
+
+        for item in radar {
+            // Primary: discovery item's own imageURL
+            if let url = item.imageURL {
+                XCTAssertTrue(url.hasPrefix("https://"), "\(item.id) imageURL must be HTTPS: \(url)")
+                continue
+            }
+            // Fallback: related commerce items must exist
+            let sv = AxisMapping.syntheticVector(fromAxes: item.axisWeights)
+            let ss = AxisMapping.computeAxisScores(from: sv)
+            let ranked = RecommendationEngine.rankCommerceItems(
+                vector: sv, axisScores: ss, items: MockCatalog.items
+            )
+            XCTAssertGreaterThan(ranked.count, 0,
+                "\(item.id) must have commerce fallback images")
+            XCTAssertNotNil(ranked.first?.resolvedImageURL,
+                "\(item.id) commerce fallback must have a resolved image URL")
+        }
+    }
+
+    func testDiscoveryItems_allHaveImageURL() {
+        let allDiscovery = DiscoveryEngine.loadAll()
+        XCTAssertGreaterThan(allDiscovery.count, 0)
+        for item in allDiscovery {
+            XCTAssertNotNil(item.imageURL, "\(item.id) must have imageURL")
+            XCTAssertTrue(item.imageURL!.hasPrefix("https://"),
+                "\(item.id) imageURL must be HTTPS")
+        }
+    }
+
+    func testCommerceItems_haveValidImageURLs() {
+        let items = MockCatalog.items
+        XCTAssertGreaterThan(items.count, 0, "Commerce catalog must not be empty")
+        // Verify first 50 items have valid HTTPS imageURLs
+        for item in items.prefix(50) {
+            XCTAssertTrue(item.imageURL.hasPrefix("https://"),
+                "\(item.skuId) imageURL must be HTTPS: \(item.imageURL)")
+            XCTAssertFalse(item.imageURL.isEmpty,
+                "\(item.skuId) imageURL must not be empty")
+        }
+    }
+
+    // MARK: - Route
+
+    // MARK: - RevealStore
+
+    func testRevealStore_defaultFalse() {
+        let id = UUID()
+        XCTAssertFalse(RevealStore.isRevealed(id))
+    }
+
+    func testRevealStore_markRevealed() {
+        let id = UUID()
+        RevealStore.markRevealed(id)
+        XCTAssertTrue(RevealStore.isRevealed(id))
+        RevealStore.clear(id)
+        XCTAssertFalse(RevealStore.isRevealed(id))
+    }
+
+    func testRevealStore_perProfile() {
+        let idA = UUID()
+        let idB = UUID()
+        RevealStore.markRevealed(idA)
+        XCTAssertTrue(RevealStore.isRevealed(idA))
+        XCTAssertFalse(RevealStore.isRevealed(idB))
+        RevealStore.clear(idA)
+    }
+
+    func testHomeAutoNavigate_requiresLatestProfile() {
+        // When no profiles exist, loadLatest returns nil — no auto-navigate
+        let allProfiles = ProfileStore.loadAll()
+        if allProfiles.isEmpty {
+            XCTAssertNil(ProfileStore.loadLatest())
+        } else {
+            XCTAssertNotNil(ProfileStore.loadLatest())
+        }
+    }
+
     func testRouteProfile_hashEquality() {
         let id1 = UUID()
         let id2 = UUID()

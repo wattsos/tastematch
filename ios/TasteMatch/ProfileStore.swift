@@ -96,3 +96,23 @@ enum ProfileStore {
         }
     }
 }
+
+// MARK: - Reveal Store
+
+enum RevealStore {
+    private static func key(for profileId: UUID) -> String {
+        "didReveal_\(profileId.uuidString)"
+    }
+
+    static func isRevealed(_ profileId: UUID) -> Bool {
+        UserDefaults.standard.bool(forKey: key(for: profileId))
+    }
+
+    static func markRevealed(_ profileId: UUID) {
+        UserDefaults.standard.set(true, forKey: key(for: profileId))
+    }
+
+    static func clear(_ profileId: UUID) {
+        UserDefaults.standard.removeObject(forKey: key(for: profileId))
+    }
+}

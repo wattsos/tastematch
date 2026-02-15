@@ -1,5 +1,19 @@
 import SwiftUI
 
+private struct ShiftDirection: Identifiable {
+    let id: String
+    let label: String
+    let axis: Axis
+    let delta: Double
+    let products: [RecommendationItem]
+}
+
+private struct MaterialGroup: Identifiable {
+    let id: String
+    let name: String
+    let items: [RecommendationItem]
+}
+
 struct MyProfileScreen: View {
     let profileId: UUID
     @Binding var path: NavigationPath
@@ -9,25 +23,71 @@ struct MyProfileScreen: View {
     @State private var vector: TasteVector = .zero
     @State private var axisScores: AxisScores = .zero
     @State private var namingResult: ProfileNamingResult?
-    @State private var readingText: String = ""
     @State private var topCommerce: [RecommendationItem] = []
     @State private var topDiscovery: [DiscoveryItem] = []
     @State private var showShareSheet = false
+    @State private var favoritedIds: Set<String> = []
+    @State private var discoveryRelated: [String: [RecommendationItem]] = [:]
+    @State private var toastMessage: String? = nil
+    @State private var heroObjects: [RecommendationItem] = []
+    @State private var shiftDirections: [ShiftDirection] = []
+    @State private var materialSections: [MaterialGroup] = []
+    @State private var pulseRadar = false
+    @State private var signalShopItem: DiscoveryItem? = nil
 
     var body: some View {
-        ScrollView {
-            if let saved {
-                VStack(alignment: .leading, spacing: 32) {
-                    identitySection(saved)
-                    selectionSection(saved)
-                    evolutionSection(saved)
-                    radarSection(saved)
+        ZStack(alignment: .bottom) {
+            ScrollViewReader { proxy in
+                ScrollView {
+                    if let saved {
+                        VStack(alignment: .leading, spacing: 32) {
+                            identitySection(saved)
+
+                            Button {
+                                Haptics.tap()
+                                withAnimation {
+                                    proxy.scrollTo("radar", anchor: .top)
+                                }
+                                pulseRadar = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.4) {
+                                    pulseRadar = false
+                                }
+                            } label: {
+                                Text("Run today's scan")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 12)
+                                    .background(Theme.ink)
+                                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                            }
+                            .buttonStyle(.plain)
+
+                            worldSection
+                            evolutionSection(saved)
+                            radarSection(saved)
+                                .id("radar")
+                            materialsSection
+                        }
+                        .padding(16)
+                    } else {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding(.top, 120)
+                    }
                 }
-                .padding(16)
-            } else {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(.top, 120)
+            }
+
+            if let toast = toastMessage {
+                Text(toast)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .padding(.bottom, 16)
             }
         }
         .background(Theme.bg.ignoresSafeArea())
@@ -47,7 +107,7 @@ struct MyProfileScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New") {
                     Haptics.tap()
-                    path = NavigationPath()
+                    path.append(Route.newScan)
                 }
                 .foregroundStyle(Theme.ink)
                 .font(.callout.weight(.semibold))
@@ -60,6 +120,9 @@ struct MyProfileScreen: View {
                     recommendations: saved.recommendations
                 ))
             }
+        }
+        .sheet(item: $signalShopItem) { item in
+            MaterialShopSheet(material: item)
         }
         .onAppear { loadData() }
     }
@@ -85,16 +148,11 @@ struct MyProfileScreen: View {
             ProfileStore.updateNaming(profileId: profileId, result: result)
         }
 
-        let name = result.name.isEmpty ? profile.displayName : result.name
-        readingText = AxisPresentation.oneLineReading(profileName: name, axisScores: axisScores)
+        topCommerce = Array(RecommendationEngine.rankCommerceItems(
+            vector: vector, axisScores: axisScores, items: MockCatalog.items
+        ).prefix(20))
 
-        topCommerce = Array(RecommendationEngine.rankWithVector(
-            s.recommendations,
-            vector: vector,
-            catalog: MockCatalog.items,
-            context: s.roomContext,
-            goal: s.designGoal
-        ).prefix(6))
+        heroObjects = computeHeroObjects()
 
         let allDiscovery = DiscoveryEngine.loadAll()
         let signals = DiscoverySignalStore.load(for: profileId)
@@ -105,6 +163,11 @@ struct MyProfileScreen: View {
             profileId: profileId,
             vector: vector
         )
+
+        computeDiscoveryRelated()
+        shiftDirections = computeShiftDirections()
+        materialSections = computeMaterialSections()
+        favoritedIds = Set(FavoritesStore.loadAll().map { "\($0.title)|\($0.subtitle)" })
     }
 
     private func resolveBaseVector(profile: TasteProfile) -> TasteVector {
@@ -117,6 +180,188 @@ struct MyProfileScreen: View {
             )
         } else {
             return TasteEngine.vectorFromProfile(profile)
+        }
+    }
+
+    private func computeHeroObjects() -> [RecommendationItem] {
+        let sorted = Axis.allCases.sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
+        let topAxes = Array(sorted.prefix(3))
+        let allRanked = RecommendationEngine.rankCommerceItems(
+            vector: vector, axisScores: axisScores, items: MockCatalog.items
+        )
+        var usedSkus: Set<String> = []
+        var heroes: [RecommendationItem] = []
+
+        for axis in topAxes {
+            let positive = axisScores.value(for: axis) >= 0
+            if let hero = allRanked.first(where: { item in
+                guard !usedSkus.contains(item.skuId) else { return false }
+                guard let cat = MockCatalog.items.first(where: { $0.skuId == item.skuId }) else { return false }
+                let weight = cat.commerceAxisWeights[axis.rawValue] ?? 0
+                return positive ? weight > 0 : weight < 0
+            }) {
+                heroes.append(hero)
+                usedSkus.insert(hero.skuId)
+            }
+        }
+
+        for item in allRanked where heroes.count < 3 && !usedSkus.contains(item.skuId) {
+            heroes.append(item)
+            usedSkus.insert(item.skuId)
+        }
+
+        return heroes
+    }
+
+    private func computeShiftDirections() -> [ShiftDirection] {
+        let sorted = Axis.allCases
+            .sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
+        let candidates = Array(sorted.dropFirst().prefix(4))
+        var usedSkus = Set(topCommerce.map(\.skuId) + heroObjects.map(\.skuId))
+
+        return candidates.map { axis in
+            let score = axisScores.value(for: axis)
+            let positive = score >= 0
+            let delta: Double = positive ? 0.3 : -0.3
+            let word = AxisPresentation.influenceWord(axis: axis, positive: positive)
+            let prefix = abs(score) < 0.3 ? "Lean" : "Go"
+
+            var shiftedAxes: [String: Double] = [:]
+            for a in Axis.allCases {
+                shiftedAxes[a.rawValue] = axisScores.value(for: a)
+            }
+            shiftedAxes[axis.rawValue]! += delta
+            let shiftedVector = AxisMapping.syntheticVector(fromAxes: shiftedAxes)
+            let shiftedScores = AxisMapping.computeAxisScores(from: shiftedVector)
+            let ranked = RecommendationEngine.rankCommerceItems(
+                vector: shiftedVector, axisScores: shiftedScores, items: MockCatalog.items
+            )
+            let products = Array(ranked.filter { !usedSkus.contains($0.skuId) }.prefix(3))
+            for p in products { usedSkus.insert(p.skuId) }
+
+            return ShiftDirection(
+                id: axis.rawValue,
+                label: "\(prefix) \(word)",
+                axis: axis,
+                delta: delta,
+                products: products
+            )
+        }
+    }
+
+    private func computeDiscoveryRelated() {
+        var related: [String: [RecommendationItem]] = [:]
+        let topCommerceIds = Set(topCommerce.map(\.skuId))
+        for disc in topDiscovery {
+            let sv = AxisMapping.syntheticVector(fromAxes: disc.axisWeights)
+            let ss = AxisMapping.computeAxisScores(from: sv)
+            // Try material filter from last word of title (e.g. "Corten Steel" → "Steel")
+            let mf = disc.type == .material
+                ? disc.title.split(separator: " ").last.map(String.init)
+                : nil
+            var ranked = RecommendationEngine.rankCommerceItems(
+                vector: sv, axisScores: ss, items: MockCatalog.items, materialFilter: mf
+            )
+            var filtered = ranked.filter { !topCommerceIds.contains($0.skuId) }
+            // Fall back to unfiltered if material filter was too narrow
+            if filtered.count < 3, mf != nil {
+                ranked = RecommendationEngine.rankCommerceItems(
+                    vector: sv, axisScores: ss, items: MockCatalog.items
+                )
+                filtered = ranked.filter { !topCommerceIds.contains($0.skuId) }
+            }
+            related[disc.id] = Array(filtered.prefix(3))
+        }
+        discoveryRelated = related
+    }
+
+    private func computeMaterialSections() -> [MaterialGroup] {
+        var tagCounts: [String: Int] = [:]
+        for item in MockCatalog.items {
+            for mat in item.materialTags {
+                tagCounts[mat, default: 0] += 1
+            }
+        }
+        let topMaterials = tagCounts
+            .filter { $0.value >= 4 }
+            .sorted { $0.value > $1.value }
+            .prefix(4)
+        let usedSkus = Set(topCommerce.map(\.skuId))
+
+        return topMaterials.compactMap { mat, _ in
+            let ranked = RecommendationEngine.rankCommerceItems(
+                vector: vector, axisScores: axisScores, items: MockCatalog.items,
+                materialFilter: mat
+            )
+            let filtered = Array(ranked.filter { !usedSkus.contains($0.skuId) }.prefix(8))
+            guard filtered.count >= 3 else { return nil }
+            return MaterialGroup(id: mat, name: mat.uppercased(), items: filtered)
+        }
+    }
+
+    private func rerank() {
+        topCommerce = Array(RecommendationEngine.rankCommerceItems(
+            vector: vector, axisScores: axisScores, items: MockCatalog.items
+        ).prefix(20))
+        heroObjects = computeHeroObjects()
+        computeDiscoveryRelated()
+        shiftDirections = computeShiftDirections()
+        materialSections = computeMaterialSections()
+    }
+
+    // MARK: - Favorites & Save Shift
+
+    private func isFavorited(_ item: RecommendationItem) -> Bool {
+        favoritedIds.contains("\(item.title)|\(item.subtitle)")
+    }
+
+    private func toggleFavorite(_ item: RecommendationItem) {
+        Haptics.tap()
+        let key = "\(item.title)|\(item.subtitle)"
+        if favoritedIds.contains(key) {
+            favoritedIds.remove(key)
+            FavoritesStore.remove(id: item.id)
+        } else {
+            favoritedIds.insert(key)
+            FavoritesStore.add(item)
+            applySaveShift(item)
+        }
+    }
+
+    private func applySaveShift(_ item: RecommendationItem) {
+        guard let catalogItem = MockCatalog.items.first(where: { $0.skuId == item.skuId }) else { return }
+        for tag in catalogItem.tags {
+            let key = String(describing: tag)
+            vector.weights[key] = (vector.weights[key] ?? 0.0) + 0.05
+        }
+        vector = vector.normalized()
+        axisScores = AxisMapping.computeAxisScores(from: vector)
+        rerank()
+        showToast("Saved. Your world updates.")
+    }
+
+    private func applyShift(_ direction: ShiftDirection) {
+        Haptics.impact()
+        for (tagKey, axisContrib) in AxisMapping.contributions {
+            let contribution = axisContrib.value(for: direction.axis)
+            if direction.delta * contribution > 0 {
+                vector.weights[tagKey] = (vector.weights[tagKey] ?? 0) + 0.08
+            }
+        }
+        vector = vector.normalized()
+        axisScores = AxisMapping.computeAxisScores(from: vector)
+        rerank()
+        showToast("Profile shifted.")
+    }
+
+    private func showToast(_ message: String) {
+        withAnimation {
+            toastMessage = message
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                toastMessage = nil
+            }
         }
     }
 
@@ -154,19 +399,10 @@ struct MyProfileScreen: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
 
-            if !readingText.isEmpty {
-                Text(readingText)
-                    .font(.subheadline)
-                    .foregroundStyle(Theme.ink.opacity(0.85))
-                    .lineSpacing(2)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-
             RadarChart(axisScores: axisScores)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
 
-            // Influences
             let influencePhrases = AxisPresentation.influencePhrases(axisScores: axisScores)
             if !influencePhrases.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
@@ -189,7 +425,6 @@ struct MyProfileScreen: View {
                 }
             }
 
-            // Avoids
             let avoidPhrases = AxisPresentation.avoidPhrases(axisScores: axisScores)
             if !avoidPhrases.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
@@ -212,7 +447,6 @@ struct MyProfileScreen: View {
                 }
             }
 
-            // Confidence
             let swipeCount = calibrationRecord?.swipeCount ?? 0
             let level = vector.confidenceLevel(swipeCount: swipeCount)
             HStack(spacing: 10) {
@@ -224,14 +458,68 @@ struct MyProfileScreen: View {
                     .font(.caption2)
                     .foregroundStyle(Theme.ink)
             }
+
+            if !heroObjects.isEmpty {
+                Text("SIGNATURE OBJECTS")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
+                    .padding(.top, 8)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 12) {
+                        ForEach(heroObjects) { item in
+                            heroCard(item)
+                        }
+                    }
+                    .padding(.horizontal, 1)
+                }
+            }
         }
     }
 
-    // MARK: - Section B: Selection
+    private func heroCard(_ item: RecommendationItem) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ZStack(alignment: .topTrailing) {
+                Button {
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                } label: {
+                    CachedImage(url: item.resolvedImageURL, height: 200, width: 200)
+                }
+                .buttonStyle(.plain)
 
-    private func selectionSection(_ saved: SavedProfile) -> some View {
+                Button {
+                    toggleFavorite(item)
+                } label: {
+                    Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
+                        .font(.caption)
+                        .foregroundStyle(Theme.ink)
+                        .padding(8)
+                }
+                .buttonStyle(.plain)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(item.brand)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Theme.ink)
+                    .lineLimit(1)
+                Text("$\(Int(item.price))")
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(Theme.muted)
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
+        }
+        .frame(width: 200)
+        .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Section B: Your World
+
+    private var worldSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("SELECTION")
+            Text("YOUR WORLD")
                 .sectionLabel()
 
             if topCommerce.isEmpty {
@@ -243,61 +531,53 @@ struct MyProfileScreen: View {
             } else {
                 LazyVGrid(
                     columns: [
-                        GridItem(.flexible(), spacing: 16),
-                        GridItem(.flexible(), spacing: 16)
+                        GridItem(.flexible(), spacing: 12),
+                        GridItem(.flexible(), spacing: 12)
                     ],
-                    spacing: 16
+                    spacing: 12
                 ) {
                     ForEach(topCommerce) { item in
-                        Button {
-                            path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
-                        } label: {
-                            pickCard(item)
-                        }
-                        .buttonStyle(.plain)
+                        commerceCard(item)
                     }
                 }
             }
-
-            // Shop entry
-            Button {
-                Haptics.tap()
-                path.append(Route.shop(saved.tasteProfile))
-            } label: {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("ENTER SHOP")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Theme.muted)
-                        .tracking(1.2)
-
-                    Text("Browse inside your profile.")
-                        .font(.system(.subheadline, design: .serif, weight: .medium))
-                        .foregroundStyle(Theme.ink)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .labSurface(padded: true, bordered: true)
-            }
-            .buttonStyle(.plain)
         }
     }
 
-    private func pickCard(_ item: RecommendationItem) -> some View {
+    private func commerceCard(_ item: RecommendationItem, width: CGFloat? = nil) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            CachedImage(url: item.resolvedImageURL, height: 150)
+            ZStack(alignment: .topTrailing) {
+                Button {
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                } label: {
+                    CachedImage(url: item.resolvedImageURL, height: 150, width: width)
+                }
+                .buttonStyle(.plain)
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(item.title)
-                    .font(.system(.subheadline, design: .default, weight: .medium))
+                Button {
+                    toggleFavorite(item)
+                } label: {
+                    Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
+                        .font(.caption)
+                        .foregroundStyle(Theme.ink)
+                        .padding(8)
+                }
+                .buttonStyle(.plain)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(item.brand)
+                    .font(.caption2.weight(.medium))
                     .foregroundStyle(Theme.ink)
-                    .lineLimit(2)
-
+                    .lineLimit(1)
                 Text("$\(Int(item.price))")
-                    .font(.caption.monospacedDigit().weight(.medium))
+                    .font(.caption2.monospacedDigit())
                     .foregroundStyle(Theme.muted)
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
         }
+        .frame(width: width)
         .labSurface(padded: false, bordered: true)
     }
 
@@ -308,32 +588,16 @@ struct MyProfileScreen: View {
             Text("EVOLUTION")
                 .sectionLabel()
 
-            if let record = calibrationRecord {
-                let calScores = AxisMapping.computeAxisScores(from: record.vector)
-                let phrases = AxisPresentation.influencePhrases(axisScores: calScores)
-
-                if !phrases.isEmpty {
-                    Text(phrases.joined(separator: ", "))
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.ink)
-                }
-
-                HStack(spacing: 10) {
-                    Text("STABILITY")
-                        .font(.caption2.weight(.semibold))
-                        .foregroundStyle(Theme.muted)
-                        .tracking(1.0)
-                    Text(stability)
-                        .font(.caption2)
-                        .foregroundStyle(Theme.ink)
-                }
-            } else {
-                Text("Refine to sharpen your profile.")
-                    .font(.subheadline)
+            HStack(spacing: 10) {
+                Text("STABILITY")
+                    .font(.caption2.weight(.semibold))
                     .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
+                Text(stability)
+                    .font(.caption2)
+                    .foregroundStyle(Theme.ink)
             }
 
-            // Primary CTA
             Button {
                 Haptics.tap()
                 path.append(Route.calibration(saved.tasteProfile, saved.recommendations))
@@ -348,7 +612,6 @@ struct MyProfileScreen: View {
             }
             .buttonStyle(.plain)
 
-            // Board CTA — only when Stable
             if stability == "Stable" {
                 Button {
                     Haptics.tap()
@@ -367,7 +630,6 @@ struct MyProfileScreen: View {
                 .buttonStyle(.plain)
             }
 
-            // Board empty state preview — when no bookmarks
             let savedCount = FavoritesStore.loadAll().count
             if savedCount < 3 {
                 VStack(alignment: .leading, spacing: 4) {
@@ -380,11 +642,50 @@ struct MyProfileScreen: View {
                 }
                 .padding(.top, 4)
             }
+
+            if !shiftDirections.isEmpty {
+                Text("SHIFT DIRECTIONS")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
+                    .padding(.top, 8)
+
+                ForEach(shiftDirections) { direction in
+                    shiftCard(direction)
+                }
+            }
         }
         .labSurface(padded: true, bordered: true)
     }
 
-    // MARK: - Section D: Radar (Discovery)
+    private func shiftCard(_ direction: ShiftDirection) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(direction.label.uppercased())
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.ink)
+                .tracking(0.8)
+
+            if !direction.products.isEmpty {
+                HStack(spacing: 8) {
+                    ForEach(direction.products) { item in
+                        miniCommerceCard(item)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                .stroke(Theme.hairline, lineWidth: 1)
+        )
+        .contentShape(Rectangle())
+        .onLongPressGesture {
+            applyShift(direction)
+        }
+    }
+
+    // MARK: - Section D: Radar
 
     private func radarSection(_ saved: SavedProfile) -> some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -404,12 +705,43 @@ struct MyProfileScreen: View {
                     .padding(.vertical, 16)
             } else {
                 ForEach(topDiscovery) { item in
-                    Button {
-                        path.append(Route.discoveryDetail(item))
-                    } label: {
-                        discoveryCard(item)
+                    let related = discoveryRelated[item.id] ?? []
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        radarCard(item, related: related)
+
+                        if !related.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 8) {
+                                    ForEach(related) { relItem in
+                                        miniCommerceCard(relItem)
+                                    }
+                                }
+                                .padding(.horizontal, 1)
+                            }
+                        }
+
+                        Button {
+                            Haptics.tap()
+                            signalShopItem = item
+                        } label: {
+                            Text("Shop this signal")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(Theme.ink)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                                        .stroke(Theme.hairline, lineWidth: 1)
+                                )
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                            .stroke(Theme.accent.opacity(pulseRadar ? 1 : 0), lineWidth: 2)
+                    )
+                    .animation(.easeInOut(duration: 0.8).repeatCount(3, autoreverses: true), value: pulseRadar)
                 }
             }
 
@@ -431,30 +763,118 @@ struct MyProfileScreen: View {
         }
     }
 
-    private func discoveryCard(_ item: DiscoveryItem) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(item.type.rawValue.uppercased())
-                .font(.caption2.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-                .tracking(1.0)
+    private func radarCard(_ item: DiscoveryItem, related: [RecommendationItem]) -> some View {
+        let heroImage = item.imageURL ?? related.first?.resolvedImageURL
 
-            Text(item.title)
-                .font(.system(.subheadline, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.ink)
+        return Button {
+            path.append(Route.discoveryDetail(item))
+        } label: {
+            ZStack(alignment: .bottomLeading) {
+                if let url = heroImage {
+                    CachedImage(url: url, height: 260)
+                } else {
+                    Rectangle()
+                        .fill(Theme.surface)
+                        .frame(height: 260)
+                }
 
-            if !item.primaryRegion.isEmpty {
-                Text(item.primaryRegion)
-                    .font(.caption2)
-                    .foregroundStyle(Theme.muted)
+                LinearGradient(
+                    colors: [.black.opacity(0.6), .clear],
+                    startPoint: .bottom,
+                    endPoint: .center
+                )
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(item.type.rawValue.uppercased())
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(.white.opacity(0.7))
+                        .tracking(1.0)
+
+                    Text(item.title)
+                        .font(.system(.title3, design: .serif, weight: .semibold))
+                        .foregroundStyle(.white)
+
+                    if !item.primaryRegion.isEmpty {
+                        Text(item.primaryRegion)
+                            .font(.caption2)
+                            .foregroundStyle(.white.opacity(0.7))
+                    }
+                }
+                .padding(14)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                    .stroke(Theme.hairline, lineWidth: 1)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func miniCommerceCard(_ item: RecommendationItem) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            ZStack(alignment: .topTrailing) {
+                Button {
+                    path.append(Route.recommendationDetail(item, tasteProfileId: profileId))
+                } label: {
+                    CachedImage(url: item.resolvedImageURL, height: 110, width: 110)
+                }
+                .buttonStyle(.plain)
+
+                Button {
+                    toggleFavorite(item)
+                } label: {
+                    Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
+                        .font(.system(size: 10))
+                        .foregroundStyle(Theme.ink)
+                        .padding(6)
+                }
+                .buttonStyle(.plain)
             }
 
-            Text(item.body)
-                .font(.caption)
-                .foregroundStyle(Theme.muted)
-                .lineLimit(3)
-                .lineSpacing(2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(item.brand)
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundStyle(Theme.ink)
+                    .lineLimit(1)
+                Text("$\(Int(item.price))")
+                    .font(.system(size: 10).monospacedDigit())
+                    .foregroundStyle(Theme.muted)
+            }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 6)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .labSurface(padded: true, bordered: true)
+        .frame(width: 110)
+        .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Section E: Materials
+
+    @ViewBuilder
+    private var materialsSection: some View {
+        if !materialSections.isEmpty {
+            VStack(alignment: .leading, spacing: 14) {
+                Text("MATERIALS")
+                    .sectionLabel()
+
+                ForEach(materialSections) { section in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(section.name)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(Theme.muted)
+                            .tracking(1.0)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 10) {
+                                ForEach(section.items) { item in
+                                    commerceCard(item, width: 140)
+                                }
+                            }
+                            .padding(.horizontal, 1)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

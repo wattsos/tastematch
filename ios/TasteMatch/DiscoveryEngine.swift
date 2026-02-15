@@ -32,9 +32,10 @@ enum DiscoveryEngine {
     static func rank(
         items: [DiscoveryItem],
         axisScores: AxisScores,
-        signals: DiscoverySignals? = nil
+        signals: DiscoverySignals? = nil,
+        dominantCluster: String? = nil
     ) -> [DiscoveryItem] {
-        let dominantCluster = identifyCluster(axisScores)
+        let dominantCluster = dominantCluster ?? identifyCluster(axisScores)
         let now = Date()
 
         let scored = items.map { item -> (DiscoveryItem, Double) in
@@ -69,9 +70,10 @@ enum DiscoveryEngine {
         profileId: UUID,
         vector: TasteVector,
         limit: Int = 6,
-        dayIndex: Int? = nil
+        dayIndex: Int? = nil,
+        dominantCluster: String? = nil
     ) -> [DiscoveryItem] {
-        let ranked = rank(items: items, axisScores: axisScores, signals: signals)
+        let ranked = rank(items: items, axisScores: axisScores, signals: signals, dominantCluster: dominantCluster)
         guard !ranked.isEmpty else { return [] }
 
         let day = dayIndex ?? currentDayIndex()

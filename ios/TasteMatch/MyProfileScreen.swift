@@ -34,6 +34,9 @@ struct MyProfileScreen: View {
     @State private var materialSections: [MaterialGroup] = []
     @State private var pulseRadar = false
     @State private var signalShopItem: DiscoveryItem? = nil
+    @State private var currentDomain: TasteDomain = DomainStore.current
+    @State private var domainName: String? = nil
+    @State private var currentCatalog: [CatalogItem] = []
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -148,26 +151,80 @@ struct MyProfileScreen: View {
             ProfileStore.updateNaming(profileId: profileId, result: result)
         }
 
+        currentCatalog = DomainCatalog.items(for: currentDomain)
+
         topCommerce = Array(RecommendationEngine.rankCommerceItems(
-            vector: vector, axisScores: axisScores, items: MockCatalog.items
+            vector: vector, axisScores: axisScores, items: currentCatalog,
+            domain: currentDomain, swipeCount: swipeCount
         ).prefix(20))
 
-        heroObjects = computeHeroObjects()
+        heroObjects = computeHeroObjects(catalog: currentCatalog)
 
-        let allDiscovery = DiscoveryEngine.loadAll()
+        let domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: currentDomain)
+        let allDiscovery = DomainDiscovery.items(for: currentDomain)
         let signals = DiscoverySignalStore.load(for: profileId)
         topDiscovery = DiscoveryEngine.dailyRadar(
             items: allDiscovery,
             axisScores: axisScores,
             signals: signals,
             profileId: profileId,
-            vector: vector
+            vector: vector,
+            dominantCluster: domainCluster
         )
 
-        computeDiscoveryRelated()
-        shiftDirections = computeShiftDirections()
-        materialSections = computeMaterialSections()
+        computeDiscoveryRelated(catalog: currentCatalog)
+        shiftDirections = computeShiftDirections(catalog: currentCatalog)
+        materialSections = computeMaterialSections(catalog: currentCatalog)
         favoritedIds = Set(FavoritesStore.loadAll().map { "\($0.title)|\($0.subtitle)" })
+
+        if currentDomain != .space {
+            let domainResult = ProfileNamingEngine.resolve(
+                vector: vector, swipeCount: swipeCount,
+                existingProfile: existingProfile, domain: currentDomain
+            )
+            domainName = domainResult.domainName
+        } else {
+            domainName = nil
+        }
+    }
+
+    private func reloadForDomain(_ domain: TasteDomain) {
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
+
+        currentCatalog = DomainCatalog.items(for: domain)
+
+        topCommerce = Array(RecommendationEngine.rankCommerceItems(
+            vector: vector, axisScores: axisScores, items: currentCatalog,
+            domain: domain, swipeCount: swipeCount
+        ).prefix(20))
+
+        heroObjects = computeHeroObjects(catalog: currentCatalog)
+
+        let domainCluster = DomainDiscovery.identifyCluster(axisScores, domain: domain)
+        let allDiscovery = DomainDiscovery.items(for: domain)
+        let signals = DiscoverySignalStore.load(for: profileId)
+        topDiscovery = DiscoveryEngine.dailyRadar(
+            items: allDiscovery,
+            axisScores: axisScores,
+            signals: signals,
+            profileId: profileId,
+            vector: vector,
+            dominantCluster: domainCluster
+        )
+
+        computeDiscoveryRelated(catalog: currentCatalog)
+        shiftDirections = computeShiftDirections(catalog: currentCatalog)
+        materialSections = computeMaterialSections(catalog: currentCatalog)
+
+        if domain != .space, let saved {
+            let domainResult = ProfileNamingEngine.resolve(
+                vector: vector, swipeCount: swipeCount,
+                existingProfile: saved.tasteProfile, domain: domain
+            )
+            domainName = domainResult.domainName
+        } else {
+            domainName = nil
+        }
     }
 
     private func resolveBaseVector(profile: TasteProfile) -> TasteVector {
@@ -183,11 +240,13 @@ struct MyProfileScreen: View {
         }
     }
 
-    private func computeHeroObjects() -> [RecommendationItem] {
+    private func computeHeroObjects(catalog: [CatalogItem]) -> [RecommendationItem] {
         let sorted = Axis.allCases.sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
         let topAxes = Array(sorted.prefix(3))
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
         let allRanked = RecommendationEngine.rankCommerceItems(
-            vector: vector, axisScores: axisScores, items: MockCatalog.items
+            vector: vector, axisScores: axisScores, items: catalog,
+            domain: currentDomain, swipeCount: swipeCount
         )
         var usedSkus: Set<String> = []
         var heroes: [RecommendationItem] = []
@@ -196,7 +255,7 @@ struct MyProfileScreen: View {
             let positive = axisScores.value(for: axis) >= 0
             if let hero = allRanked.first(where: { item in
                 guard !usedSkus.contains(item.skuId) else { return false }
-                guard let cat = MockCatalog.items.first(where: { $0.skuId == item.skuId }) else { return false }
+                guard let cat = catalog.first(where: { $0.skuId == item.skuId }) else { return false }
                 let weight = cat.commerceAxisWeights[axis.rawValue] ?? 0
                 return positive ? weight > 0 : weight < 0
             }) {
@@ -213,11 +272,12 @@ struct MyProfileScreen: View {
         return heroes
     }
 
-    private func computeShiftDirections() -> [ShiftDirection] {
+    private func computeShiftDirections(catalog: [CatalogItem]) -> [ShiftDirection] {
         let sorted = Axis.allCases
             .sorted { abs(axisScores.value(for: $0)) > abs(axisScores.value(for: $1)) }
         let candidates = Array(sorted.dropFirst().prefix(4))
         var usedSkus = Set(topCommerce.map(\.skuId) + heroObjects.map(\.skuId))
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
 
         return candidates.map { axis in
             let score = axisScores.value(for: axis)
@@ -234,7 +294,8 @@ struct MyProfileScreen: View {
             let shiftedVector = AxisMapping.syntheticVector(fromAxes: shiftedAxes)
             let shiftedScores = AxisMapping.computeAxisScores(from: shiftedVector)
             let ranked = RecommendationEngine.rankCommerceItems(
-                vector: shiftedVector, axisScores: shiftedScores, items: MockCatalog.items
+                vector: shiftedVector, axisScores: shiftedScores, items: catalog,
+                domain: currentDomain, swipeCount: swipeCount
             )
             let products = Array(ranked.filter { !usedSkus.contains($0.skuId) }.prefix(3))
             for p in products { usedSkus.insert(p.skuId) }
@@ -249,24 +310,25 @@ struct MyProfileScreen: View {
         }
     }
 
-    private func computeDiscoveryRelated() {
+    private func computeDiscoveryRelated(catalog: [CatalogItem]) {
         var related: [String: [RecommendationItem]] = [:]
         let topCommerceIds = Set(topCommerce.map(\.skuId))
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
         for disc in topDiscovery {
             let sv = AxisMapping.syntheticVector(fromAxes: disc.axisWeights)
             let ss = AxisMapping.computeAxisScores(from: sv)
-            // Try material filter from last word of title (e.g. "Corten Steel" → "Steel")
             let mf = disc.type == .material
                 ? disc.title.split(separator: " ").last.map(String.init)
                 : nil
             var ranked = RecommendationEngine.rankCommerceItems(
-                vector: sv, axisScores: ss, items: MockCatalog.items, materialFilter: mf
+                vector: sv, axisScores: ss, items: catalog, materialFilter: mf,
+                domain: currentDomain, swipeCount: swipeCount
             )
             var filtered = ranked.filter { !topCommerceIds.contains($0.skuId) }
-            // Fall back to unfiltered if material filter was too narrow
             if filtered.count < 3, mf != nil {
                 ranked = RecommendationEngine.rankCommerceItems(
-                    vector: sv, axisScores: ss, items: MockCatalog.items
+                    vector: sv, axisScores: ss, items: catalog,
+                    domain: currentDomain, swipeCount: swipeCount
                 )
                 filtered = ranked.filter { !topCommerceIds.contains($0.skuId) }
             }
@@ -275,9 +337,9 @@ struct MyProfileScreen: View {
         discoveryRelated = related
     }
 
-    private func computeMaterialSections() -> [MaterialGroup] {
+    private func computeMaterialSections(catalog: [CatalogItem]) -> [MaterialGroup] {
         var tagCounts: [String: Int] = [:]
-        for item in MockCatalog.items {
+        for item in catalog {
             for mat in item.materialTags {
                 tagCounts[mat, default: 0] += 1
             }
@@ -287,11 +349,12 @@ struct MyProfileScreen: View {
             .sorted { $0.value > $1.value }
             .prefix(4)
         let usedSkus = Set(topCommerce.map(\.skuId))
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
 
         return topMaterials.compactMap { mat, _ in
             let ranked = RecommendationEngine.rankCommerceItems(
-                vector: vector, axisScores: axisScores, items: MockCatalog.items,
-                materialFilter: mat
+                vector: vector, axisScores: axisScores, items: catalog,
+                materialFilter: mat, domain: currentDomain, swipeCount: swipeCount
             )
             let filtered = Array(ranked.filter { !usedSkus.contains($0.skuId) }.prefix(8))
             guard filtered.count >= 3 else { return nil }
@@ -300,13 +363,15 @@ struct MyProfileScreen: View {
     }
 
     private func rerank() {
+        let swipeCount = calibrationRecord?.swipeCount ?? 0
         topCommerce = Array(RecommendationEngine.rankCommerceItems(
-            vector: vector, axisScores: axisScores, items: MockCatalog.items
+            vector: vector, axisScores: axisScores, items: currentCatalog,
+            domain: currentDomain, swipeCount: swipeCount
         ).prefix(20))
-        heroObjects = computeHeroObjects()
-        computeDiscoveryRelated()
-        shiftDirections = computeShiftDirections()
-        materialSections = computeMaterialSections()
+        heroObjects = computeHeroObjects(catalog: currentCatalog)
+        computeDiscoveryRelated(catalog: currentCatalog)
+        shiftDirections = computeShiftDirections(catalog: currentCatalog)
+        materialSections = computeMaterialSections(catalog: currentCatalog)
     }
 
     // MARK: - Favorites & Save Shift
@@ -329,7 +394,7 @@ struct MyProfileScreen: View {
     }
 
     private func applySaveShift(_ item: RecommendationItem) {
-        guard let catalogItem = MockCatalog.items.first(where: { $0.skuId == item.skuId }) else { return }
+        guard let catalogItem = currentCatalog.first(where: { $0.skuId == item.skuId }) else { return }
         for tag in catalogItem.tags {
             let key = String(describing: tag)
             vector.weights[key] = (vector.weights[key] ?? 0.0) + 0.05
@@ -387,6 +452,15 @@ struct MyProfileScreen: View {
             Text("PROFILE 01")
                 .sectionLabel()
 
+            Picker("Domain", selection: $currentDomain) {
+                ForEach(TasteDomain.allCases) { d in Text(d.displayLabel).tag(d) }
+            }
+            .pickerStyle(.segmented)
+            .onChange(of: currentDomain) { _, newDomain in
+                DomainStore.current = newDomain
+                reloadForDomain(newDomain)
+            }
+
             if let naming = namingResult, !naming.name.isEmpty {
                 Text(naming.name)
                     .font(.system(size: 48, weight: .semibold, design: .serif))
@@ -397,6 +471,13 @@ struct MyProfileScreen: View {
                     .font(.system(size: 48, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if let dn = domainName, currentDomain != .space {
+                Text(dn)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .tracking(1.0)
             }
 
             RadarChart(axisScores: axisScores)

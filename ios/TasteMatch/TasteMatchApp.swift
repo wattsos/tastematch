@@ -15,6 +15,7 @@ enum Route: Hashable {
     case discoveryDetail(DiscoveryItem)
     case profile(UUID)
     case shop(TasteProfile)
+    case newScan
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -50,6 +51,8 @@ enum Route: Hashable {
         case .shop(let profile):
             hasher.combine("shop")
             hasher.combine(profile.id)
+        case .newScan:
+            hasher.combine("newScan")
         }
     }
 
@@ -79,6 +82,8 @@ enum Route: Hashable {
             return id1 == id2
         case (.shop(let p1), .shop(let p2)):
             return p1.id == p2.id
+        case (.newScan, .newScan):
+            return true
         default:
             return false
         }
@@ -130,21 +135,13 @@ struct MainTabView: View {
     @State private var savedPath = NavigationPath()
     @State private var historyPath = NavigationPath()
     @State private var settingsPath = NavigationPath()
-    @State private var didAutoNavigateHome = false
-
     var body: some View {
         TabView(selection: $selectedTab) {
             // Home tab
             NavigationStack(path: $homePath) {
-                UploadScreen(path: $homePath)
+                HomeRootView(path: $homePath)
                     .navigationDestination(for: Route.self) { route in
                         destinationView(for: route, path: $homePath)
-                    }
-                    .onAppear {
-                        if !didAutoNavigateHome, let latest = ProfileStore.loadLatest() {
-                            didAutoNavigateHome = true
-                            homePath.append(Route.profile(latest.tasteProfile.id))
-                        }
                     }
             }
             .tabItem {
@@ -218,6 +215,28 @@ struct MainTabView: View {
             MyProfileScreen(profileId: profileId, path: path)
         case .shop(let profile):
             ShopScreen(path: path, profile: profile)
+        case .newScan:
+            UploadScreen(path: path)
+        }
+    }
+}
+
+// MARK: - Home Root
+
+struct HomeRootView: View {
+    @Binding var path: NavigationPath
+    @State private var latestProfileId: UUID?
+
+    var body: some View {
+        Group {
+            if let profileId = latestProfileId {
+                MyProfileScreen(profileId: profileId, path: $path)
+            } else {
+                UploadScreen(path: $path)
+            }
+        }
+        .onAppear {
+            latestProfileId = ProfileStore.loadLatest()?.id
         }
     }
 }

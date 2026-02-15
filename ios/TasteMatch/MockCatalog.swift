@@ -8,7 +8,24 @@ enum ItemCategory: String, Codable, CaseIterable {
     case art
     case furniture
     case decor
+    case timepiece
+    case bag
+    case designObject
+    case accessory
+    case painting
+    case sculpture
+    case print
+    case photograph
+    case installation
     case unknown
+}
+
+// MARK: - Art Rarity Tier
+
+enum ArtRarityTier: String, Codable, CaseIterable {
+    case archive
+    case contemporary
+    case emergent
 }
 
 // MARK: - Catalog Item
@@ -28,6 +45,9 @@ struct CatalogItem {
     let commerceAxisWeights: [String: Double]
     let discoveryClusters: [String]
     let affiliateURL: String?
+    let rarityTier: ArtRarityTier?
+    let movementCluster: String?
+    let yearRange: String?
 
     init(
         skuId: String,
@@ -43,7 +63,10 @@ struct CatalogItem {
         materialTags: [String] = [],
         commerceAxisWeights: [String: Double] = [:],
         discoveryClusters: [String] = [],
-        affiliateURL: String? = nil
+        affiliateURL: String? = nil,
+        rarityTier: ArtRarityTier? = nil,
+        movementCluster: String? = nil,
+        yearRange: String? = nil
     ) {
         self.skuId = skuId
         self.title = title
@@ -59,6 +82,9 @@ struct CatalogItem {
         self.commerceAxisWeights = commerceAxisWeights
         self.discoveryClusters = discoveryClusters
         self.affiliateURL = affiliateURL
+        self.rarityTier = rarityTier
+        self.movementCluster = movementCluster
+        self.yearRange = yearRange
     }
 }
 

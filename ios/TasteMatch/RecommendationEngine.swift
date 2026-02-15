@@ -141,9 +141,29 @@ struct RecommendationEngine {
         axisScores: AxisScores,
         items: [CatalogItem],
         materialFilter: String? = nil,
-        categoryFilter: ItemCategory? = nil
+        categoryFilter: ItemCategory? = nil,
+        domain: TasteDomain = .space,
+        swipeCount: Int = 0
     ) -> [RecommendationItem] {
-        let dominantCluster = DiscoveryEngine.identifyCluster(axisScores)
+        // Art domain uses dedicated ranking engine
+        if domain == .art {
+            var filtered = items
+            if let mat = materialFilter {
+                let lower = mat.lowercased()
+                filtered = filtered.filter { item in
+                    item.materialTags.contains { $0.lowercased().contains(lower) }
+                }
+            }
+            if let cat = categoryFilter {
+                filtered = filtered.filter { $0.category == cat }
+            }
+            return ArtRankingEngine.rankArtItems(
+                vector: vector, axisScores: axisScores,
+                items: filtered, swipeCount: swipeCount
+            )
+        }
+
+        let dominantCluster = DomainDiscovery.identifyCluster(axisScores, domain: domain)
         let normalized = vector.normalized()
 
         var filtered = items

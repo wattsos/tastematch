@@ -59,6 +59,7 @@ struct DiscoveryItem: Identifiable, Codable {
     let links: [String]?
     let sourceTier: SourceTier
     let createdAt: Date?
+    let imageURL: String?
 
     var layer: DiscoveryLayer {
         DiscoveryLayer.layer(for: type)
@@ -90,6 +91,7 @@ struct DiscoveryItem: Identifiable, Codable {
         case clusters, cluster
         case rarity, rarityScore
         case yearRange, links, sourceTier, createdAt
+        case imageURL
     }
 
     func encode(to encoder: Encoder) throws {
@@ -106,6 +108,7 @@ struct DiscoveryItem: Identifiable, Codable {
         try c.encodeIfPresent(links, forKey: .links)
         try c.encode(sourceTier, forKey: .sourceTier)
         try c.encodeIfPresent(createdAt, forKey: .createdAt)
+        try c.encodeIfPresent(imageURL, forKey: .imageURL)
     }
 
     init(from decoder: Decoder) throws {
@@ -150,6 +153,7 @@ struct DiscoveryItem: Identifiable, Codable {
         links = try c.decodeIfPresent([String].self, forKey: .links)
         sourceTier = (try? c.decode(SourceTier.self, forKey: .sourceTier)) ?? .curated
         createdAt = try? c.decode(Date.self, forKey: .createdAt)
+        imageURL = try c.decodeIfPresent(String.self, forKey: .imageURL)
     }
 
     // MARK: - Memberwise Init
@@ -166,7 +170,8 @@ struct DiscoveryItem: Identifiable, Codable {
         yearRange: String? = nil,
         links: [String]? = nil,
         sourceTier: SourceTier = .curated,
-        createdAt: Date? = nil
+        createdAt: Date? = nil,
+        imageURL: String? = nil
     ) {
         self.id = id
         self.title = title
@@ -180,6 +185,7 @@ struct DiscoveryItem: Identifiable, Codable {
         self.links = links
         self.sourceTier = sourceTier
         self.createdAt = createdAt
+        self.imageURL = imageURL
     }
 }
 

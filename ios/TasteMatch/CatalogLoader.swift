@@ -15,7 +15,7 @@ struct LocalSeedCommerceProvider: CommerceInventoryProvider {
     private let filename: String
     private let bundle: Bundle
 
-    init(filename: String = "commerce_seed", bundle: Bundle = .main) {
+    init(filename: String = "commerce_space", bundle: Bundle = .main) {
         self.filename = filename
         self.bundle = bundle
     }
@@ -40,6 +40,7 @@ struct LocalSeedCommerceProvider: CommerceInventoryProvider {
             let tags = entry.tags.compactMap { tagByKey[$0] }
             guard !tags.isEmpty else { return nil }
             let category = ItemCategory(rawValue: entry.category) ?? .unknown
+            let rarity = entry.rarityTier.flatMap { ArtRarityTier(rawValue: $0) }
             return CatalogItem(
                 skuId: entry.skuId,
                 title: entry.title,
@@ -54,7 +55,10 @@ struct LocalSeedCommerceProvider: CommerceInventoryProvider {
                 materialTags: entry.materialTags,
                 commerceAxisWeights: entry.axisWeights,
                 discoveryClusters: entry.discoveryClusters,
-                affiliateURL: entry.affiliateURL
+                affiliateURL: entry.affiliateURL,
+                rarityTier: rarity,
+                movementCluster: entry.movementCluster,
+                yearRange: entry.yearRange
             )
         }
 
@@ -128,6 +132,9 @@ struct CommerceEntry: Decodable {
     let materialTags: [String]
     let axisWeights: [String: Double]
     let discoveryClusters: [String]
+    let rarityTier: String?
+    let movementCluster: String?
+    let yearRange: String?
 }
 
 /// Decodable mirror of a legacy catalog.json entry.

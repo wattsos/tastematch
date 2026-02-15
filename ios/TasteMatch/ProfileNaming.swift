@@ -372,6 +372,7 @@ struct ProfileNamingResult {
     let previousNames: [String]
     let updatedAt: Date
     let didUpdate: Bool
+    let domainName: String?
 }
 
 // MARK: - Profile Naming Engine
@@ -381,7 +382,8 @@ enum ProfileNamingEngine {
     static func resolve(
         vector: TasteVector,
         swipeCount: Int,
-        existingProfile: TasteProfile
+        existingProfile: TasteProfile,
+        domain: TasteDomain? = nil
     ) -> ProfileNamingResult {
         let axisScores = AxisMapping.computeAxisScores(from: vector)
         let basisHash = BasisHashBuilder.build(
@@ -389,6 +391,10 @@ enum ProfileNamingEngine {
         )
         let generatedName = ProfileNameGenerator.generate(from: axisScores, basisHash: basisHash)
         let description = DescriptionGenerator.generate(from: axisScores)
+
+        let domainName: String? = domain.map {
+            DomainNameDispatcher.generate(axisScores: axisScores, basisHash: basisHash, domain: $0)
+        }
 
         // First time — no existing name
         if existingProfile.profileName.isEmpty {
@@ -399,7 +405,8 @@ enum ProfileNamingEngine {
                 basisHash: basisHash,
                 previousNames: [],
                 updatedAt: Date(),
-                didUpdate: true
+                didUpdate: true,
+                domainName: domainName
             )
         }
 
@@ -419,7 +426,8 @@ enum ProfileNamingEngine {
                 basisHash: basisHash,
                 previousNames: prev,
                 updatedAt: Date(),
-                didUpdate: true
+                didUpdate: true,
+                domainName: domainName
             )
         }
 
@@ -431,7 +439,8 @@ enum ProfileNamingEngine {
             basisHash: existingProfile.profileNameBasisHash,
             previousNames: existingProfile.previousNames,
             updatedAt: existingProfile.profileNameUpdatedAt ?? Date(),
-            didUpdate: false
+            didUpdate: false,
+            domainName: domainName
         )
     }
 

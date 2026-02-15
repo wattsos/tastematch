@@ -73,7 +73,7 @@ struct TasteCalibrationScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Skip") {
                     Haptics.tap()
-                    path.append(Route.profile(profile.id))
+                    path.append(Route.result(profile, recommendations))
                 }
                 .foregroundStyle(Theme.muted)
                 .font(.callout.weight(.medium))
@@ -368,7 +368,7 @@ struct TasteCalibrationScreen: View {
         showUpdating = true
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            path.append(Route.profile(profile.id))
+            path.append(Route.result(profile, recommendations))
         }
     }
 

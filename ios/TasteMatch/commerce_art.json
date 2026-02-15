@@ -1,0 +1,5116 @@
+[
+  {
+    "skuId": "art-001",
+    "title": "Opacity Index",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 5062.51,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-001/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-001",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-001",
+    "category": "print",
+    "tags": [
+      "traditional",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.1,
+      "warmCool": -0.97,
+      "softStructured": -0.16,
+      "organicIndustrial": -0.02,
+      "lightDark": -0.13,
+      "neutralSaturated": -0.28,
+      "sparseLayered": 0.78
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-002",
+    "title": "Archive Fragment",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 1494.54,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-002/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-002",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-002",
+    "category": "installation",
+    "tags": [
+      "rustic",
+      "coastal"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.46,
+      "warmCool": 0.7,
+      "softStructured": 0.66,
+      "organicIndustrial": -0.83,
+      "lightDark": 0.76,
+      "neutralSaturated": -0.51,
+      "sparseLayered": 0.23
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-003",
+    "title": "Suspended Animation",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 67987.7,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-003/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-003",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-003",
+    "category": "photograph",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": -0.48,
+      "softStructured": -0.44,
+      "organicIndustrial": 0.19,
+      "lightDark": 0.76,
+      "neutralSaturated": -0.19,
+      "sparseLayered": 0.03
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Fluxus",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-004",
+    "title": "Afterimage Study",
+    "brand": "Lisson Gallery",
+    "merchant": "Lisson Gallery",
+    "price": 8805.15,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-004/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-004",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-004",
+    "category": "installation",
+    "tags": [
+      "rustic",
+      "japandi"
+    ],
+    "materialTags": [
+      "neon",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.81,
+      "warmCool": -0.56,
+      "softStructured": 0.38,
+      "organicIndustrial": -0.39,
+      "lightDark": 0.16,
+      "neutralSaturated": -0.05,
+      "sparseLayered": 0.36
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-005",
+    "title": "Field Condition No. 4",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 133944.68,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-005/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-005",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-005",
+    "category": "print",
+    "tags": [
+      "minimalist",
+      "japandi"
+    ],
+    "materialTags": [
+      "charcoal",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.96,
+      "warmCool": -0.61,
+      "softStructured": -0.76,
+      "organicIndustrial": 0.07,
+      "lightDark": 0.52,
+      "neutralSaturated": -0.63,
+      "sparseLayered": -0.57
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "New Topographics",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-006",
+    "title": "Breath Score",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 14470.96,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-006/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-006",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-006",
+    "category": "print",
+    "tags": [
+      "scandinavian",
+      "bohemian"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.75,
+      "warmCool": -0.64,
+      "softStructured": -0.97,
+      "organicIndustrial": 0.07,
+      "lightDark": -0.45,
+      "neutralSaturated": 0.95,
+      "sparseLayered": 0.11
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-007",
+    "title": "Tectonic Hymn",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 10556.16,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-007/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-007",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-007",
+    "category": "installation",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.06,
+      "warmCool": -0.12,
+      "softStructured": -0.63,
+      "organicIndustrial": -0.9,
+      "lightDark": 0.88,
+      "neutralSaturated": -0.04,
+      "sparseLayered": 0.94
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-008",
+    "title": "Night Architecture",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 73137.83,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-008/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-008",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-008",
+    "category": "sculpture",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.83,
+      "warmCool": -0.5,
+      "softStructured": 0.42,
+      "organicIndustrial": 0.03,
+      "lightDark": 0.19,
+      "neutralSaturated": 0.24,
+      "sparseLayered": 0.55
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-009",
+    "title": "Night Notation",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 25602.04,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-009/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-009",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-009",
+    "category": "sculpture",
+    "tags": [
+      "japandi",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "marble"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.9,
+      "warmCool": -0.58,
+      "softStructured": -0.28,
+      "organicIndustrial": 0.52,
+      "lightDark": -0.69,
+      "neutralSaturated": -0.65,
+      "sparseLayered": -0.85
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Gutai",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-010",
+    "title": "Oblique Light",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 36885.42,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-010/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-010",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-010",
+    "category": "sculpture",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.41,
+      "warmCool": -0.09,
+      "softStructured": 0.67,
+      "organicIndustrial": 1,
+      "lightDark": 0.58,
+      "neutralSaturated": 0.25,
+      "sparseLayered": 0.32
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-011",
+    "title": "Material Syntax",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 75700.72,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-011/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-011",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-011",
+    "category": "print",
+    "tags": [
+      "industrial",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.87,
+      "warmCool": -0.38,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.14,
+      "lightDark": -0.42,
+      "neutralSaturated": -0.75,
+      "sparseLayered": 0.38
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "CoBrA",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-012",
+    "title": "Thermal Memory",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 19307.2,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-012/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-012",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-012",
+    "category": "print",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.58,
+      "warmCool": 0.47,
+      "softStructured": 0.21,
+      "organicIndustrial": -0.95,
+      "lightDark": -0.54,
+      "neutralSaturated": 0.35,
+      "sparseLayered": 0.72
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-013",
+    "title": "Negative Space Study",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 8569.61,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-013/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-013",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-013",
+    "category": "painting",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.04,
+      "warmCool": -0.12,
+      "softStructured": -0.44,
+      "organicIndustrial": 0.99,
+      "lightDark": -0.13,
+      "neutralSaturated": 0.63,
+      "sparseLayered": 0.94
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-014",
+    "title": "Negative Theology",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 20763.24,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-014/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-014",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-014",
+    "category": "installation",
+    "tags": [
+      "coastal",
+      "rustic"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.33,
+      "warmCool": -0.2,
+      "softStructured": 0.52,
+      "organicIndustrial": -0.93,
+      "lightDark": -0.82,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.47
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Minimalism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-015",
+    "title": "Quiet Thunder",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 71063.5,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-015/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-015",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-015",
+    "category": "photograph",
+    "tags": [
+      "coastal",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.04,
+      "warmCool": 0.25,
+      "softStructured": -0.0,
+      "organicIndustrial": -0.12,
+      "lightDark": -0.9,
+      "neutralSaturated": -0.77,
+      "sparseLayered": -0.74
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-016",
+    "title": "Absent Object",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 42378.16,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-016/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-016",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-016",
+    "category": "sculpture",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.1,
+      "warmCool": 0.1,
+      "softStructured": -0.51,
+      "organicIndustrial": 1,
+      "lightDark": 0.83,
+      "neutralSaturated": -0.08,
+      "sparseLayered": -0.77
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-017",
+    "title": "Pale Fire Study",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 69080.93,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-017/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-017",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-017",
+    "category": "installation",
+    "tags": [
+      "rustic",
+      "japandi"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.09,
+      "warmCool": -0.71,
+      "softStructured": -0.62,
+      "organicIndustrial": 0.2,
+      "lightDark": 0.49,
+      "neutralSaturated": -0.73,
+      "sparseLayered": -0.56
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-018",
+    "title": "Field Recording",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 33290.75,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-018/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-018",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-018",
+    "category": "painting",
+    "tags": [
+      "midCenturyModern",
+      "minimalist"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.67,
+      "warmCool": 0.16,
+      "softStructured": 0.32,
+      "organicIndustrial": 0.73,
+      "lightDark": -0.11,
+      "neutralSaturated": -0.03,
+      "sparseLayered": -0.34
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-019",
+    "title": "Aperture Study",
+    "brand": "Lehmann Maupin",
+    "merchant": "Lehmann Maupin",
+    "price": 66556.07,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-019/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-019",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-019",
+    "category": "print",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.73,
+      "warmCool": 0.55,
+      "softStructured": -0.91,
+      "organicIndustrial": 0.49,
+      "lightDark": 0.41,
+      "neutralSaturated": 0.62,
+      "sparseLayered": -0.23
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Fluxus",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-020",
+    "title": "Still Disruption",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 172325.8,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-020/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-020",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-020",
+    "category": "sculpture",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.74,
+      "warmCool": 0.75,
+      "softStructured": 0.18,
+      "organicIndustrial": 0.25,
+      "lightDark": -0.09,
+      "neutralSaturated": 0.44,
+      "sparseLayered": -0.18
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-021",
+    "title": "Void Register",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 40394.67,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-021/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-021",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-021",
+    "category": "photograph",
+    "tags": [
+      "scandinavian",
+      "traditional"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.72,
+      "warmCool": -0.24,
+      "softStructured": -0.37,
+      "organicIndustrial": 0.44,
+      "lightDark": 0.52,
+      "neutralSaturated": 0.44,
+      "sparseLayered": -0.93
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-022",
+    "title": "Mineral Light",
+    "brand": "Pace Gallery",
+    "merchant": "Pace Gallery",
+    "price": 35903.88,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-022/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-022",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-022",
+    "category": "installation",
+    "tags": [
+      "scandinavian",
+      "japandi"
+    ],
+    "materialTags": [
+      "resin",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.67,
+      "warmCool": -0.4,
+      "softStructured": -0.94,
+      "organicIndustrial": -0.35,
+      "lightDark": -0.89,
+      "neutralSaturated": -0.28,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-023",
+    "title": "Concrete Pastoral",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 82448.51,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-023/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-023",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-023",
+    "category": "print",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.54,
+      "warmCool": 0.24,
+      "softStructured": -0.52,
+      "organicIndustrial": 0.83,
+      "lightDark": -0.71,
+      "neutralSaturated": -0.08,
+      "sparseLayered": -0.49
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-024",
+    "title": "Residual Geometry",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 249859.05,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-024/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-024",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-024",
+    "category": "installation",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "resin",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.89,
+      "warmCool": 0.98,
+      "softStructured": -0.4,
+      "organicIndustrial": 0.92,
+      "lightDark": 0.38,
+      "neutralSaturated": -0.09,
+      "sparseLayered": -0.1
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Zero Group",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-025",
+    "title": "Peripheral Study",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 60887.91,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-025/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-025",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-025",
+    "category": "installation",
+    "tags": [
+      "japandi",
+      "minimalist"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.96,
+      "warmCool": 0.66,
+      "softStructured": -0.21,
+      "organicIndustrial": -0.98,
+      "lightDark": 0.73,
+      "neutralSaturated": 0.56,
+      "sparseLayered": 1
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-026",
+    "title": "Static Field No. 6",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 1754.03,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-026/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-026",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-026",
+    "category": "installation",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.56,
+      "warmCool": -0.62,
+      "softStructured": -0.5,
+      "organicIndustrial": 0.51,
+      "lightDark": 0.53,
+      "neutralSaturated": 0.36,
+      "sparseLayered": -0.43
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Zero Group",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-027",
+    "title": "Nocturne (Collapsed)",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 44813.93,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-027/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-027",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-027",
+    "category": "painting",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.46,
+      "warmCool": -0.82,
+      "softStructured": -0.41,
+      "organicIndustrial": 0.49,
+      "lightDark": -0.65,
+      "neutralSaturated": -0.74,
+      "sparseLayered": 0.08
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-028",
+    "title": "Mineral Drift",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 14286.97,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-028/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-028",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-028",
+    "category": "sculpture",
+    "tags": [
+      "rustic",
+      "minimalist"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.61,
+      "warmCool": -0.06,
+      "softStructured": -0.55,
+      "organicIndustrial": 0.71,
+      "lightDark": -0.55,
+      "neutralSaturated": 0.35,
+      "sparseLayered": 0.35
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-029",
+    "title": "Spectral Drift",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 40360.77,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-029/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-029",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-029",
+    "category": "installation",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.75,
+      "warmCool": -0.26,
+      "softStructured": 0.5,
+      "organicIndustrial": -0.48,
+      "lightDark": -0.24,
+      "neutralSaturated": 0.28,
+      "sparseLayered": 0.04
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-030",
+    "title": "Material Witness",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 22271.68,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-030/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-030",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-030",
+    "category": "photograph",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.65,
+      "warmCool": 0.82,
+      "softStructured": -0.4,
+      "organicIndustrial": -0.18,
+      "lightDark": -0.72,
+      "neutralSaturated": 0.59,
+      "sparseLayered": -0.39
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-031",
+    "title": "Dense Silence",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 87941.53,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-031/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-031",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-031",
+    "category": "print",
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.03,
+      "warmCool": 0.45,
+      "softStructured": 0.77,
+      "organicIndustrial": 0.31,
+      "lightDark": 0.67,
+      "neutralSaturated": 0.23,
+      "sparseLayered": 0.88
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Post-Internet",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-032",
+    "title": "Threshold Condition",
+    "brand": "Lisson Gallery",
+    "merchant": "Lisson Gallery",
+    "price": 45626.52,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-032/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-032",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-032",
+    "category": "print",
+    "tags": [
+      "scandinavian",
+      "traditional"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.6,
+      "warmCool": 0.29,
+      "softStructured": -0.88,
+      "organicIndustrial": -0.45,
+      "lightDark": 0.94,
+      "neutralSaturated": 0.9,
+      "sparseLayered": 0.65
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-033",
+    "title": "Spectral Notation",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 5212.67,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-033/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-033",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-033",
+    "category": "sculpture",
+    "tags": [
+      "bohemian",
+      "industrial"
+    ],
+    "materialTags": [
+      "resin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.86,
+      "warmCool": 0.53,
+      "softStructured": -0.29,
+      "organicIndustrial": -0.37,
+      "lightDark": 0.74,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.7
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-034",
+    "title": "Untitled (Membrane)",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 13523.7,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-034/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-034",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-034",
+    "category": "installation",
+    "tags": [
+      "industrial",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "neon",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.74,
+      "warmCool": -0.28,
+      "softStructured": 0.58,
+      "organicIndustrial": 0.18,
+      "lightDark": -0.97,
+      "neutralSaturated": -0.47,
+      "sparseLayered": -0.45
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-035",
+    "title": "Entropy Score",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 32008.89,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-035/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-035",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-035",
+    "category": "installation",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.56,
+      "warmCool": 0.23,
+      "softStructured": 0.45,
+      "organicIndustrial": 0.82,
+      "lightDark": 0.32,
+      "neutralSaturated": -0.4,
+      "sparseLayered": 0.59
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-036",
+    "title": "Afterglow Index",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 159413.17,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-036/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-036",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-036",
+    "category": "photograph",
+    "tags": [
+      "rustic",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.36,
+      "warmCool": -0.7,
+      "softStructured": -0.75,
+      "organicIndustrial": 0.25,
+      "lightDark": 0.17,
+      "neutralSaturated": 0.12,
+      "sparseLayered": -0.24
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Light and Space",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-037",
+    "title": "Parallel Absence",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 28439.27,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-037/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-037",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-037",
+    "category": "photograph",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.73,
+      "warmCool": -0.14,
+      "softStructured": 0.78,
+      "organicIndustrial": -0.17,
+      "lightDark": 0.65,
+      "neutralSaturated": -0.5,
+      "sparseLayered": 0.46
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-038",
+    "title": "Archive Pulse",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 9357.07,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-038/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-038",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-038",
+    "category": "print",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -1,
+      "warmCool": -0.81,
+      "softStructured": 0.48,
+      "organicIndustrial": 0.62,
+      "lightDark": 0.11,
+      "neutralSaturated": 0.17,
+      "sparseLayered": 0.12
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Post-Internet",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-039",
+    "title": "Residual Light",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 13616.4,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-039/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-039",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-039",
+    "category": "photograph",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.38,
+      "warmCool": -0.79,
+      "softStructured": 0.01,
+      "organicIndustrial": -0.69,
+      "lightDark": -0.04,
+      "neutralSaturated": 0.39,
+      "sparseLayered": -0.3
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "CoBrA",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-040",
+    "title": "Entropy Garden",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 172902.54,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-040/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-040",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-040",
+    "category": "print",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -1,
+      "warmCool": -0.45,
+      "softStructured": 0.52,
+      "organicIndustrial": 0.84,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.64,
+      "sparseLayered": -0.71
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-041",
+    "title": "Threshold No. 11",
+    "brand": "Pace Gallery",
+    "merchant": "Pace Gallery",
+    "price": 60005.48,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-041/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-041",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-041",
+    "category": "print",
+    "tags": [
+      "coastal"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": -0.69,
+      "softStructured": -0.38,
+      "organicIndustrial": -0.35,
+      "lightDark": 0.88,
+      "neutralSaturated": 0.19,
+      "sparseLayered": 0.77
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-042",
+    "title": "Negative Horizon",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 1899.1,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-042/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-042",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-042",
+    "category": "photograph",
+    "tags": [
+      "coastal",
+      "rustic"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.12,
+      "warmCool": -0.45,
+      "softStructured": 0.51,
+      "organicIndustrial": -0.77,
+      "lightDark": -0.14,
+      "neutralSaturated": -0.73,
+      "sparseLayered": 0.36
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Minimalism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-043",
+    "title": "Post-Meridian",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 17828.84,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-043/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-043",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-043",
+    "category": "photograph",
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": -0.58,
+      "softStructured": -0.73,
+      "organicIndustrial": -0.49,
+      "lightDark": -0.34,
+      "neutralSaturated": -1,
+      "sparseLayered": 0.49
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Light and Space",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-044",
+    "title": "Archive of Breath",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 24182.03,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-044/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-044",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-044",
+    "category": "painting",
+    "tags": [
+      "scandinavian",
+      "coastal"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.13,
+      "warmCool": -0.08,
+      "softStructured": -0.84,
+      "organicIndustrial": -0.37,
+      "lightDark": -0.14,
+      "neutralSaturated": -0.19,
+      "sparseLayered": 0.28
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-045",
+    "title": "Archive Fever",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 17609.95,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-045/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-045",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-045",
+    "category": "photograph",
+    "tags": [
+      "traditional",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.69,
+      "warmCool": -0.51,
+      "softStructured": 0.18,
+      "organicIndustrial": 0.05,
+      "lightDark": -0.21,
+      "neutralSaturated": -0.68,
+      "sparseLayered": -0.32
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Post-Internet",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-046",
+    "title": "Zero Point",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 54163.18,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-046/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-046",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-046",
+    "category": "print",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.25,
+      "warmCool": 0.64,
+      "softStructured": 0.63,
+      "organicIndustrial": -0.53,
+      "lightDark": -0.71,
+      "neutralSaturated": -0.61,
+      "sparseLayered": 0.2
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-047",
+    "title": "Erasure Protocol",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 37638.73,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-047/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-047",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-047",
+    "category": "sculpture",
+    "tags": [
+      "japandi",
+      "rustic"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.73,
+      "warmCool": 0.25,
+      "softStructured": -0.4,
+      "organicIndustrial": -0.66,
+      "lightDark": -0.12,
+      "neutralSaturated": -0.39,
+      "sparseLayered": -0.45
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-048",
+    "title": "Collapse Notation",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 203159.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-048/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-048",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-048",
+    "category": "installation",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.85,
+      "warmCool": 0.73,
+      "softStructured": 0.71,
+      "organicIndustrial": 0.23,
+      "lightDark": 0.01,
+      "neutralSaturated": -0.07,
+      "sparseLayered": 0.41
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-049",
+    "title": "Zero Landscape",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 17941.92,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-049/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-049",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-049",
+    "category": "photograph",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.05,
+      "warmCool": -0.7,
+      "softStructured": -0.88,
+      "organicIndustrial": -0.79,
+      "lightDark": 0.8,
+      "neutralSaturated": -0.61,
+      "sparseLayered": 0.43
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-050",
+    "title": "Cartography of Loss",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 46847.24,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-050/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-050",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-050",
+    "category": "print",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.64,
+      "warmCool": -0.23,
+      "softStructured": 0.55,
+      "organicIndustrial": 0.36,
+      "lightDark": -0.9,
+      "neutralSaturated": 0.26,
+      "sparseLayered": -0.33
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-051",
+    "title": "Black Field No. 7",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 28218.64,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-051/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-051",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-051",
+    "category": "installation",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "neon",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.17,
+      "warmCool": -0.72,
+      "softStructured": -0.3,
+      "organicIndustrial": 0.94,
+      "lightDark": 0.4,
+      "neutralSaturated": -0.22,
+      "sparseLayered": 0.49
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-052",
+    "title": "Spectral Index",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 4129.08,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-052/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-052",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-052",
+    "category": "photograph",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.29,
+      "warmCool": -0.15,
+      "softStructured": -0.28,
+      "organicIndustrial": -0.27,
+      "lightDark": -0.64,
+      "neutralSaturated": -0.87,
+      "sparseLayered": 0.9
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-053",
+    "title": "Temporal Drift",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 61505.62,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-053/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-053",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-053",
+    "category": "print",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.47,
+      "warmCool": 0.77,
+      "softStructured": -0.92,
+      "organicIndustrial": -0.33,
+      "lightDark": 0.53,
+      "neutralSaturated": -0.74,
+      "sparseLayered": -0.25
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Minimalism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-054",
+    "title": "Untitled (Stillness)",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 65646.79,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-054/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-054",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-054",
+    "category": "sculpture",
+    "tags": [
+      "midCenturyModern",
+      "coastal"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.35,
+      "warmCool": -0.52,
+      "softStructured": 0.19,
+      "organicIndustrial": -0.23,
+      "lightDark": 0.5,
+      "neutralSaturated": -0.1,
+      "sparseLayered": 0.07
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-055",
+    "title": "Index of Air",
+    "brand": "Lehmann Maupin",
+    "merchant": "Lehmann Maupin",
+    "price": 12430.29,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-055/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-055",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-055",
+    "category": "photograph",
+    "tags": [
+      "japandi",
+      "rustic"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.54,
+      "warmCool": 0.56,
+      "softStructured": 0.01,
+      "organicIndustrial": -0.16,
+      "lightDark": -0.68,
+      "neutralSaturated": -0.9,
+      "sparseLayered": 0.21
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-056",
+    "title": "Blank Generation",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 74958.55,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-056/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-056",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-056",
+    "category": "painting",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.43,
+      "warmCool": 0.53,
+      "softStructured": -0.45,
+      "organicIndustrial": 0.81,
+      "lightDark": -0.71,
+      "neutralSaturated": -0.13,
+      "sparseLayered": 0.89
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-057",
+    "title": "Untitled (Remains)",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 1726.94,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-057/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-057",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-057",
+    "category": "painting",
+    "tags": [
+      "coastal"
+    ],
+    "materialTags": [
+      "latex",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.25,
+      "warmCool": -0.23,
+      "softStructured": -0.84,
+      "organicIndustrial": -0.55,
+      "lightDark": -0.36,
+      "neutralSaturated": -0.8,
+      "sparseLayered": 0.43
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-058",
+    "title": "Dense Fog",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 63212.95,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-058/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-058",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-058",
+    "category": "painting",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.23,
+      "warmCool": 0.81,
+      "softStructured": -0.96,
+      "organicIndustrial": -0.57,
+      "lightDark": -0.7,
+      "neutralSaturated": 0.88,
+      "sparseLayered": 0.22
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Zero Group",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-059",
+    "title": "Soft Collapse",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 37192.92,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-059/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-059",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-059",
+    "category": "print",
+    "tags": [
+      "coastal"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": -0.78,
+      "softStructured": 0.81,
+      "organicIndustrial": 0.19,
+      "lightDark": -0.97,
+      "neutralSaturated": 0.03,
+      "sparseLayered": -0.52
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-060",
+    "title": "Suspended Belief",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 78577.96,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-060/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-060",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-060",
+    "category": "sculpture",
+    "tags": [
+      "industrial",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.86,
+      "warmCool": 0.05,
+      "softStructured": 0.31,
+      "organicIndustrial": 1,
+      "lightDark": 0.11,
+      "neutralSaturated": -0.22,
+      "sparseLayered": -0.06
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-061",
+    "title": "Matte Void",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 19655.25,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-061/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-061",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-061",
+    "category": "painting",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "acrylic",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.47,
+      "warmCool": 0.26,
+      "softStructured": 0.54,
+      "organicIndustrial": 0.47,
+      "lightDark": -0.33,
+      "neutralSaturated": -0.91,
+      "sparseLayered": 0.09
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-062",
+    "title": "Seismic Notation",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 94767.07,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-062/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-062",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-062",
+    "category": "sculpture",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "marble"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.43,
+      "warmCool": 0.89,
+      "softStructured": -0.63,
+      "organicIndustrial": -0.4,
+      "lightDark": 0.58,
+      "neutralSaturated": 0.77,
+      "sparseLayered": -0.37
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-063",
+    "title": "Folded Silence",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 72097.81,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-063/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-063",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-063",
+    "category": "painting",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.29,
+      "warmCool": 0.56,
+      "softStructured": 0.73,
+      "organicIndustrial": -0.34,
+      "lightDark": -0.75,
+      "neutralSaturated": -0.26,
+      "sparseLayered": 0.78
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-064",
+    "title": "Compression Field",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 8217.2,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-064/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-064",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-064",
+    "category": "installation",
+    "tags": [
+      "traditional",
+      "artDeco"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.6,
+      "warmCool": 0.45,
+      "softStructured": -0.84,
+      "organicIndustrial": 0.2,
+      "lightDark": 0.64,
+      "neutralSaturated": 0.09,
+      "sparseLayered": -0.06
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-065",
+    "title": "Residual Form",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 10630.29,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-065/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-065",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-065",
+    "category": "sculpture",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.11,
+      "warmCool": 0.45,
+      "softStructured": 1,
+      "organicIndustrial": 0.43,
+      "lightDark": -0.13,
+      "neutralSaturated": 0.28,
+      "sparseLayered": 0.58
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Gutai",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-066",
+    "title": "Resonance Map",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 32286.7,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-066/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-066",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-066",
+    "category": "installation",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.36,
+      "warmCool": -0.12,
+      "softStructured": -0.75,
+      "organicIndustrial": -0.53,
+      "lightDark": 0.29,
+      "neutralSaturated": -0.28,
+      "sparseLayered": 1
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-067",
+    "title": "Cold Notation",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 230547.06,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-067/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-067",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-067",
+    "category": "print",
+    "tags": [
+      "scandinavian",
+      "industrial"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.47,
+      "warmCool": -0.37,
+      "softStructured": -0.44,
+      "organicIndustrial": 0.92,
+      "lightDark": -0.95,
+      "neutralSaturated": -0.63,
+      "sparseLayered": 0.04
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-068",
+    "title": "Border Grammar",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 65788.49,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-068/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-068",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-068",
+    "category": "print",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.19,
+      "warmCool": 1.0,
+      "softStructured": -0.6,
+      "organicIndustrial": -0.73,
+      "lightDark": -0.85,
+      "neutralSaturated": -0.65,
+      "sparseLayered": 0.43
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "New Topographics",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-069",
+    "title": "Monument for No One",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 19967.99,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-069/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-069",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-069",
+    "category": "installation",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.42,
+      "warmCool": -0.4,
+      "softStructured": -0.68,
+      "organicIndustrial": 0.42,
+      "lightDark": 0.4,
+      "neutralSaturated": -0.65,
+      "sparseLayered": 0.02
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-070",
+    "title": "Ghost Architecture",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 40899.88,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-070/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-070",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-070",
+    "category": "print",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.06,
+      "warmCool": -0.07,
+      "softStructured": 0.97,
+      "organicIndustrial": -0.74,
+      "lightDark": 0.77,
+      "neutralSaturated": -0.87,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-071",
+    "title": "Collapsed Distance",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 11269.36,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-071/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-071",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-071",
+    "category": "sculpture",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.28,
+      "warmCool": -0.1,
+      "softStructured": 0.66,
+      "organicIndustrial": -0.11,
+      "lightDark": 0.76,
+      "neutralSaturated": 0.56,
+      "sparseLayered": 0.28
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Light and Space",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-072",
+    "title": "Surface Tension",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 42743.48,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-072/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-072",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-072",
+    "category": "photograph",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.39,
+      "warmCool": -0.68,
+      "softStructured": 0.87,
+      "organicIndustrial": -0.55,
+      "lightDark": 0.89,
+      "neutralSaturated": -0.26,
+      "sparseLayered": -0.43
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Zero Group",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-073",
+    "title": "Mute Landscape",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 20770.72,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-073/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-073",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-073",
+    "category": "painting",
+    "tags": [
+      "japandi",
+      "artDeco"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.01,
+      "warmCool": -0.66,
+      "softStructured": 0.88,
+      "organicIndustrial": -0.69,
+      "lightDark": 0.32,
+      "neutralSaturated": 0.44,
+      "sparseLayered": 0.21
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-074",
+    "title": "White Interval",
+    "brand": "Pace Gallery",
+    "merchant": "Pace Gallery",
+    "price": 41220.86,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-074/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-074",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-074",
+    "category": "painting",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.3,
+      "warmCool": 0.53,
+      "softStructured": -0.17,
+      "organicIndustrial": 0.28,
+      "lightDark": -0.0,
+      "neutralSaturated": 0.25,
+      "sparseLayered": -0.42
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-075",
+    "title": "Event Horizon No. 2",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 30902.79,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-075/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-075",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-075",
+    "category": "sculpture",
+    "tags": [
+      "rustic",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "bronze"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.68,
+      "warmCool": -0.17,
+      "softStructured": 0.23,
+      "organicIndustrial": -0.12,
+      "lightDark": -0.71,
+      "neutralSaturated": 0.72,
+      "sparseLayered": -0.36
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "CoBrA",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-076",
+    "title": "Vanishing Proof",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 69898.06,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-076/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-076",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-076",
+    "category": "installation",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.07,
+      "warmCool": -0.47,
+      "softStructured": -0.5,
+      "organicIndustrial": -0.81,
+      "lightDark": -0.42,
+      "neutralSaturated": -0.23,
+      "sparseLayered": 0.53
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-077",
+    "title": "Nocturne (Unfinished)",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 1977.53,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-077/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-077",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-077",
+    "category": "photograph",
+    "tags": [
+      "bohemian",
+      "industrial"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.99,
+      "warmCool": -0.07,
+      "softStructured": 0.76,
+      "organicIndustrial": -0.01,
+      "lightDark": -0.82,
+      "neutralSaturated": -0.51,
+      "sparseLayered": -0.09
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-078",
+    "title": "Axis Mundi",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 19599.15,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-078/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-078",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-078",
+    "category": "sculpture",
+    "tags": [
+      "minimalist",
+      "artDeco"
+    ],
+    "materialTags": [
+      "bronze"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.69,
+      "warmCool": -0.14,
+      "softStructured": 1,
+      "organicIndustrial": 0.66,
+      "lightDark": 0.53,
+      "neutralSaturated": -0.27,
+      "sparseLayered": -0.2
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-079",
+    "title": "Interval Study No. 5",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 19929.34,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-079/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-079",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-079",
+    "category": "installation",
+    "tags": [
+      "artDeco",
+      "minimalist"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.36,
+      "warmCool": -0.76,
+      "softStructured": 0.95,
+      "organicIndustrial": -0.21,
+      "lightDark": 0.59,
+      "neutralSaturated": -0.32,
+      "sparseLayered": 1
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-080",
+    "title": "Dense Horizon",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 15719.31,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-080/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-080",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-080",
+    "category": "photograph",
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.43,
+      "warmCool": 0.61,
+      "softStructured": 0.04,
+      "organicIndustrial": -0.7,
+      "lightDark": 0.79,
+      "neutralSaturated": -1,
+      "sparseLayered": 0.86
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-081",
+    "title": "Matte Surface",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 94227.51,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-081/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-081",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-081",
+    "category": "photograph",
+    "tags": [
+      "artDeco",
+      "japandi"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.02,
+      "warmCool": 0.13,
+      "softStructured": -0.05,
+      "organicIndustrial": -0.97,
+      "lightDark": -0.34,
+      "neutralSaturated": -1,
+      "sparseLayered": -0.17
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Fluxus",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-082",
+    "title": "Blind Contour No. 12",
+    "brand": "Gagosian",
+    "merchant": "Gagosian",
+    "price": 3459.47,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-082/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-082",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-082",
+    "category": "installation",
+    "tags": [
+      "minimalist",
+      "bohemian"
+    ],
+    "materialTags": [
+      "neon",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.17,
+      "warmCool": -0.66,
+      "softStructured": 0.26,
+      "organicIndustrial": 0.24,
+      "lightDark": 0.68,
+      "neutralSaturated": -0.7,
+      "sparseLayered": 0.66
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "CoBrA",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-083",
+    "title": "Thermal Drift",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 8666.2,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-083/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-083",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-083",
+    "category": "photograph",
+    "tags": [
+      "coastal",
+      "industrial"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.38,
+      "warmCool": -0.18,
+      "softStructured": 0.55,
+      "organicIndustrial": 0.84,
+      "lightDark": 0.75,
+      "neutralSaturated": 0.17,
+      "sparseLayered": -0.88
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-084",
+    "title": "Static Bloom",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 162267.23,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-084/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-084",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-084",
+    "category": "photograph",
+    "tags": [
+      "traditional",
+      "industrial"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.82,
+      "warmCool": -0.32,
+      "softStructured": -0.29,
+      "organicIndustrial": 0.54,
+      "lightDark": 0.44,
+      "neutralSaturated": -0.01,
+      "sparseLayered": 0.39
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "CoBrA",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-085",
+    "title": "Slow Erasure",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 48010.76,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-085/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-085",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-085",
+    "category": "print",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.21,
+      "warmCool": 0.38,
+      "softStructured": -0.02,
+      "organicIndustrial": -0.04,
+      "lightDark": 0.12,
+      "neutralSaturated": 0.87,
+      "sparseLayered": 0.44
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Mono-ha",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-086",
+    "title": "Oblique Strategy No. 9",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 17647.35,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-086/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-086",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-086",
+    "category": "photograph",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.42,
+      "warmCool": 0.43,
+      "softStructured": -0.31,
+      "organicIndustrial": -0.12,
+      "lightDark": -0.49,
+      "neutralSaturated": -0.34,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Zero Group",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-087",
+    "title": "Ghost Frequency",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 14118.53,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-087/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-087",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-087",
+    "category": "photograph",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.34,
+      "warmCool": 0.06,
+      "softStructured": 0.28,
+      "organicIndustrial": -0.9,
+      "lightDark": -0.17,
+      "neutralSaturated": 0.13,
+      "sparseLayered": -0.8
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-088",
+    "title": "Signal / Noise",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 68774.98,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-088/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-088",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-088",
+    "category": "painting",
+    "tags": [
+      "rustic",
+      "japandi"
+    ],
+    "materialTags": [
+      "acrylic",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.51,
+      "warmCool": -0.43,
+      "softStructured": -0.43,
+      "organicIndustrial": -0.88,
+      "lightDark": 0.54,
+      "neutralSaturated": 0.3,
+      "sparseLayered": -0.54
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Zero Group",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-089",
+    "title": "Black Mirror Study",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 160626.17,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-089/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-089",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-089",
+    "category": "print",
+    "tags": [
+      "industrial",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.38,
+      "warmCool": -0.63,
+      "softStructured": 0.5,
+      "organicIndustrial": 0.74,
+      "lightDark": -0.42,
+      "neutralSaturated": -0.93,
+      "sparseLayered": -0.4
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Zero Group",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-090",
+    "title": "Gravity Score",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 27126.82,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-090/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-090",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-090",
+    "category": "photograph",
+    "tags": [
+      "industrial",
+      "artDeco"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.45,
+      "warmCool": 0.62,
+      "softStructured": -0.34,
+      "organicIndustrial": 0.46,
+      "lightDark": 0.3,
+      "neutralSaturated": 0.14,
+      "sparseLayered": -0.97
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-091",
+    "title": "Shadow Inventory",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 61531.75,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-091/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-091",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-091",
+    "category": "installation",
+    "tags": [
+      "coastal",
+      "artDeco"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.83,
+      "warmCool": 0.34,
+      "softStructured": -0.63,
+      "organicIndustrial": -0.72,
+      "lightDark": -0.35,
+      "neutralSaturated": -0.5,
+      "sparseLayered": -0.18
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-092",
+    "title": "Terrain Vague",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 17505.03,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-092/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-092",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-092",
+    "category": "photograph",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.28,
+      "warmCool": -0.53,
+      "softStructured": 0.34,
+      "organicIndustrial": -0.07,
+      "lightDark": -0.68,
+      "neutralSaturated": 0.07,
+      "sparseLayered": 0.85
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-093",
+    "title": "Peripheral Vision",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 20779.6,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-093/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-093",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-093",
+    "category": "painting",
+    "tags": [
+      "japandi",
+      "bohemian"
+    ],
+    "materialTags": [
+      "acrylic",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.91,
+      "warmCool": -0.04,
+      "softStructured": -0.09,
+      "organicIndustrial": 0.98,
+      "lightDark": -0.25,
+      "neutralSaturated": 0.4,
+      "sparseLayered": 0.83
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "CoBrA",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-094",
+    "title": "Untitled (After Silence)",
+    "brand": "Lisson Gallery",
+    "merchant": "Lisson Gallery",
+    "price": 21478.56,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-094/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-094",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-094",
+    "category": "print",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.14,
+      "warmCool": -0.28,
+      "softStructured": 0.83,
+      "organicIndustrial": -0.78,
+      "lightDark": 0.66,
+      "neutralSaturated": 0.81,
+      "sparseLayered": -0.6
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-095",
+    "title": "Pattern Language",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 65518.65,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-095/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-095",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-095",
+    "category": "sculpture",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "plaster"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.82,
+      "warmCool": 0.02,
+      "softStructured": 0.92,
+      "organicIndustrial": 0.11,
+      "lightDark": 0.03,
+      "neutralSaturated": -0.09,
+      "sparseLayered": -0.88
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-096",
+    "title": "Untitled (Passage)",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 131216.02,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-096/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-096",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-096",
+    "category": "print",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -1,
+      "warmCool": -0.15,
+      "softStructured": 0.4,
+      "organicIndustrial": 0.08,
+      "lightDark": -0.88,
+      "neutralSaturated": 0.79,
+      "sparseLayered": 0.97
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Light and Space",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-097",
+    "title": "Cold Storage",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 145883.16,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-097/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-097",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-097",
+    "category": "print",
+    "tags": [
+      "coastal",
+      "rustic"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.45,
+      "warmCool": 0.37,
+      "softStructured": 0.32,
+      "organicIndustrial": 0.08,
+      "lightDark": 0.31,
+      "neutralSaturated": -0.3,
+      "sparseLayered": -0.64
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-098",
+    "title": "Anti-Monument",
+    "brand": "Gagosian",
+    "merchant": "Gagosian",
+    "price": 59376.8,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-098/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-098",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-098",
+    "category": "sculpture",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "plaster"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.35,
+      "warmCool": 0.09,
+      "softStructured": 0.36,
+      "organicIndustrial": 0.85,
+      "lightDark": -0.5,
+      "neutralSaturated": -0.31,
+      "sparseLayered": -0.45
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-099",
+    "title": "Echo Chamber",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 19056.13,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-099/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-099",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-099",
+    "category": "installation",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.87,
+      "warmCool": 0.19,
+      "softStructured": -0.11,
+      "organicIndustrial": 0.34,
+      "lightDark": 0.74,
+      "neutralSaturated": -0.51,
+      "sparseLayered": -0.61
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-100",
+    "title": "Quiet Surface",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 78927.17,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-100/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-100",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-100",
+    "category": "painting",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.53,
+      "warmCool": 0.83,
+      "softStructured": 0.15,
+      "organicIndustrial": 0.15,
+      "lightDark": 0.55,
+      "neutralSaturated": 0.64,
+      "sparseLayered": -0.53
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-101",
+    "title": "Phase Transition",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 176052.07,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-101/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-101",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-101",
+    "category": "photograph",
+    "tags": [
+      "midCenturyModern",
+      "artDeco"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.76,
+      "warmCool": 0.82,
+      "softStructured": 0.25,
+      "organicIndustrial": -0.15,
+      "lightDark": -0.01,
+      "neutralSaturated": 0.64,
+      "sparseLayered": 0.88
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Light and Space",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-102",
+    "title": "Untitled (Frequency)",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 35950.81,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-102/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-102",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-102",
+    "category": "painting",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.63,
+      "warmCool": 0.08,
+      "softStructured": -0.52,
+      "organicIndustrial": -0.55,
+      "lightDark": 0.72,
+      "neutralSaturated": -0.71,
+      "sparseLayered": -0.07
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-103",
+    "title": "Compression Study",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 1757.05,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-103/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-103",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-103",
+    "category": "print",
+    "tags": [
+      "bohemian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "charcoal",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.54,
+      "warmCool": -0.84,
+      "softStructured": -0.1,
+      "organicIndustrial": -0.26,
+      "lightDark": 0.07,
+      "neutralSaturated": 0.66,
+      "sparseLayered": -0.9
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-104",
+    "title": "Fugue State",
+    "brand": "Lehmann Maupin",
+    "merchant": "Lehmann Maupin",
+    "price": 249903.7,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-104/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-104",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-104",
+    "category": "sculpture",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "resin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.74,
+      "warmCool": -0.33,
+      "softStructured": 1,
+      "organicIndustrial": -0.77,
+      "lightDark": 0.87,
+      "neutralSaturated": 0.92,
+      "sparseLayered": -0.77
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Minimalism",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-105",
+    "title": "Untitled (Void Study)",
+    "brand": "Lehmann Maupin",
+    "merchant": "Lehmann Maupin",
+    "price": 78598.88,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-105/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-105",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-105",
+    "category": "photograph",
+    "tags": [
+      "bohemian",
+      "artDeco"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.55,
+      "warmCool": -0.24,
+      "softStructured": 0.07,
+      "organicIndustrial": -0.28,
+      "lightDark": -0.48,
+      "neutralSaturated": -0.27,
+      "sparseLayered": -0.01
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Gutai",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-106",
+    "title": "Shadow Measure",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 8782.74,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-106/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-106",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-106",
+    "category": "painting",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.17,
+      "warmCool": 0.13,
+      "softStructured": -0.56,
+      "organicIndustrial": -0.71,
+      "lightDark": -0.48,
+      "neutralSaturated": 0.87,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-107",
+    "title": "Silent Structure",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 4896.23,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-107/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-107",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-107",
+    "category": "installation",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.31,
+      "warmCool": 0.37,
+      "softStructured": -0.49,
+      "organicIndustrial": 0.64,
+      "lightDark": 0.93,
+      "neutralSaturated": 0.28,
+      "sparseLayered": 0.28
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Light and Space",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-108",
+    "title": "Slow Structure",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 4454.92,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-108/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-108",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-108",
+    "category": "sculpture",
+    "tags": [
+      "industrial",
+      "artDeco"
+    ],
+    "materialTags": [
+      "bronze"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.05,
+      "warmCool": 0.68,
+      "softStructured": -0.55,
+      "organicIndustrial": 0.84,
+      "lightDark": -0.9,
+      "neutralSaturated": -0.99,
+      "sparseLayered": -0.73
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "New Topographics",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-109",
+    "title": "Slow Fade",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 59164.45,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-109/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-109",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-109",
+    "category": "print",
+    "tags": [
+      "traditional",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.08,
+      "warmCool": 0.87,
+      "softStructured": 0.83,
+      "organicIndustrial": 0.32,
+      "lightDark": -0.97,
+      "neutralSaturated": 0.06,
+      "sparseLayered": -0.18
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-110",
+    "title": "Chromatic Shift III",
+    "brand": "Gagosian",
+    "merchant": "Gagosian",
+    "price": 39424.83,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-110/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-110",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-110",
+    "category": "sculpture",
+    "tags": [
+      "industrial",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "marble"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.05,
+      "warmCool": -0.52,
+      "softStructured": 0.54,
+      "organicIndustrial": -0.3,
+      "lightDark": -0.29,
+      "neutralSaturated": 0.59,
+      "sparseLayered": -0.84
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Neo-Expressionism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-111",
+    "title": "Phantom Limb",
+    "brand": "Lisson Gallery",
+    "merchant": "Lisson Gallery",
+    "price": 170104.13,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-111/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-111",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-111",
+    "category": "installation",
+    "tags": [
+      "scandinavian",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "neon",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.19,
+      "warmCool": -0.25,
+      "softStructured": -0.05,
+      "organicIndustrial": 0.27,
+      "lightDark": 0.41,
+      "neutralSaturated": -0.83,
+      "sparseLayered": 0.99
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "New Topographics",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-112",
+    "title": "Trace Evidence",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 147181.91,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-112/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-112",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-112",
+    "category": "sculpture",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "resin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.8,
+      "warmCool": 0.38,
+      "softStructured": 0.43,
+      "organicIndustrial": -0.26,
+      "lightDark": 0.85,
+      "neutralSaturated": 0.37,
+      "sparseLayered": -0.44
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Minimalism",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-113",
+    "title": "Silent Measure",
+    "brand": "Gladstone Gallery",
+    "merchant": "Gladstone Gallery",
+    "price": 13881.61,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-113/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-113",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-113",
+    "category": "painting",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "latex",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.71,
+      "warmCool": 0.64,
+      "softStructured": 0.64,
+      "organicIndustrial": 0.86,
+      "lightDark": -0.4,
+      "neutralSaturated": 0.13,
+      "sparseLayered": 0.13
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-114",
+    "title": "Latent Image",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 7221.92,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-114/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-114",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-114",
+    "category": "sculpture",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.89,
+      "warmCool": -0.13,
+      "softStructured": 0.98,
+      "organicIndustrial": -0.12,
+      "lightDark": 0.54,
+      "neutralSaturated": 0.91,
+      "sparseLayered": -0.21
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-115",
+    "title": "Surface Event",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 4532.15,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-115/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-115",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-115",
+    "category": "painting",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "latex",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.88,
+      "warmCool": -0.14,
+      "softStructured": 0.36,
+      "organicIndustrial": 0.32,
+      "lightDark": -0.83,
+      "neutralSaturated": 0.24,
+      "sparseLayered": 0.6
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Arte Povera",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-116",
+    "title": "Untitled (Tension)",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 3299.69,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-116/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-116",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-116",
+    "category": "painting",
+    "tags": [
+      "traditional",
+      "japandi"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.82,
+      "warmCool": 0.89,
+      "softStructured": -0.11,
+      "organicIndustrial": 0.52,
+      "lightDark": -0.8,
+      "neutralSaturated": -0.83,
+      "sparseLayered": -0.14
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "New Topographics",
+    "yearRange": "1980-1990"
+  },
+  {
+    "skuId": "art-117",
+    "title": "Mineral Frequency",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 23205.69,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-117/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-117",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-117",
+    "category": "installation",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.57,
+      "warmCool": 0.73,
+      "softStructured": -0.98,
+      "organicIndustrial": -0.17,
+      "lightDark": 0.56,
+      "neutralSaturated": 0.45,
+      "sparseLayered": 0.42
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-118",
+    "title": "Quiet Fracture",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 23494.26,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-118/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-118",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-118",
+    "category": "installation",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "found objects"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.4,
+      "warmCool": -0.01,
+      "softStructured": -0.87,
+      "organicIndustrial": -0.13,
+      "lightDark": -0.16,
+      "neutralSaturated": -0.03,
+      "sparseLayered": -0.55
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "CoBrA",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-119",
+    "title": "Edge Condition",
+    "brand": "Various Small Fires",
+    "merchant": "Various Small Fires",
+    "price": 121888.65,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-119/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-119",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-119",
+    "category": "painting",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.73,
+      "warmCool": -0.99,
+      "softStructured": -0.21,
+      "organicIndustrial": 0.68,
+      "lightDark": -0.24,
+      "neutralSaturated": 0.72,
+      "sparseLayered": -0.12
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Gutai",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-120",
+    "title": "Dust Register",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 33204.15,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-120/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-120",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-120",
+    "category": "painting",
+    "tags": [
+      "traditional",
+      "bohemian"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.37,
+      "warmCool": 0.93,
+      "softStructured": 0.94,
+      "organicIndustrial": -0.42,
+      "lightDark": 0.39,
+      "neutralSaturated": -0.02,
+      "sparseLayered": 0.15
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Gutai",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-121",
+    "title": "Void Frequency",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 123652.36,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-121/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-121",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-121",
+    "category": "installation",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.18,
+      "warmCool": 0.09,
+      "softStructured": 0.36,
+      "organicIndustrial": 0.1,
+      "lightDark": 0.91,
+      "neutralSaturated": -0.08,
+      "sparseLayered": 0.72
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Light and Space",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-122",
+    "title": "Fractal Elegy",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 74262.18,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-122/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-122",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-122",
+    "category": "sculpture",
+    "tags": [
+      "industrial",
+      "minimalist"
+    ],
+    "materialTags": [
+      "resin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.49,
+      "warmCool": -0.69,
+      "softStructured": 0.15,
+      "organicIndustrial": -0.05,
+      "lightDark": -0.1,
+      "neutralSaturated": 0.2,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Fluxus",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-123",
+    "title": "Untitled (Iron Psalm)",
+    "brand": "47 Canal",
+    "merchant": "47 Canal",
+    "price": 77510.84,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-123/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-123",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-123",
+    "category": "sculpture",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "marble"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.78,
+      "warmCool": -0.5,
+      "softStructured": 0.63,
+      "organicIndustrial": -0.47,
+      "lightDark": 0.23,
+      "neutralSaturated": 0.13,
+      "sparseLayered": 0.29
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-124",
+    "title": "Index of Shadows",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 198777.0,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-124/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-124",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-124",
+    "category": "print",
+    "tags": [
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.68,
+      "warmCool": 0.02,
+      "softStructured": 0.04,
+      "organicIndustrial": 0.16,
+      "lightDark": 0.15,
+      "neutralSaturated": -0.11,
+      "sparseLayered": -0.22
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-125",
+    "title": "Dust Theorem",
+    "brand": "Gagosian",
+    "merchant": "Gagosian",
+    "price": 31122.52,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-125/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-125",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-125",
+    "category": "painting",
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.84,
+      "warmCool": -0.83,
+      "softStructured": 0.66,
+      "organicIndustrial": 0.46,
+      "lightDark": -0.3,
+      "neutralSaturated": -0.31,
+      "sparseLayered": 0.57
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-126",
+    "title": "Lapse / Return",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 4675.28,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-126/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-126",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-126",
+    "category": "photograph",
+    "tags": [
+      "scandinavian",
+      "minimalist"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.62,
+      "warmCool": -0.77,
+      "softStructured": 0.7,
+      "organicIndustrial": 0.3,
+      "lightDark": 0.35,
+      "neutralSaturated": -0.97,
+      "sparseLayered": 0.97
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "New Topographics",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-127",
+    "title": "Soft Grid",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 5779.98,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-127/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-127",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-127",
+    "category": "photograph",
+    "tags": [
+      "bohemian",
+      "coastal"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.63,
+      "warmCool": 0.28,
+      "softStructured": -0.14,
+      "organicIndustrial": -0.94,
+      "lightDark": 0.23,
+      "neutralSaturated": -0.91,
+      "sparseLayered": 0.18
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-128",
+    "title": "Phase Portrait",
+    "brand": "Pace Gallery",
+    "merchant": "Pace Gallery",
+    "price": 112443.83,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-128/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-128",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-128",
+    "category": "painting",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "acrylic",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.27,
+      "warmCool": -0.61,
+      "softStructured": -0.77,
+      "organicIndustrial": 0.34,
+      "lightDark": -0.02,
+      "neutralSaturated": 0.93,
+      "sparseLayered": -0.37
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Pictures Generation",
+    "yearRange": "2021-2025"
+  },
+  {
+    "skuId": "art-129",
+    "title": "Structural Feeling",
+    "brand": "Bureau",
+    "merchant": "Bureau",
+    "price": 14710.31,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-129/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-129",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-129",
+    "category": "print",
+    "tags": [
+      "minimalist"
+    ],
+    "materialTags": [
+      "silk"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.02,
+      "warmCool": 0.34,
+      "softStructured": -0.37,
+      "organicIndustrial": -0.52,
+      "lightDark": -0.77,
+      "neutralSaturated": -0.25,
+      "sparseLayered": -0.72
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Conceptual Art",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-130",
+    "title": "Drift Notation",
+    "brand": "Perrotin",
+    "merchant": "Perrotin",
+    "price": 19634.64,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-130/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-130",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-130",
+    "category": "photograph",
+    "tags": [
+      "artDeco",
+      "industrial"
+    ],
+    "materialTags": [
+      "pigment",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.67,
+      "warmCool": -0.42,
+      "softStructured": -0.63,
+      "organicIndustrial": 0.68,
+      "lightDark": 0.24,
+      "neutralSaturated": 0.43,
+      "sparseLayered": 0.9
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Light and Space",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-131",
+    "title": "Open Interval",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 19693.91,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-131/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-131",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-131",
+    "category": "sculpture",
+    "tags": [
+      "coastal",
+      "rustic"
+    ],
+    "materialTags": [
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.42,
+      "warmCool": -0.11,
+      "softStructured": -0.37,
+      "organicIndustrial": 0.33,
+      "lightDark": 0.59,
+      "neutralSaturated": -0.56,
+      "sparseLayered": -0.93
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Mono-ha",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-132",
+    "title": "Pulse Archive",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 74171.94,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-132/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-132",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-132",
+    "category": "photograph",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "silver gelatin"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.46,
+      "warmCool": 0.09,
+      "softStructured": 0.98,
+      "organicIndustrial": 0.08,
+      "lightDark": 0.51,
+      "neutralSaturated": 0.22,
+      "sparseLayered": -0.12
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Gutai",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-133",
+    "title": "Folded Time",
+    "brand": "Lisson Gallery",
+    "merchant": "Lisson Gallery",
+    "price": 31297.31,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-133/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-133",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-133",
+    "category": "sculpture",
+    "tags": [
+      "midCenturyModern",
+      "rustic"
+    ],
+    "materialTags": [
+      "ceramic"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.3,
+      "warmCool": 0.63,
+      "softStructured": 0.18,
+      "organicIndustrial": 1,
+      "lightDark": 0.55,
+      "neutralSaturated": -0.53,
+      "sparseLayered": 0.62
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "CoBrA",
+    "yearRange": "1970-1980"
+  },
+  {
+    "skuId": "art-134",
+    "title": "Dissolving Point",
+    "brand": "Karma",
+    "merchant": "Karma",
+    "price": 245275.04,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-134/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-134",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-134",
+    "category": "installation",
+    "tags": [
+      "japandi"
+    ],
+    "materialTags": [
+      "concrete",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.57,
+      "warmCool": 0.63,
+      "softStructured": 0.61,
+      "organicIndustrial": 0.14,
+      "lightDark": 0.06,
+      "neutralSaturated": 0.19,
+      "sparseLayered": -0.36
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "CoBrA",
+    "yearRange": "1950-1965"
+  },
+  {
+    "skuId": "art-135",
+    "title": "Shadow Protocol",
+    "brand": "Bridget Donahue",
+    "merchant": "Bridget Donahue",
+    "price": 17164.88,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-135/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-135",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-135",
+    "category": "installation",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "resin",
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.84,
+      "warmCool": 0.98,
+      "softStructured": 0.73,
+      "organicIndustrial": -0.75,
+      "lightDark": 0.73,
+      "neutralSaturated": -0.5,
+      "sparseLayered": 0.72
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-136",
+    "title": "White Noise Study",
+    "brand": "David Zwirner",
+    "merchant": "David Zwirner",
+    "price": 14883.32,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-136/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-136",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-136",
+    "category": "sculpture",
+    "tags": [
+      "coastal",
+      "japandi"
+    ],
+    "materialTags": [
+      "plaster"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.85,
+      "warmCool": 0.59,
+      "softStructured": 0.84,
+      "organicIndustrial": 0.01,
+      "lightDark": 0.5,
+      "neutralSaturated": 0.39,
+      "sparseLayered": 0.75
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2005-2015"
+  },
+  {
+    "skuId": "art-137",
+    "title": "Hollow Monument",
+    "brand": "Pace Gallery",
+    "merchant": "Pace Gallery",
+    "price": 41400.34,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-137/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-137",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-137",
+    "category": "sculpture",
+    "tags": [
+      "traditional",
+      "scandinavian"
+    ],
+    "materialTags": [
+      "glass"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.56,
+      "warmCool": -0.14,
+      "softStructured": -0.28,
+      "organicIndustrial": -0.26,
+      "lightDark": 0.66,
+      "neutralSaturated": -0.32,
+      "sparseLayered": 0.16
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Fluxus",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-138",
+    "title": "Boundary Object",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 8105.15,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-138/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-138",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-138",
+    "category": "painting",
+    "tags": [
+      "scandinavian"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.97,
+      "warmCool": 0.86,
+      "softStructured": -0.68,
+      "organicIndustrial": -0.09,
+      "lightDark": 0.98,
+      "neutralSaturated": -0.14,
+      "sparseLayered": 0.99
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "CoBrA",
+    "yearRange": "1985-1995"
+  },
+  {
+    "skuId": "art-139",
+    "title": "Horizon Event",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 3103.45,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-139/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-139",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-139",
+    "category": "painting",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "oil",
+      "linen"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.84,
+      "warmCool": 0.33,
+      "softStructured": 0.3,
+      "organicIndustrial": -0.9,
+      "lightDark": 0.25,
+      "neutralSaturated": 0.45,
+      "sparseLayered": 0.51
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Fluxus",
+    "yearRange": "2020-2023"
+  },
+  {
+    "skuId": "art-140",
+    "title": "Quiet Radical",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 10070.29,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-140/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-140",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-140",
+    "category": "painting",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "latex",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.55,
+      "warmCool": 0.36,
+      "softStructured": -0.98,
+      "organicIndustrial": 0.39,
+      "lightDark": 0.63,
+      "neutralSaturated": 0.98,
+      "sparseLayered": -0.16
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-141",
+    "title": "Boundary Study No. 3",
+    "brand": "Hauser & Wirth",
+    "merchant": "Hauser & Wirth",
+    "price": 144364.36,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-141/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-141",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-141",
+    "category": "photograph",
+    "tags": [
+      "traditional"
+    ],
+    "materialTags": [
+      "inkjet",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.76,
+      "warmCool": -0.73,
+      "softStructured": 0.55,
+      "organicIndustrial": 0.51,
+      "lightDark": -0.73,
+      "neutralSaturated": 0.69,
+      "sparseLayered": -0.71
+    },
+    "discoveryClusters": [
+      "afroFuturism"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "New Topographics",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-142",
+    "title": "Untitled (Ash)",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 19944.06,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-142/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-142",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-142",
+    "category": "painting",
+    "tags": [
+      "industrial"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.23,
+      "warmCool": -0.12,
+      "softStructured": -0.57,
+      "organicIndustrial": 0.79,
+      "lightDark": -0.72,
+      "neutralSaturated": -0.75,
+      "sparseLayered": 0.46
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Arte Povera",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-143",
+    "title": "Blind Spot Study",
+    "brand": "Marian Goodman",
+    "merchant": "Marian Goodman",
+    "price": 50519.52,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-143/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-143",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-143",
+    "category": "installation",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "wood",
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.2,
+      "warmCool": 0.44,
+      "softStructured": -0.43,
+      "organicIndustrial": 0.88,
+      "lightDark": -0.95,
+      "neutralSaturated": 0.69,
+      "sparseLayered": 1
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Afrofuturism",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-144",
+    "title": "Ghost Index",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 96206.35,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-144/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-144",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-144",
+    "category": "painting",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.23,
+      "warmCool": -0.52,
+      "softStructured": 0.28,
+      "organicIndustrial": -0.86,
+      "lightDark": 0.78,
+      "neutralSaturated": -0.98,
+      "sparseLayered": -0.28
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Light and Space",
+    "yearRange": "2010-2019"
+  },
+  {
+    "skuId": "art-145",
+    "title": "Untitled (Grid)",
+    "brand": "Sprüth Magers",
+    "merchant": "Sprüth Magers",
+    "price": 10853.45,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-145/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-145",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-145",
+    "category": "sculpture",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "marble"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.97,
+      "warmCool": -0.86,
+      "softStructured": -0.18,
+      "organicIndustrial": -0.72,
+      "lightDark": -0.88,
+      "neutralSaturated": 0.58,
+      "sparseLayered": 0.01
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "emergent",
+    "movementCluster": "Light and Space",
+    "yearRange": "1990-1999"
+  },
+  {
+    "skuId": "art-146",
+    "title": "Dark Measure",
+    "brand": "Thaddaeus Ropac",
+    "merchant": "Thaddaeus Ropac",
+    "price": 167716.21,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-146/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-146",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-146",
+    "category": "sculpture",
+    "tags": [
+      "artDeco"
+    ],
+    "materialTags": [
+      "steel"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.45,
+      "warmCool": -0.38,
+      "softStructured": 0.32,
+      "organicIndustrial": -0.39,
+      "lightDark": 0.62,
+      "neutralSaturated": 0.07,
+      "sparseLayered": -0.22
+    },
+    "discoveryClusters": [
+      "archiveCanon"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "New Topographics",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-147",
+    "title": "Invisible Cities No. 3",
+    "brand": "Matthew Marks",
+    "merchant": "Matthew Marks",
+    "price": 58092.55,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-147/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-147",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-147",
+    "category": "print",
+    "tags": [
+      "bohemian",
+      "midCenturyModern"
+    ],
+    "materialTags": [
+      "charcoal",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -1,
+      "warmCool": -0.13,
+      "softStructured": -0.09,
+      "organicIndustrial": 0.22,
+      "lightDark": -0.38,
+      "neutralSaturated": 0.48,
+      "sparseLayered": 0.48
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Minimalism",
+    "yearRange": "2000-2010"
+  },
+  {
+    "skuId": "art-148",
+    "title": "Mute Object",
+    "brand": "Château Shatto",
+    "merchant": "Château Shatto",
+    "price": 25398.54,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-148/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-148",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-148",
+    "category": "print",
+    "tags": [
+      "artDeco",
+      "japandi"
+    ],
+    "materialTags": [
+      "graphite",
+      "paper"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.87,
+      "warmCool": -0.75,
+      "softStructured": 0.56,
+      "organicIndustrial": -0.46,
+      "lightDark": 0.77,
+      "neutralSaturated": 0.54,
+      "sparseLayered": -0.94
+    },
+    "discoveryClusters": [
+      "postMonochrome"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "Post-Internet",
+    "yearRange": "1960-1975"
+  },
+  {
+    "skuId": "art-149",
+    "title": "Dark Pastoral",
+    "brand": "Night Gallery",
+    "merchant": "Night Gallery",
+    "price": 13650.02,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-149/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-149",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-149",
+    "category": "painting",
+    "tags": [
+      "rustic"
+    ],
+    "materialTags": [
+      "pigment",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": 0.02,
+      "warmCool": -0.89,
+      "softStructured": 0.72,
+      "organicIndustrial": -0.67,
+      "lightDark": -0.69,
+      "neutralSaturated": 0.55,
+      "sparseLayered": 0.79
+    },
+    "discoveryClusters": [
+      "conceptualArchive"
+    ],
+    "rarityTier": "contemporary",
+    "movementCluster": "New Topographics",
+    "yearRange": "2020-2024"
+  },
+  {
+    "skuId": "art-150",
+    "title": "Untitled (Black Veil)",
+    "brand": "White Cube",
+    "merchant": "White Cube",
+    "price": 191649.81,
+    "currency": "USD",
+    "imageURL": "https://picsum.photos/seed/art-150/400/300",
+    "productURL": "https://cdn.burgundy.app/products/art-150",
+    "affiliateURL": "https://cdn.burgundy.app/affiliate/art-150",
+    "category": "painting",
+    "tags": [
+      "bohemian"
+    ],
+    "materialTags": [
+      "oil",
+      "canvas"
+    ],
+    "axisWeights": {
+      "minimalOrnate": -0.06,
+      "warmCool": -0.23,
+      "softStructured": -0.7,
+      "organicIndustrial": 0.86,
+      "lightDark": 0.71,
+      "neutralSaturated": 0.11,
+      "sparseLayered": 0.83
+    },
+    "discoveryClusters": [
+      "brutalGesture"
+    ],
+    "rarityTier": "archive",
+    "movementCluster": "Abstract Expressionism",
+    "yearRange": "1980-1990"
+  }
+]

@@ -15,7 +15,8 @@
       "neutralSaturated": -0.38,
       "sparseLayered": 0.15
     },
-    "rarityScore": 0.61
+    "rarityScore": 0.61,
+    "imageURL": "https://picsum.photos/seed/disc-001/800/600"
   },
   {
     "id": "disc-002",
@@ -33,7 +34,8 @@
       "neutralSaturated": -0.38,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-002/800/600"
   },
   {
     "id": "disc-003",
@@ -51,7 +53,8 @@
       "neutralSaturated": -0.41,
       "sparseLayered": 0.33
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-003/800/600"
   },
   {
     "id": "disc-004",
@@ -69,7 +72,8 @@
       "neutralSaturated": -0.42,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.86
+    "rarityScore": 0.86,
+    "imageURL": "https://picsum.photos/seed/disc-004/800/600"
   },
   {
     "id": "disc-005",
@@ -87,7 +91,8 @@
       "neutralSaturated": -0.42,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-005/800/600"
   },
   {
     "id": "disc-006",
@@ -105,7 +110,8 @@
       "neutralSaturated": -0.32,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-006/800/600"
   },
   {
     "id": "disc-007",
@@ -123,7 +129,8 @@
       "neutralSaturated": -0.43,
       "sparseLayered": 0.35
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-007/800/600"
   },
   {
     "id": "disc-008",
@@ -141,7 +148,8 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.11
     },
-    "rarityScore": 0.74
+    "rarityScore": 0.74,
+    "imageURL": "https://picsum.photos/seed/disc-008/800/600"
   },
   {
     "id": "disc-009",
@@ -159,7 +167,8 @@
       "neutralSaturated": -0.21,
       "sparseLayered": 0.19
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-009/800/600"
   },
   {
     "id": "disc-010",
@@ -177,7 +186,8 @@
       "neutralSaturated": -0.4,
       "sparseLayered": 0.14
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-010/800/600"
   },
   {
     "id": "disc-011",
@@ -195,7 +205,8 @@
       "neutralSaturated": -0.27,
       "sparseLayered": 0.2
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-011/800/600"
   },
   {
     "id": "disc-012",
@@ -213,7 +224,8 @@
       "neutralSaturated": -0.27,
       "sparseLayered": 0.25
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-012/800/600"
   },
   {
     "id": "disc-013",
@@ -231,7 +243,8 @@
       "neutralSaturated": -0.26,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-013/800/600"
   },
   {
     "id": "disc-014",
@@ -249,7 +262,8 @@
       "neutralSaturated": -0.38,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.33
+    "rarityScore": 0.33,
+    "imageURL": "https://picsum.photos/seed/disc-014/800/600"
   },
   {
     "id": "disc-015",
@@ -267,7 +281,8 @@
       "neutralSaturated": -0.31,
       "sparseLayered": 0.35
     },
-    "rarityScore": 0.75
+    "rarityScore": 0.75,
+    "imageURL": "https://picsum.photos/seed/disc-015/800/600"
   },
   {
     "id": "disc-016",
@@ -285,7 +300,8 @@
       "neutralSaturated": -0.19,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.78
+    "rarityScore": 0.78,
+    "imageURL": "https://picsum.photos/seed/disc-016/800/600"
   },
   {
     "id": "disc-017",
@@ -303,7 +319,8 @@
       "neutralSaturated": -0.15,
       "sparseLayered": 0.25
     },
-    "rarityScore": 0.59
+    "rarityScore": 0.59,
+    "imageURL": "https://picsum.photos/seed/disc-017/800/600"
   },
   {
     "id": "disc-018",
@@ -321,7 +338,8 @@
       "neutralSaturated": -0.41,
       "sparseLayered": 0.08
     },
-    "rarityScore": 0.47
+    "rarityScore": 0.47,
+    "imageURL": "https://picsum.photos/seed/disc-018/800/600"
   },
   {
     "id": "disc-019",
@@ -339,7 +357,8 @@
       "neutralSaturated": -0.39,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.75
+    "rarityScore": 0.75,
+    "imageURL": "https://picsum.photos/seed/disc-019/800/600"
   },
   {
     "id": "disc-020",
@@ -357,7 +376,8 @@
       "neutralSaturated": -0.32,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.94
+    "rarityScore": 0.94,
+    "imageURL": "https://picsum.photos/seed/disc-020/800/600"
   },
   {
     "id": "disc-021",
@@ -375,7 +395,8 @@
       "neutralSaturated": -0.28,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.61
+    "rarityScore": 0.61,
+    "imageURL": "https://picsum.photos/seed/disc-021/800/600"
   },
   {
     "id": "disc-022",
@@ -393,7 +414,8 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.22
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-022/800/600"
   },
   {
     "id": "disc-023",
@@ -411,7 +433,8 @@
       "neutralSaturated": -0.19,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-023/800/600"
   },
   {
     "id": "disc-024",
@@ -429,7 +452,8 @@
       "neutralSaturated": -0.33,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-024/800/600"
   },
   {
     "id": "disc-025",
@@ -447,7 +471,8 @@
       "neutralSaturated": -0.19,
       "sparseLayered": 0.06
     },
-    "rarityScore": 0.69
+    "rarityScore": 0.69,
+    "imageURL": "https://picsum.photos/seed/disc-025/800/600"
   },
   {
     "id": "disc-026",
@@ -465,7 +490,8 @@
       "neutralSaturated": -0.21,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-026/800/600"
   },
   {
     "id": "disc-027",
@@ -483,7 +509,8 @@
       "neutralSaturated": -0.21,
       "sparseLayered": 0.19
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-027/800/600"
   },
   {
     "id": "disc-028",
@@ -501,7 +528,8 @@
       "neutralSaturated": -0.35,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.75
+    "rarityScore": 0.75,
+    "imageURL": "https://picsum.photos/seed/disc-028/800/600"
   },
   {
     "id": "disc-029",
@@ -519,7 +547,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.33
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-029/800/600"
   },
   {
     "id": "disc-030",
@@ -537,7 +566,8 @@
       "neutralSaturated": -0.42,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-030/800/600"
   },
   {
     "id": "disc-031",
@@ -555,7 +585,8 @@
       "neutralSaturated": -0.28,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.95
+    "rarityScore": 0.95,
+    "imageURL": "https://picsum.photos/seed/disc-031/800/600"
   },
   {
     "id": "disc-032",
@@ -573,7 +604,8 @@
       "neutralSaturated": -0.23,
       "sparseLayered": 0.25
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-032/800/600"
   },
   {
     "id": "disc-033",
@@ -591,7 +623,8 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.27
     },
-    "rarityScore": 0.79
+    "rarityScore": 0.79,
+    "imageURL": "https://picsum.photos/seed/disc-033/800/600"
   },
   {
     "id": "disc-034",
@@ -609,7 +642,8 @@
       "neutralSaturated": -0.41,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-034/800/600"
   },
   {
     "id": "disc-035",
@@ -627,7 +661,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.05
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-035/800/600"
   },
   {
     "id": "disc-036",
@@ -645,7 +680,8 @@
       "neutralSaturated": -0.32,
       "sparseLayered": 0.11
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-036/800/600"
   },
   {
     "id": "disc-037",
@@ -663,7 +699,8 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-037/800/600"
   },
   {
     "id": "disc-038",
@@ -681,7 +718,8 @@
       "neutralSaturated": -0.39,
       "sparseLayered": 0.06
     },
-    "rarityScore": 0.7
+    "rarityScore": 0.7,
+    "imageURL": "https://picsum.photos/seed/disc-038/800/600"
   },
   {
     "id": "disc-039",
@@ -699,7 +737,8 @@
       "neutralSaturated": -0.26,
       "sparseLayered": 0.11
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-039/800/600"
   },
   {
     "id": "disc-040",
@@ -717,7 +756,8 @@
       "neutralSaturated": -0.22,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-040/800/600"
   },
   {
     "id": "disc-041",
@@ -735,7 +775,8 @@
       "neutralSaturated": -0.43,
       "sparseLayered": 0.12
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-041/800/600"
   },
   {
     "id": "disc-042",
@@ -753,7 +794,8 @@
       "neutralSaturated": -0.27,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.57
+    "rarityScore": 0.57,
+    "imageURL": "https://picsum.photos/seed/disc-042/800/600"
   },
   {
     "id": "disc-043",
@@ -771,7 +813,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-043/800/600"
   },
   {
     "id": "disc-044",
@@ -789,7 +832,8 @@
       "neutralSaturated": -0.22,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-044/800/600"
   },
   {
     "id": "disc-045",
@@ -807,7 +851,8 @@
       "neutralSaturated": -0.35,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-045/800/600"
   },
   {
     "id": "disc-046",
@@ -825,7 +870,8 @@
       "neutralSaturated": -0.33,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-046/800/600"
   },
   {
     "id": "disc-047",
@@ -843,7 +889,8 @@
       "neutralSaturated": -0.24,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.71
+    "rarityScore": 0.71,
+    "imageURL": "https://picsum.photos/seed/disc-047/800/600"
   },
   {
     "id": "disc-048",
@@ -861,7 +908,8 @@
       "neutralSaturated": -0.19,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-048/800/600"
   },
   {
     "id": "disc-049",
@@ -879,7 +927,8 @@
       "neutralSaturated": -0.38,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-049/800/600"
   },
   {
     "id": "disc-050",
@@ -897,7 +946,8 @@
       "neutralSaturated": -0.31,
       "sparseLayered": 0.09
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-050/800/600"
   },
   {
     "id": "disc-051",
@@ -915,7 +965,8 @@
       "neutralSaturated": -0.26,
       "sparseLayered": 0.09
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-051/800/600"
   },
   {
     "id": "disc-052",
@@ -933,7 +984,8 @@
       "neutralSaturated": -0.22,
       "sparseLayered": 0.16
     },
-    "rarityScore": 0.73
+    "rarityScore": 0.73,
+    "imageURL": "https://picsum.photos/seed/disc-052/800/600"
   },
   {
     "id": "disc-053",
@@ -951,7 +1003,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.35
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-053/800/600"
   },
   {
     "id": "disc-054",
@@ -969,7 +1022,8 @@
       "neutralSaturated": -0.17,
       "sparseLayered": 0.11
     },
-    "rarityScore": 0.43
+    "rarityScore": 0.43,
+    "imageURL": "https://picsum.photos/seed/disc-054/800/600"
   },
   {
     "id": "disc-055",
@@ -987,7 +1041,8 @@
       "neutralSaturated": -0.38,
       "sparseLayered": 0.26
     },
-    "rarityScore": 0.59
+    "rarityScore": 0.59,
+    "imageURL": "https://picsum.photos/seed/disc-055/800/600"
   },
   {
     "id": "disc-056",
@@ -1005,7 +1060,8 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.89
+    "rarityScore": 0.89,
+    "imageURL": "https://picsum.photos/seed/disc-056/800/600"
   },
   {
     "id": "disc-057",
@@ -1023,7 +1079,8 @@
       "neutralSaturated": -0.33,
       "sparseLayered": 0.26
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-057/800/600"
   },
   {
     "id": "disc-058",
@@ -1041,7 +1098,8 @@
       "neutralSaturated": -0.19,
       "sparseLayered": 0.23
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-058/800/600"
   },
   {
     "id": "disc-059",
@@ -1059,7 +1117,8 @@
       "neutralSaturated": -0.34,
       "sparseLayered": 0.2
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-059/800/600"
   },
   {
     "id": "disc-060",
@@ -1077,7 +1136,8 @@
       "neutralSaturated": -0.26,
       "sparseLayered": 0.3
     },
-    "rarityScore": 0.64
+    "rarityScore": 0.64,
+    "imageURL": "https://picsum.photos/seed/disc-060/800/600"
   },
   {
     "id": "disc-061",
@@ -1095,7 +1155,8 @@
       "neutralSaturated": -0.21,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.73
+    "rarityScore": 0.73,
+    "imageURL": "https://picsum.photos/seed/disc-061/800/600"
   },
   {
     "id": "disc-062",
@@ -1113,7 +1174,8 @@
       "neutralSaturated": -0.2,
       "sparseLayered": 0.08
     },
-    "rarityScore": 0.73
+    "rarityScore": 0.73,
+    "imageURL": "https://picsum.photos/seed/disc-062/800/600"
   },
   {
     "id": "disc-063",
@@ -1131,7 +1193,8 @@
       "neutralSaturated": -0.44,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.4
+    "rarityScore": 0.4,
+    "imageURL": "https://picsum.photos/seed/disc-063/800/600"
   },
   {
     "id": "disc-064",
@@ -1149,7 +1212,8 @@
       "neutralSaturated": -0.24,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-064/800/600"
   },
   {
     "id": "disc-065",
@@ -1167,7 +1231,8 @@
       "neutralSaturated": -0.22,
       "sparseLayered": 0.26
     },
-    "rarityScore": 0.97
+    "rarityScore": 0.97,
+    "imageURL": "https://picsum.photos/seed/disc-065/800/600"
   },
   {
     "id": "disc-066",
@@ -1185,7 +1250,8 @@
       "neutralSaturated": -0.24,
       "sparseLayered": 0.14
     },
-    "rarityScore": 0.32
+    "rarityScore": 0.32,
+    "imageURL": "https://picsum.photos/seed/disc-066/800/600"
   },
   {
     "id": "disc-067",
@@ -1203,7 +1269,8 @@
       "neutralSaturated": -0.35,
       "sparseLayered": 0.26
     },
-    "rarityScore": 0.99
+    "rarityScore": 0.99,
+    "imageURL": "https://picsum.photos/seed/disc-067/800/600"
   },
   {
     "id": "disc-068",
@@ -1221,7 +1288,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-068/800/600"
   },
   {
     "id": "disc-069",
@@ -1239,7 +1307,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-069/800/600"
   },
   {
     "id": "disc-070",
@@ -1257,7 +1326,8 @@
       "neutralSaturated": -0.29,
       "sparseLayered": 0.13
     },
-    "rarityScore": 0.63
+    "rarityScore": 0.63,
+    "imageURL": "https://picsum.photos/seed/disc-070/800/600"
   },
   {
     "id": "disc-071",
@@ -1275,7 +1345,8 @@
       "neutralSaturated": -0.3,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.46
+    "rarityScore": 0.46,
+    "imageURL": "https://picsum.photos/seed/disc-071/800/600"
   },
   {
     "id": "disc-072",
@@ -1293,7 +1364,8 @@
       "neutralSaturated": -0.17,
       "sparseLayered": 0.19
     },
-    "rarityScore": 0.56
+    "rarityScore": 0.56,
+    "imageURL": "https://picsum.photos/seed/disc-072/800/600"
   },
   {
     "id": "disc-073",
@@ -1311,7 +1383,8 @@
       "neutralSaturated": -0.41,
       "sparseLayered": 0.22
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-073/800/600"
   },
   {
     "id": "disc-074",
@@ -1329,7 +1402,8 @@
       "neutralSaturated": -0.21,
       "sparseLayered": 0.12
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-074/800/600"
   },
   {
     "id": "disc-075",
@@ -1347,7 +1421,8 @@
       "neutralSaturated": -0.36,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-075/800/600"
   },
   {
     "id": "disc-076",
@@ -1365,7 +1440,8 @@
       "neutralSaturated": 0.21,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.79
+    "rarityScore": 0.79,
+    "imageURL": "https://picsum.photos/seed/disc-076/800/600"
   },
   {
     "id": "disc-077",
@@ -1383,7 +1459,8 @@
       "neutralSaturated": -0.0,
       "sparseLayered": 0.29
     },
-    "rarityScore": 0.88
+    "rarityScore": 0.88,
+    "imageURL": "https://picsum.photos/seed/disc-077/800/600"
   },
   {
     "id": "disc-078",
@@ -1401,7 +1478,8 @@
       "neutralSaturated": 0.21,
       "sparseLayered": 0.41
     },
-    "rarityScore": 0.5
+    "rarityScore": 0.5,
+    "imageURL": "https://picsum.photos/seed/disc-078/800/600"
   },
   {
     "id": "disc-079",
@@ -1419,7 +1497,8 @@
       "neutralSaturated": -0.04,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-079/800/600"
   },
   {
     "id": "disc-080",
@@ -1437,7 +1516,8 @@
       "neutralSaturated": -0.02,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.3
+    "rarityScore": 0.3,
+    "imageURL": "https://picsum.photos/seed/disc-080/800/600"
   },
   {
     "id": "disc-081",
@@ -1455,7 +1535,8 @@
       "neutralSaturated": 0.19,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-081/800/600"
   },
   {
     "id": "disc-082",
@@ -1473,7 +1554,8 @@
       "neutralSaturated": 0.0,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-082/800/600"
   },
   {
     "id": "disc-083",
@@ -1491,7 +1573,8 @@
       "neutralSaturated": 0.09,
       "sparseLayered": 0.23
     },
-    "rarityScore": 0.78
+    "rarityScore": 0.78,
+    "imageURL": "https://picsum.photos/seed/disc-083/800/600"
   },
   {
     "id": "disc-084",
@@ -1509,7 +1592,8 @@
       "neutralSaturated": -0.0,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-084/800/600"
   },
   {
     "id": "disc-085",
@@ -1527,7 +1611,8 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.97
+    "rarityScore": 0.97,
+    "imageURL": "https://picsum.photos/seed/disc-085/800/600"
   },
   {
     "id": "disc-086",
@@ -1545,7 +1630,8 @@
       "neutralSaturated": 0.25,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-086/800/600"
   },
   {
     "id": "disc-087",
@@ -1563,7 +1649,8 @@
       "neutralSaturated": 0.17,
       "sparseLayered": 0.16
     },
-    "rarityScore": 0.91
+    "rarityScore": 0.91,
+    "imageURL": "https://picsum.photos/seed/disc-087/800/600"
   },
   {
     "id": "disc-088",
@@ -1581,7 +1668,8 @@
       "neutralSaturated": 0.13,
       "sparseLayered": 0.26
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-088/800/600"
   },
   {
     "id": "disc-089",
@@ -1599,7 +1687,8 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.97
+    "rarityScore": 0.97,
+    "imageURL": "https://picsum.photos/seed/disc-089/800/600"
   },
   {
     "id": "disc-090",
@@ -1617,7 +1706,8 @@
       "neutralSaturated": 0.17,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-090/800/600"
   },
   {
     "id": "disc-091",
@@ -1635,7 +1725,8 @@
       "neutralSaturated": 0.24,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-091/800/600"
   },
   {
     "id": "disc-092",
@@ -1653,7 +1744,8 @@
       "neutralSaturated": 0.19,
       "sparseLayered": 0.37
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-092/800/600"
   },
   {
     "id": "disc-093",
@@ -1671,7 +1763,8 @@
       "neutralSaturated": 0.21,
       "sparseLayered": 0.37
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-093/800/600"
   },
   {
     "id": "disc-094",
@@ -1689,7 +1782,8 @@
       "neutralSaturated": -0.05,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.84
+    "rarityScore": 0.84,
+    "imageURL": "https://picsum.photos/seed/disc-094/800/600"
   },
   {
     "id": "disc-095",
@@ -1707,7 +1801,8 @@
       "neutralSaturated": 0.23,
       "sparseLayered": 0.18
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-095/800/600"
   },
   {
     "id": "disc-096",
@@ -1725,7 +1820,8 @@
       "neutralSaturated": 0.02,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-096/800/600"
   },
   {
     "id": "disc-097",
@@ -1743,7 +1839,8 @@
       "neutralSaturated": 0.23,
       "sparseLayered": 0.24
     },
-    "rarityScore": 0.4
+    "rarityScore": 0.4,
+    "imageURL": "https://picsum.photos/seed/disc-097/800/600"
   },
   {
     "id": "disc-098",
@@ -1761,7 +1858,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.37
     },
-    "rarityScore": 0.33
+    "rarityScore": 0.33,
+    "imageURL": "https://picsum.photos/seed/disc-098/800/600"
   },
   {
     "id": "disc-099",
@@ -1779,7 +1877,8 @@
       "neutralSaturated": -0.02,
       "sparseLayered": 0.3
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-099/800/600"
   },
   {
     "id": "disc-100",
@@ -1797,7 +1896,8 @@
       "neutralSaturated": 0.24,
       "sparseLayered": 0.41
     },
-    "rarityScore": 0.59
+    "rarityScore": 0.59,
+    "imageURL": "https://picsum.photos/seed/disc-100/800/600"
   },
   {
     "id": "disc-101",
@@ -1815,7 +1915,8 @@
       "neutralSaturated": 0.07,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.95
+    "rarityScore": 0.95,
+    "imageURL": "https://picsum.photos/seed/disc-101/800/600"
   },
   {
     "id": "disc-102",
@@ -1833,7 +1934,8 @@
       "neutralSaturated": 0.13,
       "sparseLayered": 0.16
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-102/800/600"
   },
   {
     "id": "disc-103",
@@ -1851,7 +1953,8 @@
       "neutralSaturated": 0.18,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.72
+    "rarityScore": 0.72,
+    "imageURL": "https://picsum.photos/seed/disc-103/800/600"
   },
   {
     "id": "disc-104",
@@ -1869,7 +1972,8 @@
       "neutralSaturated": -0.05,
       "sparseLayered": 0.41
     },
-    "rarityScore": 0.83
+    "rarityScore": 0.83,
+    "imageURL": "https://picsum.photos/seed/disc-104/800/600"
   },
   {
     "id": "disc-105",
@@ -1887,7 +1991,8 @@
       "neutralSaturated": -0.04,
       "sparseLayered": 0.15
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-105/800/600"
   },
   {
     "id": "disc-106",
@@ -1905,7 +2010,8 @@
       "neutralSaturated": 0.17,
       "sparseLayered": 0.31
     },
-    "rarityScore": 0.72
+    "rarityScore": 0.72,
+    "imageURL": "https://picsum.photos/seed/disc-106/800/600"
   },
   {
     "id": "disc-107",
@@ -1923,7 +2029,8 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.43
     },
-    "rarityScore": 0.4
+    "rarityScore": 0.4,
+    "imageURL": "https://picsum.photos/seed/disc-107/800/600"
   },
   {
     "id": "disc-108",
@@ -1941,7 +2048,8 @@
       "neutralSaturated": 0.24,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.5
+    "rarityScore": 0.5,
+    "imageURL": "https://picsum.photos/seed/disc-108/800/600"
   },
   {
     "id": "disc-109",
@@ -1959,7 +2067,8 @@
       "neutralSaturated": -0.03,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-109/800/600"
   },
   {
     "id": "disc-110",
@@ -1977,7 +2086,8 @@
       "neutralSaturated": 0.05,
       "sparseLayered": 0.45
     },
-    "rarityScore": 0.67
+    "rarityScore": 0.67,
+    "imageURL": "https://picsum.photos/seed/disc-110/800/600"
   },
   {
     "id": "disc-111",
@@ -1995,7 +2105,8 @@
       "neutralSaturated": 0.21,
       "sparseLayered": 0.35
     },
-    "rarityScore": 0.97
+    "rarityScore": 0.97,
+    "imageURL": "https://picsum.photos/seed/disc-111/800/600"
   },
   {
     "id": "disc-112",
@@ -2013,7 +2124,8 @@
       "neutralSaturated": 0.05,
       "sparseLayered": 0.29
     },
-    "rarityScore": 0.44
+    "rarityScore": 0.44,
+    "imageURL": "https://picsum.photos/seed/disc-112/800/600"
   },
   {
     "id": "disc-113",
@@ -2031,7 +2143,8 @@
       "neutralSaturated": -0.0,
       "sparseLayered": 0.43
     },
-    "rarityScore": 0.4
+    "rarityScore": 0.4,
+    "imageURL": "https://picsum.photos/seed/disc-113/800/600"
   },
   {
     "id": "disc-114",
@@ -2049,7 +2162,8 @@
       "neutralSaturated": 0.19,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.91
+    "rarityScore": 0.91,
+    "imageURL": "https://picsum.photos/seed/disc-114/800/600"
   },
   {
     "id": "disc-115",
@@ -2067,7 +2181,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.38
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-115/800/600"
   },
   {
     "id": "disc-116",
@@ -2085,7 +2200,8 @@
       "neutralSaturated": 0.12,
       "sparseLayered": 0.21
     },
-    "rarityScore": 0.74
+    "rarityScore": 0.74,
+    "imageURL": "https://picsum.photos/seed/disc-116/800/600"
   },
   {
     "id": "disc-117",
@@ -2103,7 +2219,8 @@
       "neutralSaturated": 0.18,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-117/800/600"
   },
   {
     "id": "disc-118",
@@ -2121,7 +2238,8 @@
       "neutralSaturated": 0.14,
       "sparseLayered": 0.16
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-118/800/600"
   },
   {
     "id": "disc-119",
@@ -2139,7 +2257,8 @@
       "neutralSaturated": 0.04,
       "sparseLayered": 0.25
     },
-    "rarityScore": 0.79
+    "rarityScore": 0.79,
+    "imageURL": "https://picsum.photos/seed/disc-119/800/600"
   },
   {
     "id": "disc-120",
@@ -2157,7 +2276,8 @@
       "neutralSaturated": 0.14,
       "sparseLayered": 0.16
     },
-    "rarityScore": 0.46
+    "rarityScore": 0.46,
+    "imageURL": "https://picsum.photos/seed/disc-120/800/600"
   },
   {
     "id": "disc-121",
@@ -2175,7 +2295,8 @@
       "neutralSaturated": 0.17,
       "sparseLayered": 0.38
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-121/800/600"
   },
   {
     "id": "disc-122",
@@ -2193,7 +2314,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.23
     },
-    "rarityScore": 0.63
+    "rarityScore": 0.63,
+    "imageURL": "https://picsum.photos/seed/disc-122/800/600"
   },
   {
     "id": "disc-123",
@@ -2211,7 +2333,8 @@
       "neutralSaturated": -0.02,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.94
+    "rarityScore": 0.94,
+    "imageURL": "https://picsum.photos/seed/disc-123/800/600"
   },
   {
     "id": "disc-124",
@@ -2229,7 +2352,8 @@
       "neutralSaturated": 0.07,
       "sparseLayered": 0.33
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-124/800/600"
   },
   {
     "id": "disc-125",
@@ -2247,7 +2371,8 @@
       "neutralSaturated": 0.05,
       "sparseLayered": 0.15
     },
-    "rarityScore": 0.47
+    "rarityScore": 0.47,
+    "imageURL": "https://picsum.photos/seed/disc-125/800/600"
   },
   {
     "id": "disc-126",
@@ -2265,7 +2390,8 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.39
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-126/800/600"
   },
   {
     "id": "disc-127",
@@ -2283,7 +2409,8 @@
       "neutralSaturated": 0.21,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-127/800/600"
   },
   {
     "id": "disc-128",
@@ -2301,7 +2428,8 @@
       "neutralSaturated": 0.05,
       "sparseLayered": 0.39
     },
-    "rarityScore": 0.55
+    "rarityScore": 0.55,
+    "imageURL": "https://picsum.photos/seed/disc-128/800/600"
   },
   {
     "id": "disc-129",
@@ -2319,7 +2447,8 @@
       "neutralSaturated": 0.02,
       "sparseLayered": 0.33
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-129/800/600"
   },
   {
     "id": "disc-130",
@@ -2337,7 +2466,8 @@
       "neutralSaturated": 0.0,
       "sparseLayered": 0.3
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-130/800/600"
   },
   {
     "id": "disc-131",
@@ -2355,7 +2485,8 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.39
     },
-    "rarityScore": 0.85
+    "rarityScore": 0.85,
+    "imageURL": "https://picsum.photos/seed/disc-131/800/600"
   },
   {
     "id": "disc-132",
@@ -2373,7 +2504,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.2
     },
-    "rarityScore": 0.47
+    "rarityScore": 0.47,
+    "imageURL": "https://picsum.photos/seed/disc-132/800/600"
   },
   {
     "id": "disc-133",
@@ -2391,7 +2523,8 @@
       "neutralSaturated": 0.23,
       "sparseLayered": 0.32
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-133/800/600"
   },
   {
     "id": "disc-134",
@@ -2409,7 +2542,8 @@
       "neutralSaturated": -0.03,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.56
+    "rarityScore": 0.56,
+    "imageURL": "https://picsum.photos/seed/disc-134/800/600"
   },
   {
     "id": "disc-135",
@@ -2427,7 +2561,8 @@
       "neutralSaturated": 0.09,
       "sparseLayered": 0.17
     },
-    "rarityScore": 0.89
+    "rarityScore": 0.89,
+    "imageURL": "https://picsum.photos/seed/disc-135/800/600"
   },
   {
     "id": "disc-136",
@@ -2445,7 +2580,8 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.29
     },
-    "rarityScore": 0.7
+    "rarityScore": 0.7,
+    "imageURL": "https://picsum.photos/seed/disc-136/800/600"
   },
   {
     "id": "disc-137",
@@ -2463,7 +2599,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.25
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-137/800/600"
   },
   {
     "id": "disc-138",
@@ -2481,7 +2618,8 @@
       "neutralSaturated": 0.05,
       "sparseLayered": 0.36
     },
-    "rarityScore": 0.67
+    "rarityScore": 0.67,
+    "imageURL": "https://picsum.photos/seed/disc-138/800/600"
   },
   {
     "id": "disc-139",
@@ -2499,7 +2637,8 @@
       "neutralSaturated": 0.11,
       "sparseLayered": 0.2
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-139/800/600"
   },
   {
     "id": "disc-140",
@@ -2517,7 +2656,8 @@
       "neutralSaturated": 0.19,
       "sparseLayered": 0.34
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-140/800/600"
   },
   {
     "id": "disc-141",
@@ -2535,7 +2675,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.42
     },
-    "rarityScore": 0.46
+    "rarityScore": 0.46,
+    "imageURL": "https://picsum.photos/seed/disc-141/800/600"
   },
   {
     "id": "disc-142",
@@ -2553,7 +2694,8 @@
       "neutralSaturated": 0.24,
       "sparseLayered": 0.36
     },
-    "rarityScore": 0.47
+    "rarityScore": 0.47,
+    "imageURL": "https://picsum.photos/seed/disc-142/800/600"
   },
   {
     "id": "disc-143",
@@ -2571,7 +2713,8 @@
       "neutralSaturated": 0.19,
       "sparseLayered": 0.39
     },
-    "rarityScore": 0.44
+    "rarityScore": 0.44,
+    "imageURL": "https://picsum.photos/seed/disc-143/800/600"
   },
   {
     "id": "disc-144",
@@ -2589,7 +2732,8 @@
       "neutralSaturated": 0.14,
       "sparseLayered": 0.28
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-144/800/600"
   },
   {
     "id": "disc-145",
@@ -2607,7 +2751,8 @@
       "neutralSaturated": 0.1,
       "sparseLayered": 0.22
     },
-    "rarityScore": 0.74
+    "rarityScore": 0.74,
+    "imageURL": "https://picsum.photos/seed/disc-145/800/600"
   },
   {
     "id": "disc-146",
@@ -2625,7 +2770,8 @@
       "neutralSaturated": 0.2,
       "sparseLayered": 0.42
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-146/800/600"
   },
   {
     "id": "disc-147",
@@ -2643,7 +2789,8 @@
       "neutralSaturated": -0.0,
       "sparseLayered": 0.4
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-147/800/600"
   },
   {
     "id": "disc-148",
@@ -2661,7 +2808,8 @@
       "neutralSaturated": 0.15,
       "sparseLayered": 0.22
     },
-    "rarityScore": 0.8
+    "rarityScore": 0.8,
+    "imageURL": "https://picsum.photos/seed/disc-148/800/600"
   },
   {
     "id": "disc-149",
@@ -2679,7 +2827,8 @@
       "neutralSaturated": 0.04,
       "sparseLayered": 0.39
     },
-    "rarityScore": 0.5
+    "rarityScore": 0.5,
+    "imageURL": "https://picsum.photos/seed/disc-149/800/600"
   },
   {
     "id": "disc-150",
@@ -2697,7 +2846,8 @@
       "neutralSaturated": 0.09,
       "sparseLayered": 0.23
     },
-    "rarityScore": 0.85
+    "rarityScore": 0.85,
+    "imageURL": "https://picsum.photos/seed/disc-150/800/600"
   },
   {
     "id": "disc-151",
@@ -2715,7 +2865,8 @@
       "softStructured": 0.06,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.46
+    "rarityScore": 0.46,
+    "imageURL": "https://picsum.photos/seed/disc-151/800/600"
   },
   {
     "id": "disc-152",
@@ -2733,7 +2884,8 @@
       "softStructured": 0.25,
       "organicIndustrial": 0.13
     },
-    "rarityScore": 0.97
+    "rarityScore": 0.97,
+    "imageURL": "https://picsum.photos/seed/disc-152/800/600"
   },
   {
     "id": "disc-153",
@@ -2751,7 +2903,8 @@
       "softStructured": 0.24,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.63
+    "rarityScore": 0.63,
+    "imageURL": "https://picsum.photos/seed/disc-153/800/600"
   },
   {
     "id": "disc-154",
@@ -2769,7 +2922,8 @@
       "softStructured": 0.13,
       "organicIndustrial": -0.07
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-154/800/600"
   },
   {
     "id": "disc-155",
@@ -2787,7 +2941,8 @@
       "softStructured": 0.09,
       "organicIndustrial": 0.11
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-155/800/600"
   },
   {
     "id": "disc-156",
@@ -2805,7 +2960,8 @@
       "softStructured": 0.3,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.55
+    "rarityScore": 0.55,
+    "imageURL": "https://picsum.photos/seed/disc-156/800/600"
   },
   {
     "id": "disc-157",
@@ -2823,7 +2979,8 @@
       "softStructured": 0.26,
       "organicIndustrial": 0.13
     },
-    "rarityScore": 0.89
+    "rarityScore": 0.89,
+    "imageURL": "https://picsum.photos/seed/disc-157/800/600"
   },
   {
     "id": "disc-158",
@@ -2841,7 +2998,8 @@
       "softStructured": 0.09,
       "organicIndustrial": 0.09
     },
-    "rarityScore": 0.67
+    "rarityScore": 0.67,
+    "imageURL": "https://picsum.photos/seed/disc-158/800/600"
   },
   {
     "id": "disc-159",
@@ -2859,7 +3017,8 @@
       "softStructured": 0.23,
       "organicIndustrial": -0.12
     },
-    "rarityScore": 0.87
+    "rarityScore": 0.87,
+    "imageURL": "https://picsum.photos/seed/disc-159/800/600"
   },
   {
     "id": "disc-160",
@@ -2877,7 +3036,8 @@
       "softStructured": 0.3,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-160/800/600"
   },
   {
     "id": "disc-161",
@@ -2895,7 +3055,8 @@
       "softStructured": 0.31,
       "organicIndustrial": 0.08
     },
-    "rarityScore": 0.44
+    "rarityScore": 0.44,
+    "imageURL": "https://picsum.photos/seed/disc-161/800/600"
   },
   {
     "id": "disc-162",
@@ -2913,7 +3074,8 @@
       "softStructured": 0.07,
       "organicIndustrial": -0.11
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-162/800/600"
   },
   {
     "id": "disc-163",
@@ -2931,7 +3093,8 @@
       "softStructured": 0.33,
       "organicIndustrial": 0.12
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-163/800/600"
   },
   {
     "id": "disc-164",
@@ -2949,7 +3112,8 @@
       "softStructured": 0.14,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-164/800/600"
   },
   {
     "id": "disc-165",
@@ -2967,7 +3131,8 @@
       "softStructured": 0.27,
       "organicIndustrial": 0.03
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-165/800/600"
   },
   {
     "id": "disc-166",
@@ -2985,7 +3150,8 @@
       "softStructured": 0.24,
       "organicIndustrial": 0.02
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-166/800/600"
   },
   {
     "id": "disc-167",
@@ -3003,7 +3169,8 @@
       "softStructured": 0.24,
       "organicIndustrial": -0.06
     },
-    "rarityScore": 0.8
+    "rarityScore": 0.8,
+    "imageURL": "https://picsum.photos/seed/disc-167/800/600"
   },
   {
     "id": "disc-168",
@@ -3021,7 +3188,8 @@
       "softStructured": 0.07,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-168/800/600"
   },
   {
     "id": "disc-169",
@@ -3039,7 +3207,8 @@
       "softStructured": 0.27,
       "organicIndustrial": 0.07
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-169/800/600"
   },
   {
     "id": "disc-170",
@@ -3057,7 +3226,8 @@
       "softStructured": 0.15,
       "organicIndustrial": -0.01
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-170/800/600"
   },
   {
     "id": "disc-171",
@@ -3075,7 +3245,8 @@
       "softStructured": 0.23,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.3
+    "rarityScore": 0.3,
+    "imageURL": "https://picsum.photos/seed/disc-171/800/600"
   },
   {
     "id": "disc-172",
@@ -3093,7 +3264,8 @@
       "softStructured": 0.28,
       "organicIndustrial": -0.0
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-172/800/600"
   },
   {
     "id": "disc-173",
@@ -3111,7 +3283,8 @@
       "softStructured": 0.2,
       "organicIndustrial": 0.14
     },
-    "rarityScore": 0.74
+    "rarityScore": 0.74,
+    "imageURL": "https://picsum.photos/seed/disc-173/800/600"
   },
   {
     "id": "disc-174",
@@ -3129,7 +3302,8 @@
       "softStructured": 0.25,
       "organicIndustrial": -0.01
     },
-    "rarityScore": 0.73
+    "rarityScore": 0.73,
+    "imageURL": "https://picsum.photos/seed/disc-174/800/600"
   },
   {
     "id": "disc-175",
@@ -3147,7 +3321,8 @@
       "softStructured": 0.28,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-175/800/600"
   },
   {
     "id": "disc-176",
@@ -3165,7 +3340,8 @@
       "softStructured": 0.2,
       "organicIndustrial": 0.08
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-176/800/600"
   },
   {
     "id": "disc-177",
@@ -3183,7 +3359,8 @@
       "softStructured": 0.17,
       "organicIndustrial": 0.09
     },
-    "rarityScore": 0.54
+    "rarityScore": 0.54,
+    "imageURL": "https://picsum.photos/seed/disc-177/800/600"
   },
   {
     "id": "disc-178",
@@ -3201,7 +3378,8 @@
       "softStructured": 0.2,
       "organicIndustrial": -0.14
     },
-    "rarityScore": 0.33
+    "rarityScore": 0.33,
+    "imageURL": "https://picsum.photos/seed/disc-178/800/600"
   },
   {
     "id": "disc-179",
@@ -3219,7 +3397,8 @@
       "softStructured": 0.2,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.94
+    "rarityScore": 0.94,
+    "imageURL": "https://picsum.photos/seed/disc-179/800/600"
   },
   {
     "id": "disc-180",
@@ -3237,7 +3416,8 @@
       "softStructured": 0.15,
       "organicIndustrial": 0.1
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-180/800/600"
   },
   {
     "id": "disc-181",
@@ -3255,7 +3435,8 @@
       "softStructured": 0.25,
       "organicIndustrial": 0.14
     },
-    "rarityScore": 0.34
+    "rarityScore": 0.34,
+    "imageURL": "https://picsum.photos/seed/disc-181/800/600"
   },
   {
     "id": "disc-182",
@@ -3273,7 +3454,8 @@
       "softStructured": 0.19,
       "organicIndustrial": 0.14
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-182/800/600"
   },
   {
     "id": "disc-183",
@@ -3291,7 +3473,8 @@
       "softStructured": 0.1,
       "organicIndustrial": 0.04
     },
-    "rarityScore": 0.42
+    "rarityScore": 0.42,
+    "imageURL": "https://picsum.photos/seed/disc-183/800/600"
   },
   {
     "id": "disc-184",
@@ -3309,7 +3492,8 @@
       "softStructured": 0.33,
       "organicIndustrial": -0.12
     },
-    "rarityScore": 0.62
+    "rarityScore": 0.62,
+    "imageURL": "https://picsum.photos/seed/disc-184/800/600"
   },
   {
     "id": "disc-185",
@@ -3327,7 +3511,8 @@
       "softStructured": 0.28,
       "organicIndustrial": 0.13
     },
-    "rarityScore": 0.86
+    "rarityScore": 0.86,
+    "imageURL": "https://picsum.photos/seed/disc-185/800/600"
   },
   {
     "id": "disc-186",
@@ -3345,7 +3530,8 @@
       "softStructured": 0.15,
       "organicIndustrial": 0.05
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-186/800/600"
   },
   {
     "id": "disc-187",
@@ -3363,7 +3549,8 @@
       "softStructured": 0.16,
       "organicIndustrial": 0.08
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-187/800/600"
   },
   {
     "id": "disc-188",
@@ -3381,7 +3568,8 @@
       "softStructured": 0.12,
       "organicIndustrial": 0.02
     },
-    "rarityScore": 0.44
+    "rarityScore": 0.44,
+    "imageURL": "https://picsum.photos/seed/disc-188/800/600"
   },
   {
     "id": "disc-189",
@@ -3399,7 +3587,8 @@
       "softStructured": 0.26,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.85
+    "rarityScore": 0.85,
+    "imageURL": "https://picsum.photos/seed/disc-189/800/600"
   },
   {
     "id": "disc-190",
@@ -3417,7 +3606,8 @@
       "softStructured": 0.25,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.3
+    "rarityScore": 0.3,
+    "imageURL": "https://picsum.photos/seed/disc-190/800/600"
   },
   {
     "id": "disc-191",
@@ -3435,7 +3625,8 @@
       "softStructured": 0.14,
       "organicIndustrial": 0.06
     },
-    "rarityScore": 0.69
+    "rarityScore": 0.69,
+    "imageURL": "https://picsum.photos/seed/disc-191/800/600"
   },
   {
     "id": "disc-192",
@@ -3453,7 +3644,8 @@
       "softStructured": 0.21,
       "organicIndustrial": 0.13
     },
-    "rarityScore": 0.76
+    "rarityScore": 0.76,
+    "imageURL": "https://picsum.photos/seed/disc-192/800/600"
   },
   {
     "id": "disc-193",
@@ -3471,7 +3663,8 @@
       "softStructured": 0.25,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.78
+    "rarityScore": 0.78,
+    "imageURL": "https://picsum.photos/seed/disc-193/800/600"
   },
   {
     "id": "disc-194",
@@ -3489,7 +3682,8 @@
       "softStructured": 0.28,
       "organicIndustrial": -0.15
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-194/800/600"
   },
   {
     "id": "disc-195",
@@ -3507,7 +3701,8 @@
       "softStructured": 0.19,
       "organicIndustrial": -0.09
     },
-    "rarityScore": 0.54
+    "rarityScore": 0.54,
+    "imageURL": "https://picsum.photos/seed/disc-195/800/600"
   },
   {
     "id": "disc-196",
@@ -3525,7 +3720,8 @@
       "softStructured": 0.22,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-196/800/600"
   },
   {
     "id": "disc-197",
@@ -3543,7 +3739,8 @@
       "softStructured": 0.1,
       "organicIndustrial": 0.13
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-197/800/600"
   },
   {
     "id": "disc-198",
@@ -3561,7 +3758,8 @@
       "softStructured": 0.33,
       "organicIndustrial": 0.11
     },
-    "rarityScore": 0.8
+    "rarityScore": 0.8,
+    "imageURL": "https://picsum.photos/seed/disc-198/800/600"
   },
   {
     "id": "disc-199",
@@ -3579,7 +3777,8 @@
       "softStructured": 0.35,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-199/800/600"
   },
   {
     "id": "disc-200",
@@ -3597,7 +3796,8 @@
       "softStructured": 0.08,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.39
+    "rarityScore": 0.39,
+    "imageURL": "https://picsum.photos/seed/disc-200/800/600"
   },
   {
     "id": "disc-201",
@@ -3615,7 +3815,8 @@
       "softStructured": 0.22,
       "organicIndustrial": 0.08
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-201/800/600"
   },
   {
     "id": "disc-202",
@@ -3633,7 +3834,8 @@
       "softStructured": 0.08,
       "organicIndustrial": 0.05
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-202/800/600"
   },
   {
     "id": "disc-203",
@@ -3651,7 +3853,8 @@
       "softStructured": 0.12,
       "organicIndustrial": 0.08
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-203/800/600"
   },
   {
     "id": "disc-204",
@@ -3669,7 +3872,8 @@
       "softStructured": 0.26,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-204/800/600"
   },
   {
     "id": "disc-205",
@@ -3687,7 +3891,8 @@
       "softStructured": 0.26,
       "organicIndustrial": -0.06
     },
-    "rarityScore": 0.65
+    "rarityScore": 0.65,
+    "imageURL": "https://picsum.photos/seed/disc-205/800/600"
   },
   {
     "id": "disc-206",
@@ -3705,7 +3910,8 @@
       "softStructured": 0.09,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.53
+    "rarityScore": 0.53,
+    "imageURL": "https://picsum.photos/seed/disc-206/800/600"
   },
   {
     "id": "disc-207",
@@ -3723,7 +3929,8 @@
       "softStructured": 0.21,
       "organicIndustrial": 0.05
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-207/800/600"
   },
   {
     "id": "disc-208",
@@ -3741,7 +3948,8 @@
       "softStructured": 0.18,
       "organicIndustrial": 0.06
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-208/800/600"
   },
   {
     "id": "disc-209",
@@ -3759,7 +3967,8 @@
       "softStructured": 0.22,
       "organicIndustrial": -0.11
     },
-    "rarityScore": 0.96
+    "rarityScore": 0.96,
+    "imageURL": "https://picsum.photos/seed/disc-209/800/600"
   },
   {
     "id": "disc-210",
@@ -3777,7 +3986,8 @@
       "softStructured": 0.08,
       "organicIndustrial": 0.0
     },
-    "rarityScore": 0.91
+    "rarityScore": 0.91,
+    "imageURL": "https://picsum.photos/seed/disc-210/800/600"
   },
   {
     "id": "disc-211",
@@ -3795,7 +4005,8 @@
       "softStructured": 0.19,
       "organicIndustrial": 0.09
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-211/800/600"
   },
   {
     "id": "disc-212",
@@ -3813,7 +4024,8 @@
       "softStructured": 0.06,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.58
+    "rarityScore": 0.58,
+    "imageURL": "https://picsum.photos/seed/disc-212/800/600"
   },
   {
     "id": "disc-213",
@@ -3831,7 +4043,8 @@
       "softStructured": 0.06,
       "organicIndustrial": -0.03
     },
-    "rarityScore": 0.54
+    "rarityScore": 0.54,
+    "imageURL": "https://picsum.photos/seed/disc-213/800/600"
   },
   {
     "id": "disc-214",
@@ -3849,7 +4062,8 @@
       "softStructured": 0.35,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.62
+    "rarityScore": 0.62,
+    "imageURL": "https://picsum.photos/seed/disc-214/800/600"
   },
   {
     "id": "disc-215",
@@ -3867,7 +4081,8 @@
       "softStructured": 0.21,
       "organicIndustrial": 0.05
     },
-    "rarityScore": 0.81
+    "rarityScore": 0.81,
+    "imageURL": "https://picsum.photos/seed/disc-215/800/600"
   },
   {
     "id": "disc-216",
@@ -3885,7 +4100,8 @@
       "softStructured": 0.12,
       "organicIndustrial": -0.15
     },
-    "rarityScore": 0.4
+    "rarityScore": 0.4,
+    "imageURL": "https://picsum.photos/seed/disc-216/800/600"
   },
   {
     "id": "disc-217",
@@ -3903,7 +4119,8 @@
       "softStructured": 0.3,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.5
+    "rarityScore": 0.5,
+    "imageURL": "https://picsum.photos/seed/disc-217/800/600"
   },
   {
     "id": "disc-218",
@@ -3921,7 +4138,8 @@
       "softStructured": 0.29,
       "organicIndustrial": -0.02
     },
-    "rarityScore": 0.48
+    "rarityScore": 0.48,
+    "imageURL": "https://picsum.photos/seed/disc-218/800/600"
   },
   {
     "id": "disc-219",
@@ -3939,7 +4157,8 @@
       "softStructured": 0.06,
       "organicIndustrial": 0.03
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-219/800/600"
   },
   {
     "id": "disc-220",
@@ -3957,7 +4176,8 @@
       "softStructured": 0.12,
       "organicIndustrial": 0.11
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-220/800/600"
   },
   {
     "id": "disc-221",
@@ -3975,7 +4195,8 @@
       "softStructured": 0.15,
       "organicIndustrial": 0.03
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-221/800/600"
   },
   {
     "id": "disc-222",
@@ -3993,7 +4214,8 @@
       "softStructured": 0.12,
       "organicIndustrial": -0.06
     },
-    "rarityScore": 0.89
+    "rarityScore": 0.89,
+    "imageURL": "https://picsum.photos/seed/disc-222/800/600"
   },
   {
     "id": "disc-223",
@@ -4011,7 +4233,8 @@
       "softStructured": 0.18,
       "organicIndustrial": -0.0
     },
-    "rarityScore": 0.99
+    "rarityScore": 0.99,
+    "imageURL": "https://picsum.photos/seed/disc-223/800/600"
   },
   {
     "id": "disc-224",
@@ -4029,7 +4252,8 @@
       "softStructured": 0.17,
       "organicIndustrial": -0.11
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-224/800/600"
   },
   {
     "id": "disc-225",
@@ -4047,7 +4271,8 @@
       "softStructured": 0.26,
       "organicIndustrial": 0.09
     },
-    "rarityScore": 0.54
+    "rarityScore": 0.54,
+    "imageURL": "https://picsum.photos/seed/disc-225/800/600"
   },
   {
     "id": "disc-226",
@@ -4065,7 +4290,8 @@
       "softStructured": -0.33,
       "organicIndustrial": -0.2
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-226/800/600"
   },
   {
     "id": "disc-227",
@@ -4083,7 +4309,8 @@
       "softStructured": -0.12,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-227/800/600"
   },
   {
     "id": "disc-228",
@@ -4101,7 +4328,8 @@
       "softStructured": -0.22,
       "organicIndustrial": 0.0
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-228/800/600"
   },
   {
     "id": "disc-229",
@@ -4119,7 +4347,8 @@
       "softStructured": -0.34,
       "organicIndustrial": -0.17
     },
-    "rarityScore": 0.49
+    "rarityScore": 0.49,
+    "imageURL": "https://picsum.photos/seed/disc-229/800/600"
   },
   {
     "id": "disc-230",
@@ -4137,7 +4366,8 @@
       "softStructured": -0.15,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-230/800/600"
   },
   {
     "id": "disc-231",
@@ -4155,7 +4385,8 @@
       "softStructured": -0.3,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.52
+    "rarityScore": 0.52,
+    "imageURL": "https://picsum.photos/seed/disc-231/800/600"
   },
   {
     "id": "disc-232",
@@ -4173,7 +4404,8 @@
       "softStructured": -0.26,
       "organicIndustrial": -0.14
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-232/800/600"
   },
   {
     "id": "disc-233",
@@ -4191,7 +4423,8 @@
       "softStructured": -0.23,
       "organicIndustrial": -0.24
     },
-    "rarityScore": 0.75
+    "rarityScore": 0.75,
+    "imageURL": "https://picsum.photos/seed/disc-233/800/600"
   },
   {
     "id": "disc-234",
@@ -4209,7 +4442,8 @@
       "softStructured": -0.26,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.88
+    "rarityScore": 0.88,
+    "imageURL": "https://picsum.photos/seed/disc-234/800/600"
   },
   {
     "id": "disc-235",
@@ -4227,7 +4461,8 @@
       "softStructured": -0.3,
       "organicIndustrial": -0.14
     },
-    "rarityScore": 0.78
+    "rarityScore": 0.78,
+    "imageURL": "https://picsum.photos/seed/disc-235/800/600"
   },
   {
     "id": "disc-236",
@@ -4245,7 +4480,8 @@
       "softStructured": -0.22,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.44
+    "rarityScore": 0.44,
+    "imageURL": "https://picsum.photos/seed/disc-236/800/600"
   },
   {
     "id": "disc-237",
@@ -4263,7 +4499,8 @@
       "softStructured": -0.29,
       "organicIndustrial": -0.22
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-237/800/600"
   },
   {
     "id": "disc-238",
@@ -4281,7 +4518,8 @@
       "softStructured": -0.25,
       "organicIndustrial": -0.15
     },
-    "rarityScore": 0.85
+    "rarityScore": 0.85,
+    "imageURL": "https://picsum.photos/seed/disc-238/800/600"
   },
   {
     "id": "disc-239",
@@ -4299,7 +4537,8 @@
       "softStructured": -0.07,
       "organicIndustrial": -0.19
     },
-    "rarityScore": 0.99
+    "rarityScore": 0.99,
+    "imageURL": "https://picsum.photos/seed/disc-239/800/600"
   },
   {
     "id": "disc-240",
@@ -4317,7 +4556,8 @@
       "softStructured": -0.2,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-240/800/600"
   },
   {
     "id": "disc-241",
@@ -4335,7 +4575,8 @@
       "softStructured": -0.18,
       "organicIndustrial": -0.07
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-241/800/600"
   },
   {
     "id": "disc-242",
@@ -4353,7 +4594,8 @@
       "softStructured": -0.14,
       "organicIndustrial": -0.12
     },
-    "rarityScore": 0.65
+    "rarityScore": 0.65,
+    "imageURL": "https://picsum.photos/seed/disc-242/800/600"
   },
   {
     "id": "disc-243",
@@ -4371,7 +4613,8 @@
       "softStructured": -0.2,
       "organicIndustrial": -0.06
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-243/800/600"
   },
   {
     "id": "disc-244",
@@ -4389,7 +4632,8 @@
       "softStructured": -0.05,
       "organicIndustrial": -0.11
     },
-    "rarityScore": 0.7
+    "rarityScore": 0.7,
+    "imageURL": "https://picsum.photos/seed/disc-244/800/600"
   },
   {
     "id": "disc-245",
@@ -4407,7 +4651,8 @@
       "softStructured": -0.11,
       "organicIndustrial": -0.14
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-245/800/600"
   },
   {
     "id": "disc-246",
@@ -4425,7 +4670,8 @@
       "softStructured": -0.15,
       "organicIndustrial": -0.14
     },
-    "rarityScore": 0.45
+    "rarityScore": 0.45,
+    "imageURL": "https://picsum.photos/seed/disc-246/800/600"
   },
   {
     "id": "disc-247",
@@ -4443,7 +4689,8 @@
       "softStructured": -0.12,
       "organicIndustrial": 0.04
     },
-    "rarityScore": 0.33
+    "rarityScore": 0.33,
+    "imageURL": "https://picsum.photos/seed/disc-247/800/600"
   },
   {
     "id": "disc-248",
@@ -4461,7 +4708,8 @@
       "softStructured": -0.18,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-248/800/600"
   },
   {
     "id": "disc-249",
@@ -4479,7 +4727,8 @@
       "softStructured": -0.25,
       "organicIndustrial": -0.24
     },
-    "rarityScore": 0.83
+    "rarityScore": 0.83,
+    "imageURL": "https://picsum.photos/seed/disc-249/800/600"
   },
   {
     "id": "disc-250",
@@ -4497,7 +4746,8 @@
       "softStructured": -0.31,
       "organicIndustrial": -0.16
     },
-    "rarityScore": 0.42
+    "rarityScore": 0.42,
+    "imageURL": "https://picsum.photos/seed/disc-250/800/600"
   },
   {
     "id": "disc-251",
@@ -4515,7 +4765,8 @@
       "softStructured": -0.14,
       "organicIndustrial": -0.15
     },
-    "rarityScore": 0.37
+    "rarityScore": 0.37,
+    "imageURL": "https://picsum.photos/seed/disc-251/800/600"
   },
   {
     "id": "disc-252",
@@ -4533,7 +4784,8 @@
       "softStructured": -0.15,
       "organicIndustrial": -0.2
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-252/800/600"
   },
   {
     "id": "disc-253",
@@ -4551,7 +4803,8 @@
       "softStructured": -0.06,
       "organicIndustrial": -0.18
     },
-    "rarityScore": 0.94
+    "rarityScore": 0.94,
+    "imageURL": "https://picsum.photos/seed/disc-253/800/600"
   },
   {
     "id": "disc-254",
@@ -4569,7 +4822,8 @@
       "softStructured": -0.17,
       "organicIndustrial": -0.19
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-254/800/600"
   },
   {
     "id": "disc-255",
@@ -4587,7 +4841,8 @@
       "softStructured": -0.11,
       "organicIndustrial": -0.23
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-255/800/600"
   },
   {
     "id": "disc-256",
@@ -4605,7 +4860,8 @@
       "softStructured": -0.27,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.72
+    "rarityScore": 0.72,
+    "imageURL": "https://picsum.photos/seed/disc-256/800/600"
   },
   {
     "id": "disc-257",
@@ -4623,7 +4879,8 @@
       "softStructured": -0.25,
       "organicIndustrial": 0.0
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-257/800/600"
   },
   {
     "id": "disc-258",
@@ -4641,7 +4898,8 @@
       "softStructured": -0.32,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.55
+    "rarityScore": 0.55,
+    "imageURL": "https://picsum.photos/seed/disc-258/800/600"
   },
   {
     "id": "disc-259",
@@ -4659,7 +4917,8 @@
       "softStructured": -0.22,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.95
+    "rarityScore": 0.95,
+    "imageURL": "https://picsum.photos/seed/disc-259/800/600"
   },
   {
     "id": "disc-260",
@@ -4677,7 +4936,8 @@
       "softStructured": -0.05,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-260/800/600"
   },
   {
     "id": "disc-261",
@@ -4695,7 +4955,8 @@
       "softStructured": -0.24,
       "organicIndustrial": -0.25
     },
-    "rarityScore": 0.64
+    "rarityScore": 0.64,
+    "imageURL": "https://picsum.photos/seed/disc-261/800/600"
   },
   {
     "id": "disc-262",
@@ -4713,7 +4974,8 @@
       "softStructured": -0.14,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.72
+    "rarityScore": 0.72,
+    "imageURL": "https://picsum.photos/seed/disc-262/800/600"
   },
   {
     "id": "disc-263",
@@ -4731,7 +4993,8 @@
       "softStructured": -0.26,
       "organicIndustrial": -0.17
     },
-    "rarityScore": 0.93
+    "rarityScore": 0.93,
+    "imageURL": "https://picsum.photos/seed/disc-263/800/600"
   },
   {
     "id": "disc-264",
@@ -4749,7 +5012,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.22
     },
-    "rarityScore": 0.61
+    "rarityScore": 0.61,
+    "imageURL": "https://picsum.photos/seed/disc-264/800/600"
   },
   {
     "id": "disc-265",
@@ -4767,7 +5031,8 @@
       "softStructured": -0.34,
       "organicIndustrial": -0.03
     },
-    "rarityScore": 0.55
+    "rarityScore": 0.55,
+    "imageURL": "https://picsum.photos/seed/disc-265/800/600"
   },
   {
     "id": "disc-266",
@@ -4785,7 +5050,8 @@
       "softStructured": -0.26,
       "organicIndustrial": 0.05
     },
-    "rarityScore": 0.95
+    "rarityScore": 0.95,
+    "imageURL": "https://picsum.photos/seed/disc-266/800/600"
   },
   {
     "id": "disc-267",
@@ -4803,7 +5069,8 @@
       "softStructured": -0.12,
       "organicIndustrial": -0.18
     },
-    "rarityScore": 0.7
+    "rarityScore": 0.7,
+    "imageURL": "https://picsum.photos/seed/disc-267/800/600"
   },
   {
     "id": "disc-268",
@@ -4821,7 +5088,8 @@
       "softStructured": -0.3,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.66
+    "rarityScore": 0.66,
+    "imageURL": "https://picsum.photos/seed/disc-268/800/600"
   },
   {
     "id": "disc-269",
@@ -4839,7 +5107,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.15
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-269/800/600"
   },
   {
     "id": "disc-270",
@@ -4857,7 +5126,8 @@
       "softStructured": -0.15,
       "organicIndustrial": -0.22
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-270/800/600"
   },
   {
     "id": "disc-271",
@@ -4875,7 +5145,8 @@
       "softStructured": -0.31,
       "organicIndustrial": 0.01
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-271/800/600"
   },
   {
     "id": "disc-272",
@@ -4893,7 +5164,8 @@
       "softStructured": -0.2,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.72
+    "rarityScore": 0.72,
+    "imageURL": "https://picsum.photos/seed/disc-272/800/600"
   },
   {
     "id": "disc-273",
@@ -4911,7 +5183,8 @@
       "softStructured": -0.32,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.3
+    "rarityScore": 0.3,
+    "imageURL": "https://picsum.photos/seed/disc-273/800/600"
   },
   {
     "id": "disc-274",
@@ -4929,7 +5202,8 @@
       "softStructured": -0.35,
       "organicIndustrial": -0.02
     },
-    "rarityScore": 0.3
+    "rarityScore": 0.3,
+    "imageURL": "https://picsum.photos/seed/disc-274/800/600"
   },
   {
     "id": "disc-275",
@@ -4947,7 +5221,8 @@
       "softStructured": -0.33,
       "organicIndustrial": -0.09
     },
-    "rarityScore": 0.38
+    "rarityScore": 0.38,
+    "imageURL": "https://picsum.photos/seed/disc-275/800/600"
   },
   {
     "id": "disc-276",
@@ -4965,7 +5240,8 @@
       "softStructured": -0.25,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.85
+    "rarityScore": 0.85,
+    "imageURL": "https://picsum.photos/seed/disc-276/800/600"
   },
   {
     "id": "disc-277",
@@ -4983,7 +5259,8 @@
       "softStructured": -0.32,
       "organicIndustrial": -0.01
     },
-    "rarityScore": 0.77
+    "rarityScore": 0.77,
+    "imageURL": "https://picsum.photos/seed/disc-277/800/600"
   },
   {
     "id": "disc-278",
@@ -5001,7 +5278,8 @@
       "softStructured": -0.06,
       "organicIndustrial": -0.19
     },
-    "rarityScore": 0.83
+    "rarityScore": 0.83,
+    "imageURL": "https://picsum.photos/seed/disc-278/800/600"
   },
   {
     "id": "disc-279",
@@ -5019,7 +5297,8 @@
       "softStructured": -0.27,
       "organicIndustrial": -0.05
     },
-    "rarityScore": 0.33
+    "rarityScore": 0.33,
+    "imageURL": "https://picsum.photos/seed/disc-279/800/600"
   },
   {
     "id": "disc-280",
@@ -5037,7 +5316,8 @@
       "softStructured": -0.26,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.36
+    "rarityScore": 0.36,
+    "imageURL": "https://picsum.photos/seed/disc-280/800/600"
   },
   {
     "id": "disc-281",
@@ -5055,7 +5335,8 @@
       "softStructured": -0.31,
       "organicIndustrial": -0.18
     },
-    "rarityScore": 0.54
+    "rarityScore": 0.54,
+    "imageURL": "https://picsum.photos/seed/disc-281/800/600"
   },
   {
     "id": "disc-282",
@@ -5073,7 +5354,8 @@
       "softStructured": -0.22,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.42
+    "rarityScore": 0.42,
+    "imageURL": "https://picsum.photos/seed/disc-282/800/600"
   },
   {
     "id": "disc-283",
@@ -5091,7 +5373,8 @@
       "softStructured": -0.09,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.42
+    "rarityScore": 0.42,
+    "imageURL": "https://picsum.photos/seed/disc-283/800/600"
   },
   {
     "id": "disc-284",
@@ -5109,7 +5392,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.25
     },
-    "rarityScore": 0.6
+    "rarityScore": 0.6,
+    "imageURL": "https://picsum.photos/seed/disc-284/800/600"
   },
   {
     "id": "disc-285",
@@ -5127,7 +5411,8 @@
       "softStructured": -0.23,
       "organicIndustrial": -0.04
     },
-    "rarityScore": 0.51
+    "rarityScore": 0.51,
+    "imageURL": "https://picsum.photos/seed/disc-285/800/600"
   },
   {
     "id": "disc-286",
@@ -5145,7 +5430,8 @@
       "softStructured": -0.23,
       "organicIndustrial": 0.04
     },
-    "rarityScore": 0.76
+    "rarityScore": 0.76,
+    "imageURL": "https://picsum.photos/seed/disc-286/800/600"
   },
   {
     "id": "disc-287",
@@ -5163,7 +5449,8 @@
       "softStructured": -0.17,
       "organicIndustrial": -0.07
     },
-    "rarityScore": 0.96
+    "rarityScore": 0.96,
+    "imageURL": "https://picsum.photos/seed/disc-287/800/600"
   },
   {
     "id": "disc-288",
@@ -5181,7 +5468,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.41
+    "rarityScore": 0.41,
+    "imageURL": "https://picsum.photos/seed/disc-288/800/600"
   },
   {
     "id": "disc-289",
@@ -5199,7 +5487,8 @@
       "softStructured": -0.2,
       "organicIndustrial": -0.22
     },
-    "rarityScore": 0.32
+    "rarityScore": 0.32,
+    "imageURL": "https://picsum.photos/seed/disc-289/800/600"
   },
   {
     "id": "disc-290",
@@ -5217,7 +5506,8 @@
       "softStructured": -0.07,
       "organicIndustrial": -0.21
     },
-    "rarityScore": 0.35
+    "rarityScore": 0.35,
+    "imageURL": "https://picsum.photos/seed/disc-290/800/600"
   },
   {
     "id": "disc-291",
@@ -5235,7 +5525,8 @@
       "softStructured": -0.06,
       "organicIndustrial": -0.02
     },
-    "rarityScore": 0.43
+    "rarityScore": 0.43,
+    "imageURL": "https://picsum.photos/seed/disc-291/800/600"
   },
   {
     "id": "disc-292",
@@ -5253,7 +5544,8 @@
       "softStructured": -0.11,
       "organicIndustrial": -0.1
     },
-    "rarityScore": 0.74
+    "rarityScore": 0.74,
+    "imageURL": "https://picsum.photos/seed/disc-292/800/600"
   },
   {
     "id": "disc-293",
@@ -5271,7 +5563,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.07
     },
-    "rarityScore": 0.86
+    "rarityScore": 0.86,
+    "imageURL": "https://picsum.photos/seed/disc-293/800/600"
   },
   {
     "id": "disc-294",
@@ -5289,7 +5582,8 @@
       "softStructured": -0.19,
       "organicIndustrial": -0.13
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-294/800/600"
   },
   {
     "id": "disc-295",
@@ -5307,7 +5601,8 @@
       "softStructured": -0.13,
       "organicIndustrial": 0.0
     },
-    "rarityScore": 0.56
+    "rarityScore": 0.56,
+    "imageURL": "https://picsum.photos/seed/disc-295/800/600"
   },
   {
     "id": "disc-296",
@@ -5325,7 +5620,8 @@
       "softStructured": -0.26,
       "organicIndustrial": -0.03
     },
-    "rarityScore": 0.92
+    "rarityScore": 0.92,
+    "imageURL": "https://picsum.photos/seed/disc-296/800/600"
   },
   {
     "id": "disc-297",
@@ -5343,7 +5639,8 @@
       "softStructured": -0.06,
       "organicIndustrial": -0.09
     },
-    "rarityScore": 0.32
+    "rarityScore": 0.32,
+    "imageURL": "https://picsum.photos/seed/disc-297/800/600"
   },
   {
     "id": "disc-298",
@@ -5361,7 +5658,8 @@
       "softStructured": -0.27,
       "organicIndustrial": 0.02
     },
-    "rarityScore": 0.98
+    "rarityScore": 0.98,
+    "imageURL": "https://picsum.photos/seed/disc-298/800/600"
   },
   {
     "id": "disc-299",
@@ -5379,7 +5677,8 @@
       "softStructured": -0.14,
       "organicIndustrial": -0.08
     },
-    "rarityScore": 0.31
+    "rarityScore": 0.31,
+    "imageURL": "https://picsum.photos/seed/disc-299/800/600"
   },
   {
     "id": "disc-300",
@@ -5397,6 +5696,7 @@
       "softStructured": -0.24,
       "organicIndustrial": -0.17
     },
-    "rarityScore": 0.9
+    "rarityScore": 0.9,
+    "imageURL": "https://picsum.photos/seed/disc-300/800/600"
   }
 ]

@@ -54,7 +54,6 @@ struct ResultScreen: View {
                 VStack(alignment: .leading, spacing: 24) {
                     heroSection
                     readingSection
-                    calibrationInfoSection
                     inYourWorldSection
                     justOutsideSection
                     outThereSection
@@ -80,7 +79,7 @@ struct ResultScreen: View {
                     Haptics.tap()
                     cancelAutoTransition()
                     RevealStore.markRevealed(profile.id)
-                    path.append(Route.profile(profile.id))
+                    path = NavigationPath()
                 } label: {
                     Text("Enter your world")
                         .font(.subheadline.weight(.semibold))
@@ -159,7 +158,7 @@ struct ResultScreen: View {
                     try? await Task.sleep(for: .seconds(2.5))
                     guard !Task.isCancelled, !userInteracted else { return }
                     RevealStore.markRevealed(profile.id)
-                    path.append(Route.profile(profile.id))
+                    path = NavigationPath()
                 }
             }
         }
@@ -246,89 +245,6 @@ struct ResultScreen: View {
         .labSurface()
         .opacity(revealStory ? 1 : 0)
         .offset(y: revealStory ? 0 : 14)
-    }
-
-    // MARK: - Calibration Info
-
-    @ViewBuilder
-    private var calibrationInfoSection: some View {
-        if let record = calibrationRecord {
-            let level = record.vector.confidenceLevel(swipeCount: record.swipeCount)
-            VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    Text("CALIBRATION")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Theme.muted)
-                        .tracking(1.2)
-                    Spacer()
-                    Button {
-                        Haptics.tap()
-                        CalibrationStore.delete(for: profile.id)
-                        calibrationRecord = nil
-                    } label: {
-                        Text("Reset")
-                            .font(.caption.weight(.medium))
-                            .foregroundStyle(Theme.muted)
-                    }
-                }
-
-                let axisScores = AxisMapping.computeAxisScores(from: record.vector)
-                let influencePhrases = AxisPresentation.influencePhrases(axisScores: axisScores)
-                if !influencePhrases.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("INFLUENCES")
-                            .font(.caption2.weight(.semibold))
-                            .foregroundStyle(Theme.muted)
-                            .tracking(1.0)
-
-                        FlowLayout(spacing: 6) {
-                            ForEach(influencePhrases, id: \.self) { phrase in
-                                Text(phrase)
-                                    .font(.caption2.weight(.medium))
-                                    .foregroundStyle(Theme.ink)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(Theme.bg)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-                            }
-                        }
-                    }
-                }
-
-                let avoidPhrases = AxisPresentation.avoidPhrases(axisScores: axisScores)
-                if !avoidPhrases.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("AVOIDS")
-                            .font(.caption2.weight(.semibold))
-                            .foregroundStyle(Theme.muted)
-                            .tracking(1.0)
-
-                        FlowLayout(spacing: 6) {
-                            ForEach(avoidPhrases, id: \.self) { phrase in
-                                Text(phrase)
-                                    .font(.caption2.weight(.medium))
-                                    .foregroundStyle(Theme.muted)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(Theme.bg)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-                            }
-                        }
-                    }
-                }
-
-                HStack(spacing: 10) {
-                    Text("CONFIDENCE")
-                        .font(.caption2.weight(.semibold))
-                        .foregroundStyle(Theme.muted)
-                        .tracking(1.0)
-                    Text(level)
-                        .font(.caption2)
-                        .foregroundStyle(Theme.ink)
-                }
-            }
-            .labSurface(padded: true, bordered: true)
-        }
     }
 
     // MARK: - In Your World

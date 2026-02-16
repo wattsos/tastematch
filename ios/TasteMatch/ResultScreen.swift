@@ -368,11 +368,6 @@ struct ResultScreen: View {
                 Text("OUT THERE")
                     .sectionLabel()
 
-                let cultural = discoveryLoaded.filter { $0.layer == .culturalSignals }
-                if !cultural.isEmpty {
-                    discoverySubsection("CULTURAL SIGNALS", items: cultural)
-                }
-
                 let objects = discoveryLoaded.filter { $0.layer == .objectsInTheWild }
                 if !objects.isEmpty {
                     discoverySubsection("OBJECTS IN THE WILD", items: objects)

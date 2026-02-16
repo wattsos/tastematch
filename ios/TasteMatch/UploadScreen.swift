@@ -306,6 +306,7 @@ struct UploadScreen: View {
             designGoal: .refresh,
             domain: selectedDomain
         )
+        DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: profile.id)
 
         Haptics.success()
         path.append(Route.calibration(profile, recommendations, selectedDomain))
@@ -353,6 +354,7 @@ struct UploadScreen: View {
                 recommendations: recommendations,
                 domain: selectedDomain
             )
+            DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: profile.id)
 
             Haptics.success()
             path.append(Route.calibration(profile, recommendations, selectedDomain))

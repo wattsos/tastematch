@@ -139,11 +139,8 @@ struct TasteMatchApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            EngineRootView()
                 .environmentObject(advisorySettings)
-                .fullScreenCover(isPresented: $showOnboarding) {
-                    onboardingFlow
-                }
         }
     }
 

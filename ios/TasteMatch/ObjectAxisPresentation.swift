@@ -8,55 +8,55 @@ enum ObjectAxisPresentation {
 
     private static let synonyms: [ObjectAxis: (positive: [String], negative: [String])] = [
         .precision: (
-            positive: ["precise", "exacting", "tight-tolerance", "calibrated", "metered", "dialed"],
-            negative: ["rough", "imprecise", "loose", "unfinished", "approximate", "raw-cut"]
+            positive: ["refined", "polished", "considered", "intentional", "tailored", "precise"],
+            negative: ["raw", "unfinished", "rough", "effortless", "undone", "imperfect"]
         ),
         .patina: (
-            positive: ["worn", "aged", "oxidized", "weathered", "seasoned", "lived-in"],
-            negative: ["factory-new", "pristine", "sealed", "mint", "unworn", "untouched"]
+            positive: ["lived-in", "broken-in", "worn", "weathered", "aged", "vintage-feel"],
+            negative: ["brand new", "fresh", "pristine", "unworn", "crisp", "untouched"]
         ),
         .utility: (
-            positive: ["functional", "carried", "deployed", "daily-use", "field-ready", "loaded"],
-            negative: ["decorative", "displayed", "mounted", "ceremonial", "vitrine-kept", "shelved"]
+            positive: ["functional", "practical", "everyday", "versatile", "hardwearing", "go-to"],
+            negative: ["decorative", "statement", "display-only", "showpiece", "ornamental", "ceremonial"]
         ),
         .formality: (
-            positive: ["formal", "ceremonial", "dressed", "protocol", "occasion", "black-tie"],
-            negative: ["casual", "off-duty", "undone", "street", "relaxed", "weekend"]
+            positive: ["formal", "dressy", "elevated", "smart", "occasion-ready", "polished"],
+            negative: ["casual", "relaxed", "laid-back", "off-duty", "easy", "weekend"]
         ),
         .subculture: (
-            positive: ["niche", "coded", "insider", "deep-cut", "underground", "scene-specific"],
-            negative: ["mainstream", "universal", "open", "standard", "broad-market", "general"]
+            positive: ["niche", "underground", "insider", "cult", "subcultural", "IYKYK"],
+            negative: ["mainstream", "universal", "accessible", "classic", "crowd-pleasing", "broad"]
         ),
         .ornament: (
-            positive: ["embellished", "engraved", "etched", "filigreed", "detailed", "guilloché"],
-            negative: ["austere", "blank", "bare", "unmarked", "stripped", "unadorned"]
+            positive: ["detailed", "ornate", "embellished", "textured", "adorned", "decorative"],
+            negative: ["clean", "minimal", "plain", "stripped-back", "understated", "bare"]
         ),
         .heritage: (
-            positive: ["legacy", "storied", "lineage", "archive", "house", "provenance"],
-            negative: ["new-gen", "first-run", "debut", "contemporary", "fresh-house", "zero"]
+            positive: ["heritage", "timeless", "storied", "classic", "old-school", "traditional"],
+            negative: ["modern", "contemporary", "new-wave", "forward", "fresh", "emerging"]
         ),
         .technicality: (
-            positive: ["engineered", "hi-tech", "composite", "technical", "alloy", "machined"],
-            negative: ["analog", "handbuilt", "lo-fi", "manual", "bench-made", "artisanal"]
+            positive: ["technical", "performance", "high-tech", "engineered", "advanced", "synthetic"],
+            negative: ["handmade", "artisanal", "craft", "analog", "lo-fi", "hand-finished"]
         ),
         .minimalism: (
-            positive: ["stripped", "essential", "reduced", "distilled", "negative-space", "edited"],
-            negative: ["maximal", "layered", "stacked", "dense", "accumulated", "heavy"]
+            positive: ["minimal", "simple", "pared-back", "essential", "streamlined", "edited"],
+            negative: ["maximal", "bold", "layered", "eclectic", "busy", "over-the-top"]
         ),
     ]
 
     // MARK: - Primary Words
 
     private static let primaryWords: [ObjectAxis: (positive: String, negative: String)] = [
-        .precision:    (positive: "Precise",      negative: "Rough"),
-        .patina:       (positive: "Worn",         negative: "Pristine"),
-        .utility:      (positive: "Functional",   negative: "Decorative"),
-        .formality:    (positive: "Formal",       negative: "Casual"),
-        .subculture:   (positive: "Niche",        negative: "Mainstream"),
-        .ornament:     (positive: "Embellished",  negative: "Austere"),
-        .heritage:     (positive: "Legacy",       negative: "New-Gen"),
-        .technicality: (positive: "Engineered",   negative: "Analog"),
-        .minimalism:   (positive: "Essential",    negative: "Maximal"),
+        .precision:    (positive: "Refined",     negative: "Raw"),
+        .patina:       (positive: "Lived-in",    negative: "Pristine"),
+        .utility:      (positive: "Functional",  negative: "Decorative"),
+        .formality:    (positive: "Formal",      negative: "Casual"),
+        .subculture:   (positive: "Niche",       negative: "Mainstream"),
+        .ornament:     (positive: "Detailed",    negative: "Clean"),
+        .heritage:     (positive: "Heritage",    negative: "Modern"),
+        .technicality: (positive: "Technical",   negative: "Handmade"),
+        .minimalism:   (positive: "Minimal",     negative: "Maximal"),
     ]
 
     // MARK: - Axis Categories

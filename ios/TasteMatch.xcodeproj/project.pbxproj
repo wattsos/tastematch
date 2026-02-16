@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		859BEC168102C01A5993CD82 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E6421A33BBF48B4B8E5CB /* Brand.swift */; };
+		7DC7E7C02F42C0BC0015B135 /* EngineRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7E7BF2F42C0BC0015B135 /* EngineRootView.swift */; };
 		A10001000000000000000001 /* TasteMatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20001000000000000000001 /* TasteMatchApp.swift */; };
 		A10002000000000000000002 /* AnalyzingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20002000000000000000002 /* AnalyzingView.swift */; };
 		A10003000000000000000003 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20003000000000000000003 /* APIClient.swift */; };
@@ -44,18 +46,16 @@
 		B11006000000000000000006 /* ShareTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21006000000000000000006 /* ShareTextTests.swift */; };
 		C11001000000000000000001 /* CatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21001000000000000000001 /* CatalogLoader.swift */; };
 		C11002000000000000000002 /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = C21002000000000000000002 /* catalog.json */; };
-		G11001000000000000000001 /* DiscoveryFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = G21001000000000000000001 /* DiscoveryFeed.swift */; };
-		E11001000000000000000001 /* BoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21001000000000000000001 /* BoardScreen.swift */; };
-		859BEC168102C01A5993CD82 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E6421A33BBF48B4B8E5CB /* Brand.swift */; };
 		D11001000000000000000001 /* TasteVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21001000000000000000001 /* TasteVector.swift */; };
 		D11002000000000000000002 /* CalibrationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21002000000000000000002 /* CalibrationStore.swift */; };
 		D11003000000000000000003 /* SwipeDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003000000000000000003 /* SwipeDeckView.swift */; };
 		D11004000000000000000004 /* TasteCalibrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21004000000000000000004 /* TasteCalibrationScreen.swift */; };
 		D11005000000000000000005 /* CalibrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21005000000000000000005 /* CalibrationTests.swift */; };
+		E11001000000000000000001 /* BoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21001000000000000000001 /* BoardScreen.swift */; };
 		F11001000000000000000001 /* ProfileNaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21001000000000000000001 /* ProfileNaming.swift */; };
 		F11002000000000000000002 /* ProfileNamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21002000000000000000002 /* ProfileNamingTests.swift */; };
+		G11001000000000000000001 /* DiscoveryFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = G21001000000000000000001 /* DiscoveryFeed.swift */; };
 		H11001000000000000000001 /* DiscoveryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21001000000000000000001 /* DiscoveryEngine.swift */; };
-		H11002000000000000000002 /* discovery.json in Resources */ = {isa = PBXBuildFile; fileRef = H21002000000000000000002 /* discovery.json */; };
 		H11003000000000000000003 /* DiscoveryEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = H21003000000000000000003 /* DiscoveryEngineTests.swift */; };
 		I11001000000000000000001 /* DiscoveryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21001000000000000000001 /* DiscoveryItem.swift */; };
 		I11002000000000000000002 /* DiscoveryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = I21002000000000000000002 /* DiscoveryLoader.swift */; };
@@ -140,6 +140,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		345E6421A33BBF48B4B8E5CB /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		7DC7E7BF2F42C0BC0015B135 /* EngineRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineRootView.swift; sourceTree = "<group>"; };
 		A20001000000000000000001 /* TasteMatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteMatchApp.swift; sourceTree = "<group>"; };
 		A20002000000000000000002 /* AnalyzingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzingView.swift; sourceTree = "<group>"; };
 		A20003000000000000000003 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -166,10 +168,10 @@
 		A20018000000000000000018 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A20019000000000000000019 /* UploadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadScreen.swift; sourceTree = "<group>"; };
 		A2001A00000000000000001A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A2001E00000000000000001E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2001B00000000000000001B /* TasteEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteEngineTests.swift; sourceTree = "<group>"; };
 		A2001C00000000000000001C /* RecommendationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationEngineTests.swift; sourceTree = "<group>"; };
 		A2001D00000000000000001D /* ProfileStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStoreTests.swift; sourceTree = "<group>"; };
+		A2001E00000000000000001E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A60001000000000000000001 /* TasteMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasteMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60002000000000000000002 /* TasteMatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TasteMatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21001000000000000000001 /* DesignTipsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTipsEngine.swift; sourceTree = "<group>"; };
@@ -180,16 +182,15 @@
 		B21006000000000000000006 /* ShareTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTextTests.swift; sourceTree = "<group>"; };
 		C21001000000000000000001 /* CatalogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogLoader.swift; sourceTree = "<group>"; };
 		C21002000000000000000002 /* catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
-		345E6421A33BBF48B4B8E5CB /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
-		G21001000000000000000001 /* DiscoveryFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFeed.swift; sourceTree = "<group>"; };
-		E21001000000000000000001 /* BoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScreen.swift; sourceTree = "<group>"; };
 		D21001000000000000000001 /* TasteVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteVector.swift; sourceTree = "<group>"; };
 		D21002000000000000000002 /* CalibrationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationStore.swift; sourceTree = "<group>"; };
 		D21003000000000000000003 /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
 		D21004000000000000000004 /* TasteCalibrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteCalibrationScreen.swift; sourceTree = "<group>"; };
 		D21005000000000000000005 /* CalibrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationTests.swift; sourceTree = "<group>"; };
+		E21001000000000000000001 /* BoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardScreen.swift; sourceTree = "<group>"; };
 		F21001000000000000000001 /* ProfileNaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNaming.swift; sourceTree = "<group>"; };
 		F21002000000000000000002 /* ProfileNamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNamingTests.swift; sourceTree = "<group>"; };
+		G21001000000000000000001 /* DiscoveryFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFeed.swift; sourceTree = "<group>"; };
 		H21001000000000000000001 /* DiscoveryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngine.swift; sourceTree = "<group>"; };
 		H21002000000000000000002 /* discovery.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = discovery.json; sourceTree = "<group>"; };
 		H21003000000000000000003 /* DiscoveryEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryEngineTests.swift; sourceTree = "<group>"; };
@@ -325,6 +326,7 @@
 				R21003000000000000000003 /* DomainLayout.swift */,
 				Q21004000000000000000004 /* DomainNaming.swift */,
 				R21001000000000000000001 /* DomainPreferencesStore.swift */,
+				7DC7E7BF2F42C0BC0015B135 /* EngineRootView.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
 				N21002000000000000000002 /* FeatureFlags.swift */,
@@ -536,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC7E7C02F42C0BC0015B135 /* EngineRootView.swift in Sources */,
 				A10001000000000000000001 /* TasteMatchApp.swift in Sources */,
 				B11002000000000000000002 /* AboutScreen.swift in Sources */,
 				A10002000000000000000002 /* AnalyzingView.swift in Sources */,
@@ -892,15 +895,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD0001000000000000000001 /* Build configuration list for PBXProject "TasteMatch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AE0001000000000000000001 /* Debug */,
-				AE0002000000000000000002 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A90001000000000000000001 /* Build configuration list for PBXNativeTarget "TasteMatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -919,8 +913,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AD0001000000000000000001 /* Build configuration list for PBXProject "TasteMatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0001000000000000000001 /* Debug */,
+				AE0002000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = A40001000000000000000001 /* Project object */;
 }

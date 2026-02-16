@@ -53,8 +53,8 @@ struct EngineResultScreen: View {
                 .font(.system(size: 56, weight: .bold, design: .serif))
                 .foregroundStyle(Theme.ink)
 
-            Text(qualitativeLabel)
-                .font(.caption)
+            Text("How well this fits your Objects taste.")
+                .font(.subheadline)
                 .foregroundStyle(Theme.muted)
         }
         .frame(maxWidth: .infinity)

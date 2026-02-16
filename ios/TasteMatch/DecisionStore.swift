@@ -20,6 +20,8 @@ struct DecisionEvent: Codable {
 
 enum DecisionStore {
 
+    static let didRecord = Notification.Name("DecisionStoreDidRecord")
+
     private static let fileName = "decision_events.json"
 
     private static var fileURL: URL {
@@ -37,6 +39,7 @@ enum DecisionStore {
         } catch {
             // Best-effort persistence.
         }
+        NotificationCenter.default.post(name: didRecord, object: nil)
     }
 
     static func loadAll() -> [DecisionEvent] {

@@ -13,6 +13,7 @@ struct UploadScreen: View {
     @State private var isLoading = false
     @State private var loadError = false
     @State private var showCamera = false
+    @State private var retentionStats = RetentionStats()
 
     private var enabledDomains: [TasteDomain] {
         let enabled = DomainPreferencesStore.enabledDomains
@@ -45,6 +46,10 @@ struct UploadScreen: View {
 
     var body: some View {
         VStack(spacing: 24) {
+            if retentionStats.decisions > 0 {
+                retentionHUD
+            }
+
             // Show last result if user has a previous analysis
             if images.isEmpty, let latest = ProfileStore.loadLatest() {
                 lastResultCard(latest)
@@ -84,6 +89,10 @@ struct UploadScreen: View {
         } message: {
             Text("The selected photos couldn't be loaded. Please try again with different images.")
         }
+        .onAppear { retentionStats = RetentionStats.compute() }
+        .onReceive(NotificationCenter.default.publisher(for: DecisionStore.didRecord)) { _ in
+            retentionStats = RetentionStats.compute()
+        }
         .fullScreenCover(isPresented: $showCamera) {
             CameraPicker { image in
                 if images.count < 5 {
@@ -92,6 +101,44 @@ struct UploadScreen: View {
             }
             .ignoresSafeArea()
         }
+    }
+
+    // MARK: - Retention HUD
+
+    private var retentionHUD: some View {
+        HStack(spacing: 0) {
+            hudStat(value: "\(retentionStats.streak)", label: "STREAK")
+            hudDivider
+            hudStat(value: "\(retentionStats.clarity)%", label: "CLARITY")
+            hudDivider
+            hudStat(value: "\(retentionStats.decisions)", label: "DECISIONS")
+        }
+        .padding(.vertical, 12)
+        .background(Theme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                .stroke(Theme.hairline, lineWidth: 1)
+        )
+    }
+
+    private func hudStat(value: String, label: String) -> some View {
+        VStack(spacing: 2) {
+            Text(value)
+                .font(.subheadline.monospacedDigit().weight(.semibold))
+                .foregroundStyle(Theme.ink)
+            Text(label)
+                .font(.system(size: 9, weight: .medium))
+                .tracking(0.8)
+                .foregroundStyle(Theme.muted)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private var hudDivider: some View {
+        Rectangle()
+            .fill(Theme.hairline)
+            .frame(width: 1, height: 28)
     }
 
     // MARK: - Empty State
@@ -414,6 +461,32 @@ struct UploadScreen: View {
             loadError = true
             selectedItems = []
         }
+    }
+}
+
+// MARK: - Retention Stats
+
+struct RetentionStats {
+    var streak: Int = 0
+    var clarity: Int = 0
+    var decisions: Int = 0
+
+    static func compute() -> RetentionStats {
+        let events = DecisionStore.loadAll()
+        let total = events.count
+        var streak = 0
+        for event in events.reversed() {
+            if event.action == .aligned || event.action == .bought {
+                streak += 1
+            } else {
+                break
+            }
+        }
+        return RetentionStats(
+            streak: streak,
+            clarity: min(100, total * 2),
+            decisions: total
+        )
     }
 }
 

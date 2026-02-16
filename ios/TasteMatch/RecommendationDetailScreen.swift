@@ -7,8 +7,6 @@ struct RecommendationDetailScreen: View {
     @Environment(\.openURL) private var openURL
     @EnvironmentObject private var advisorySettings: AdvisorySettings
     @State private var isFavorited = false
-    @State private var showGuard = false
-    @State private var showShiftToast = false
     @Environment(\.dismiss) private var dismiss
 
     private var objectDecision: AdvisoryDecision? {
@@ -28,10 +26,10 @@ struct RecommendationDetailScreen: View {
 
                 VStack(alignment: .leading, spacing: 28) {
                     titleSection
+                    decisionButtons
                     reasonSection
                     matchSection
                     shopButton
-                    decisionButtons
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 24)
@@ -47,47 +45,6 @@ struct RecommendationDetailScreen: View {
             isFavorited = FavoritesStore.isFavorited(item)
             EventLogger.shared.logEvent("product_viewed", tasteProfileId: tasteProfileId, metadata: eventMeta)
         }
-        .sheet(isPresented: $showGuard) {
-            if let decision = objectDecision {
-                TasteGuardSheet(
-                    item: item,
-                    decision: decision,
-                    advisoryLevel: advisorySettings.level,
-                    profileId: tasteProfileId,
-                    onProceed: {
-                        let urlString = item.affiliateURL ?? item.productURL
-                        if let url = URL(string: urlString) { openURL(url) }
-                    },
-                    onSave: {
-                        if !isFavorited { toggleFavorite() }
-                    },
-                    onIntentionalShift: {
-                        ObjectAdvisory.applyIntentionalShift(item: item, profileId: tasteProfileId)
-                        showShiftToast = true
-                    }
-                )
-                .presentationDetents([.medium])
-            }
-        }
-        .overlay(alignment: .bottom) {
-            if showShiftToast {
-                Text("Profile updated.")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(Theme.ink)
-                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
-                    .padding(.bottom, 24)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            withAnimation { showShiftToast = false }
-                        }
-                    }
-            }
-        }
-        .animation(.easeInOut(duration: 0.3), value: showShiftToast)
     }
 
     // MARK: - Hero Image
@@ -180,15 +137,14 @@ struct RecommendationDetailScreen: View {
                     .tracking(1)
                     .foregroundStyle(Theme.muted)
 
-                ProgressView(value: item.attributionConfidence)
-                    .tint(confidenceColor)
+                Spacer()
 
-                Text("\(Int(item.attributionConfidence * 100))%")
-                    .font(.caption2.monospacedDigit())
-                    .foregroundStyle(Theme.muted)
+                Text(confidenceLabel)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Theme.ink)
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Alignment, \(Int(item.attributionConfidence * 100)) percent")
+            .accessibilityLabel("Alignment, \(confidenceLabel)")
         }
     }
 
@@ -213,9 +169,9 @@ struct RecommendationDetailScreen: View {
 
     private var decisionButtons: some View {
         HStack(spacing: 12) {
-            decisionButton("Aligned", action: .aligned)
-            decisionButton("Not for me", action: .notForMe)
-            decisionButton("Bought", action: .bought)
+            decisionButton("Me", action: .aligned)
+            decisionButton("Not me", action: .notForMe)
+            decisionButton("Buy", action: .bought)
         }
     }
 
@@ -310,13 +266,9 @@ struct RecommendationDetailScreen: View {
     // MARK: - Advisory
 
     private func handleOutboundTap() {
-        if domain == .objects, let decision = objectDecision, decision.shouldIntercept {
-            showGuard = true
-        } else {
-            let urlString = item.affiliateURL ?? item.productURL
-            if let url = URL(string: urlString) {
-                openURL(url)
-            }
+        let urlString = item.affiliateURL ?? item.productURL
+        if let url = URL(string: urlString) {
+            openURL(url)
         }
     }
 
@@ -344,14 +296,6 @@ struct RecommendationDetailScreen: View {
         case 0.8...: return "High"
         case 0.5...: return "Moderate"
         default:     return "Low"
-        }
-    }
-
-    private var confidenceColor: Color {
-        switch item.attributionConfidence {
-        case 0.8...: return Theme.strongMatch
-        case 0.5...: return Theme.goodMatch
-        default:     return Theme.partialMatch
         }
     }
 

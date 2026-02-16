@@ -6,9 +6,12 @@ struct ObjectCalibrationRecord: Codable {
     let tasteProfileId: UUID
     var vector: ObjectVector
     var swipeCount: Int
-    var duelCount: Int
-    var archetypeAffinities: [String: Double]
     let createdAt: Date
+
+    // Legacy fields for decoding existing records
+    private enum CodingKeys: String, CodingKey {
+        case tasteProfileId, vector, swipeCount, createdAt
+    }
 }
 
 // MARK: - Object Calibration Store

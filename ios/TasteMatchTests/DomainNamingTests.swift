@@ -25,7 +25,7 @@ final class DomainNamingTests: XCTestCase {
 
     // MARK: - Two-Word Grammar
 
-    func testObjectNaming_exactlyTwoWords() {
+    func testObjectNaming_producesLifestyleLabel() {
         let scores = [
             AxisScores(minimalOrnate: -0.8, warmCool: 0.3, softStructured: 0.2,
                       organicIndustrial: 0.1, lightDark: -0.4, neutralSaturated: -0.5, sparseLayered: -0.3),
@@ -37,9 +37,8 @@ final class DomainNamingTests: XCTestCase {
 
         for (i, s) in scores.enumerated() {
             let name = ObjectNamingEngine.generate(axisScores: s, basisHash: hashes[i])
-            let words = name.split(separator: " ")
-            XCTAssertEqual(words.count, 2,
-                "Object name '\(name)' should be exactly 2 words (hyphenated words count as one)")
+            XCTAssertTrue(ObjectNamingEngine.allLifestyleNames.contains(name),
+                "Object name '\(name)' should be a known lifestyle label")
         }
     }
 
@@ -122,7 +121,8 @@ final class DomainNamingTests: XCTestCase {
         ]
 
         for scores in variations {
-            for domain in TasteDomain.allCases {
+            // Objects domain intentionally uses lifestyle labels — skip it
+            for domain in [TasteDomain.space, .art] {
                 let name = DomainNameDispatcher.generate(
                     axisScores: scores, basisHash: testHash, domain: domain
                 )

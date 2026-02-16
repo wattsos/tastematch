@@ -12,6 +12,7 @@ struct UploadScreen: View {
     @State private var images: [UIImage] = []
     @State private var isLoading = false
     @State private var loadError = false
+    @State private var showCamera = false
 
     private var enabledDomains: [TasteDomain] {
         let enabled = DomainPreferencesStore.enabledDomains
@@ -83,6 +84,14 @@ struct UploadScreen: View {
         } message: {
             Text("The selected photos couldn't be loaded. Please try again with different images.")
         }
+        .fullScreenCover(isPresented: $showCamera) {
+            CameraPicker { image in
+                if images.count < 5 {
+                    images.append(image)
+                }
+            }
+            .ignoresSafeArea()
+        }
     }
 
     // MARK: - Empty State
@@ -113,7 +122,10 @@ struct UploadScreen: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
 
-            photoPicker
+            HStack(spacing: 12) {
+                photoPicker
+                cameraButton
+            }
 
             // Demo button — lets users try the full flow without photos
             Button {
@@ -173,11 +185,30 @@ struct UploadScreen: View {
                 Spacer()
 
                 if images.count < 5 {
-                    photoPicker
+                    HStack(spacing: 8) {
+                        photoPicker
+                        cameraButton
+                    }
                 }
             }
             .padding(.horizontal)
         }
+    }
+
+    // MARK: - Camera Button
+
+    private var cameraButton: some View {
+        Button {
+            showCamera = true
+        } label: {
+            Label("Take Photo", systemImage: "camera")
+                .font(.subheadline.weight(.medium))
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(Theme.blush.opacity(0.3))
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
+        }
+        .disabled(images.count >= 5)
     }
 
     // MARK: - Shared Picker
@@ -356,6 +387,40 @@ struct UploadScreen: View {
         if loaded.isEmpty && !selectedItems.isEmpty {
             loadError = true
             selectedItems = []
+        }
+    }
+}
+
+// MARK: - Camera Picker
+
+private struct CameraPicker: UIViewControllerRepresentable {
+    var onCapture: (UIImage) -> Void
+    @Environment(\.dismiss) private var dismiss
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: CameraPicker
+        init(_ parent: CameraPicker) { self.parent = parent }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                parent.onCapture(image)
+            }
+            parent.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.dismiss()
         }
     }
 }

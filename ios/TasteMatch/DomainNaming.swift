@@ -24,81 +24,56 @@ enum DomainNameDispatcher {
 
 // MARK: - Object Naming Engine
 
-/// Grammar: "{Signal} {Identity Tone}"
+/// Matches user's ObjectAxisScores against lifestyle aesthetic signatures via dot-product similarity.
 enum ObjectNamingEngine {
 
-    // MARK: - Signal Pools (keyed by ObjectAxis)
+    // MARK: - Lifestyle Aesthetics
 
-    private static let signalPools: [(ObjectAxis, Bool, [String])] = [
-        (.precision, true,      ["Calibrated", "Machined", "Exacting", "Toleranced"]),
-        (.precision, false,     ["Rough", "Approximate", "Loose", "Unmetered"]),
-        (.patina, true,         ["Weathered", "Worn", "Oxidized", "Seasoned"]),
-        (.patina, false,        ["Pristine", "Factory", "Sealed", "Unworn"]),
-        (.utility, true,        ["Deployed", "Fielded", "Loaded", "Carried"]),
-        (.utility, false,       ["Displayed", "Archived", "Mounted", "Cased"]),
-        (.formality, true,      ["Ceremonial", "Formal", "Dressed", "Protocol"]),
-        (.formality, false,     ["Casual", "Off-Duty", "Undone", "Relaxed"]),
-        (.subculture, true,     ["Underground", "Coded", "Deep-Cut", "Insider"]),
-        (.subculture, false,    ["Standard", "Mainline", "Universal", "Open"]),
-        (.ornament, true,       ["Etched", "Guilloché", "Engraved", "Filigreed"]),
-        (.ornament, false,      ["Blank", "Bare", "Stripped", "Unmarked"]),
-        (.heritage, true,       ["Storied", "Lineage", "Legacy", "Archive"]),
-        (.heritage, false,      ["New-Gen", "First-Run", "Debut", "Zero"]),
-        (.technicality, true,   ["Engineered", "Composite", "Alloy", "Technical"]),
-        (.technicality, false,  ["Analog", "Manual", "Handbuilt", "Lo-Fi"]),
-        (.minimalism, true,     ["Reduced", "Distilled", "Essential", "Negative"]),
-        (.minimalism, false,    ["Stacked", "Dense", "Loaded", "Heavy"]),
+    private struct Aesthetic {
+        let name: String
+        let signature: [ObjectAxis: Double]
+    }
+
+    private static let lifestyleAesthetics: [Aesthetic] = [
+        Aesthetic(name: "Quiet Luxury",   signature: [.precision: 0.7, .formality: 0.6, .ornament: -0.5, .subculture: -0.6, .minimalism: 0.4]),
+        Aesthetic(name: "Normcore",       signature: [.minimalism: 0.7, .ornament: -0.6, .subculture: -0.5, .formality: -0.4]),
+        Aesthetic(name: "Streetwear",     signature: [.subculture: 0.8, .utility: 0.4, .formality: -0.6, .heritage: -0.4]),
+        Aesthetic(name: "Vintage",        signature: [.patina: 0.8, .heritage: 0.6, .technicality: -0.5]),
+        Aesthetic(name: "Techwear",       signature: [.technicality: 0.8, .minimalism: 0.5, .precision: 0.6, .heritage: -0.5]),
+        Aesthetic(name: "Old Money",      signature: [.heritage: 0.8, .formality: 0.7, .subculture: -0.6, .precision: 0.5]),
+        Aesthetic(name: "Gorpcore",       signature: [.utility: 0.8, .technicality: 0.5, .formality: -0.6, .ornament: -0.5]),
+        Aesthetic(name: "Wabi-Sabi",      signature: [.patina: 0.8, .minimalism: 0.5, .precision: -0.6, .formality: -0.4]),
+        Aesthetic(name: "Maximalist",     signature: [.ornament: 0.8, .minimalism: -0.7, .heritage: 0.4]),
+        Aesthetic(name: "Workwear",       signature: [.utility: 0.7, .patina: 0.5, .formality: -0.5, .ornament: -0.4]),
+        Aesthetic(name: "Dark Academia",  signature: [.heritage: 0.7, .formality: 0.6, .ornament: 0.5, .technicality: -0.4]),
+        Aesthetic(name: "Avant-Garde",    signature: [.subculture: 0.7, .technicality: 0.5, .heritage: -0.5, .ornament: 0.4]),
+        Aesthetic(name: "Western",        signature: [.heritage: 0.6, .patina: 0.6, .utility: 0.5, .technicality: -0.5, .minimalism: -0.4]),
+        Aesthetic(name: "Prep",           signature: [.formality: 0.7, .precision: 0.6, .subculture: -0.5, .patina: -0.4]),
+        Aesthetic(name: "Artisan",        signature: [.technicality: -0.5, .heritage: 0.6, .patina: 0.5, .precision: 0.6]),
+        Aesthetic(name: "Military",       signature: [.utility: 0.7, .precision: 0.6, .formality: 0.5, .ornament: -0.5]),
+        Aesthetic(name: "Minimalist",     signature: [.minimalism: 0.8, .precision: 0.5, .ornament: -0.6, .patina: -0.4]),
+        Aesthetic(name: "Bohemian",       signature: [.ornament: 0.6, .formality: -0.6, .patina: 0.5, .subculture: 0.4, .precision: -0.5]),
     ]
 
-    // MARK: - Identity Tone Pools (keyed by ObjectAxis)
-
-    private static let identityTonePools: [(ObjectAxis, Bool, [String])] = [
-        (.precision, true,      ["Tolerance", "Grade", "Spec", "Gauge"]),
-        (.precision, false,     ["Drift", "Scatter", "Blur", "Margin"]),
-        (.patina, true,         ["Relic", "Verdigris", "Tarnish", "Grain"]),
-        (.patina, false,        ["Mint", "Stock", "Fresh", "Uncut"]),
-        (.utility, true,        ["Kit", "Loadout", "Rig", "Carry"]),
-        (.utility, false,       ["Vitrine", "Case", "Display", "Shelf"]),
-        (.formality, true,      ["Rite", "Occasion", "Order", "Code"]),
-        (.formality, false,     ["Break", "Ease", "Rest", "Off-Clock"]),
-        (.subculture, true,     ["Signal", "Cipher", "Frequency", "Channel"]),
-        (.subculture, false,    ["Baseline", "Default", "Norm", "Standard"]),
-        (.ornament, true,       ["Motif", "Flourish", "Relief", "Pattern"]),
-        (.ornament, false,      ["Void", "Plane", "Flat", "Ground"]),
-        (.heritage, true,       ["House", "Provenance", "Edition", "Mark"]),
-        (.heritage, false,      ["Prototype", "Draft", "Origin", "Launch"]),
-        (.technicality, true,   ["Lab", "Module", "System", "Matrix"]),
-        (.technicality, false,  ["Hand", "Loom", "Bench", "Craft"]),
-        (.minimalism, true,     ["Absence", "Silence", "Clear", "Less"]),
-        (.minimalism, false,    ["Mass", "Weight", "Layer", "Stack"]),
-    ]
+    /// All names that can be generated, for test assertions.
+    static var allLifestyleNames: Set<String> {
+        Set(lifestyleAesthetics.map(\.name))
+    }
 
     // MARK: - Generate (from ObjectAxisScores — primary path)
 
     static func generateFromObjectAxes(objectScores: ObjectAxisScores, basisHash: String) -> String {
-        let sorted = ObjectAxis.allCases.sorted { abs(objectScores.value(for: $0)) > abs(objectScores.value(for: $1)) }
-        let dominant = sorted[0]
-        let secondary = sorted.count >= 2 ? sorted[1] : dominant
-
-        let dominantPositive = objectScores.value(for: dominant) >= 0
-        let secondaryPositive = objectScores.value(for: secondary) >= 0
-
-        let signal = pickObjectWord(
-            from: signalPools, axis: dominant, positive: dominantPositive,
-            hash: basisHash, prime: 59
-        )
-        let tone = pickObjectWord(
-            from: identityTonePools, axis: secondary, positive: secondaryPositive,
-            hash: basisHash, prime: 61
-        )
-
-        return "\(signal) \(tone)"
+        let scored = lifestyleAesthetics.map { aesthetic in
+            let similarity = dotProduct(objectScores, aesthetic.signature)
+            return (aesthetic, similarity)
+        }
+        let best = scored.max(by: { $0.1 < $1.1 })!.0
+        return best.name
     }
 
     // MARK: - Generate (fallback from Space AxisScores — backward compat)
 
     static func generate(axisScores: AxisScores, basisHash: String) -> String {
-        // Map Space axes to closest ObjectAxis approximations
         let objectScores = ObjectAxisScores(
             precision: axisScores.softStructured,
             patina: axisScores.warmCool,
@@ -115,17 +90,12 @@ enum ObjectNamingEngine {
 
     // MARK: - Private
 
-    private static func pickObjectWord(
-        from pools: [(ObjectAxis, Bool, [String])],
-        axis: ObjectAxis, positive: Bool,
-        hash: String, prime: UInt64
-    ) -> String {
-        guard let pool = pools.first(where: { $0.0 == axis && $0.1 == positive }) else {
-            return "Quiet"
+    private static func dotProduct(_ scores: ObjectAxisScores, _ signature: [ObjectAxis: Double]) -> Double {
+        var sum = 0.0
+        for (axis, weight) in signature {
+            sum += scores.value(for: axis) * weight
         }
-        let words = pool.2
-        let index = StructuralDescriptorResolver.deterministicIndex(from: hash, multiplier: prime, count: words.count)
-        return words[index]
+        return sum
     }
 }
 

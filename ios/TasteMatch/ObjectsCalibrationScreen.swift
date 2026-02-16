@@ -7,27 +7,15 @@ struct ObjectsCalibrationScreen: View {
 
     @State private var vector = ObjectVector.zero
     @State private var swipeCount = 0
-    @State private var duelCount = 0
-    @State private var archetypeAffinities: [String: Double] = [:]
     @State private var currentIndex = 0
     @State private var dragOffset: CGSize = .zero
     @State private var dragDirection: SwipeDirection?
-    @State private var phase: CalibrationPhase = .swipe
     @State private var showUpdating = false
     @State private var showResetConfirmation = false
     @State private var didLoadExisting = false
-    @State private var showTransition = false
-    @State private var duelPairs: [(ObjectArchetype, ObjectArchetype)] = []
-    @State private var duelIndex = 0
 
     private let swipeThresholdX: CGFloat = 100
     private let swipeThresholdY: CGFloat = 80
-    private let minDuels = 8
-    private let maxDuels = 12
-
-    private enum CalibrationPhase {
-        case swipe, transition, duel
-    }
 
     // MARK: - Calibration Items
 
@@ -67,22 +55,10 @@ struct ObjectsCalibrationScreen: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                switch phase {
-                case .swipe:
-                    swipePhaseContent
-                case .transition:
-                    EmptyView()
-                case .duel:
-                    duelPhaseContent
-                }
+                swipePhaseContent
             }
             .padding(.horizontal, 16)
-            .opacity(showUpdating || showTransition ? 0 : 1)
-
-            if showTransition {
-                transitionOverlay
-                    .transition(.opacity)
-            }
+            .opacity(showUpdating ? 0 : 1)
 
             if showUpdating {
                 updatingOverlay
@@ -107,11 +83,7 @@ struct ObjectsCalibrationScreen: View {
             Button("Reset", role: .destructive) {
                 vector = ObjectVector.zero
                 swipeCount = 0
-                duelCount = 0
-                archetypeAffinities = [:]
                 currentIndex = 0
-                duelIndex = 0
-                phase = .swipe
                 ObjectCalibrationStore.delete(for: profile.id)
             }
             Button("Cancel", role: .cancel) {}
@@ -124,16 +96,12 @@ struct ObjectsCalibrationScreen: View {
             if let existing = ObjectCalibrationStore.load(for: profile.id) {
                 vector = existing.vector
                 swipeCount = existing.swipeCount
-                duelCount = existing.duelCount
-                archetypeAffinities = existing.archetypeAffinities
             }
-            duelPairs = ObjectArchetype.generateDuelPairs(count: maxDuels, profileId: profile.id)
         }
         .animation(.easeInOut(duration: 0.3), value: showUpdating)
-        .animation(.easeInOut(duration: 0.3), value: showTransition)
     }
 
-    // MARK: - Phase A: Swipe
+    // MARK: - Swipe Phase
 
     private var swipePhaseContent: some View {
         VStack(spacing: 0) {
@@ -285,7 +253,7 @@ struct ObjectsCalibrationScreen: View {
             dragDirection = nil
 
             if currentIndex >= totalSwipeCards {
-                beginDuelPhase()
+                finishCalibration()
             }
         }
     }
@@ -325,134 +293,6 @@ struct ObjectsCalibrationScreen: View {
             .opacity(min(1, max(abs(dragOffset.width), abs(dragOffset.height)) / swipeThresholdX))
     }
 
-    // MARK: - Phase Transition
-
-    private func beginDuelPhase() {
-        showTransition = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            showTransition = false
-            phase = .duel
-        }
-    }
-
-    private var transitionOverlay: some View {
-        VStack(spacing: 16) {
-            ProgressView()
-                .tint(Theme.accent)
-            Text("Reading your signals\u{2026}")
-                .font(.subheadline.weight(.medium))
-                .foregroundStyle(Theme.ink)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    // MARK: - Phase B: Duel
-
-    private var duelPhaseContent: some View {
-        VStack(spacing: 0) {
-            headerSection(title: "ARCHETYPE DUEL", subtitle: "Choose the one that fits")
-            duelProgress
-
-            if duelIndex < duelPairs.count {
-                let pair = duelPairs[duelIndex]
-                HStack(spacing: 12) {
-                    duelCard(pair.0)
-                    duelCard(pair.1)
-                }
-                .padding(.top, 24)
-            }
-
-            Spacer()
-        }
-    }
-
-    private var duelProgress: some View {
-        VStack(spacing: 6) {
-            Text("\(duelIndex + 1) of \(requiredDuels)")
-                .font(.caption.monospacedDigit())
-                .foregroundStyle(Theme.muted)
-
-            GeometryReader { geo in
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(Theme.hairline)
-                    .frame(height: 3)
-                    .overlay(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(Theme.accent)
-                            .frame(
-                                width: requiredDuels > 0
-                                    ? geo.size.width * CGFloat(duelIndex) / CGFloat(requiredDuels)
-                                    : 0,
-                                height: 3
-                            )
-                            .animation(.easeInOut(duration: 0.3), value: duelIndex)
-                    }
-            }
-            .frame(height: 3)
-        }
-        .padding(.top, 12)
-    }
-
-    private var requiredDuels: Int {
-        let topAffinity = archetypeAffinities.values.max() ?? 0
-        if duelCount >= minDuels && topAffinity >= 0.3 {
-            return duelCount
-        }
-        return min(maxDuels, max(minDuels, duelCount + 1))
-    }
-
-    private func duelCard(_ archetype: ObjectArchetype) -> some View {
-        let sig = archetype.signature
-        return Button {
-            Haptics.tap()
-            ObjectArchetype.applyDuelResult(
-                winner: archetype,
-                vector: &vector,
-                affinities: &archetypeAffinities
-            )
-            duelCount += 1
-            duelIndex += 1
-
-            let topAffinity = archetypeAffinities.values.max() ?? 0
-            if duelIndex >= maxDuels || (duelIndex >= minDuels && topAffinity >= 0.3) {
-                finishCalibration()
-            }
-        } label: {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(sig.name.uppercased())
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Theme.ink)
-                    .tracking(0.8)
-
-                Text(sig.tagline)
-                    .font(.caption2)
-                    .foregroundStyle(Theme.muted)
-                    .fixedSize(horizontal: false, vertical: true)
-
-                HStack(spacing: 4) {
-                    ForEach(sig.keywords, id: \.self) { kw in
-                        Text(kw)
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundStyle(Theme.muted)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 3)
-                            .background(Theme.bg)
-                            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-                    }
-                }
-            }
-            .padding(14)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Theme.surface)
-            .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
-                    .stroke(Theme.hairline, lineWidth: 1)
-            )
-        }
-        .buttonStyle(.plain)
-    }
-
     // MARK: - Completion
 
     private func finishCalibration() {
@@ -462,8 +302,6 @@ struct ObjectsCalibrationScreen: View {
             tasteProfileId: profile.id,
             vector: vector.normalized(),
             swipeCount: swipeCount,
-            duelCount: duelCount,
-            archetypeAffinities: archetypeAffinities,
             createdAt: Date()
         )
         ObjectCalibrationStore.save(record)

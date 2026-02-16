@@ -31,7 +31,7 @@ private struct EngineDestinationView: View {
             }
 
         case .result(let profile, let recs, let domain):
-            ResultScreen(path: $path, profile: profile, recommendations: recs, domain: domain)
+            EngineResultScreen(path: $path, profile: profile, recommendations: recs, domain: domain)
 
         case .recommendationDetail(let item, let profileId, let domain):
             RecommendationDetailScreen(item: item, tasteProfileId: profileId, domain: domain)

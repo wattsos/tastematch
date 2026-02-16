@@ -280,13 +280,10 @@ struct ResultScreen: View {
                     spacing: 16
                 ) {
                     ForEach(sortedRecommendations) { item in
-                        Button {
+                        pickCard(item) {
                             EventLogger.shared.logEvent("pick_tapped", tasteProfileId: profile.id, metadata: ["skuId": item.skuId])
                             path.append(Route.recommendationDetail(item, tasteProfileId: profile.id, domain: domain))
-                        } label: {
-                            pickCard(item)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -639,44 +636,161 @@ struct ResultScreen: View {
 
     // MARK: - Pick Card
 
-    private func pickCard(_ item: RecommendationItem) -> some View {
+    private func pickCard(_ item: RecommendationItem, onTap: @escaping () -> Void) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            ZStack(alignment: .topTrailing) {
-                CachedImage(url: item.resolvedImageURL, height: 150)
+            Button {
+                onTap()
+            } label: {
+                VStack(alignment: .leading, spacing: 0) {
+                    ZStack(alignment: .topTrailing) {
+                        CachedImage(url: item.resolvedImageURL, height: 150)
 
-                Button {
-                    toggleFavorite(item)
-                } label: {
-                    Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
-                        .font(.caption)
-                        .foregroundStyle(isFavorited(item) ? Theme.accent : Theme.ink.opacity(0.55))
+                        Button {
+                            toggleFavorite(item)
+                        } label: {
+                            Image(systemName: isFavorited(item) ? "bookmark.fill" : "bookmark")
+                                .font(.caption)
+                                .foregroundStyle(isFavorited(item) ? Theme.accent : Theme.ink.opacity(0.55))
+                                .padding(6)
+                                .background(Theme.surface)
+                                .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                                        .stroke(Theme.hairline, lineWidth: 1)
+                                )
+                        }
+                        .buttonStyle(.plain)
                         .padding(6)
-                        .background(Theme.surface)
-                        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
-                                .stroke(Theme.hairline, lineWidth: 1)
-                        )
+                        .accessibilityLabel(isFavorited(item) ? "Saved" : "Save")
+                    }
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(item.title)
+                            .font(.system(.subheadline, design: .default, weight: .medium))
+                            .foregroundStyle(Theme.ink)
+                            .lineLimit(2)
+
+                        Text("$\(Int(item.price))")
+                            .font(.caption.monospacedDigit().weight(.medium))
+                            .foregroundStyle(Theme.muted)
+
+                        HStack(spacing: 4) {
+                            Text("ALIGNMENT")
+                                .font(.caption2.weight(.semibold))
+                                .foregroundStyle(Theme.muted)
+                                .tracking(0.6)
+                            Text(alignmentWord(item.attributionConfidence))
+                                .font(.caption2)
+                                .foregroundStyle(Theme.ink)
+                        }
+                        .padding(.top, 2)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
                 }
-                .buttonStyle(.plain)
-                .padding(6)
-                .accessibilityLabel(isFavorited(item) ? "Saved" : "Save")
             }
+            .buttonStyle(.plain)
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(item.title)
-                    .font(.system(.subheadline, design: .default, weight: .medium))
-                    .foregroundStyle(Theme.ink)
-                    .lineLimit(2)
-
-                Text("$\(Int(item.price))")
-                    .font(.caption.monospacedDigit().weight(.medium))
-                    .foregroundStyle(Theme.muted)
+            HStack(spacing: 4) {
+                decisionButton("Aligned", action: .aligned, item: item)
+                decisionButton("Not for me", action: .notForMe, item: item)
+                decisionButton("Bought", action: .bought, item: item)
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, 10)
+            .padding(.bottom, 10)
         }
         .labSurface(padded: false, bordered: true)
+    }
+
+    // MARK: - Decision Buttons
+
+    private func decisionButton(_ label: String, action: DecisionAction, item: RecommendationItem) -> some View {
+        Button {
+            recordDecision(action, item: item)
+        } label: {
+            Text(label)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(Theme.ink)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 6)
+                .background(Theme.surface)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                        .stroke(Theme.hairline, lineWidth: 1)
+                )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func recordDecision(_ action: DecisionAction, item: RecommendationItem) {
+        let event = DecisionEvent(
+            id: UUID(),
+            profileId: profile.id,
+            skuId: item.skuId,
+            action: action,
+            timestamp: Date()
+        )
+        DecisionStore.record(event)
+
+        let multiplier: Double
+        switch action {
+        case .aligned:  multiplier = 0.15
+        case .notForMe: multiplier = -0.10
+        case .bought:   multiplier = 0.25
+        }
+
+        applyDecisionShift(multiplier: multiplier, item: item)
+
+        EventLogger.shared.logEvent(
+            "decision_\(action.rawValue)",
+            tasteProfileId: profile.id,
+            metadata: ["skuId": item.skuId, "merchant": item.merchant]
+        )
+
+        Haptics.tap()
+        path = NavigationPath()
+    }
+
+    private func applyDecisionShift(multiplier: Double, item: RecommendationItem) {
+        let catalog = DomainCatalog.items(for: domain)
+        guard let catalogItem = catalog.first(where: { $0.skuId == item.skuId }) else { return }
+
+        switch domain {
+        case .space:
+            guard !catalogItem.commerceAxisWeights.isEmpty else { return }
+            let synthetic = AxisMapping.syntheticVector(fromAxes: catalogItem.commerceAxisWeights)
+            var scaled: [String: Double] = [:]
+            for (key, val) in synthetic.weights {
+                scaled[key] = val * multiplier
+            }
+            var record = calibrationRecord ?? CalibrationRecord(
+                tasteProfileId: profile.id,
+                vector: resolveBaseVector(),
+                swipeCount: 0,
+                createdAt: Date()
+            )
+            for (key, val) in scaled {
+                record.vector.weights[key, default: 0] += val
+            }
+            record.vector = record.vector.normalized()
+            CalibrationStore.save(record)
+            calibrationRecord = record
+
+        case .objects:
+            guard !catalogItem.objectAxisWeights.isEmpty else { return }
+            guard var record = ObjectCalibrationStore.load(for: profile.id) else { return }
+            for axis in ObjectAxis.allCases {
+                let key = axis.rawValue
+                let current = record.vector.weights[key, default: 0.0]
+                let itemVal = catalogItem.objectAxisWeights[key, default: 0.0]
+                record.vector.weights[key] = current + multiplier * itemVal
+            }
+            ObjectCalibrationStore.save(record)
+
+        default:
+            break
+        }
     }
 
     // MARK: - Shop Entry

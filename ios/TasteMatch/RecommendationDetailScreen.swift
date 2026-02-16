@@ -9,6 +9,7 @@ struct RecommendationDetailScreen: View {
     @State private var isFavorited = false
     @State private var showGuard = false
     @State private var showShiftToast = false
+    @Environment(\.dismiss) private var dismiss
 
     private var objectDecision: AdvisoryDecision? {
         guard domain == .objects else { return nil }
@@ -30,6 +31,7 @@ struct RecommendationDetailScreen: View {
                     reasonSection
                     matchSection
                     shopButton
+                    decisionButtons
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 24)
@@ -205,6 +207,104 @@ struct RecommendationDetailScreen: View {
         .foregroundStyle(.white)
         .background(Theme.accent)
         .clipShape(RoundedRectangle(cornerRadius: Theme.radius))
+    }
+
+    // MARK: - Decision Buttons
+
+    private var decisionButtons: some View {
+        HStack(spacing: 12) {
+            decisionButton("Aligned", action: .aligned)
+            decisionButton("Not for me", action: .notForMe)
+            decisionButton("Bought", action: .bought)
+        }
+    }
+
+    private func decisionButton(_ label: String, action: DecisionAction) -> some View {
+        Button {
+            recordDecision(action)
+        } label: {
+            Text(label)
+                .font(.caption.weight(.medium))
+                .foregroundStyle(Theme.ink)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(Theme.surface)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                        .stroke(Theme.hairline, lineWidth: 1)
+                )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func recordDecision(_ action: DecisionAction) {
+        let event = DecisionEvent(
+            id: UUID(),
+            profileId: tasteProfileId,
+            skuId: item.skuId,
+            action: action,
+            timestamp: Date()
+        )
+        DecisionStore.record(event)
+
+        let multiplier: Double
+        switch action {
+        case .aligned:  multiplier = 0.15
+        case .notForMe: multiplier = -0.10
+        case .bought:   multiplier = 0.25
+        }
+
+        applyDecisionShift(multiplier: multiplier)
+
+        EventLogger.shared.logEvent(
+            "decision_\(action.rawValue)",
+            tasteProfileId: tasteProfileId,
+            metadata: eventMeta
+        )
+
+        Haptics.tap()
+        dismiss()
+    }
+
+    private func applyDecisionShift(multiplier: Double) {
+        let catalog = DomainCatalog.items(for: domain)
+        guard let catalogItem = catalog.first(where: { $0.skuId == item.skuId }) else { return }
+
+        switch domain {
+        case .space:
+            guard !catalogItem.commerceAxisWeights.isEmpty else { return }
+            let synthetic = AxisMapping.syntheticVector(fromAxes: catalogItem.commerceAxisWeights)
+            var scaled: [String: Double] = [:]
+            for (key, val) in synthetic.weights {
+                scaled[key] = val * multiplier
+            }
+            var record = CalibrationStore.load(for: tasteProfileId) ?? CalibrationRecord(
+                tasteProfileId: tasteProfileId,
+                vector: .zero,
+                swipeCount: 0,
+                createdAt: Date()
+            )
+            for (key, val) in scaled {
+                record.vector.weights[key, default: 0] += val
+            }
+            record.vector = record.vector.normalized()
+            CalibrationStore.save(record)
+
+        case .objects:
+            guard !catalogItem.objectAxisWeights.isEmpty else { return }
+            guard var record = ObjectCalibrationStore.load(for: tasteProfileId) else { return }
+            for axis in ObjectAxis.allCases {
+                let key = axis.rawValue
+                let current = record.vector.weights[key, default: 0.0]
+                let itemVal = catalogItem.objectAxisWeights[key, default: 0.0]
+                record.vector.weights[key] = current + multiplier * itemVal
+            }
+            ObjectCalibrationStore.save(record)
+
+        default:
+            break
+        }
     }
 
     // MARK: - Advisory

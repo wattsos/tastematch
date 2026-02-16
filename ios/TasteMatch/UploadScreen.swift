@@ -245,7 +245,7 @@ struct UploadScreen: View {
                     Text("Your latest vibe")
                         .font(.system(.caption, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.clay)
-                    Text(saved.tasteProfile.displayName)
+                    Text(domainDisplayName(for: saved))
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(Theme.espresso)
                 }
@@ -264,6 +264,30 @@ struct UploadScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel("View your latest taste profile")
+    }
+
+    private func domainDisplayName(for saved: SavedProfile) -> String {
+        let profile = saved.tasteProfile
+        let domain = saved.domain ?? .space
+        let vector = TasteEngine.vectorFromProfile(profile)
+        let axisScores = AxisMapping.computeAxisScores(from: vector)
+        let basisHash = BasisHashBuilder.build(
+            axisScores: axisScores, vector: vector,
+            swipeCount: 0
+        )
+
+        switch domain {
+        case .objects:
+            if let record = ObjectCalibrationStore.load(for: profile.id) {
+                let scores = ObjectAxisMapping.computeAxisScores(from: record.vector)
+                return DomainNameDispatcher.generateObjects(objectScores: scores, basisHash: basisHash)
+            }
+            return DomainNameDispatcher.generate(axisScores: axisScores, basisHash: basisHash, domain: .objects)
+        case .art:
+            return DomainNameDispatcher.generate(axisScores: axisScores, basisHash: basisHash, domain: .art)
+        case .space:
+            return profile.displayName
+        }
     }
 
     // MARK: - Demo Mode

@@ -127,6 +127,8 @@
 		S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21013000000000000000013 /* AdvisoryToleranceTests.swift */; };
 		T11001000000000000000001 /* DomainCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = T21001000000000000000001 /* DomainCopy.swift */; };
 		T11002000000000000000002 /* DomainCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T21002000000000000000002 /* DomainCopyTests.swift */; };
+		U11001000000000000000001 /* DecisionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = U21001000000000000000001 /* DecisionStore.swift */; };
+		V11001000000000000000001 /* EngineResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = V21001000000000000000001 /* EngineResultScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +260,8 @@
 		S21013000000000000000013 /* AdvisoryToleranceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryToleranceTests.swift; sourceTree = "<group>"; };
 		T21001000000000000000001 /* DomainCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCopy.swift; sourceTree = "<group>"; };
 		T21002000000000000000002 /* DomainCopyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCopyTests.swift; sourceTree = "<group>"; };
+		U21001000000000000000001 /* DecisionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionStore.swift; sourceTree = "<group>"; };
+		V21001000000000000000001 /* EngineResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineResultScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +312,7 @@
 				Q21006000000000000000006 /* commerce_objects.json */,
 				L21001000000000000000001 /* commerce_space.json */,
 				A20005000000000000000005 /* ContextScreen.swift */,
+				U21001000000000000000001 /* DecisionStore.swift */,
 				I21004000000000000000004 /* DiscoveryCacheStore.swift */,
 				H21001000000000000000001 /* DiscoveryEngine.swift */,
 				G21001000000000000000001 /* DiscoveryFeed.swift */,
@@ -326,6 +331,7 @@
 				R21003000000000000000003 /* DomainLayout.swift */,
 				Q21004000000000000000004 /* DomainNaming.swift */,
 				R21001000000000000000001 /* DomainPreferencesStore.swift */,
+				V21001000000000000000001 /* EngineResultScreen.swift */,
 				7DC7E7BF2F42C0BC0015B135 /* EngineRootView.swift */,
 				A20006000000000000000006 /* EventLogger.swift */,
 				A20007000000000000000007 /* EvolutionScreen.swift */,
@@ -612,6 +618,8 @@
 				S1100C00000000000000000C /* TasteConflictEngine.swift in Sources */,
 				S1100E00000000000000000E /* TasteGuardSheet.swift in Sources */,
 				T11001000000000000000001 /* DomainCopy.swift in Sources */,
+				U11001000000000000000001 /* DecisionStore.swift in Sources */,
+				V11001000000000000000001 /* EngineResultScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

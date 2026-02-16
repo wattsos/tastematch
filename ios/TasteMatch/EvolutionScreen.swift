@@ -14,7 +14,7 @@ struct EvolutionScreen: View {
                     Text("Your taste is evolving")
                         .font(Theme.headlineFont)
                         .foregroundStyle(Theme.espresso)
-                    Text("Analyze at least two rooms and\nwe'll map how your style shifts.")
+                    Text(DomainCopy.evolutionLine(DomainStore.current))
                         .font(.subheadline)
                         .foregroundStyle(Theme.clay)
                         .multilineTextAlignment(.center)

@@ -15,7 +15,7 @@ struct HistoryScreen: View {
                     Text("No analyses yet")
                         .font(Theme.headlineFont)
                         .foregroundStyle(Theme.espresso)
-                    Text("Every room you analyze will\nshow up here over time.")
+                    Text(DomainCopy.historyLine(DomainStore.current))
                         .font(.subheadline)
                         .foregroundStyle(Theme.clay)
                         .multilineTextAlignment(.center)
@@ -50,10 +50,15 @@ struct HistoryScreen: View {
                         .foregroundStyle(.primary)
                         .swipeActions(edge: .leading) {
                             Button {
-                                path.append(Route.reanalyze(
-                                    saved.roomContext ?? .livingRoom,
-                                    saved.designGoal ?? .refresh
-                                ))
+                                let domain = saved.domain ?? .space
+                                if domain == .space {
+                                    path.append(Route.reanalyze(
+                                        saved.roomContext ?? .livingRoom,
+                                        saved.designGoal ?? .refresh
+                                    ))
+                                } else {
+                                    path.append(Route.newScan(domain))
+                                }
                             } label: {
                                 Label("Re-analyze", systemImage: "arrow.clockwise")
                             }

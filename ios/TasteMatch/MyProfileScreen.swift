@@ -649,7 +649,12 @@ struct MyProfileScreen: View {
 
             domainPicker
 
-            if let naming = namingResult, !naming.name.isEmpty {
+            if let dn = domainName, currentDomain != .space {
+                Text(dn)
+                    .font(.system(size: 48, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else if let naming = namingResult, !naming.name.isEmpty {
                 Text(naming.name)
                     .font(.system(size: 48, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
@@ -659,13 +664,6 @@ struct MyProfileScreen: View {
                     .font(.system(size: 48, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)
-            }
-
-            if let dn = domainName, currentDomain != .space {
-                Text(dn)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Theme.muted)
-                    .tracking(1.0)
             }
 
             if currentDomain == .objects && objectCalibrationRecord != nil {

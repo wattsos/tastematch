@@ -125,6 +125,8 @@
 		S11011000000000000000011 /* AdvisoryToleranceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21011000000000000000011 /* AdvisoryToleranceStore.swift */; };
 		S11012000000000000000012 /* ObjectAdvisory.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21012000000000000000012 /* ObjectAdvisory.swift */; };
 		S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = S21013000000000000000013 /* AdvisoryToleranceTests.swift */; };
+		T11001000000000000000001 /* DomainCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = T21001000000000000000001 /* DomainCopy.swift */; };
+		T11002000000000000000002 /* DomainCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T21002000000000000000002 /* DomainCopyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +255,8 @@
 		S21011000000000000000011 /* AdvisoryToleranceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryToleranceStore.swift; sourceTree = "<group>"; };
 		S21012000000000000000012 /* ObjectAdvisory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAdvisory.swift; sourceTree = "<group>"; };
 		S21013000000000000000013 /* AdvisoryToleranceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryToleranceTests.swift; sourceTree = "<group>"; };
+		T21001000000000000000001 /* DomainCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCopy.swift; sourceTree = "<group>"; };
+		T21002000000000000000002 /* DomainCopyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainCopyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +320,7 @@
 				B21001000000000000000001 /* DesignTipsEngine.swift */,
 				Q21001000000000000000001 /* Domain.swift */,
 				Q21002000000000000000002 /* DomainCatalog.swift */,
+				T21001000000000000000001 /* DomainCopy.swift */,
 				Q21003000000000000000003 /* DomainDiscovery.swift */,
 				R21003000000000000000003 /* DomainLayout.swift */,
 				Q21004000000000000000004 /* DomainNaming.swift */,
@@ -376,6 +381,7 @@
 			children = (
 				S21013000000000000000013 /* AdvisoryToleranceTests.swift */,
 				S21009000000000000000009 /* ArchetypeDuelTests.swift */,
+				T21002000000000000000002 /* DomainCopyTests.swift */,
 				Q2100C00000000000000000C /* ArtRarityRankingTests.swift */,
 				K21002000000000000000002 /* AxisMappingTests.swift */,
 				P21003000000000000000003 /* MyProfileScreenTests.swift */,
@@ -602,6 +608,7 @@
 				S11012000000000000000012 /* ObjectAdvisory.swift in Sources */,
 				S1100C00000000000000000C /* TasteConflictEngine.swift in Sources */,
 				S1100E00000000000000000E /* TasteGuardSheet.swift in Sources */,
+				T11001000000000000000001 /* DomainCopy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +647,7 @@
 				A1001B00000000000000001B /* TasteEngineTests.swift in Sources */,
 				S1100F00000000000000000F /* TasteConflictEngineTests.swift in Sources */,
 				S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */,
+				T11002000000000000000002 /* DomainCopyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

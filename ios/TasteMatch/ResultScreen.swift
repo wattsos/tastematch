@@ -282,7 +282,7 @@ struct ResultScreen: View {
                     ForEach(sortedRecommendations) { item in
                         Button {
                             EventLogger.shared.logEvent("pick_tapped", tasteProfileId: profile.id, metadata: ["skuId": item.skuId])
-                            path.append(Route.recommendationDetail(item, tasteProfileId: profile.id))
+                            path.append(Route.recommendationDetail(item, tasteProfileId: profile.id, domain: domain))
                         } label: {
                             pickCard(item)
                         }
@@ -315,7 +315,7 @@ struct ResultScreen: View {
                         HStack(spacing: 12) {
                             ForEach(Array(variantItems(for: variant).prefix(8))) { item in
                                 Button {
-                                    path.append(Route.recommendationDetail(item, tasteProfileId: profile.id))
+                                    path.append(Route.recommendationDetail(item, tasteProfileId: profile.id, domain: domain))
                                 } label: {
                                     compactCard(item)
                                 }

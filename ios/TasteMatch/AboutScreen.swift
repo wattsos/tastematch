@@ -22,7 +22,7 @@ struct AboutScreen: View {
 
             // Story
             Section("Our Story") {
-                Text("\(Brand.name) was born from a simple idea: your space already knows your style. We built an engine that reads the visual DNA of your room — color temperature, texture, contrast — and translates it into a taste profile you can act on.")
+                Text(DomainCopy.aboutBody(DomainStore.current))
                     .font(.body)
                     .foregroundStyle(Theme.ink)
                     .lineSpacing(4)
@@ -30,7 +30,7 @@ struct AboutScreen: View {
 
             // How it works
             Section("How It Works") {
-                step(number: "1", title: "Upload", description: "Snap a photo of any room or space you love.")
+                step(number: "1", title: "Upload", description: DomainCopy.aboutStep1(DomainStore.current))
                 step(number: "2", title: "Analyze", description: "Our engine extracts visual signals — palette, brightness, texture, materials.")
                 step(number: "3", title: "Discover", description: "Get a taste profile, curated selections, and design tips tailored to you.")
             }

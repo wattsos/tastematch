@@ -13,93 +13,85 @@ struct IdentityRevealView: View {
     private let confidence = 42
     private let signals = 10
 
-    // Collage placeholder symbols + aspect hints
-    private let collageSlots: [(symbol: String, ratio: CGFloat)] = [
-        ("figure.stand", 0.65),
-        ("tshirt", 1.2),
-        ("square.stack.3d.up", 0.8),
-        ("hammer", 1.0),
-        ("chair", 0.75),
-    ]
+    // Hero + two supporting image placeholders
+    private let heroSymbol = "figure.stand"
+    private let supportLeft = "tshirt"
+    private let supportRight = "chair"
 
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 0) {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let h = geo.size.height
 
-                // Collage
-                collageGrid
-                    .padding(.bottom, 2)
+            ZStack(alignment: .top) {
+                Theme.bone.ignoresSafeArea()
 
-                // Identity name overlay
-                identityTitle
-                    .padding(.top, 32)
-                    .padding(.bottom, 28)
+                VStack(spacing: 0) {
+                    // Image block: hero + two supporting
+                    imageBlock(width: w, totalHeight: h)
 
-                // Divider
-                Rectangle()
-                    .fill(Theme.charcoal.opacity(0.1))
-                    .frame(height: 1)
-                    .padding(.horizontal, 24)
+                    // Content below images
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 0) {
+                            identityTitle
+                                .padding(.top, 28)
+                                .padding(.bottom, 24)
 
-                // Influences
-                influenceList
-                    .padding(.top, 24)
-                    .padding(.bottom, 28)
+                            Rectangle()
+                                .fill(Theme.charcoal.opacity(0.1))
+                                .frame(height: 1)
+                                .padding(.horizontal, 24)
 
-                // Confidence line
-                confidenceLine
-                    .padding(.bottom, 40)
+                            influenceList
+                                .padding(.top, 20)
+                                .padding(.bottom, 20)
 
-                // CTAs
-                ctaRow
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 48)
+                            confidenceLine
+                                .padding(.bottom, 28)
+
+                            ctaRow
+                                .padding(.horizontal, 24)
+                                .padding(.bottom, 48)
+                        }
+                    }
+                }
             }
         }
-        .background(Theme.bone.ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
     }
 
-    // MARK: - Collage Grid
+    // MARK: - Image Block (Layout C)
 
-    private var collageGrid: some View {
-        GeometryReader { geo in
-            let w = geo.size.width
-            let gap: CGFloat = 2
+    private func imageBlock(width w: CGFloat, totalHeight h: CGFloat) -> some View {
+        let heroH = h * 0.52
+        let supportH = h * 0.16
+        let gap: CGFloat = 2
 
-            ZStack(alignment: .topLeading) {
-                // Row 1: two images
-                collageTile(collageSlots[0])
-                    .frame(width: w * 0.58 - gap, height: w * 0.72)
+        return ZStack(alignment: .topLeading) {
+            // Hero — full width, top 52%
+            imageTile(symbol: heroSymbol)
+                .frame(width: w, height: heroH)
 
-                collageTile(collageSlots[1])
-                    .frame(width: w * 0.42, height: w * 0.72)
-                    .offset(x: w * 0.58 + gap)
+            // Supporting left — bottom-left, overlapping hero bottom
+            imageTile(symbol: supportLeft)
+                .frame(width: w * 0.48 - gap / 2, height: supportH)
+                .offset(y: heroH + gap)
 
-                // Row 2: three images
-                collageTile(collageSlots[2])
-                    .frame(width: w * 0.34 - gap, height: w * 0.44)
-                    .offset(y: w * 0.72 + gap)
-
-                collageTile(collageSlots[3])
-                    .frame(width: w * 0.34 - gap, height: w * 0.44)
-                    .offset(x: w * 0.34 + gap, y: w * 0.72 + gap)
-
-                collageTile(collageSlots[4])
-                    .frame(width: w * 0.32, height: w * 0.44)
-                    .offset(x: w * 0.68 + gap, y: w * 0.72 + gap)
-            }
+            // Supporting right — bottom-right
+            imageTile(symbol: supportRight)
+                .frame(width: w * 0.52 - gap / 2, height: supportH)
+                .offset(x: w * 0.48 + gap / 2, y: heroH + gap)
         }
-        .frame(height: UIScreen.main.bounds.width * 1.16 + 4)
+        .frame(width: w, height: heroH + 2 + supportH)
     }
 
-    private func collageTile(_ slot: (symbol: String, ratio: CGFloat)) -> some View {
+    private func imageTile(symbol: String) -> some View {
         ZStack {
             Theme.charcoal.opacity(0.04)
 
-            Image(systemName: slot.symbol)
-                .font(.system(size: 32, weight: .ultraLight))
-                .foregroundStyle(Theme.charcoal.opacity(0.15))
+            Image(systemName: symbol)
+                .font(.system(size: 36, weight: .ultraLight))
+                .foregroundStyle(Theme.charcoal.opacity(0.14))
         }
         .clipped()
     }
@@ -124,14 +116,14 @@ struct IdentityRevealView: View {
     // MARK: - Influences
 
     private var influenceList: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 14) {
             ForEach(Array(influences.enumerated()), id: \.offset) { _, pair in
-                HStack {
+                HStack(spacing: 0) {
                     Text(pair.0)
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(Theme.charcoal.opacity(0.35))
                         .tracking(1.2)
-                        .frame(width: 80, alignment: .leading)
+                        .frame(width: 84, alignment: .leading)
 
                     Text(pair.1)
                         .font(.subheadline)

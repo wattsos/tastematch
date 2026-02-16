@@ -16,6 +16,7 @@ enum Route: Hashable {
     case profile(UUID)
     case shop(TasteProfile, TasteDomain)
     case newScan(TasteDomain? = nil)
+    case identityReveal
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -53,6 +54,8 @@ enum Route: Hashable {
             hasher.combine(profile.id)
         case .newScan:
             hasher.combine("newScan")
+        case .identityReveal:
+            hasher.combine("identityReveal")
         }
     }
 
@@ -84,6 +87,8 @@ enum Route: Hashable {
             return p1.id == p2.id
         case (.newScan, .newScan):
             return true  // Ignore domain for nav stack dedup
+        case (.identityReveal, .identityReveal):
+            return true
         default:
             return false
         }
@@ -265,6 +270,8 @@ struct MainTabView: View {
             ShopScreen(path: path, profile: profile, domain: domain)
         case .newScan(let domain):
             UploadScreen(path: path, domain: domain ?? DomainPreferencesStore.primaryDomain)
+        case .identityReveal:
+            IdentityRevealView()
         }
     }
 }

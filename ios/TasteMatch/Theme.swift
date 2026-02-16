@@ -70,6 +70,20 @@ enum Theme {
     static let favorite = Color(light: .init(red: 0.84, green: 0.32, blue: 0.37, alpha: 1),
                                 dark: .init(red: 0.90, green: 0.38, blue: 0.42, alpha: 1))
 
+    // MARK: - Identity Palette
+
+    /// Bone — warm off-white for identity screens
+    static let bone = Color(light: .init(red: 0.95, green: 0.93, blue: 0.90, alpha: 1),
+                            dark: .init(red: 0.11, green: 0.10, blue: 0.09, alpha: 1))
+
+    /// Deep burgundy — identity accent
+    static let burgundy = Color(light: .init(red: 0.36, green: 0.09, blue: 0.12, alpha: 1),
+                                dark: .init(red: 0.55, green: 0.18, blue: 0.22, alpha: 1))
+
+    /// Charcoal — identity text
+    static let charcoal = Color(light: .init(red: 0.18, green: 0.17, blue: 0.16, alpha: 1),
+                                dark: .init(red: 0.88, green: 0.87, blue: 0.86, alpha: 1))
+
     // MARK: - Typography Helpers
 
     static let displayFont: Font = .system(size: 48, weight: .bold, design: .serif)
@@ -77,6 +91,10 @@ enum Theme {
     static let bodyFont: Font = .system(.body, design: .default)
     static let captionFont: Font = .system(.caption, design: .default)
     static let labelFont: Font = .system(.caption, design: .default, weight: .medium)
+
+    /// Serif headline for identity screens
+    static let identityHeadline: Font = .system(.title2, design: .serif, weight: .semibold)
+    static let identityDisplay: Font = .system(size: 56, weight: .bold, design: .serif)
 }
 
 // MARK: - Adaptive Color Initializer

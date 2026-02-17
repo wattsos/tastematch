@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "fit_050.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

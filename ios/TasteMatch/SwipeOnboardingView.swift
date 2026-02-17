@@ -4,17 +4,17 @@ struct SwipeOnboardingView: View {
     @Binding var path: NavigationPath
 
     @State private var deckKind: StyleDeckKind?
+    @State private var deckCards: [StyleCard] = []
     @State private var currentIndex = 0
     @State private var decisions: [Bool] = []
+    @State private var dragOffset: CGFloat = 0
 
-    private var cards: [StyleCard] {
-        guard let kind = deckKind else { return [] }
-        return StyleSeedDeck.deck(for: kind)
-    }
+    private let initialBatch = 16
+    private let refineBatch = 10
 
     private var progress: CGFloat {
-        guard !cards.isEmpty else { return 0 }
-        return CGFloat(currentIndex) / CGFloat(cards.count)
+        guard !deckCards.isEmpty else { return 0 }
+        return CGFloat(currentIndex) / CGFloat(deckCards.count)
     }
 
     var body: some View {
@@ -30,6 +30,11 @@ struct SwipeOnboardingView: View {
         .onAppear {
             if deckKind == nil, let saved = StyleDeckKind.stored {
                 deckKind = saved
+                loadBatch(for: saved)
+            }
+            // Returned from reveal — extend deck with 10 more
+            if !deckCards.isEmpty && currentIndex >= deckCards.count {
+                extendDeck()
             }
         }
     }
@@ -41,7 +46,7 @@ struct SwipeOnboardingView: View {
             Spacer()
 
             VStack(spacing: 12) {
-                Text("BUILD YOUR STYLE IDENTITY")
+                Text("LET'S MAP YOUR TASTE")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Theme.burgundy)
                     .tracking(1.4)
@@ -69,6 +74,7 @@ struct SwipeOnboardingView: View {
         Button {
             kind.save()
             Haptics.tap()
+            loadBatch(for: kind)
             withAnimation { deckKind = kind }
         } label: {
             Text(label)
@@ -86,31 +92,35 @@ struct SwipeOnboardingView: View {
         VStack(spacing: 0) {
             // Burgundy progress bar
             progressBar
-                .padding(.top, 4)
 
-            // Minimal header
-            Text("Which looks feel like you?")
-                .font(.caption.weight(.medium))
-                .foregroundStyle(Theme.charcoal.opacity(0.6))
-                .tracking(0.4)
-                .padding(.top, 14)
-                .padding(.bottom, 10)
+            // Header
+            VStack(spacing: 4) {
+                Text("LET'S MAP YOUR TASTE")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Theme.burgundy)
+                    .tracking(1.4)
 
-            // Full-bleed image
-            if currentIndex < cards.count {
-                fullBleedCard(cards[currentIndex])
+                Text("Swipe right for you. Left for not you.")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Theme.charcoal.opacity(0.5))
+                    .tracking(0.2)
+            }
+            .padding(.top, 12)
+            .padding(.bottom, 8)
+
+            // Swipeable card
+            if currentIndex < deckCards.count {
+                swipeableCard(deckCards[currentIndex])
                     .id(currentIndex)
-                    .transition(.opacity)
             }
 
             Spacer(minLength: 0)
 
-            // Bottom controls
+            // Fallback buttons
             buttonRow
                 .padding(.horizontal, 24)
                 .padding(.bottom, 32)
         }
-        .animation(.easeInOut(duration: 0.2), value: currentIndex)
     }
 
     // MARK: - Progress Bar
@@ -130,53 +140,72 @@ struct SwipeOnboardingView: View {
         .frame(height: 3)
     }
 
-    // MARK: - Full-bleed Card
+    // MARK: - Swipeable Card
 
-    private func fullBleedCard(_ card: StyleCard) -> some View {
+    private func swipeableCard(_ card: StyleCard) -> some View {
         GeometryReader { geo in
-            ZStack(alignment: .bottom) {
-                // Image fills entire area — no rounded corners, no card container
-                if UIImage(named: card.imageName) != nil {
-                    Image(card.imageName)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
-                } else {
-                    // Placeholder: symbol on bone
-                    ZStack {
-                        Theme.bone
+            ZStack {
+                // Full-bleed image
+                Image(card.imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
 
-                        Image(systemName: card.symbol)
-                            .font(.system(size: 80, weight: .thin))
-                            .foregroundStyle(Theme.charcoal.opacity(0.18))
-                    }
+                // Swipe direction indicator
+                if dragOffset > 30 {
+                    swipeLabel("YES", color: Theme.burgundy)
+                        .opacity(Double(min(1, (dragOffset - 30) / 60)))
+                } else if dragOffset < -30 {
+                    swipeLabel("NOPE", color: Theme.charcoal.opacity(0.6))
+                        .opacity(Double(min(1, (-dragOffset - 30) / 60)))
                 }
-
-                // Title overlay at bottom edge
-                VStack(spacing: 2) {
-                    Text(card.title)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(Theme.charcoal)
-                    Text(card.subtitle.uppercased())
-                        .font(.caption2.weight(.medium))
-                        .foregroundStyle(Theme.charcoal.opacity(0.5))
-                        .tracking(0.8)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-                .background(Theme.bone.opacity(0.92))
             }
+            .offset(x: dragOffset)
+            .rotationEffect(.degrees(Double(dragOffset) / 20), anchor: .bottom)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        dragOffset = value.translation.width
+                    }
+                    .onEnded { value in
+                        let threshold: CGFloat = 100
+                        if value.translation.width > threshold {
+                            swipeAway(isMe: true)
+                        } else if value.translation.width < -threshold {
+                            swipeAway(isMe: false)
+                        } else {
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+                                dragOffset = 0
+                            }
+                        }
+                    }
+            )
         }
+        .padding(.horizontal, 8)
         .frame(maxWidth: .infinity)
     }
 
-    // MARK: - Buttons
+    private func swipeLabel(_ text: String, color: Color) -> some View {
+        Text(text)
+            .font(.title.weight(.bold))
+            .foregroundStyle(color)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .stroke(color, lineWidth: 3)
+            )
+            .rotationEffect(.degrees(text == "YES" ? -15 : 15))
+            .padding(.bottom, 100)
+    }
+
+    // MARK: - Buttons (fallback)
 
     private var buttonRow: some View {
         HStack(spacing: 0) {
             Button {
-                recordDecision(false)
+                swipeAway(isMe: false)
             } label: {
                 Text("Not me")
                     .font(.subheadline.weight(.medium))
@@ -191,7 +220,7 @@ struct SwipeOnboardingView: View {
             .buttonStyle(.plain)
 
             Button {
-                recordDecision(true)
+                swipeAway(isMe: true)
             } label: {
                 Text("This is me")
                     .font(.subheadline.weight(.medium))
@@ -206,14 +235,40 @@ struct SwipeOnboardingView: View {
 
     // MARK: - Logic
 
-    private func recordDecision(_ isMe: Bool) {
-        decisions.append(isMe)
-        Haptics.tap()
+    private func loadBatch(for kind: StyleDeckKind) {
+        let all = StyleSeedDeck.deck(for: kind)
+        deckCards = Array(all.prefix(initialBatch))
+        currentIndex = 0
+        decisions = []
+    }
 
-        if decisions.count >= cards.count {
-            path.append(Route.identityReveal)
-        } else {
-            currentIndex = decisions.count
+    private func extendDeck() {
+        guard let kind = deckKind else { return }
+        let all = StyleSeedDeck.deck(for: kind)
+        let nextStart = deckCards.count
+        let nextEnd = min(nextStart + refineBatch, all.count)
+        guard nextStart < all.count else { return }
+        deckCards.append(contentsOf: all[nextStart..<nextEnd])
+    }
+
+    private func swipeAway(isMe: Bool) {
+        let exitX: CGFloat = isMe ? 400 : -400
+
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.75)) {
+            dragOffset = exitX
+        }
+
+        Haptics.impact()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            decisions.append(isMe)
+            dragOffset = 0
+
+            if decisions.count >= deckCards.count {
+                path.append(Route.identityReveal)
+            } else {
+                currentIndex = decisions.count
+            }
         }
     }
 }

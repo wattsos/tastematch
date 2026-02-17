@@ -133,6 +133,7 @@
 		X11001000000000000000001 /* IdentityRevealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = X21001000000000000000001 /* IdentityRevealView.swift */; };
 		Y11001000000000000000001 /* IdentityHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = Y21001000000000000000001 /* IdentityHomeView.swift */; };
 		Z11001000000000000000001 /* StyleSeedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z21001000000000000000001 /* StyleSeedDeck.swift */; };
+		AA1100100000000000000001 /* IdentityFitsCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2100100000000000000001 /* IdentityFitsCatalog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,7 @@
 		X21001000000000000000001 /* IdentityRevealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityRevealView.swift; sourceTree = "<group>"; };
 		Y21001000000000000000001 /* IdentityHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityHomeView.swift; sourceTree = "<group>"; };
 		Z21001000000000000000001 /* StyleSeedDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSeedDeck.swift; sourceTree = "<group>"; };
+		AA2100100000000000000001 /* IdentityFitsCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityFitsCatalog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 				A20012000000000000000012 /* ResultScreen.swift */,
 				A20013000000000000000013 /* SettingsScreen.swift */,
 				Z21001000000000000000001 /* StyleSeedDeck.swift */,
+				AA2100100000000000000001 /* IdentityFitsCatalog.swift */,
 				M21001000000000000000001 /* ShopScreen.swift */,
 				B21003000000000000000003 /* ShareTextBuilder.swift */,
 				A20014000000000000000014 /* SignalExtractor.swift */,
@@ -636,6 +639,7 @@
 				X11001000000000000000001 /* IdentityRevealView.swift in Sources */,
 				Y11001000000000000000001 /* IdentityHomeView.swift in Sources */,
 				Z11001000000000000000001 /* StyleSeedDeck.swift in Sources */,
+				AA1100100000000000000001 /* IdentityFitsCatalog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct IdentityRevealView: View {
+    @Binding var path: NavigationPath
+    @Environment(\.openURL) private var openURL
 
     // MARK: - Placeholder data
 
@@ -13,90 +15,54 @@ struct IdentityRevealView: View {
     private let confidence = 42
     private let signals = 10
 
-    // Hero + two supporting image placeholders
-    private let heroSymbol = "figure.stand"
-    private let supportLeft = "tshirt"
-    private let supportRight = "chair"
+    // Images from deck
+    private var heroImage: String { IdentityFitsCatalog.all[0] }
+    private var supportLeftImage: String { IdentityFitsCatalog.all[4] }
+    private var supportRightImage: String { IdentityFitsCatalog.all[8] }
 
     var body: some View {
-        GeometryReader { geo in
-            let w = geo.size.width
-            let h = geo.size.height
-
-            ZStack(alignment: .top) {
-                Theme.bone.ignoresSafeArea()
-
+        ZStack(alignment: .bottom) {
+            // Scrollable content
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
-                    // Image block: hero + two supporting
-                    imageBlock(width: w, totalHeight: h)
+                    // Identity title at top
+                    identityTitle
+                        .padding(.top, 20)
+                        .padding(.bottom, 24)
 
-                    // Content below images
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 0) {
-                            identityTitle
-                                .padding(.top, 28)
-                                .padding(.bottom, 24)
+                    // Hero image — full width, ~60% viewport
+                    heroImageView
 
-                            Rectangle()
-                                .fill(Theme.charcoal.opacity(0.1))
-                                .frame(height: 1)
-                                .padding(.horizontal, 24)
+                    // Two supporting images
+                    supportingImages
+                        .padding(.top, 2)
 
-                            influenceList
-                                .padding(.top, 20)
-                                .padding(.bottom, 20)
+                    // Divider
+                    Rectangle()
+                        .fill(Theme.charcoal.opacity(0.1))
+                        .frame(height: 1)
+                        .padding(.horizontal, 24)
+                        .padding(.top, 24)
 
-                            confidenceLine
-                                .padding(.bottom, 28)
+                    // Influences
+                    influenceList
+                        .padding(.top, 20)
+                        .padding(.bottom, 16)
 
-                            ctaRow
-                                .padding(.horizontal, 24)
-                                .padding(.bottom, 48)
-                        }
-                    }
+                    // Confidence
+                    confidenceLine
+                        .padding(.bottom, 100) // space for sticky bar
                 }
             }
+
+            // Sticky bottom bar
+            stickyBar
         }
+        .background(Theme.bone.ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
     }
 
-    // MARK: - Image Block (Layout C)
-
-    private func imageBlock(width w: CGFloat, totalHeight h: CGFloat) -> some View {
-        let heroH = h * 0.52
-        let supportH = h * 0.16
-        let gap: CGFloat = 2
-
-        return ZStack(alignment: .topLeading) {
-            // Hero — full width, top 52%
-            imageTile(symbol: heroSymbol)
-                .frame(width: w, height: heroH)
-
-            // Supporting left — bottom-left, overlapping hero bottom
-            imageTile(symbol: supportLeft)
-                .frame(width: w * 0.48 - gap / 2, height: supportH)
-                .offset(y: heroH + gap)
-
-            // Supporting right — bottom-right
-            imageTile(symbol: supportRight)
-                .frame(width: w * 0.52 - gap / 2, height: supportH)
-                .offset(x: w * 0.48 + gap / 2, y: heroH + gap)
-        }
-        .frame(width: w, height: heroH + 2 + supportH)
-    }
-
-    private func imageTile(symbol: String) -> some View {
-        ZStack {
-            Theme.charcoal.opacity(0.04)
-
-            Image(systemName: symbol)
-                .font(.system(size: 36, weight: .ultraLight))
-                .foregroundStyle(Theme.charcoal.opacity(0.14))
-        }
-        .clipped()
-    }
-
-    // MARK: - Identity Title
+    // MARK: - Identity Title (at top)
 
     private var identityTitle: some View {
         VStack(spacing: 6) {
@@ -110,7 +76,48 @@ struct IdentityRevealView: View {
                 .foregroundStyle(Theme.charcoal)
                 .multilineTextAlignment(.center)
                 .lineSpacing(2)
+                .lineLimit(2)
+                .minimumScaleFactor(0.7)
         }
+    }
+
+    // MARK: - Hero Image
+
+    private var heroImageView: some View {
+        GeometryReader { geo in
+            Image(heroImage)
+                .resizable()
+                .scaledToFill()
+                .frame(width: geo.size.width, height: geo.size.width * 1.3)
+                .clipped()
+        }
+        .frame(height: UIScreen.main.bounds.width * 1.3)
+    }
+
+    // MARK: - Supporting Images
+
+    private var supportingImages: some View {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let gap: CGFloat = 2
+            let tileW = (w - gap) / 2
+            let tileH = tileW * 0.75
+
+            HStack(spacing: gap) {
+                Image(supportLeftImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: tileW, height: tileH)
+                    .clipped()
+
+                Image(supportRightImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: tileW, height: tileH)
+                    .clipped()
+            }
+        }
+        .frame(height: (UIScreen.main.bounds.width - 2) / 2 * 0.75)
     }
 
     // MARK: - Influences
@@ -128,6 +135,8 @@ struct IdentityRevealView: View {
                     Text(pair.1)
                         .font(.subheadline)
                         .foregroundStyle(Theme.charcoal)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 24)
@@ -144,38 +153,49 @@ struct IdentityRevealView: View {
             .tracking(0.3)
     }
 
-    // MARK: - CTAs
+    // MARK: - Sticky Bottom Bar
 
-    private var ctaRow: some View {
-        HStack(spacing: 0) {
-            Button {
-                // Stub: route back into refine deck
-            } label: {
-                Text("REFINE")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(Theme.charcoal)
-                    .tracking(1.2)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 18)
-                    .overlay(
-                        Rectangle()
-                            .stroke(Theme.charcoal.opacity(0.15), lineWidth: 1)
-                    )
-            }
-            .buttonStyle(.plain)
+    private var stickyBar: some View {
+        VStack(spacing: 0) {
+            Rectangle()
+                .fill(Theme.charcoal.opacity(0.08))
+                .frame(height: 1)
 
-            Button {
-                // Stub: route to shop
-            } label: {
-                Text("SHOP")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .tracking(1.2)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 18)
-                    .background(Theme.burgundy)
+            HStack(spacing: 0) {
+                Button {
+                    // Pop back to swipe deck — it will extend by 10 more cards
+                    path.removeLast()
+                } label: {
+                    Text("REFINE +10 SWIPES")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Theme.charcoal)
+                        .tracking(1.0)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                        .overlay(
+                            Rectangle()
+                                .stroke(Theme.charcoal.opacity(0.12), lineWidth: 1)
+                        )
+                }
+                .buttonStyle(.plain)
+
+                Button {
+                    // Open demo shop URL
+                    if let url = URL(string: "https://example.com/shop-identity") {
+                        openURL(url)
+                    }
+                } label: {
+                    Text("SHOP THIS IDENTITY")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .tracking(1.0)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 18)
+                        .background(Theme.burgundy)
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
         }
+        .background(Theme.bone)
     }
 }

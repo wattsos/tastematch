@@ -19,7 +19,7 @@ struct EngineRootView: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .identityReveal:
-                    IdentityRevealView()
+                    IdentityRevealView(path: $path)
                 default:
                     EmptyView()
                 }

@@ -1,0 +1,274 @@
+{
+  "domain": "wearables",
+  "version": 1,
+  "image_count": 53,
+  "source": "Desktop/untitled folder/clothes",
+  "selection_criteria": "all outfit photos - full collection",
+  "images": [
+    {
+      "id": "fit_001",
+      "file": "fit_001.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_002",
+      "file": "fit_002.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_003",
+      "file": "fit_003.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_004",
+      "file": "fit_004.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_005",
+      "file": "fit_005.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_006",
+      "file": "fit_006.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_007",
+      "file": "fit_007.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_008",
+      "file": "fit_008.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_009",
+      "file": "fit_009.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_010",
+      "file": "fit_010.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_011",
+      "file": "fit_011.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_012",
+      "file": "fit_012.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_013",
+      "file": "fit_013.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_014",
+      "file": "fit_014.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_015",
+      "file": "fit_015.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_016",
+      "file": "fit_016.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_017",
+      "file": "fit_017.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_018",
+      "file": "fit_018.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_019",
+      "file": "fit_019.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_020",
+      "file": "fit_020.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_021",
+      "file": "fit_021.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_022",
+      "file": "fit_022.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_023",
+      "file": "fit_023.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_024",
+      "file": "fit_024.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_025",
+      "file": "fit_025.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_026",
+      "file": "fit_026.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_027",
+      "file": "fit_027.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_028",
+      "file": "fit_028.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_029",
+      "file": "fit_029.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_030",
+      "file": "fit_030.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_031",
+      "file": "fit_031.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_032",
+      "file": "fit_032.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_033",
+      "file": "fit_033.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_034",
+      "file": "fit_034.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_035",
+      "file": "fit_035.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_036",
+      "file": "fit_036.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_037",
+      "file": "fit_037.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_038",
+      "file": "fit_038.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_039",
+      "file": "fit_039.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_040",
+      "file": "fit_040.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_041",
+      "file": "fit_041.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_042",
+      "file": "fit_042.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_043",
+      "file": "fit_043.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_044",
+      "file": "fit_044.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_045",
+      "file": "fit_045.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_046",
+      "file": "fit_046.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_047",
+      "file": "fit_047.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_048",
+      "file": "fit_048.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_049",
+      "file": "fit_049.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_050",
+      "file": "fit_050.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_051",
+      "file": "fit_051.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_052",
+      "file": "fit_052.jpg",
+      "type": "outfit_identity"
+    },
+    {
+      "id": "fit_053",
+      "file": "fit_053.jpg",
+      "type": "outfit_identity"
+    }
+  ]
+}

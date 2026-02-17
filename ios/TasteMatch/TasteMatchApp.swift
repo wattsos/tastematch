@@ -271,7 +271,7 @@ struct MainTabView: View {
         case .newScan(let domain):
             UploadScreen(path: path, domain: domain ?? DomainPreferencesStore.primaryDomain)
         case .identityReveal:
-            IdentityRevealView()
+            IdentityRevealView(path: path)
         }
     }
 }

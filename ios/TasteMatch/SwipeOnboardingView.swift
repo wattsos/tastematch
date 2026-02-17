@@ -18,25 +18,20 @@ struct SwipeOnboardingView: View {
     }
 
     var body: some View {
-        Group {
-            if deckKind == nil {
-                deckSelector
-            } else {
-                swipeDeck
+        swipeDeck
+            .background(Theme.bone.ignoresSafeArea())
+            .onAppear {
+                if deckKind == nil {
+                    let kind = StyleDeckKind.stored ?? .any
+                    kind.save()
+                    deckKind = kind
+                    loadBatch(for: kind)
+                }
+                // Returned from reveal — extend deck with 10 more
+                if !deckCards.isEmpty && currentIndex >= deckCards.count {
+                    extendDeck()
+                }
             }
-        }
-        .background(Theme.bone.ignoresSafeArea())
-        .animation(.easeInOut(duration: 0.25), value: deckKind != nil)
-        .onAppear {
-            if deckKind == nil, let saved = StyleDeckKind.stored {
-                deckKind = saved
-                loadBatch(for: saved)
-            }
-            // Returned from reveal — extend deck with 10 more
-            if !deckCards.isEmpty && currentIndex >= deckCards.count {
-                extendDeck()
-            }
-        }
     }
 
     // MARK: - Deck Selector

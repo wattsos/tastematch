@@ -18,9 +18,9 @@ enum ReinforcementService {
 
         let learningRate: Double
         switch action {
-        case .bought:    learningRate =  0.12
-        case .rejected:  learningRate = -0.08
-        case .regretted: learningRate = -0.20
+        case .bought:    learningRate =  0.35
+        case .rejected:  learningRate = -0.25
+        case .regretted: learningRate = -0.45
         }
 
         var updatedWeights = identity.vector.weights

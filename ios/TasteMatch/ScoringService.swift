@@ -22,11 +22,15 @@ enum ScoringService {
             magA += a * a
             magB += b * b
         }
-        let magnitude = sqrt(magA) * sqrt(magB)
-        let cosine = magnitude > 0 ? dotProduct / magnitude : 0.0
+        // Projection of identity onto candidate direction.
+        // Measures how strongly the identity vector aligns with the candidate's direction,
+        // weighted by the identity's actual magnitude — so small weights produce small scores.
+        let candidateMag = sqrt(magA)
+        let projectedScore = candidateMag > 0 ? dotProduct / candidateMag : 0.0
+        let bounded = max(-1.0, min(1.0, projectedScore))
 
-        // Map cosine [-1, 1] → alignment [0, 100]
-        var alignment = Int(((cosine + 1.0) / 2.0) * 100.0)
+        // Map [-1, 1] → alignment [0, 100]
+        var alignment = Int(((bounded + 1.0) / 2.0) * 100.0)
 
         // --- Avoid-hit penalty ---
         let candidateInfluences = Set(normCandidate.influences)

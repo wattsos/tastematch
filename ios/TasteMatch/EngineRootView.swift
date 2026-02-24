@@ -20,6 +20,8 @@ struct EngineRootView: View {
                 switch route {
                 case .identityReveal:
                     IdentityRevealView(path: $path)
+                case .itemEvaluation(let evaluation, let candidateVector):
+                    ItemEvaluationScreen(path: $path, evaluation: evaluation, candidateVector: candidateVector)
                 default:
                     EmptyView()
                 }

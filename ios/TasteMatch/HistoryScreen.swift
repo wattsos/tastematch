@@ -2,115 +2,126 @@ import SwiftUI
 
 struct HistoryScreen: View {
     @Binding var path: NavigationPath
-    @State private var history: [SavedProfile] = []
+    @State private var events: [TasteEvent] = []
+    @State private var selectedEvent: TasteEvent?
 
     var body: some View {
         Group {
-            if history.isEmpty {
-                VStack(spacing: 16) {
-                    Spacer()
-                    Image(systemName: "clock")
-                        .font(.system(size: 48))
-                        .foregroundStyle(Theme.blush)
-                    Text("No analyses yet")
-                        .font(Theme.headlineFont)
-                        .foregroundStyle(Theme.espresso)
-                    Text(DomainCopy.historyLine(DomainStore.current))
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.clay)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                }
+            if events.isEmpty {
+                emptyState
             } else {
-                List {
-                    ForEach(history.reversed()) { saved in
-                        Button {
-                            navigateToResult(saved: saved)
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(saved.tasteProfile.displayName)
-                                        .font(.headline)
-                                        .foregroundStyle(Theme.espresso)
-                                    Text(formatted(saved.savedAt))
-                                        .font(.caption)
-                                        .foregroundStyle(Theme.clay.opacity(0.7))
-                                }
-                                Spacer()
-                                if let confidence = saved.tasteProfile.tags.first?.confidence {
-                                    Text(alignmentWord(confidence))
-                                        .font(.caption2)
-                                        .foregroundStyle(Theme.muted)
-                                }
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(Theme.blush)
-                            }
-                        }
-                        .foregroundStyle(.primary)
-                        .swipeActions(edge: .leading) {
-                            Button {
-                                let domain = saved.domain ?? .space
-                                if domain == .space {
-                                    path.append(Route.reanalyze(
-                                        saved.roomContext ?? .livingRoom,
-                                        saved.designGoal ?? .refresh
-                                    ))
-                                } else {
-                                    path.append(Route.newScan(domain))
-                                }
-                            } label: {
-                                Label("Re-analyze", systemImage: "arrow.clockwise")
-                            }
-                            .tint(.blue)
-                        }
-                    }
-                    .onDelete { offsets in
-                        deleteItems(at: offsets)
-                    }
-                }
+                eventList
             }
         }
-        .navigationTitle("History")
+        .navigationTitle("HISTORY")
+        .navigationBarTitleDisplayMode(.inline)
         .tint(Theme.accent)
-        .toolbar {
-            if history.count >= 2 {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 16) {
-                        Button {
-                            path.append(Route.evolution)
-                        } label: {
-                            Label("Evolution", systemImage: "chart.line.uptrend.xyaxis")
-                        }
-                        Button {
-                            path.append(Route.compare)
-                        } label: {
-                            Label("Compare", systemImage: "arrow.left.arrow.right")
-                        }
+        .onAppear {
+            events = TasteEventStore.loadAll().reversed()
+        }
+        .sheet(item: $selectedEvent) { event in
+            NavigationStack {
+                ItemEvaluationScreen(
+                    path: .constant(NavigationPath()),
+                    evaluation: event.evaluation,
+                    candidateVector: .zero,
+                    readOnly: true
+                )
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Done") { selectedEvent = nil }
+                            .foregroundStyle(Theme.ink)
                     }
                 }
             }
         }
-        .onAppear {
-            history = ProfileStore.loadAll()
+    }
+
+    // MARK: - Empty State
+
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "clock")
+                .font(.system(size: 48))
+                .foregroundStyle(Theme.muted)
+            Text("No decisions yet")
+                .font(Theme.headlineFont)
+                .foregroundStyle(Theme.ink)
+            Text("Scan items and record your decisions to build your identity.")
+                .font(.subheadline)
+                .foregroundStyle(Theme.muted)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+            Spacer()
         }
     }
 
-    private func deleteItems(at offsets: IndexSet) {
-        // History is displayed reversed, so map offsets back to original order
-        let reversed = Array(history.reversed())
-        for index in offsets {
-            let item = reversed[index]
-            ProfileStore.delete(id: item.id)
+    // MARK: - Event List
+
+    private var eventList: some View {
+        List {
+            ForEach(events) { event in
+                Button {
+                    selectedEvent = event
+                } label: {
+                    eventRow(event)
+                }
+                .foregroundStyle(.primary)
+            }
         }
-        history = ProfileStore.loadAll()
+        .listStyle(.plain)
     }
 
-    private func alignmentWord(_ confidence: Double) -> String {
-        switch confidence {
-        case 0.8...: return "High"
-        case 0.5...: return "Moderate"
-        default:     return "Low"
+    private func eventRow(_ event: TasteEvent) -> some View {
+        HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(ScoringService.alignmentLabel(event.alignmentScore))
+                    .font(.system(.subheadline, design: .default, weight: .semibold))
+                    .tracking(1.0)
+                    .foregroundStyle(Theme.ink)
+                Text(formatted(event.timestamp))
+                    .font(.caption2)
+                    .foregroundStyle(Theme.muted)
+            }
+
+            Spacer()
+
+            if !event.tensionFlags.isEmpty {
+                Text("\(event.tensionFlags.count)T")
+                    .font(.system(size: 9, weight: .medium))
+                    .tracking(0.5)
+                    .foregroundStyle(Theme.muted)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 3)
+                    .background(Theme.surface)
+                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(Theme.hairline, lineWidth: 1)
+                    )
+            }
+
+            Text(actionLabel(event.action))
+                .font(.caption2)
+                .tracking(0.8)
+                .foregroundStyle(Theme.muted)
+
+            Image(systemName: "chevron.right")
+                .font(.caption2)
+                .foregroundStyle(Theme.muted.opacity(0.5))
+        }
+        .padding(.vertical, 4)
+    }
+
+    // MARK: - Helpers
+
+    private func actionLabel(_ action: TasteAction) -> String {
+        switch action {
+        case .bought:    return "BOUGHT"
+        case .rejected:  return "PASSED"
+        case .regretted: return "REGRET"
         }
     }
 
@@ -119,9 +130,5 @@ struct HistoryScreen: View {
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: date)
-    }
-
-    private func navigateToResult(saved: SavedProfile) {
-        path.append(Route.profile(saved.tasteProfile.id))
     }
 }

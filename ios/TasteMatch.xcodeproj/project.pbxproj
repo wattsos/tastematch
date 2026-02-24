@@ -134,6 +134,15 @@
 		Y11001000000000000000001 /* IdentityHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = Y21001000000000000000001 /* IdentityHomeView.swift */; };
 		Z11001000000000000000001 /* StyleSeedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = Z21001000000000000000001 /* StyleSeedDeck.swift */; };
 		AA1100100000000000000001 /* IdentityFitsCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2100100000000000000001 /* IdentityFitsCatalog.swift */; };
+		BB1100100000000000000001 /* TasteIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2100100000000000000001 /* TasteIdentity.swift */; };
+		CC1100100000000000000001 /* TasteEvaluatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2100100000000000000001 /* TasteEvaluatedObject.swift */; };
+		DD1100100000000000000001 /* ScoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2100100000000000000001 /* ScoringService.swift */; };
+		EE1100100000000000000001 /* ReinforcementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2100100000000000000001 /* ReinforcementService.swift */; };
+		FF1100100000000000000001 /* IdentityStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2100100000000000000001 /* IdentityStore.swift */; };
+		GG1100100000000000000001 /* TasteEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG2100100000000000000001 /* TasteEventStore.swift */; };
+		HH1100100000000000000001 /* ItemEvaluationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH2100100000000000000001 /* ItemEvaluationScreen.swift */; };
+		II1100100000000000000001 /* ScoringServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II2100100000000000000001 /* ScoringServiceTests.swift */; };
+		JJ1100100000000000000001 /* ReinforcementServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ2100100000000000000001 /* ReinforcementServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +281,15 @@
 		Y21001000000000000000001 /* IdentityHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityHomeView.swift; sourceTree = "<group>"; };
 		Z21001000000000000000001 /* StyleSeedDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSeedDeck.swift; sourceTree = "<group>"; };
 		AA2100100000000000000001 /* IdentityFitsCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityFitsCatalog.swift; sourceTree = "<group>"; };
+		BB2100100000000000000001 /* TasteIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteIdentity.swift; sourceTree = "<group>"; };
+		CC2100100000000000000001 /* TasteEvaluatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteEvaluatedObject.swift; sourceTree = "<group>"; };
+		DD2100100000000000000001 /* ScoringService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringService.swift; sourceTree = "<group>"; };
+		EE2100100000000000000001 /* ReinforcementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReinforcementService.swift; sourceTree = "<group>"; };
+		FF2100100000000000000001 /* IdentityStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityStore.swift; sourceTree = "<group>"; };
+		GG2100100000000000000001 /* TasteEventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteEventStore.swift; sourceTree = "<group>"; };
+		HH2100100000000000000001 /* ItemEvaluationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEvaluationScreen.swift; sourceTree = "<group>"; };
+		II2100100000000000000001 /* ScoringServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringServiceTests.swift; sourceTree = "<group>"; };
+		JJ2100100000000000000001 /* ReinforcementServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReinforcementServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +411,13 @@
 				D21001000000000000000001 /* TasteVector.swift */,
 				A20018000000000000000018 /* Theme.swift */,
 				A20019000000000000000019 /* UploadScreen.swift */,
+				BB2100100000000000000001 /* TasteIdentity.swift */,
+				CC2100100000000000000001 /* TasteEvaluatedObject.swift */,
+				DD2100100000000000000001 /* ScoringService.swift */,
+				EE2100100000000000000001 /* ReinforcementService.swift */,
+				FF2100100000000000000001 /* IdentityStore.swift */,
+				GG2100100000000000000001 /* TasteEventStore.swift */,
+				HH2100100000000000000001 /* ItemEvaluationScreen.swift */,
 				A2001A00000000000000001A /* Assets.xcassets */,
 				A2001E00000000000000001E /* Info.plist */,
 			);
@@ -434,6 +459,8 @@
 				B21005000000000000000005 /* TasteBadgeTests.swift */,
 				A2001B00000000000000001B /* TasteEngineTests.swift */,
 				S2100F00000000000000000F /* TasteConflictEngineTests.swift */,
+				II2100100000000000000001 /* ScoringServiceTests.swift */,
+				JJ2100100000000000000001 /* ReinforcementServiceTests.swift */,
 			);
 			path = TasteMatchTests;
 			sourceTree = "<group>";
@@ -640,6 +667,13 @@
 				Y11001000000000000000001 /* IdentityHomeView.swift in Sources */,
 				Z11001000000000000000001 /* StyleSeedDeck.swift in Sources */,
 				AA1100100000000000000001 /* IdentityFitsCatalog.swift in Sources */,
+				BB1100100000000000000001 /* TasteIdentity.swift in Sources */,
+				CC1100100000000000000001 /* TasteEvaluatedObject.swift in Sources */,
+				DD1100100000000000000001 /* ScoringService.swift in Sources */,
+				EE1100100000000000000001 /* ReinforcementService.swift in Sources */,
+				FF1100100000000000000001 /* IdentityStore.swift in Sources */,
+				GG1100100000000000000001 /* TasteEventStore.swift in Sources */,
+				HH1100100000000000000001 /* ItemEvaluationScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +713,8 @@
 				S1100F00000000000000000F /* TasteConflictEngineTests.swift in Sources */,
 				S11013000000000000000013 /* AdvisoryToleranceTests.swift in Sources */,
 				T11002000000000000000002 /* DomainCopyTests.swift in Sources */,
+				II1100100000000000000001 /* ScoringServiceTests.swift in Sources */,
+				JJ1100100000000000000001 /* ReinforcementServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

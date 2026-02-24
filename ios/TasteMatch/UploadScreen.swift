@@ -408,27 +408,23 @@ struct UploadScreen: View {
                 roomContext: .livingRoom,
                 goal: .refresh
             )
-            var profile = response.tasteProfile
-            ProfileNamingEngine.applyInitialNaming(to: &profile)
+            var candidateProfile = response.tasteProfile
+            ProfileNamingEngine.applyInitialNaming(to: &candidateProfile)
 
-            let catalog = DomainCatalog.items(for: selectedDomain)
-            let recommendations = RecommendationEngine.recommend(
-                profile: profile,
-                catalog: catalog,
-                context: .livingRoom,
-                goal: .refresh,
-                limit: 6
-            )
+            let candidateVector = TasteEngine.vectorFromProfile(candidateProfile)
+            let identity = IdentityStore.load() ?? TasteIdentity(vector: candidateVector)
+            let evaluation = ScoringService.score(candidateVector: candidateVector, identity: identity)
 
+            // Persist the scanned profile so HomeRootView remains aware
             ProfileStore.save(
-                profile: profile,
-                recommendations: recommendations,
+                profile: candidateProfile,
+                recommendations: [],
                 domain: selectedDomain
             )
-            DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: profile.id)
+            DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: candidateProfile.id)
 
             Haptics.success()
-            path.append(Route.calibration(profile, recommendations, selectedDomain))
+            path.append(Route.itemEvaluation(evaluation: evaluation, candidateVector: candidateVector))
         } catch {
             loadError = true
             EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])

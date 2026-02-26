@@ -1,24 +1,9 @@
 import Foundation
 
-// MARK: - Taste Event
-
-struct TasteEvent: Codable, Identifiable {
-    var id: UUID
-    var action: TasteAction
-    var evaluation: TasteEvaluatedObject    // full evaluation embedded for detail views
-    var identityVersionBefore: Int
-    var identityVersionAfter: Int
-    var timestamp: Date
-
-    // Convenience accessors (spec-listed fields)
-    var evaluatedObjectId: UUID { evaluation.id }
-    var alignmentScore: Int     { evaluation.alignmentScore }
-    var confidence: Double      { evaluation.confidence }
-    var riskOfRegret: Double    { evaluation.riskOfRegret }
-    var tensionFlags: [String]  { evaluation.tensionFlags }
-}
-
 // MARK: - Taste Event Store
+//
+// TasteEvaluation IS the canonical event payload (append-only).
+// vote/outcome/blocker/notes are updated in-place via update().
 
 enum TasteEventStore {
 
@@ -30,23 +15,39 @@ enum TasteEventStore {
             .appendingPathComponent(fileName)
     }
 
-    // MARK: - Append
+    // MARK: - Append (initial evaluation + vote)
 
-    static func append(event: TasteEvent) {
+    static func append(_ evaluation: TasteEvaluation) {
         var all = loadAll()
-        all.append(event)
-        do {
-            let data = try JSONEncoder().encode(all)
-            try data.write(to: fileURL, options: .atomic)
-        } catch {
-            // Best-effort persistence.
+        all.append(evaluation)
+        persist(all)
+    }
+
+    // MARK: - Update (outcome/blocker/notes set after the fact)
+
+    static func update(_ evaluation: TasteEvaluation) {
+        var all = loadAll()
+        if let idx = all.firstIndex(where: { $0.id == evaluation.id }) {
+            all[idx] = evaluation
         }
+        persist(all)
     }
 
     // MARK: - Load
 
-    static func loadAll() -> [TasteEvent] {
+    static func loadAll() -> [TasteEvaluation] {
         guard let data = try? Data(contentsOf: fileURL) else { return [] }
-        return (try? JSONDecoder().decode([TasteEvent].self, from: data)) ?? []
+        return (try? JSONDecoder().decode([TasteEvaluation].self, from: data)) ?? []
+    }
+
+    // MARK: - Private
+
+    private static func persist(_ evaluations: [TasteEvaluation]) {
+        do {
+            let data = try JSONEncoder().encode(evaluations)
+            try data.write(to: fileURL, options: .atomic)
+        } catch {
+            // Best-effort persistence.
+        }
     }
 }

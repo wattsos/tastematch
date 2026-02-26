@@ -143,6 +143,13 @@
 		HH1100100000000000000001 /* ItemEvaluationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH2100100000000000000001 /* ItemEvaluationScreen.swift */; };
 		II1100100000000000000001 /* ScoringServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II2100100000000000000001 /* ScoringServiceTests.swift */; };
 		JJ1100100000000000000001 /* ReinforcementServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ2100100000000000000001 /* ReinforcementServiceTests.swift */; };
+		KK1100100000000000000001 /* StyleSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK2100100000000000000001 /* StyleSignals.swift */; };
+		LL1100100000000000000001 /* StyleEmbedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL2100100000000000000001 /* StyleEmbedding.swift */; };
+		MM1100100000000000000001 /* EmbeddingProjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM2100100000000000000001 /* EmbeddingProjector.swift */; };
+		NN1100100000000000000001 /* StyleExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN2100100000000000000001 /* StyleExtractor.swift */; };
+		OO1100100000000000000001 /* StyleDivergenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OO2100100000000000000001 /* StyleDivergenceTests.swift */; };
+		PP1100100000000000000001 /* PendingReinforcementStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = PP2100100000000000000001 /* PendingReinforcementStore.swift */; };
+		QQ1100100000000000000001 /* PendingReinforcementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = QQ2100100000000000000001 /* PendingReinforcementTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -290,6 +297,13 @@
 		HH2100100000000000000001 /* ItemEvaluationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEvaluationScreen.swift; sourceTree = "<group>"; };
 		II2100100000000000000001 /* ScoringServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringServiceTests.swift; sourceTree = "<group>"; };
 		JJ2100100000000000000001 /* ReinforcementServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReinforcementServiceTests.swift; sourceTree = "<group>"; };
+		KK2100100000000000000001 /* StyleSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSignals.swift; sourceTree = "<group>"; };
+		LL2100100000000000000001 /* StyleEmbedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleEmbedding.swift; sourceTree = "<group>"; };
+		MM2100100000000000000001 /* EmbeddingProjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingProjector.swift; sourceTree = "<group>"; };
+		NN2100100000000000000001 /* StyleExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtractor.swift; sourceTree = "<group>"; };
+		OO2100100000000000000001 /* StyleDivergenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDivergenceTests.swift; sourceTree = "<group>"; };
+		PP2100100000000000000001 /* PendingReinforcementStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReinforcementStore.swift; sourceTree = "<group>"; };
+		QQ2100100000000000000001 /* PendingReinforcementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReinforcementTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +432,11 @@
 				FF2100100000000000000001 /* IdentityStore.swift */,
 				GG2100100000000000000001 /* TasteEventStore.swift */,
 				HH2100100000000000000001 /* ItemEvaluationScreen.swift */,
+				KK2100100000000000000001 /* StyleSignals.swift */,
+				LL2100100000000000000001 /* StyleEmbedding.swift */,
+				MM2100100000000000000001 /* EmbeddingProjector.swift */,
+				NN2100100000000000000001 /* StyleExtractor.swift */,
+				PP2100100000000000000001 /* PendingReinforcementStore.swift */,
 				A2001A00000000000000001A /* Assets.xcassets */,
 				A2001E00000000000000001E /* Info.plist */,
 			);
@@ -461,6 +480,8 @@
 				S2100F00000000000000000F /* TasteConflictEngineTests.swift */,
 				II2100100000000000000001 /* ScoringServiceTests.swift */,
 				JJ2100100000000000000001 /* ReinforcementServiceTests.swift */,
+				OO2100100000000000000001 /* StyleDivergenceTests.swift */,
+				QQ2100100000000000000001 /* PendingReinforcementTests.swift */,
 			);
 			path = TasteMatchTests;
 			sourceTree = "<group>";
@@ -674,6 +695,11 @@
 				FF1100100000000000000001 /* IdentityStore.swift in Sources */,
 				GG1100100000000000000001 /* TasteEventStore.swift in Sources */,
 				HH1100100000000000000001 /* ItemEvaluationScreen.swift in Sources */,
+				KK1100100000000000000001 /* StyleSignals.swift in Sources */,
+				LL1100100000000000000001 /* StyleEmbedding.swift in Sources */,
+				MM1100100000000000000001 /* EmbeddingProjector.swift in Sources */,
+				NN1100100000000000000001 /* StyleExtractor.swift in Sources */,
+				PP1100100000000000000001 /* PendingReinforcementStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +741,8 @@
 				T11002000000000000000002 /* DomainCopyTests.swift in Sources */,
 				II1100100000000000000001 /* ScoringServiceTests.swift in Sources */,
 				JJ1100100000000000000001 /* ReinforcementServiceTests.swift in Sources */,
+				OO1100100000000000000001 /* StyleDivergenceTests.swift in Sources */,
+				QQ1100100000000000000001 /* PendingReinforcementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

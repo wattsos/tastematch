@@ -8,6 +8,11 @@ struct UploadScreen: View {
     var domain: TasteDomain = DomainPreferencesStore.primaryDomain
 
     @State private var selectedDomain: TasteDomain
+    @State private var selectedCategory: FurnitureCategory = .other
+    @State private var showContextFields = false
+    @State private var budgetMinText: String = ""
+    @State private var budgetMaxText: String = ""
+    @State private var itemPriceText: String = ""
     @State private var selectedItems: [PhotosPickerItem] = []
     @State private var images: [UIImage] = []
     @State private var isLoading = false
@@ -36,7 +41,7 @@ struct UploadScreen: View {
     private var domainCopy: DomainCopy {
         switch selectedDomain {
         case .space:
-            return DomainCopy(headline: "Show us your space", subtitle: "Upload a few photos of a room. We'll read materials, light, and layout.")
+            return DomainCopy(headline: "Upload an item", subtitle: "We'll read shape, material, and style.")
         case .objects:
             return DomainCopy(headline: "Show us your objects", subtitle: "Upload watches, bags, accessories, shoes, or favorite pieces you own.")
         case .art:
@@ -66,11 +71,7 @@ struct UploadScreen: View {
             // Primary action button
             Button {
                 EventLogger.shared.logEvent("photos_confirmed", metadata: ["count": "\(images.count)"])
-                if selectedDomain == .space {
-                    path.append(Route.context(images, prefillRoom, prefillGoal, selectedDomain))
-                } else {
-                    Task { await analyzeDirect() }
-                }
+                Task { await analyzeDirect() }
             } label: {
                 Text("Next")
                     .font(.headline)
@@ -174,6 +175,12 @@ struct UploadScreen: View {
                 cameraButton
             }
 
+            // Furniture category picker
+            categoryPicker
+
+            // Optional context fields (budget / price)
+            contextToggle
+
             // Demo button — lets users try the full flow without photos
             Button {
                 runDemo()
@@ -192,6 +199,90 @@ struct UploadScreen: View {
 
             Spacer()
         }
+    }
+
+    // MARK: - Category Picker
+
+    private var categoryPicker: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("CATEGORY")
+                .font(.system(size: 9, weight: .medium))
+                .tracking(1.0)
+                .foregroundStyle(Theme.muted)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(FurnitureCategory.allCases, id: \.self) { cat in
+                        categoryChip(cat)
+                    }
+                }
+                .padding(.horizontal, 2)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 4)
+    }
+
+    private func categoryChip(_ cat: FurnitureCategory) -> some View {
+        let isSelected = selectedCategory == cat
+        return Button {
+            selectedCategory = cat
+        } label: {
+            Text(cat.displayLabel)
+                .font(.caption.weight(.medium))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .background(isSelected ? Theme.ink : Theme.surface)
+                .foregroundStyle(isSelected ? Theme.bg : Theme.ink)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                        .stroke(isSelected ? Theme.ink : Theme.hairline, lineWidth: 1)
+                )
+        }
+    }
+
+    // MARK: - Context Toggle + Fields
+
+    private var contextToggle: some View {
+        VStack(spacing: 10) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    showContextFields.toggle()
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Text(showContextFields ? "Hide context" : "Add budget / price")
+                        .font(.caption)
+                        .foregroundStyle(Theme.muted)
+                    Image(systemName: showContextFields ? "chevron.up" : "chevron.down")
+                        .font(.system(size: 9))
+                        .foregroundStyle(Theme.muted)
+                }
+            }
+
+            if showContextFields {
+                VStack(spacing: 8) {
+                    contextField(placeholder: "Budget max (e.g. 2000)", text: $budgetMaxText)
+                    contextField(placeholder: "Item price (e.g. 1500)", text: $itemPriceText)
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
+    }
+
+    private func contextField(placeholder: String, text: Binding<String>) -> some View {
+        TextField(placeholder, text: text)
+            .font(.subheadline)
+            .keyboardType(.decimalPad)
+            .foregroundStyle(Theme.ink)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(Theme.surface)
+            .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                    .stroke(Theme.hairline, lineWidth: 1)
+            )
     }
 
     // MARK: - Photo Grid
@@ -389,6 +480,11 @@ struct UploadScreen: View {
         isLoading = true
         defer { isLoading = false }
 
+        guard !images.isEmpty else {
+            loadError = true
+            return
+        }
+
         Haptics.impact()
         DomainStore.current = selectedDomain
         EventLogger.shared.logEvent(
@@ -396,39 +492,35 @@ struct UploadScreen: View {
             metadata: ["domain": selectedDomain.rawValue]
         )
 
-        let imageData = images.compactMap { $0.jpegData(compressionQuality: 0.8) }
-        guard !imageData.isEmpty else {
-            loadError = true
-            return
-        }
+        let signals   = StyleExtractor.extract(from: images)
+        let embedding = EmbeddingProjector.embed(signals)
+        let identity  = IdentityStore.load() ?? TasteIdentity()
+        let context   = buildContext()
+        let evaluation = ScoringService.score(
+            candidate: embedding,
+            signals: signals,
+            identity: identity,
+            category: selectedCategory,
+            context: context
+        )
 
-        do {
-            let response = try await APIClient.shared.analyze(
-                imageData: imageData,
-                roomContext: .livingRoom,
-                goal: .refresh
-            )
-            var candidateProfile = response.tasteProfile
-            ProfileNamingEngine.applyInitialNaming(to: &candidateProfile)
+        Haptics.success()
+        path.append(Route.itemEvaluation(evaluation: evaluation))
+    }
 
-            let candidateVector = TasteEngine.vectorFromProfile(candidateProfile)
-            let identity = IdentityStore.load() ?? TasteIdentity(vector: candidateVector)
-            let evaluation = ScoringService.score(candidateVector: candidateVector, identity: identity)
+    // MARK: - Context Builder
 
-            // Persist the scanned profile so HomeRootView remains aware
-            ProfileStore.save(
-                profile: candidateProfile,
-                recommendations: [],
-                domain: selectedDomain
-            )
-            DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: candidateProfile.id)
-
-            Haptics.success()
-            path.append(Route.itemEvaluation(evaluation: evaluation, candidateVector: candidateVector))
-        } catch {
-            loadError = true
-            EventLogger.shared.logEvent("analyze_failed", metadata: ["error": error.localizedDescription])
-        }
+    private func buildContext() -> EvaluationContext? {
+        let budgetMax   = Double(budgetMaxText.trimmingCharacters(in: .whitespaces))
+        let itemPrice   = Double(itemPriceText.trimmingCharacters(in: .whitespaces))
+        guard budgetMax != nil || itemPrice != nil else { return nil }
+        return EvaluationContext(
+            declaredBudgetMin: nil,
+            declaredBudgetMax: budgetMax,
+            roomWidth: nil, roomLength: nil,
+            itemWidth: nil, itemDepth: nil,
+            itemPrice: itemPrice
+        )
     }
 
     // MARK: - Actions

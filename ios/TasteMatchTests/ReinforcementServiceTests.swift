@@ -5,108 +5,231 @@ final class ReinforcementServiceTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeIdentity(weights: [String: Double]) -> TasteIdentity {
-        TasteIdentity(vector: TasteVector(weights: weights))
+    private func makeCandidate() -> StyleEmbedding {
+        EmbeddingProjector.embed(StyleSignals(
+            brightness: 0.80, contrast: 0.20, saturation: 0.10, warmth: 0.50,
+            edgeDensity: 0.10, symmetry: 0.80, clutter: 0.10,
+            materialHardness: 0.15, organicVsIndustrial: 0.65,
+            ornateVsMinimal: 0.10, vintageVsModern: 0.30
+        ))
     }
 
-    private func makeCandidate(weights: [String: Double]) -> TasteVector {
-        TasteVector(weights: weights)
+    private func ornateCandidate() -> StyleEmbedding {
+        EmbeddingProjector.embed(StyleSignals(
+            brightness: 0.45, contrast: 0.70, saturation: 0.65, warmth: 0.65,
+            edgeDensity: 0.80, symmetry: 0.40, clutter: 0.85,
+            materialHardness: 0.60, organicVsIndustrial: 0.35,
+            ornateVsMinimal: 0.90, vintageVsModern: 0.70
+        ))
     }
 
-    // MARK: - Version increment
+    // MARK: - Version
 
-    func test_versionIncrementsOnEveryAction() {
-        let identity  = makeIdentity(weights: ["minimalist": 0.5])
-        let candidate = makeCandidate(weights: ["minimalist": 0.8])
-        for action in [TasteAction.bought, .rejected, .regretted] {
-            let updated = ReinforcementService.apply(action: action, candidateVector: candidate, to: identity)
-            XCTAssertEqual(updated.version, identity.version + 1, "Version should increment for .\(action)")
+    func test_versionIncrementsOnEveryVote() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        for vote in [TasteVote.me, .notMe, .maybe] {
+            let updated = ReinforcementService.applyTasteVote(
+                vote: vote, candidateEmbedding: candidate, to: identity
+            )
+            XCTAssertEqual(updated.version, identity.version + 1)
         }
     }
 
-    // MARK: - Bought nudges toward candidate
+    // MARK: - Me vote
 
-    func test_boughtIncreasesRelevantWeight() {
-        let identity  = makeIdentity(weights: ["industrial": 0.2])
-        let candidate = makeCandidate(weights: ["industrial": 0.8])
-        let updated   = ReinforcementService.apply(action: .bought, candidateVector: candidate, to: identity)
-        XCTAssertGreaterThan(
-            updated.vector.weights["industrial", default: 0.0],
-            identity.vector.weights["industrial", default: 0.0],
-            "Bought should increase weight toward candidate"
+    func test_meVoteMovesEmbeddingTowardCandidate() {
+        let identity  = TasteIdentity()   // zero embedding
+        let candidate = makeCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .me, candidateEmbedding: candidate, to: identity
         )
+        let cosBefore = StyleEmbedding.zero.cosine(with: candidate)
+        let cosAfter  = updated.embedding.cosine(with: candidate)
+        XCTAssertGreaterThan(cosAfter, cosBefore,
+            "Me vote should move embedding toward candidate")
     }
 
-    // MARK: - Rejected nudges away from candidate
-
-    func test_rejectedDecreasesRelevantWeight() {
-        let identity  = makeIdentity(weights: ["bohemian": 0.5])
-        let candidate = makeCandidate(weights: ["bohemian": 0.8])
-        let updated   = ReinforcementService.apply(action: .rejected, candidateVector: candidate, to: identity)
-        XCTAssertLessThan(
-            updated.vector.weights["bohemian", default: 0.0],
-            identity.vector.weights["bohemian", default: 0.0],
-            "Rejected should decrease weight away from candidate"
+    func test_meVoteIncrementsCountMe() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .me, candidateEmbedding: candidate, to: identity
         )
+        XCTAssertEqual(updated.countMe, 1)
+        XCTAssertEqual(updated.countNotMe, 0)
+        XCTAssertEqual(updated.countMaybe, 0)
     }
 
-    // MARK: - Regretted nudges away more than rejected
-
-    func test_regrettedDecreasesMoreThanRejected() {
-        let identity   = makeIdentity(weights: ["artDeco": 0.5])
-        let candidate  = makeCandidate(weights: ["artDeco": 0.8])
-        let afterReject  = ReinforcementService.apply(action: .rejected,  candidateVector: candidate, to: identity)
-        let afterRegret  = ReinforcementService.apply(action: .regretted, candidateVector: candidate, to: identity)
-        XCTAssertLessThan(
-            afterRegret.vector.weights["artDeco", default: 0.0],
-            afterReject.vector.weights["artDeco", default: 0.0],
-            "Regretted should move weight further away than rejected"
+    func test_meVoteDoesNotChangeAntiEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .me, candidateEmbedding: candidate, to: identity
         )
+        XCTAssertTrue(updated.antiEmbedding.isZero,
+            "Me vote should not modify antiEmbedding")
     }
 
-    // MARK: - Weights stay clamped
+    // MARK: - Not-me vote
 
-    func test_weightsRemainClamped() {
-        let identity  = makeIdentity(weights: ["scandinavian": 0.95])
-        let candidate = makeCandidate(weights: ["scandinavian": 1.0])
-        let updated   = ReinforcementService.apply(action: .bought, candidateVector: candidate, to: identity)
-        for (_, weight) in updated.vector.weights {
-            XCTAssertLessThanOrEqual(weight,  1.0, "Weight must not exceed 1.0")
-            XCTAssertGreaterThanOrEqual(weight, -1.0, "Weight must not go below -1.0")
+    func test_notMeVotePopulatesAntiEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = ornateCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .notMe, candidateEmbedding: candidate, to: identity
+        )
+        XCTAssertFalse(updated.antiEmbedding.isZero,
+            "Not-me vote should populate antiEmbedding")
+        XCTAssertEqual(updated.countNotMe, 1)
+    }
+
+    func test_notMeVoteDoesNotChangeMainEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = ornateCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .notMe, candidateEmbedding: candidate, to: identity
+        )
+        XCTAssertTrue(updated.embedding.isZero,
+            "Not-me vote should not change main embedding")
+    }
+
+    // MARK: - Maybe vote
+
+    func test_maybeVoteProducesWeakerEmbeddingMoveThanMe() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        let afterMe    = ReinforcementService.applyTasteVote(vote: .me,    candidateEmbedding: candidate, to: identity)
+        let afterMaybe = ReinforcementService.applyTasteVote(vote: .maybe, candidateEmbedding: candidate, to: identity)
+        let cosMe    = afterMe.embedding.cosine(with: candidate)
+        let cosMaybe = afterMaybe.embedding.cosine(with: candidate)
+        XCTAssertGreaterThan(cosMaybe, StyleEmbedding.zero.cosine(with: candidate),
+            "Maybe should move embedding slightly")
+        XCTAssertLessThan(cosMaybe, cosMe,
+            "Maybe should produce weaker embedding move than me")
+    }
+
+    func test_maybeVoteDoesNotChangeAntiEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        let updated   = ReinforcementService.applyTasteVote(
+            vote: .maybe, candidateEmbedding: candidate, to: identity
+        )
+        XCTAssertTrue(updated.antiEmbedding.isZero,
+            "Maybe vote should not modify antiEmbedding")
+    }
+
+    // MARK: - Returned vote
+
+    func test_returnedWithQualityDisappointmentUpdatesAntiEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = ornateCandidate()
+        let (updated, _) = ReinforcementService.applyTasteVote(
+            vote: .returned,
+            candidateEmbedding: candidate,
+            category: .loungeChair,
+            returnReason: .qualityDisappointment,
+            evaluationId: UUID(),
+            to: identity
+        )
+        XCTAssertFalse(updated.antiEmbedding.isZero,
+            "returned + qualityDisappointment should produce an anti-embedding update")
+    }
+
+    func test_returnedWithSizeReasonDoesNotChangeEmbedding() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        let embBefore  = identity.embedding
+        let antiBefore = identity.antiEmbedding
+
+        let (updated, _) = ReinforcementService.applyTasteVote(
+            vote: .returned,
+            candidateEmbedding: candidate,
+            category: .coffeeTable,
+            returnReason: .tooLarge,
+            evaluationId: UUID(),
+            to: identity
+        )
+        XCTAssertEqual(updated.embedding,     embBefore)
+        XCTAssertEqual(updated.antiEmbedding, antiBefore)
+    }
+
+    // MARK: - Stability
+
+    func test_stabilityRemainsInRange() {
+        let identity  = TasteIdentity()
+        let candidate = makeCandidate()
+        for vote in [TasteVote.me, .notMe, .maybe] {
+            let updated = ReinforcementService.applyTasteVote(
+                vote: vote, candidateEmbedding: candidate, to: identity
+            )
+            XCTAssertGreaterThanOrEqual(updated.stability, 0.0)
+            XCTAssertLessThanOrEqual(updated.stability, 1.0)
         }
     }
 
-    func test_negativeWeightsClampedAtMinusOne() {
-        let identity  = makeIdentity(weights: ["coastal": -0.95])
-        let candidate = makeCandidate(weights: ["coastal": 1.0])
-        let updated   = ReinforcementService.apply(action: .regretted, candidateVector: candidate, to: identity)
-        for (_, weight) in updated.vector.weights {
-            XCTAssertGreaterThanOrEqual(weight, -1.0, "Weight must not go below -1.0")
-        }
-    }
+    // MARK: - Learning: me vote increases alignment on rescore
 
-    // MARK: - Low-signal candidate is ignored
-
-    func test_lowAbsWeightCandidateNotApplied() {
-        // candidate weight is ≤ 0.1, should be ignored
-        let identity  = makeIdentity(weights: ["rustic": 0.4])
-        let candidate = makeCandidate(weights: ["rustic": 0.05])
-        let updated   = ReinforcementService.apply(action: .bought, candidateVector: candidate, to: identity)
-        XCTAssertEqual(
-            updated.vector.weights["rustic", default: 0.0],
-            identity.vector.weights["rustic", default: 0.0],
-            accuracy: 0.001,
-            "Weights with abs(value) ≤ 0.1 should not be updated"
+    func test_meVoteIncreasesAlignmentOnRescore() {
+        let signals   = StyleSignals(
+            brightness: 0.7, contrast: 0.3, saturation: 0.2, warmth: 0.5,
+            edgeDensity: 0.2, symmetry: 0.7, clutter: 0.1,
+            materialHardness: 0.2, organicVsIndustrial: 0.6,
+            ornateVsMinimal: 0.1, vintageVsModern: 0.4
         )
+        let candidate = EmbeddingProjector.embed(signals)
+        var identity  = TasteIdentity()
+
+        let before = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+        identity   = ReinforcementService.applyTasteVote(vote: .me, candidateEmbedding: candidate, to: identity)
+        let after  = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+
+        XCTAssertGreaterThan(after.alignmentScore, before.alignmentScore,
+            "Me vote should increase alignment on rescore")
     }
 
-    // MARK: - Stability is in range
+    func test_notMeVoteIncreasesAntiSignalOnRescore() {
+        let signals   = StyleSignals(
+            brightness: 0.7, contrast: 0.3, saturation: 0.2, warmth: 0.5,
+            edgeDensity: 0.2, symmetry: 0.7, clutter: 0.1,
+            materialHardness: 0.2, organicVsIndustrial: 0.6,
+            ornateVsMinimal: 0.1, vintageVsModern: 0.4
+        )
+        let candidate = EmbeddingProjector.embed(signals)
+        var identity  = TasteIdentity()
 
-    func test_stabilityIsInRange() {
-        let identity  = makeIdentity(weights: ["minimalist": 0.6, "scandinavian": 0.4])
-        let candidate = makeCandidate(weights: ["minimalist": 0.9, "scandinavian": 0.7])
-        let updated   = ReinforcementService.apply(action: .bought, candidateVector: candidate, to: identity)
-        XCTAssertGreaterThanOrEqual(updated.stability, 0.0)
-        XCTAssertLessThanOrEqual(updated.stability, 1.0)
+        let before  = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+        identity    = ReinforcementService.applyTasteVote(vote: .notMe, candidateEmbedding: candidate, to: identity)
+        let after   = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+
+        // Tension should increase after not-me vote
+        XCTAssertGreaterThan(after.tensionScore, before.tensionScore,
+            "Not-me vote should increase tension score on rescore")
+    }
+
+    func test_maybeVoteChangesAlignmentMinimally() {
+        let signals   = StyleSignals(
+            brightness: 0.7, contrast: 0.3, saturation: 0.2, warmth: 0.5,
+            edgeDensity: 0.2, symmetry: 0.7, clutter: 0.1,
+            materialHardness: 0.2, organicVsIndustrial: 0.6,
+            ornateVsMinimal: 0.1, vintageVsModern: 0.4
+        )
+        let candidate = EmbeddingProjector.embed(signals)
+        var identity  = TasteIdentity()
+
+        // Establish the identity first with 5 strong me votes so the embedding
+        // is already well-aligned with the candidate. A maybe vote should then
+        // produce negligible movement (already near the attractor).
+        for _ in 0..<5 {
+            identity = ReinforcementService.applyTasteVote(vote: .me, candidateEmbedding: candidate, to: identity)
+        }
+
+        let before  = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+        identity    = ReinforcementService.applyTasteVote(vote: .maybe, candidateEmbedding: candidate, to: identity)
+        let after   = ScoringService.score(candidate: candidate, signals: signals, identity: identity)
+
+        let delta = abs(after.alignmentScore - before.alignmentScore)
+        XCTAssertLessThan(delta, 5,
+            "Maybe on an established identity should barely move alignment, got \(delta)")
     }
 }

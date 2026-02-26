@@ -1,30 +1,35 @@
 import Foundation
 
 struct TasteIdentity: Codable, Identifiable, Equatable {
+
     var id: UUID
-    var vector: TasteVector
+    var embedding: StyleEmbedding       // what I tend toward
+    var antiEmbedding: StyleEmbedding   // what I tend to avoid
     var version: Int
-    var stability: Double
+    var stability: Double               // EMA of 1-delta; 0..1
+    var countMe: Int
+    var countNotMe: Int
+    var countMaybe: Int
     var updatedAt: Date
 
-    var avoids: [String] { vector.avoids }
-    var influences: [String] { vector.influences }
+    /// Total taste votes recorded.
+    var totalDecisions: Int { countMe + countNotMe + countMaybe }
 
-    // Convenience init — starts a new identity from a seed vector
-    init(vector: TasteVector = .zero) {
-        self.id = UUID()
-        self.vector = vector
+    // MARK: - Convenience init (fresh identity)
+
+    init(
+        id: UUID = UUID(),
+        embedding: StyleEmbedding = .zero,
+        antiEmbedding: StyleEmbedding = .zero
+    ) {
+        self.id = id
+        self.embedding = embedding
+        self.antiEmbedding = antiEmbedding
         self.version = 1
         self.stability = 0.5
+        self.countMe = 0
+        self.countNotMe = 0
+        self.countMaybe = 0
         self.updatedAt = Date()
-    }
-
-    // Full init — used by ReinforcementService when producing updated copies
-    init(id: UUID, vector: TasteVector, version: Int, stability: Double, updatedAt: Date) {
-        self.id = id
-        self.vector = vector
-        self.version = version
-        self.stability = stability
-        self.updatedAt = updatedAt
     }
 }

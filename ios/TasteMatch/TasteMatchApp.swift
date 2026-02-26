@@ -17,7 +17,7 @@ enum Route: Hashable {
     case shop(TasteProfile, TasteDomain)
     case newScan(TasteDomain? = nil)
     case identityReveal
-    case itemEvaluation(evaluation: TasteEvaluatedObject, candidateVector: TasteVector)
+    case itemEvaluation(evaluation: TasteEvaluation)
 
     func hash(into hasher: inout Hasher) {
         switch self {
@@ -57,7 +57,7 @@ enum Route: Hashable {
             hasher.combine("newScan")
         case .identityReveal:
             hasher.combine("identityReveal")
-        case .itemEvaluation(let eval, _):
+        case .itemEvaluation(let eval):
             hasher.combine("itemEvaluation")
             hasher.combine(eval.id)
         }
@@ -93,7 +93,7 @@ enum Route: Hashable {
             return true  // Ignore domain for nav stack dedup
         case (.identityReveal, .identityReveal):
             return true
-        case (.itemEvaluation(let e1, _), .itemEvaluation(let e2, _)):
+        case (.itemEvaluation(let e1), .itemEvaluation(let e2)):
             return e1.id == e2.id
         default:
             return false
@@ -123,6 +123,8 @@ enum AppTab: String, CaseIterable {
 
 @main
 struct TasteMatchApp: App {
+    private let DEBUG_LAND_ON_SCAN = true
+
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @StateObject private var advisorySettings = AdvisorySettings()
 
@@ -150,8 +152,13 @@ struct TasteMatchApp: App {
 
     var body: some Scene {
         WindowGroup {
-            EngineRootView()
-                .environmentObject(advisorySettings)
+            if DEBUG_LAND_ON_SCAN {
+                DebugScanRootView()
+                    .environmentObject(advisorySettings)
+            } else {
+                EngineRootView()
+                    .environmentObject(advisorySettings)
+            }
         }
     }
 
@@ -278,8 +285,57 @@ struct MainTabView: View {
             UploadScreen(path: path, domain: domain ?? DomainPreferencesStore.primaryDomain)
         case .identityReveal:
             IdentityRevealView(path: path)
-        case .itemEvaluation(let evaluation, let candidateVector):
-            ItemEvaluationScreen(path: path, evaluation: evaluation, candidateVector: candidateVector)
+        case .itemEvaluation(let evaluation):
+            ItemEvaluationScreen(path: path, evaluation: evaluation)
+        }
+    }
+}
+
+// MARK: - V1 Scan Root (two-tab: SCAN + HISTORY)
+
+private struct DebugScanRootView: View {
+    @State private var selectedTab = 0
+    @State private var scanPath    = NavigationPath()
+    @State private var historyPath = NavigationPath()
+
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            // Scan tab
+            NavigationStack(path: $scanPath) {
+                UploadScreen(path: $scanPath)
+                    .navigationDestination(for: Route.self) { route in
+                        v1Destination(route: route, path: $scanPath)
+                    }
+            }
+            .tabItem { Label("Scan", systemImage: "camera.viewfinder") }
+            .tag(0)
+
+            // History tab
+            NavigationStack(path: $historyPath) {
+                HistoryScreen(path: $historyPath)
+                    .navigationDestination(for: Route.self) { route in
+                        v1Destination(route: route, path: $historyPath)
+                    }
+            }
+            .tabItem { Label("History", systemImage: "clock") }
+            .tag(1)
+        }
+        .tint(Theme.ink)
+    }
+
+    @ViewBuilder
+    private func v1Destination(route: Route, path: Binding<NavigationPath>) -> some View {
+        switch route {
+        case .itemEvaluation(let evaluation):
+            ItemEvaluationScreen(path: path, evaluation: evaluation)
+        case .context(let images, let room, let goal, let domain):
+            ContextScreen(path: path, images: images, initialRoom: room, initialGoal: goal, domain: domain)
+        case .calibration(let profile, let recs, let domain):
+            TasteCalibrationScreen(path: path, profile: profile, recommendations: recs, domain: domain)
+        case .result(let profile, let recs, let domain):
+            ResultScreen(path: path, profile: profile, recommendations: recs, domain: domain)
+        default:
+            EmptyView()
         }
     }
 }

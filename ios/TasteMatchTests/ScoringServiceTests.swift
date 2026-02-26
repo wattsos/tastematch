@@ -5,106 +5,178 @@ final class ScoringServiceTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeIdentity(weights: [String: Double]) -> TasteIdentity {
-        TasteIdentity(vector: TasteVector(weights: weights))
+    private func makeIdentity(
+        embedding: StyleEmbedding = .zero,
+        antiEmbedding: StyleEmbedding = .zero,
+        decisions: Int = 10
+    ) -> TasteIdentity {
+        var id = TasteIdentity(embedding: embedding, antiEmbedding: antiEmbedding)
+        id.countMe = decisions
+        return id
     }
 
-    private func makeCandidate(weights: [String: Double]) -> TasteVector {
-        TasteVector(weights: weights)
+    private func minimalSignals() -> StyleSignals {
+        StyleSignals(brightness: 0.85, contrast: 0.15, saturation: 0.10, warmth: 0.45,
+                     edgeDensity: 0.05, symmetry: 0.90, clutter: 0.05,
+                     materialHardness: 0.10, organicVsIndustrial: 0.70,
+                     ornateVsMinimal: 0.05, vintageVsModern: 0.35)
     }
 
-    // MARK: - Alignment bounds
+    // MARK: - Bounds
 
-    func test_alignmentScore_isBoundedBetween0And100() {
-        let identity  = makeIdentity(weights:  ["minimalist": 1.0, "bohemian": -1.0])
-        let candidate = makeCandidate(weights: ["minimalist": 1.0, "bohemian": -1.0])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
+    func test_alignmentScoreIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
         XCTAssertGreaterThanOrEqual(result.alignmentScore, 0)
         XCTAssertLessThanOrEqual(result.alignmentScore, 100)
     }
 
-    func test_perfectMatchProducesHighAlignment() {
-        let weights: [String: Double] = ["minimalist": 1.0, "scandinavian": 0.8]
-        let identity  = makeIdentity(weights: weights)
-        let candidate = makeCandidate(weights: weights)
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
-        XCTAssertGreaterThanOrEqual(result.alignmentScore, 70,
-            "Identical vectors should produce high alignment (≥70), got \(result.alignmentScore)")
+    func test_tensionScoreIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        XCTAssertGreaterThanOrEqual(result.tensionScore, 0)
+        XCTAssertLessThanOrEqual(result.tensionScore, 100)
     }
 
-    func test_oppositeVectorsProduceLowAlignment() {
-        let identity  = makeIdentity(weights:  ["minimalist": 1.0])
-        let candidate = makeCandidate(weights: ["minimalist": -1.0])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
-        XCTAssertLessThan(result.alignmentScore, 50,
-            "Opposite vectors should produce low alignment, got \(result.alignmentScore)")
-    }
-
-    // MARK: - Confidence bounds
-
-    func test_confidenceIsBoundedBetween0And1() {
-        let identity  = makeIdentity(weights:  ["rustic": 0.5])
-        let candidate = makeCandidate(weights: ["rustic": 0.5])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
+    func test_confidenceIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
         XCTAssertGreaterThanOrEqual(result.confidence, 0.0)
         XCTAssertLessThanOrEqual(result.confidence, 1.0)
     }
 
-    // MARK: - Avoid hit reduces alignment
-
-    func test_avoidHitReducesAlignment() {
-        // Identity avoids "industrial" (weight < -0.2)
-        let identity = makeIdentity(weights: ["industrial": -0.5, "minimalist": 0.8])
-        // Candidate strongly signals "industrial"
-        let candidate = makeCandidate(weights: ["industrial": 0.9, "minimalist": 0.8])
-
-        let withAvoid    = ScoringService.score(candidateVector: candidate, identity: identity)
-
-        // Baseline: identity doesn't avoid industrial
-        let identityNoAvoid = makeIdentity(weights: ["industrial": 0.5, "minimalist": 0.8])
-        let withoutAvoid    = ScoringService.score(candidateVector: candidate, identity: identityNoAvoid)
-
-        XCTAssertLessThan(withAvoid.alignmentScore, withoutAvoid.alignmentScore,
-            "Avoid hit should reduce alignment score")
+    func test_riskOfRegretIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        XCTAssertGreaterThanOrEqual(result.riskOfRegret, 0.0)
+        XCTAssertLessThanOrEqual(result.riskOfRegret, 1.0)
     }
 
-    // MARK: - Tension flags appear on avoid hit
+    // MARK: - Alignment Semantics
 
-    func test_tensionFlagsAppearWhenAvoidHitOccurs() {
-        let identity  = makeIdentity(weights:  ["bohemian": -0.6, "industrial": 0.5])
-        // candidate influences "bohemian" (weight > 0.3)
-        let candidate = makeCandidate(weights: ["bohemian": 0.8])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
-        XCTAssertFalse(result.tensionFlags.isEmpty, "Should have tension flags when avoid hit occurs")
-        XCTAssertTrue(result.tensionFlags.contains("bohemian"))
+    func test_perfectMatchProducesHighAlignment() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: emb, decisions: 10)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        XCTAssertGreaterThanOrEqual(result.alignmentScore, 65,
+            "Same embedding should produce high alignment, got \(result.alignmentScore)")
     }
 
-    func test_noTensionFlagsWhenNoAvoidHit() {
-        let identity  = makeIdentity(weights:  ["minimalist": 0.7])
-        let candidate = makeCandidate(weights: ["minimalist": 0.9])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
-        XCTAssertTrue(result.tensionFlags.isEmpty, "No tension flags when no avoid hits")
+    func test_zeroIdentityProducesMidAlignment() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: .zero, decisions: 0)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        // cosine(candidate, zero) = 0 → alignment ≈ 50
+        XCTAssertGreaterThanOrEqual(result.alignmentScore, 30)
+        XCTAssertLessThanOrEqual(result.alignmentScore, 70)
+    }
+
+    // MARK: - Tension Semantics
+
+    func test_antiEmbeddingMatchingCandidateRaisesTension() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let noAnti   = makeIdentity(embedding: emb, antiEmbedding: .zero, decisions: 10)
+        let withAnti = makeIdentity(embedding: emb, antiEmbedding: emb,   decisions: 10)
+        let r1 = ScoringService.score(candidate: emb, signals: signals, identity: noAnti)
+        let r2 = ScoringService.score(candidate: emb, signals: signals, identity: withAnti)
+        XCTAssertGreaterThan(r2.tensionScore, r1.tensionScore,
+            "Anti-embedding matching candidate should raise tension")
+    }
+
+    func test_zeroAntiEmbeddingProducesZeroTension() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: emb, antiEmbedding: .zero)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        XCTAssertEqual(result.tensionScore, 0)
+    }
+
+    // MARK: - Confidence
+
+    func test_moreDecisionsIncreaseConfidence() {
+        let signals = minimalSignals()
+        let emb     = EmbeddingProjector.embed(signals)
+        let low     = makeIdentity(decisions: 0)
+        let high    = makeIdentity(decisions: 20)
+        let r1 = ScoringService.score(candidate: emb, signals: signals, identity: low)
+        let r2 = ScoringService.score(candidate: emb, signals: signals, identity: high)
+        XCTAssertGreaterThan(r2.confidence, r1.confidence,
+            "More decisions → higher confidence")
     }
 
     // MARK: - Determinism
 
     func test_scoringIsDeterministic() {
-        let identity  = makeIdentity(weights:  ["japandi": 0.6, "industrial": -0.4])
-        let candidate = makeCandidate(weights: ["japandi": 0.7, "industrial": 0.2])
-        let r1 = ScoringService.score(candidateVector: candidate, identity: identity)
-        let r2 = ScoringService.score(candidateVector: candidate, identity: identity)
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: emb)
+        let r1 = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        let r2 = ScoringService.score(candidate: emb, signals: signals, identity: identity)
         XCTAssertEqual(r1.alignmentScore, r2.alignmentScore)
-        XCTAssertEqual(r1.confidence, r2.confidence)
-        XCTAssertEqual(r1.tensionFlags, r2.tensionFlags)
+        XCTAssertEqual(r1.tensionScore,   r2.tensionScore)
+        XCTAssertEqual(r1.confidence,     r2.confidence)
     }
 
-    // MARK: - Risk of regret bounds
+    // MARK: - JSON Roundtrip
 
-    func test_riskOfRegretIsBounded() {
-        let identity  = makeIdentity(weights:  ["bohemian": -0.5])
-        let candidate = makeCandidate(weights: ["bohemian": 0.9])
-        let result = ScoringService.score(candidateVector: candidate, identity: identity)
-        XCTAssertGreaterThanOrEqual(result.riskOfRegret, 0.0)
-        XCTAssertLessThanOrEqual(result.riskOfRegret, 1.0)
+    func test_tasteEvaluationEncodesAndDecodesCorrectly() throws {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: emb)
+        var eval     = ScoringService.score(
+            candidate: emb, signals: signals, identity: identity,
+            category: .sofa
+        )
+        eval.tasteVote         = .me
+        eval.furnitureCategory = .sofa
+
+        let data    = try JSONEncoder().encode(eval)
+        let decoded = try JSONDecoder().decode(TasteEvaluation.self, from: data)
+
+        XCTAssertEqual(decoded.id,               eval.id)
+        XCTAssertEqual(decoded.alignmentScore,   eval.alignmentScore)
+        XCTAssertEqual(decoded.tasteVote,        .me)
+        XCTAssertEqual(decoded.furnitureCategory, .sofa)
+        XCTAssertEqual(decoded.tensionScore,     eval.tensionScore)
+    }
+
+    func test_purchaseConfidenceIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity(embedding: emb, decisions: 10)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity)
+        XCTAssertGreaterThanOrEqual(result.purchaseConfidence, 0.0)
+        XCTAssertLessThanOrEqual(result.purchaseConfidence, 1.0)
+    }
+
+    func test_budgetStressScoreIsBounded() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        let context  = EvaluationContext(declaredBudgetMax: 1000, itemPrice: 800)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity, context: context)
+        XCTAssertGreaterThanOrEqual(result.budgetStressScore, 0.0)
+        XCTAssertLessThanOrEqual(result.budgetStressScore, 1.0)
+    }
+
+    func test_overBudgetItemMaxStress() {
+        let signals  = minimalSignals()
+        let emb      = EmbeddingProjector.embed(signals)
+        let identity = makeIdentity()
+        // price >> budget → stress should be 1.0
+        let context  = EvaluationContext(declaredBudgetMax: 500, itemPrice: 2000)
+        let result   = ScoringService.score(candidate: emb, signals: signals, identity: identity, context: context)
+        XCTAssertEqual(result.budgetStressScore, 1.0, accuracy: 1e-9)
     }
 }

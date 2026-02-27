@@ -435,8 +435,10 @@ struct ItemEvaluationScreen: View {
         Haptics.impact()
         selectedVote = vote
 
-        var identity = IdentityStore.load() ?? TasteIdentity()
-        let result = ReinforcementService.applyTasteVote(
+        // 1. Optimistic local reinforcement (instant; keeps UI snappy)
+        let session  = BurgundySession.shared
+        let identity = session.current
+        let result   = ReinforcementService.applyTasteVote(
             vote: vote,
             candidateEmbedding: evaluation.candidate.embedding,
             category: category,
@@ -444,10 +446,8 @@ struct ItemEvaluationScreen: View {
             evaluationId: evaluation.id,
             to: identity
         )
-        identity = result.identity
-        IdentityStore.save(identity)
+        session.current = result.identity  // persists locally via BurgundySession
 
-        // Store pending record if created
         if let pending = result.pending {
             PendingReinforcementStore.append(pending)
             pendingRecord = pending
@@ -458,6 +458,16 @@ struct ItemEvaluationScreen: View {
         updatedEval.returnReason = returnReason
         TasteEventStore.append(updatedEval)
 
+        // 2. Fire-and-forget to server (non-blocking)
+        Task {
+            _ = try? await BurgundyAPI.recordEvent(
+                vote: vote,
+                evaluation: evaluation,
+                returnReason: returnReason,
+                identity: identity
+            )
+        }
+
         Haptics.success()
         voted = true
     }
@@ -466,10 +476,9 @@ struct ItemEvaluationScreen: View {
 
     private func confirmPendingNow(_ pending: PendingReinforcement) {
         Haptics.impact()
-        if var identity = IdentityStore.load() {
-            identity = ReinforcementService.finalizePending(pending, to: identity)
-            IdentityStore.save(identity)
-        }
+        let session  = BurgundySession.shared
+        let updated  = ReinforcementService.finalizePending(pending, to: session.current)
+        session.current = updated
         PendingReinforcementStore.remove(id: pending.id)
         anchorConfirmed = true
         Haptics.success()

@@ -1,0 +1,8 @@
+// Supabase configuration
+// Copy this file to Config.local.xcconfig (git-ignored) and fill in real values.
+// Then in Xcode: Project → Info → Configurations → set Debug/Release to Config.local.xcconfig
+//
+// Or set these directly here for local dev (do NOT commit real keys):
+
+SUPABASE_URL =
+SUPABASE_ANON_KEY =

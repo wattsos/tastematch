@@ -152,13 +152,16 @@ struct TasteMatchApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if DEBUG_LAND_ON_SCAN {
-                DebugScanRootView()
-                    .environmentObject(advisorySettings)
-            } else {
-                EngineRootView()
-                    .environmentObject(advisorySettings)
+            Group {
+                if DEBUG_LAND_ON_SCAN {
+                    DebugScanRootView()
+                        .environmentObject(advisorySettings)
+                } else {
+                    EngineRootView()
+                        .environmentObject(advisorySettings)
+                }
             }
+            .task { await BurgundySession.shared.bootstrap() }
         }
     }
 

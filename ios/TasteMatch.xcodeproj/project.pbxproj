@@ -150,6 +150,9 @@
 		OO1100100000000000000001 /* StyleDivergenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OO2100100000000000000001 /* StyleDivergenceTests.swift */; };
 		PP1100100000000000000001 /* PendingReinforcementStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = PP2100100000000000000001 /* PendingReinforcementStore.swift */; };
 		QQ1100100000000000000001 /* PendingReinforcementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = QQ2100100000000000000001 /* PendingReinforcementTests.swift */; };
+		RR1100100000000000000001 /* DeviceInstallID.swift in Sources */ = {isa = PBXBuildFile; fileRef = RR2100100000000000000001 /* DeviceInstallID.swift */; };
+		SS1100100000000000000001 /* BurgundyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS2100100000000000000001 /* BurgundyAPI.swift */; };
+		TT1100100000000000000001 /* BurgundyAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = TT2100100000000000000001 /* BurgundyAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +307,9 @@
 		OO2100100000000000000001 /* StyleDivergenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDivergenceTests.swift; sourceTree = "<group>"; };
 		PP2100100000000000000001 /* PendingReinforcementStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReinforcementStore.swift; sourceTree = "<group>"; };
 		QQ2100100000000000000001 /* PendingReinforcementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReinforcementTests.swift; sourceTree = "<group>"; };
+		RR2100100000000000000001 /* DeviceInstallID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallID.swift; sourceTree = "<group>"; };
+		SS2100100000000000000001 /* BurgundyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPI.swift; sourceTree = "<group>"; };
+		TT2100100000000000000001 /* BurgundyAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +443,8 @@
 				MM2100100000000000000001 /* EmbeddingProjector.swift */,
 				NN2100100000000000000001 /* StyleExtractor.swift */,
 				PP2100100000000000000001 /* PendingReinforcementStore.swift */,
+				RR2100100000000000000001 /* DeviceInstallID.swift */,
+				SS2100100000000000000001 /* BurgundyAPI.swift */,
 				A2001A00000000000000001A /* Assets.xcassets */,
 				A2001E00000000000000001E /* Info.plist */,
 			);
@@ -482,6 +490,7 @@
 				JJ2100100000000000000001 /* ReinforcementServiceTests.swift */,
 				OO2100100000000000000001 /* StyleDivergenceTests.swift */,
 				QQ2100100000000000000001 /* PendingReinforcementTests.swift */,
+				TT2100100000000000000001 /* BurgundyAPITests.swift */,
 			);
 			path = TasteMatchTests;
 			sourceTree = "<group>";
@@ -700,6 +709,8 @@
 				MM1100100000000000000001 /* EmbeddingProjector.swift in Sources */,
 				NN1100100000000000000001 /* StyleExtractor.swift in Sources */,
 				PP1100100000000000000001 /* PendingReinforcementStore.swift in Sources */,
+				RR1100100000000000000001 /* DeviceInstallID.swift in Sources */,
+				SS1100100000000000000001 /* BurgundyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +754,7 @@
 				JJ1100100000000000000001 /* ReinforcementServiceTests.swift in Sources */,
 				OO1100100000000000000001 /* StyleDivergenceTests.swift in Sources */,
 				QQ1100100000000000000001 /* PendingReinforcementTests.swift in Sources */,
+				TT1100100000000000000001 /* BurgundyAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

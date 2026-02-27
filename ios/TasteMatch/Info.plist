@@ -8,5 +8,9 @@
 	<string>Photos you choose to upload help Burgundy understand your taste and generate recommendations.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take photos of your space, objects, or art so Burgundy can read your taste.</string>
+	<key>SUPABASE_URL</key>
+	<string>$(SUPABASE_URL)</string>
+	<key>SUPABASE_ANON_KEY</key>
+	<string>$(SUPABASE_ANON_KEY)</string>
 </dict>
 </plist>

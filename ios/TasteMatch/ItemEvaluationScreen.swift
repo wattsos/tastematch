@@ -14,6 +14,15 @@ struct ItemEvaluationScreen: View {
 
     private var category: FurnitureCategory { evaluation.furnitureCategory ?? .other }
 
+    private var tensionLabel: String {
+        switch evaluation.tensionScore {
+        case 0...20:  return "None"
+        case 21...50: return "Low"
+        case 51...70: return "Moderate"
+        default:      return "High"
+        }
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 32) {
@@ -62,11 +71,6 @@ struct ItemEvaluationScreen: View {
                 .tracking(4)
                 .foregroundStyle(Theme.ink)
 
-            Text("\(evaluation.alignmentScore)")
-                .font(.system(.caption2, design: .monospaced))
-                .foregroundStyle(Theme.muted)
-                .padding(.top, 2)
-
             if let cat = evaluation.furnitureCategory, cat != .other {
                 Text(cat.displayLabel.uppercased())
                     .font(.system(size: 9, weight: .medium))
@@ -92,18 +96,18 @@ struct ItemEvaluationScreen: View {
             metaStat(
                 label: "CONFIDENCE",
                 value: ScoringService.confidenceLabel(evaluation.confidence),
-                sub: String(format: "%.0f%%", evaluation.confidence * 100)
+                sub: nil
             )
             Rectangle().fill(Theme.hairline).frame(width: 1, height: 28)
             metaStat(
                 label: "PURCHASE",
                 value: ScoringService.purchaseConfidenceLabel(evaluation.purchaseConfidence),
-                sub: String(format: "%.0f%%", evaluation.purchaseConfidence * 100)
+                sub: nil
             )
             Rectangle().fill(Theme.hairline).frame(width: 1, height: 28)
             metaStat(
                 label: "TENSION",
-                value: "\(evaluation.tensionScore)",
+                value: tensionLabel,
                 sub: nil
             )
         }

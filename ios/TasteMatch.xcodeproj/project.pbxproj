@@ -310,6 +310,7 @@
 		RR2100100000000000000001 /* DeviceInstallID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallID.swift; sourceTree = "<group>"; };
 		SS2100100000000000000001 /* BurgundyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPI.swift; sourceTree = "<group>"; };
 		TT2100100000000000000001 /* BurgundyAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPITests.swift; sourceTree = "<group>"; };
+		XCFG000000000000000001 /* Config.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.local.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -892,6 +893,7 @@
 		};
 		AE0003000000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = XCFG000000000000000001 /* Config.local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -924,6 +926,7 @@
 		};
 		AE0004000000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = XCFG000000000000000001 /* Config.local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

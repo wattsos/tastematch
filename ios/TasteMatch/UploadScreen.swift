@@ -18,6 +18,7 @@ struct UploadScreen: View {
     @State private var isLoading = false
     @State private var loadError = false
     @State private var showCamera = false
+    @State private var showPhotoPicker = false
     @State private var retentionStats = RetentionStats()
 
     private var enabledDomains: [TasteDomain] {
@@ -94,6 +95,7 @@ struct UploadScreen: View {
         .onReceive(NotificationCenter.default.publisher(for: DecisionStore.didRecord)) { _ in
             retentionStats = RetentionStats.compute()
         }
+        .photosPicker(isPresented: $showPhotoPicker, selection: $selectedItems, maxSelectionCount: 5, matching: .images)
         .fullScreenCover(isPresented: $showCamera) {
             CameraPicker { image in
                 if images.count < 5 {
@@ -352,11 +354,9 @@ struct UploadScreen: View {
     // MARK: - Shared Picker
 
     private var photoPicker: some View {
-        PhotosPicker(
-            selection: $selectedItems,
-            maxSelectionCount: 5,
-            matching: .images
-        ) {
+        Button {
+            showPhotoPicker = true
+        } label: {
             Label(images.isEmpty ? "Select Photos" : "Add More", systemImage: "photo.on.rectangle.angled")
                 .font(.subheadline.weight(.medium))
                 .padding(.horizontal, 16)

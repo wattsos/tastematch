@@ -65,15 +65,20 @@ final class BurgundySession {
 
     /// Load identity — from server if configured, else from local store.
     func bootstrap() async {
-        if SupabaseConfig.isConfigured {
-            do {
-                identity = try await BurgundyAPI.bootstrapIdentity()
-                if let id = identity { IdentityStore.save(id) }
-            } catch {
-                identity = IdentityStore.load() ?? TasteIdentity()
-            }
-        } else {
+        // Set synchronously so any vote before bootstrap completes uses real state.
+        if identity == nil {
             identity = IdentityStore.load() ?? TasteIdentity()
+        }
+        guard SupabaseConfig.isConfigured else { return }
+        do {
+            let remote = try await BurgundyAPI.bootstrapIdentity()
+            // Only adopt remote if no vote has happened yet (local version ≤ remote).
+            if (identity?.version ?? 0) <= remote.version {
+                identity = remote
+                IdentityStore.save(remote)
+            }
+        } catch {
+            // Already set to local above — nothing to do.
         }
     }
 

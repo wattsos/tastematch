@@ -153,6 +153,7 @@
 		RR1100100000000000000001 /* DeviceInstallID.swift in Sources */ = {isa = PBXBuildFile; fileRef = RR2100100000000000000001 /* DeviceInstallID.swift */; };
 		SS1100100000000000000001 /* BurgundyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS2100100000000000000001 /* BurgundyAPI.swift */; };
 		TT1100100000000000000001 /* BurgundyAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = TT2100100000000000000001 /* BurgundyAPITests.swift */; };
+		UU1100100000000000000001 /* IdentityDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = UU2100100000000000000001 /* IdentityDebugView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +311,7 @@
 		RR2100100000000000000001 /* DeviceInstallID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInstallID.swift; sourceTree = "<group>"; };
 		SS2100100000000000000001 /* BurgundyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPI.swift; sourceTree = "<group>"; };
 		TT2100100000000000000001 /* BurgundyAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgundyAPITests.swift; sourceTree = "<group>"; };
+		UU2100100000000000000001 /* IdentityDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityDebugView.swift; sourceTree = "<group>"; };
 		XCFG000000000000000001 /* Config.local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.local.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -446,6 +448,7 @@
 				PP2100100000000000000001 /* PendingReinforcementStore.swift */,
 				RR2100100000000000000001 /* DeviceInstallID.swift */,
 				SS2100100000000000000001 /* BurgundyAPI.swift */,
+				UU2100100000000000000001 /* IdentityDebugView.swift */,
 				A2001A00000000000000001A /* Assets.xcassets */,
 				A2001E00000000000000001E /* Info.plist */,
 			);
@@ -712,6 +715,7 @@
 				PP1100100000000000000001 /* PendingReinforcementStore.swift in Sources */,
 				RR1100100000000000000001 /* DeviceInstallID.swift in Sources */,
 				SS1100100000000000000001 /* BurgundyAPI.swift in Sources */,
+				UU1100100000000000000001 /* IdentityDebugView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ struct SettingsScreen: View {
     @State private var showClearFavoritesConfirmation = false
     @State private var showResetOnboardingConfirmation = false
     @State private var showDomainSettings = false
+    @State private var showIdentityDebug = false
 
     var body: some View {
         List {
@@ -114,10 +115,21 @@ struct SettingsScreen: View {
                 }
             }
         }
+        Section("Developer") {
+            Button {
+                showIdentityDebug = true
+            } label: {
+                Label("Identity Debug", systemImage: "ladybug")
+                    .foregroundStyle(Theme.muted)
+            }
+        }
         .navigationTitle("Settings")
         .tint(Theme.accent)
         .sheet(isPresented: $showDomainSettings) {
             GoalSelectionScreen(isPresented: $showDomainSettings)
+        }
+        .sheet(isPresented: $showIdentityDebug) {
+            NavigationStack { IdentityDebugView() }
         }
     }
 

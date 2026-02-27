@@ -3,12 +3,24 @@ import SwiftUI
 struct HistoryScreen: View {
     @Binding var path: NavigationPath
     @State private var evaluations: [TasteEvaluation] = []
+    @State private var remoteEvents: [RemoteEvent] = []
+    @State private var syncStatus: SyncStatus = .unknown
     @State private var selectedEval: TasteEvaluation?
+
+    private enum SyncStatus { case unknown, synced(Date), offline }
+
+    private static let iso8601: ISO8601DateFormatter = {
+        let f = ISO8601DateFormatter()
+        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return f
+    }()
 
     var body: some View {
         Group {
-            if evaluations.isEmpty {
+            if remoteEvents.isEmpty && evaluations.isEmpty {
                 emptyState
+            } else if !remoteEvents.isEmpty {
+                remoteList
             } else {
                 evalList
             }
@@ -16,17 +28,48 @@ struct HistoryScreen: View {
         .navigationTitle("HISTORY")
         .navigationBarTitleDisplayMode(.inline)
         .tint(Theme.accent)
-        .onAppear { reload() }
+        .toolbar { ToolbarItem(placement: .topBarTrailing) { syncBadge } }
+        .task { await loadData() }
         .sheet(item: $selectedEval) { eval in
             HistoryDetailSheet(evaluation: eval) { updated in
                 TasteEventStore.update(updated)
-                reload()
+                Task { await loadData() }
             }
         }
     }
 
-    private func reload() {
+    // MARK: - Load
+
+    private func loadData() async {
         evaluations = TasteEventStore.loadAll().reversed()
+        do {
+            let events = try await BurgundyAPI.fetchEvents()
+            remoteEvents = events
+            syncStatus = .synced(Date())
+        } catch {
+            remoteEvents = []
+            syncStatus = evaluations.isEmpty ? .unknown : .offline
+        }
+    }
+
+    // MARK: - Sync Badge
+
+    @ViewBuilder
+    private var syncBadge: some View {
+        switch syncStatus {
+        case .unknown:
+            EmptyView()
+        case .synced(let date):
+            Text("SYNCED · \(timeString(date))")
+                .font(.system(size: 9, weight: .medium))
+                .tracking(1.0)
+                .foregroundStyle(Theme.muted)
+        case .offline:
+            Text("OFFLINE")
+                .font(.system(size: 9, weight: .medium))
+                .tracking(1.0)
+                .foregroundStyle(Theme.muted)
+        }
     }
 
     // MARK: - Empty State
@@ -49,7 +92,79 @@ struct HistoryScreen: View {
         }
     }
 
-    // MARK: - Evaluation List
+    // MARK: - Remote List (server-sourced)
+
+    private var remoteList: some View {
+        List {
+            ForEach(remoteEvents, id: \.id) { event in
+                remoteRow(event)
+            }
+        }
+        .listStyle(.plain)
+    }
+
+    private func remoteRow(_ event: RemoteEvent) -> some View {
+        let alignmentScore = Int(event.scores?["alignment"] ?? 0)
+        let category = FurnitureCategory(rawValue: event.category)
+        let vote = TasteVote(rawValue: event.vote)
+        let date = Self.iso8601.date(from: event.created_at) ?? Date()
+
+        return HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 6) {
+                    Text(ScoringService.alignmentLabel(alignmentScore))
+                        .font(.system(.subheadline, design: .default, weight: .semibold))
+                        .tracking(1.0)
+                        .foregroundStyle(Theme.ink)
+                    if let cat = category, cat != .other {
+                        Text(cat.displayLabel.uppercased())
+                            .font(.system(size: 9, weight: .medium))
+                            .tracking(0.5)
+                            .foregroundStyle(Theme.muted)
+                    }
+                }
+                Text(formatted(date))
+                    .font(.caption2)
+                    .foregroundStyle(Theme.muted)
+            }
+
+            Spacer()
+
+            VStack(alignment: .trailing, spacing: 4) {
+                if let vote {
+                    Text(voteLabel(vote))
+                        .font(.system(size: 9, weight: .medium))
+                        .tracking(0.5)
+                        .foregroundStyle(Theme.muted)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(Theme.surface)
+                        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .stroke(Theme.hairline, lineWidth: 1)
+                        )
+                }
+                if event.pending {
+                    Text("PENDING")
+                        .font(.system(size: 9, weight: .medium))
+                        .tracking(0.5)
+                        .foregroundStyle(Theme.ink)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(Theme.surface)
+                        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .stroke(Theme.ink.opacity(0.3), lineWidth: 1)
+                        )
+                }
+            }
+        }
+        .padding(.vertical, 4)
+    }
+
+    // MARK: - Local Evaluation List (fallback)
 
     private var evalList: some View {
         List {
@@ -138,10 +253,16 @@ struct HistoryScreen: View {
     }
 
     private func formatted(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
+        let f = DateFormatter()
+        f.dateStyle = .medium
+        f.timeStyle = .short
+        return f.string(from: date)
+    }
+
+    private func timeString(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.timeStyle = .short
+        return f.string(from: date)
     }
 }
 
@@ -202,8 +323,6 @@ private struct HistoryDetailSheet: View {
         }
     }
 
-    // MARK: - Metrics
-
     private var metricsSection: some View {
         HStack(spacing: 0) {
             metaStat(label: "ALIGNMENT",  value: "\(evaluation.alignmentScore)")
@@ -234,8 +353,6 @@ private struct HistoryDetailSheet: View {
         .frame(maxWidth: .infinity)
     }
 
-    // MARK: - Vote Display
-
     private var voteSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("TASTE VOTE")
@@ -257,8 +374,6 @@ private struct HistoryDetailSheet: View {
         case .returned: return "Returned"
         }
     }
-
-    // MARK: - Return Reason Picker
 
     private var returnReasonSection: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -294,8 +409,6 @@ private struct HistoryDetailSheet: View {
         }
     }
 
-    // MARK: - Pending Reinforcement Section
-
     private func pendingSection(_ pending: PendingReinforcement) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("ANCHOR PENDING")
@@ -327,8 +440,6 @@ private struct HistoryDetailSheet: View {
         )
     }
 
-    // MARK: - Mark as Returned
-
     private var markReturnedSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("CHANGED YOUR MIND?")
@@ -354,8 +465,6 @@ private struct HistoryDetailSheet: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    // MARK: - Notes
-
     private var notesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("NOTES")
@@ -376,8 +485,6 @@ private struct HistoryDetailSheet: View {
         }
     }
 
-    // MARK: - Actions
-
     private func confirmPending(_ pending: PendingReinforcement) {
         Haptics.impact()
         if var identity = IdentityStore.load() {
@@ -390,7 +497,6 @@ private struct HistoryDetailSheet: View {
     }
 
     private func markAsReturned() {
-        // Apply returned vote with no reason yet (user can pick reason in the grid if it appears)
         if var identity = IdentityStore.load() {
             let (updated, _) = ReinforcementService.applyTasteVote(
                 vote: .returned,
@@ -403,9 +509,7 @@ private struct HistoryDetailSheet: View {
             identity = updated
             IdentityStore.save(identity)
         }
-        // Cancel any pending record if it exists
         PendingReinforcementStore.removeAll(for: evaluation.id)
-
         var updated = evaluation
         updated.tasteVote = .returned
         onSave(updated)
@@ -417,7 +521,6 @@ private struct HistoryDetailSheet: View {
         updated.returnReason = selectedReturnReason
         updated.notes = notes.isEmpty ? nil : notes
 
-        // If return reason was added to an existing .returned vote, apply style learning
         if evaluation.tasteVote == .returned,
            evaluation.returnReason == nil,
            let reason = selectedReturnReason, reason.affectsStyleLearning,

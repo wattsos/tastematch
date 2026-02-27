@@ -62,6 +62,10 @@ final class BurgundySession {
     private init() {}
 
     var identity: TasteIdentity?
+    var lastSyncedAt: Date?
+
+    /// Base URL for edge functions (read-only, for debug display).
+    var endpointURL: String { SupabaseConfig.url }
 
     /// Load identity — from server if configured, else from local store.
     func bootstrap() async {
@@ -77,6 +81,7 @@ final class BurgundySession {
                 identity = remote
                 IdentityStore.save(remote)
             }
+            lastSyncedAt = Date()
         } catch {
             // Already set to local above — nothing to do.
         }

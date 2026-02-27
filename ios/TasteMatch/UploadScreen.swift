@@ -432,46 +432,26 @@ struct UploadScreen: View {
 
     private func runDemo() {
         Haptics.impact()
-        DomainStore.current = selectedDomain
         EventLogger.shared.logEvent("demo_started", metadata: ["domain": selectedDomain.rawValue])
 
-        // Use preset signals that produce a nice Scandinavian + Japandi result
-        let signals = VisualSignals(
-            paletteTemperature: .cool,
-            brightness: .high,
-            contrast: .low,
-            saturation: .muted,
-            edgeDensity: .low,
-            material: .wood
+        // Minimal/Japandi preset — bright, low clutter, organic
+        let signals = StyleSignals(
+            brightness: 0.85, contrast: 0.15, saturation: 0.10, warmth: 0.45,
+            edgeDensity: 0.05, symmetry: 0.90, clutter: 0.05,
+            materialHardness: 0.10, organicVsIndustrial: 0.70,
+            ornateVsMinimal: 0.05, vintageVsModern: 0.35
         )
-
-        var profile = TasteEngine.analyze(
+        let embedding = EmbeddingProjector.embed(signals)
+        let identity  = IdentityStore.load() ?? TasteIdentity()
+        let evaluation = ScoringService.score(
+            candidate: embedding,
             signals: signals,
-            context: .livingRoom,
-            goal: .refresh
+            identity: identity,
+            category: selectedCategory
         )
-        ProfileNamingEngine.applyInitialNaming(to: &profile)
-
-        let catalog = DomainCatalog.items(for: selectedDomain)
-        let recommendations = RecommendationEngine.recommend(
-            profile: profile,
-            catalog: catalog,
-            context: .livingRoom,
-            goal: .refresh,
-            limit: 6
-        )
-
-        ProfileStore.save(
-            profile: profile,
-            recommendations: recommendations,
-            roomContext: .livingRoom,
-            designGoal: .refresh,
-            domain: selectedDomain
-        )
-        DomainPreferencesStore.setLastViewed(domain: selectedDomain, for: profile.id)
 
         Haptics.success()
-        path.append(Route.calibration(profile, recommendations, selectedDomain))
+        path.append(Route.itemEvaluation(evaluation: evaluation))
     }
 
     // MARK: - Direct Analysis (non-Space domains skip ContextScreen)

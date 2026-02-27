@@ -6,6 +6,8 @@ struct HistoryScreen: View {
     @State private var remoteEvents: [RemoteEvent] = []
     @State private var syncStatus: SyncStatus = .unknown
     @State private var selectedEval: TasteEvaluation?
+    @State private var selectedRemoteEvent: RemoteEvent?
+    @State private var showIdentityDebug = false
 
     private enum SyncStatus { case unknown, synced(Date), offline }
 
@@ -28,7 +30,18 @@ struct HistoryScreen: View {
         .navigationTitle("HISTORY")
         .navigationBarTitleDisplayMode(.inline)
         .tint(Theme.accent)
-        .toolbar { ToolbarItem(placement: .topBarTrailing) { syncBadge } }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) { syncBadge }
+            #if DEBUG
+            ToolbarItem(placement: .topBarLeading) {
+                Button { showIdentityDebug = true } label: {
+                    Image(systemName: "ladybug")
+                        .font(.caption2)
+                        .foregroundStyle(Theme.muted)
+                }
+            }
+            #endif
+        }
         .task { await loadData() }
         .sheet(item: $selectedEval) { eval in
             HistoryDetailSheet(evaluation: eval) { updated in
@@ -36,6 +49,14 @@ struct HistoryScreen: View {
                 Task { await loadData() }
             }
         }
+        .sheet(item: $selectedRemoteEvent) { event in
+            RemoteEventDetailSheet(event: event)
+        }
+        #if DEBUG
+        .sheet(isPresented: $showIdentityDebug) {
+            NavigationStack { IdentityDebugView() }
+        }
+        #endif
     }
 
     // MARK: - Load
@@ -97,7 +118,8 @@ struct HistoryScreen: View {
     private var remoteList: some View {
         List {
             ForEach(remoteEvents, id: \.id) { event in
-                remoteRow(event)
+                Button { selectedRemoteEvent = event } label: { remoteRow(event) }
+                    .foregroundStyle(.primary)
             }
         }
         .listStyle(.plain)
@@ -261,6 +283,161 @@ struct HistoryScreen: View {
 
     private func timeString(_ date: Date) -> String {
         let f = DateFormatter()
+        f.timeStyle = .short
+        return f.string(from: date)
+    }
+}
+
+// MARK: - Remote Event Detail Sheet
+
+private struct RemoteEventDetailSheet: View {
+    let event: RemoteEvent
+    @Environment(\.dismiss) private var dismiss
+
+    private static let iso8601: ISO8601DateFormatter = {
+        let f = ISO8601DateFormatter()
+        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return f
+    }()
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    scoresSection
+                    voteSection
+                    if let reason = event.return_reason, !reason.isEmpty {
+                        returnReasonSection(reason)
+                    }
+                    if event.pending {
+                        pendingSection
+                    }
+                    dateSection
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 24)
+            }
+            .background(Theme.bg)
+            .navigationTitle("DETAIL")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") { dismiss() }
+                        .foregroundStyle(Theme.ink)
+                }
+            }
+        }
+    }
+
+    private var scoresSection: some View {
+        let alignment = Int(event.scores?["alignment"] ?? 0)
+        let tension   = Int(event.scores?["tension"] ?? 0)
+        return HStack(spacing: 0) {
+            remoteStat(label: "ALIGNMENT", value: ScoringService.alignmentLabel(alignment))
+            Rectangle().fill(Theme.hairline).frame(width: 1, height: 28)
+            remoteStat(label: "TENSION",   value: "\(tension)")
+        }
+        .padding(.vertical, 14)
+        .background(Theme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                .stroke(Theme.hairline, lineWidth: 1)
+        )
+    }
+
+    private func remoteStat(label: String, value: String) -> some View {
+        VStack(spacing: 3) {
+            Text(value)
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Theme.ink)
+            Text(label)
+                .font(.system(size: 9, weight: .medium))
+                .tracking(0.8)
+                .foregroundStyle(Theme.muted)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private var voteSection: some View {
+        let vote = TasteVote(rawValue: event.vote)
+        return VStack(alignment: .leading, spacing: 8) {
+            Text("TASTE VOTE")
+                .font(.system(.caption, design: .default, weight: .semibold))
+                .tracking(1.2)
+                .foregroundStyle(Theme.muted)
+            Text(vote.map { voteDisplay($0) } ?? event.vote.uppercased())
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Theme.ink)
+            if let cat = FurnitureCategory(rawValue: event.category), cat != .other {
+                Text(cat.displayLabel.uppercased())
+                    .font(.system(size: 9, weight: .medium))
+                    .tracking(0.8)
+                    .foregroundStyle(Theme.muted)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func returnReasonSection(_ reason: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("RETURN REASON")
+                .font(.system(.caption, design: .default, weight: .semibold))
+                .tracking(1.2)
+                .foregroundStyle(Theme.muted)
+            Text(reason)
+                .font(.subheadline)
+                .foregroundStyle(Theme.ink)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var pendingSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("ANCHOR PENDING")
+                .font(.system(.caption, design: .default, weight: .semibold))
+                .tracking(1.2)
+                .foregroundStyle(Theme.ink)
+            Text("This piece is held for reinforcement. Confirm from the local History view.")
+                .font(.subheadline)
+                .foregroundStyle(Theme.muted)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(Theme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: Theme.radius, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
+                .stroke(Theme.hairline, lineWidth: 1)
+        )
+    }
+
+    private var dateSection: some View {
+        let date = Self.iso8601.date(from: event.created_at) ?? Date()
+        return VStack(alignment: .leading, spacing: 8) {
+            Text("RECORDED")
+                .font(.system(.caption, design: .default, weight: .semibold))
+                .tracking(1.2)
+                .foregroundStyle(Theme.muted)
+            Text(formatted(date))
+                .font(.subheadline)
+                .foregroundStyle(Theme.ink)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func voteDisplay(_ vote: TasteVote) -> String {
+        switch vote {
+        case .me:       return "Me"
+        case .notMe:    return "Not me"
+        case .maybe:    return "Maybe"
+        case .returned: return "Returned"
+        }
+    }
+
+    private func formatted(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.dateStyle = .medium
         f.timeStyle = .short
         return f.string(from: date)
     }

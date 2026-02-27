@@ -114,13 +114,14 @@ struct SettingsScreen: View {
                         .foregroundStyle(Theme.clay)
                 }
             }
-        }
-        Section("Developer") {
-            Button {
-                showIdentityDebug = true
-            } label: {
-                Label("Identity Debug", systemImage: "ladybug")
-                    .foregroundStyle(Theme.muted)
+
+            Section("Developer") {
+                Button {
+                    showIdentityDebug = true
+                } label: {
+                    Label("Identity Debug", systemImage: "ladybug")
+                        .foregroundStyle(Theme.muted)
+                }
             }
         }
         .navigationTitle("Settings")

@@ -42,7 +42,7 @@ struct RemoteIdentity: Decodable {
     }
 }
 
-struct RemoteEvent: Decodable {
+struct RemoteEvent: Decodable, Identifiable {
     let id: String
     let identity_id: String
     let vote: String
@@ -63,6 +63,8 @@ final class BurgundySession {
 
     var identity: TasteIdentity?
     var lastSyncedAt: Date?
+    var lastFetchWasServer: Bool = false
+    var lastServerEventCount: Int = 0
 
     /// Base URL for edge functions (read-only, for debug display).
     var endpointURL: String { SupabaseConfig.url }
@@ -145,6 +147,8 @@ enum BurgundyAPI {
         let path = "fetch-events?identity_id=\(id.uuidString)&device_install_id=\(DeviceInstallID.current)&limit=\(limit)"
         let data = try await get(path: path)
         let resp = try JSONDecoder().decode(FetchEventsResponse.self, from: data)
+        BurgundySession.shared.lastFetchWasServer = true
+        BurgundySession.shared.lastServerEventCount = resp.events.count
         return resp.events
     }
 
@@ -160,7 +164,10 @@ enum BurgundyAPI {
         req.setValue(SupabaseConfig.anonKey,              forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(SupabaseConfig.anonKey)",  forHTTPHeaderField: "Authorization")
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
-        let (data, _) = try await URLSession.shared.data(for: req)
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            throw URLError(.badServerResponse)
+        }
         return data
     }
 
@@ -171,7 +178,10 @@ enum BurgundyAPI {
         var req = URLRequest(url: url)
         req.setValue(SupabaseConfig.anonKey,              forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(SupabaseConfig.anonKey)",  forHTTPHeaderField: "Authorization")
-        let (data, _) = try await URLSession.shared.data(for: req)
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            throw URLError(.badServerResponse)
+        }
         return data
     }
 }

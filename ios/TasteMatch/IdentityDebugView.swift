@@ -24,11 +24,13 @@ struct IdentityDebugView: View {
                 } else {
                     debugRow("LAST SYNCED", value: "Not yet")
                 }
+                debugRow("FETCH SOURCE", value: session.lastFetchWasServer ? "Server" : "Local")
+                debugRow("CACHED COUNT", value: "\(session.lastServerEventCount)")
                 if let n = eventsCount {
-                    debugRow("EVENTS (SERVER)", value: "\(n)")
+                    debugRow("EVENTS (LIVE)", value: "\(n)")
                 }
                 if let n = pendingCount {
-                    debugRow("PENDING (SERVER)", value: "\(n)")
+                    debugRow("PENDING (LIVE)", value: "\(n)")
                 }
             }
 

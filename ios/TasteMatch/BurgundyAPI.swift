@@ -147,6 +147,7 @@ enum BurgundyAPI {
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
         req.setValue("application/json",                  forHTTPHeaderField: "Content-Type")
+        req.setValue(SupabaseConfig.anonKey,              forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(SupabaseConfig.anonKey)",  forHTTPHeaderField: "Authorization")
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
         let (data, _) = try await URLSession.shared.data(for: req)
@@ -158,7 +159,8 @@ enum BurgundyAPI {
             throw URLError(.badURL)
         }
         var req = URLRequest(url: url)
-        req.setValue("Bearer \(SupabaseConfig.anonKey)", forHTTPHeaderField: "Authorization")
+        req.setValue(SupabaseConfig.anonKey,              forHTTPHeaderField: "apikey")
+        req.setValue("Bearer \(SupabaseConfig.anonKey)",  forHTTPHeaderField: "Authorization")
         let (data, _) = try await URLSession.shared.data(for: req)
         return data
     }

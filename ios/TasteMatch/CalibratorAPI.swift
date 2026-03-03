@@ -17,6 +17,23 @@ private struct ItemsResponse: Decodable {
     let items: [CalibratorItem]
 }
 
+// MARK: - Oracle Models
+
+struct OracleItem: Decodable {
+    let object_id: String
+    let title: String
+    let image_url: String?
+    let category: String?
+    let brand: String?
+    let similarity: Double?
+}
+
+struct PredictionResult: Decodable {
+    let ok: Bool
+    let top_match: OracleItem
+    let bottom_match: OracleItem
+}
+
 // MARK: - API
 
 enum CalibratorAPI {
@@ -33,6 +50,18 @@ enum CalibratorAPI {
             throw URLError(.badServerResponse)
         }
         return try JSONDecoder().decode(ItemsResponse.self, from: data).items
+    }
+
+    /// Fetch the oracle prediction: top and bottom match for the user's current identity vector.
+    static func fetchPrediction(userId: String) async throws -> PredictionResult {
+        guard let url = URL(string: "\(baseURL)/api/calibrate/prediction?user_id=\(userId)") else {
+            throw URLError(.badURL)
+        }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            throw URLError(.badServerResponse)
+        }
+        return try JSONDecoder().decode(PredictionResult.self, from: data)
     }
 
     /// Record a swipe event and update the user's calibrator identity vector.

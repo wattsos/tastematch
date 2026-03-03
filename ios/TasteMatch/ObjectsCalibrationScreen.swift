@@ -20,6 +20,12 @@ struct ObjectsCalibrationScreen: View {
     @State private var showResetConfirmation = false
     @State private var didLoadExisting = false
 
+    // Oracle Reveal
+    private let oracleThreshold = 15
+    @State private var oraclePrediction: PredictionResult? = nil
+    @State private var isFetchingOracle = false
+    @State private var showOracle = false
+
     private let swipeThresholdX: CGFloat = 100
     private let swipeThresholdY: CGFloat = 80
 
@@ -75,6 +81,17 @@ struct ObjectsCalibrationScreen: View {
             await loadItems()
         }
         .animation(.easeInOut(duration: 0.3), value: showUpdating)
+        .fullScreenCover(isPresented: $showOracle) {
+            if let prediction = oraclePrediction {
+                OracleRevealView(
+                    topMatch: prediction.top_match,
+                    bottomMatch: prediction.bottom_match
+                ) {
+                    showOracle = false
+                    finishCalibration()
+                }
+            }
+        }
     }
 
     // MARK: - Fetch
@@ -100,7 +117,9 @@ struct ObjectsCalibrationScreen: View {
             swipeProgress
 
             ZStack {
-                if isLoadingItems {
+                if isFetchingOracle {
+                    oracleFetchingCard
+                } else if isLoadingItems {
                     ProgressView()
                         .tint(Theme.accent)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -125,6 +144,21 @@ struct ObjectsCalibrationScreen: View {
 
             hintSection
         }
+    }
+
+    private var oracleFetchingCard: some View {
+        VStack(spacing: 16) {
+            ProgressView()
+                .tint(Theme.accent)
+            Text("The Oracle is computing…")
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Theme.ink)
+            Text("Scanning every object in the catalog")
+                .font(.caption)
+                .foregroundStyle(Theme.muted)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .transition(.opacity)
     }
 
     private var completionCard: some View {
@@ -268,7 +302,9 @@ struct ObjectsCalibrationScreen: View {
             dragOffset = .zero
             dragDirection = nil
 
-            if currentIndex >= totalSwipeCards {
+            if currentIndex == oracleThreshold {
+                triggerOracle()
+            } else if currentIndex >= totalSwipeCards {
                 finishCalibration()
             }
         }
@@ -307,6 +343,32 @@ struct ObjectsCalibrationScreen: View {
                     .stroke(color, lineWidth: 2)
             )
             .opacity(min(1, max(abs(dragOffset.width), abs(dragOffset.height)) / swipeThresholdX))
+    }
+
+    // MARK: - Oracle
+
+    private func triggerOracle() {
+        isFetchingOracle = true
+        Task {
+            do {
+                let prediction = try await CalibratorAPI.fetchPrediction(
+                    userId: DeviceInstallID.current
+                )
+                await MainActor.run {
+                    oraclePrediction = prediction
+                    isFetchingOracle = false
+                    showOracle = true
+                }
+            } catch {
+                #if DEBUG
+                print("[Oracle] fetchPrediction failed: \(error.localizedDescription)")
+                #endif
+                await MainActor.run {
+                    isFetchingOracle = false
+                    finishCalibration()
+                }
+            }
+        }
     }
 
     // MARK: - Completion

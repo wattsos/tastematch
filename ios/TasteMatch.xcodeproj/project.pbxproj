@@ -73,6 +73,7 @@
 		L11004000000000000000004 /* commerce_space.json in Resources */ = {isa = PBXBuildFile; fileRef = L21001000000000000000001 /* commerce_space.json */; };
 		M11001000000000000000001 /* ShopScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21001000000000000000001 /* ShopScreen.swift */; };
 		M11002000000000000000002 /* ShopScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = M21002000000000000000002 /* ShopScreenTests.swift */; };
+		CA110000000000000000000A /* CalibratorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA220000000000000000000A /* CalibratorAPI.swift */; };
 		N11001000000000000000001 /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21001000000000000000001 /* CachedImage.swift */; };
 		N11002000000000000000002 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21002000000000000000002 /* FeatureFlags.swift */; };
 		N11003000000000000000003 /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = N21003000000000000000003 /* NetworkModels.swift */; };
@@ -236,6 +237,7 @@
 		L21003000000000000000003 /* CommerceRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommerceRankingTests.swift; sourceTree = "<group>"; };
 		M21001000000000000000001 /* ShopScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreen.swift; sourceTree = "<group>"; };
 		M21002000000000000000002 /* ShopScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScreenTests.swift; sourceTree = "<group>"; };
+		CA220000000000000000000A /* CalibratorAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibratorAPI.swift; sourceTree = "<group>"; };
 		N21001000000000000000001 /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
 		N21002000000000000000002 /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		N21003000000000000000003 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				A20003000000000000000003 /* APIClient.swift */,
 				N21004000000000000000004 /* BackendClient.swift */,
 				345E6421A33BBF48B4B8E5CB /* Brand.swift */,
+				CA220000000000000000000A /* CalibratorAPI.swift */,
 				N21001000000000000000001 /* CachedImage.swift */,
 				D21002000000000000000002 /* CalibrationStore.swift */,
 				C21002000000000000000002 /* catalog.json */,
@@ -630,6 +633,7 @@
 				N11004000000000000000004 /* BackendClient.swift in Sources */,
 				E11001000000000000000001 /* BoardScreen.swift in Sources */,
 				859BEC168102C01A5993CD82 /* Brand.swift in Sources */,
+				CA110000000000000000000A /* CalibratorAPI.swift in Sources */,
 				N11001000000000000000001 /* CachedImage.swift in Sources */,
 				D11002000000000000000002 /* CalibrationStore.swift in Sources */,
 				C11001000000000000000001 /* CatalogLoader.swift in Sources */,

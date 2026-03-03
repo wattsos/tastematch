@@ -5,8 +5,14 @@ struct ObjectsCalibrationScreen: View {
     let profile: TasteProfile
     let recommendations: [RecommendationItem]
 
+    // Server-fetched deck
+    @State private var items: [CalibratorItem] = []
+    @State private var isLoadingItems = true
+
+    // Kept for local record / Reset button
     @State private var vector = ObjectVector.zero
     @State private var swipeCount = 0
+
     @State private var currentIndex = 0
     @State private var dragOffset: CGSize = .zero
     @State private var dragDirection: SwipeDirection?
@@ -17,40 +23,7 @@ struct ObjectsCalibrationScreen: View {
     private let swipeThresholdX: CGFloat = 100
     private let swipeThresholdY: CGFloat = 80
 
-    // MARK: - Calibration Items
-
-    /// Cards from commerce_objects catalog, 2-3 per ObjectAxis, deterministic shuffle.
-    private var calibrationItems: [CatalogItem] {
-        let catalog = DomainCatalog.items(for: .objects)
-        var axisBuckets: [ObjectAxis: [CatalogItem]] = [:]
-        for axis in ObjectAxis.allCases { axisBuckets[axis] = [] }
-
-        for item in catalog {
-            if let dominant = dominantObjectAxis(item: item),
-               var bucket = axisBuckets[dominant], bucket.count < 3 {
-                bucket.append(item)
-                axisBuckets[dominant] = bucket
-            }
-        }
-
-        var items: [CatalogItem] = []
-        for axis in ObjectAxis.allCases {
-            items.append(contentsOf: axisBuckets[axis] ?? [])
-        }
-
-        var rng = SeededRNG(seed: profile.id.hashValue)
-        items.shuffle(using: &rng)
-        return items
-    }
-
-    private func dominantObjectAxis(item: CatalogItem) -> ObjectAxis? {
-        let weights = item.objectAxisWeights
-        guard !weights.isEmpty else { return nil }
-        return weights.max(by: { abs($0.value) < abs($1.value) })
-            .flatMap { ObjectAxis(rawValue: $0.key) }
-    }
-
-    private var totalSwipeCards: Int { calibrationItems.count }
+    private var totalSwipeCards: Int { items.count }
 
     var body: some View {
         ZStack {
@@ -98,7 +71,25 @@ struct ObjectsCalibrationScreen: View {
                 swipeCount = existing.swipeCount
             }
         }
+        .task {
+            await loadItems()
+        }
         .animation(.easeInOut(duration: 0.3), value: showUpdating)
+    }
+
+    // MARK: - Fetch
+
+    private func loadItems() async {
+        isLoadingItems = true
+        do {
+            items = try await CalibratorAPI.fetchItems()
+        } catch {
+            #if DEBUG
+            print("[ObjectsCalibrationScreen] fetchItems failed: \(error.localizedDescription)")
+            #endif
+            items = []
+        }
+        isLoadingItems = false
     }
 
     // MARK: - Swipe Phase
@@ -109,18 +100,24 @@ struct ObjectsCalibrationScreen: View {
             swipeProgress
 
             ZStack {
-                if currentIndex < totalSwipeCards {
+                if isLoadingItems {
+                    ProgressView()
+                        .tint(Theme.accent)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else if currentIndex < totalSwipeCards {
                     if currentIndex + 1 < totalSwipeCards {
-                        swipeCardContent(for: calibrationItems[currentIndex + 1])
+                        swipeCardContent(for: items[currentIndex + 1])
                             .scaleEffect(0.95)
                             .opacity(0.4)
                     }
 
-                    swipeCardContent(for: calibrationItems[currentIndex])
+                    swipeCardContent(for: items[currentIndex])
                         .offset(dragOffset)
                         .rotationEffect(.degrees(Double(dragOffset.width) / 20))
                         .gesture(swipeGesture)
                         .overlay(swipeIndicator)
+                } else {
+                    completionCard
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -130,11 +127,29 @@ struct ObjectsCalibrationScreen: View {
         }
     }
 
+    private var completionCard: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "checkmark.circle")
+                .font(.system(size: 40))
+                .foregroundStyle(Theme.accent)
+            Text("Calibration complete")
+                .font(.headline)
+                .foregroundStyle(Theme.ink)
+        }
+        .transition(.opacity)
+    }
+
     private var swipeProgress: some View {
         VStack(spacing: 6) {
-            Text("\(min(currentIndex + 1, totalSwipeCards)) of \(totalSwipeCards)")
-                .font(.caption.monospacedDigit())
-                .foregroundStyle(Theme.muted)
+            Group {
+                if isLoadingItems {
+                    Text("Loading…")
+                } else {
+                    Text("\(min(currentIndex + 1, totalSwipeCards)) of \(totalSwipeCards)")
+                }
+            }
+            .font(.caption.monospacedDigit())
+            .foregroundStyle(Theme.muted)
 
             GeometryReader { geo in
                 RoundedRectangle(cornerRadius: 2)
@@ -157,22 +172,13 @@ struct ObjectsCalibrationScreen: View {
         .padding(.top, 12)
     }
 
-    private func swipeCardContent(for item: CatalogItem) -> some View {
+    private func swipeCardContent(for item: CalibratorItem) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            RoundedRectangle(cornerRadius: 0)
-                .fill(
-                    LinearGradient(
-                        colors: [Theme.surface, Theme.hairline],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(maxHeight: .infinity)
-                .overlay(
-                    Image(systemName: "sparkles")
-                        .font(.largeTitle)
-                        .foregroundStyle(Theme.muted.opacity(0.3))
-                )
+            GeometryReader { geo in
+                CachedImage(url: item.image_url, height: geo.size.height)
+                    .frame(maxWidth: .infinity)
+            }
+            .frame(maxHeight: .infinity)
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(item.title)
@@ -180,14 +186,16 @@ struct ObjectsCalibrationScreen: View {
                     .foregroundStyle(Theme.ink)
                     .lineLimit(2)
 
-                Text(item.category.rawValue.uppercased())
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(Theme.muted)
-                    .tracking(0.8)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(Theme.bg)
-                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                if let category = item.category {
+                    Text(category.uppercased())
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(Theme.muted)
+                        .tracking(0.8)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Theme.bg)
+                        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                }
             }
             .padding(16)
         }
@@ -236,8 +244,10 @@ struct ObjectsCalibrationScreen: View {
     }
 
     private func executeSwipe(_ direction: SwipeDirection, flyOut: CGSize) {
-        let item = calibrationItems[currentIndex]
-        guard let dominant = dominantObjectAxis(item: item) else { return }
+        guard currentIndex < items.count else { return }
+        let item = items[currentIndex]
+        // right (yes) and up (love) both map to a positive signal
+        let action: String = direction == .left ? "reject" : "like"
 
         Haptics.tap()
 
@@ -246,7 +256,13 @@ struct ObjectsCalibrationScreen: View {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            vector.applySwipe(axis: dominant, direction: direction)
+            Task {
+                await CalibratorAPI.sendSwipe(
+                    userId: DeviceInstallID.current,
+                    objectId: item.object_id,
+                    action: action
+                )
+            }
             swipeCount += 1
             currentIndex += 1
             dragOffset = .zero
